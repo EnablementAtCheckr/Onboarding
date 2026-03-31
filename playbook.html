@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>New Hire Sales Playbook — Checkr 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1E448F;--teal:#45C0B9;--orange:#F37D53;--green:#29736F;--slate:#67727C;
+  --white:#fff;--dark:#0B1626;--bg:#F7F9FC;--border:#D4DAE1;
+  --navy-lt:#EBF0FA;--teal-lt:#E6F7F6;--org-lt:#FEF0EB;--grn-lt:#E3F2F1;--slt-lt:#F1EFF8;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--dark);font-size:15px;line-height:1.6}
+
+/* NAV */
+.nav{background:var(--navy);padding:0 24px;display:flex;align-items:center;height:56px;position:sticky;top:0;z-index:100;gap:0}
+.nav .logo{color:#fff;font-weight:600;font-size:15px;margin-right:32px;flex-shrink:0}
+.nav a{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;font-weight:500;padding:0 14px;height:56px;display:flex;align-items:center;border-bottom:3px solid transparent;transition:all .15s}
+.nav a:hover,.nav a.active{color:#fff;border-bottom-color:var(--teal)}
+
+/* HERO */
+.hero{background:var(--navy);padding:52px 40px 44px;color:#fff;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-60px;bottom:-60px;width:360px;height:360px;border-radius:50%;background:rgba(69,192,185,.06);pointer-events:none}
+.hero::after{content:'';position:absolute;left:-80px;top:-80px;width:280px;height:280px;border-radius:50%;background:rgba(243,125,83,.05);pointer-events:none}
+.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+.hero h1{font-size:40px;font-weight:600;margin-bottom:12px;line-height:1.15;max-width:700px}
+.hero-sub{color:rgba(255,255,255,.72);font-size:16px;line-height:1.65;max-width:620px;margin-bottom:28px}
+.hero-badges{display:flex;gap:10px;flex-wrap:wrap}
+.badge{font-size:12px;font-weight:500;padding:5px 14px;border-radius:20px;background:rgba(255,255,255,.12);color:rgba(255,255,255,.9)}
+
+/* LAYOUT */
+.page{display:grid;grid-template-columns:240px 1fr;min-height:calc(100vh - 56px);max-width:1400px;margin:0 auto}
+
+/* SIDEBAR */
+.sidebar{padding:32px 0;border-right:1px solid var(--border);background:#fff;position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto}
+.sb-section{margin-bottom:24px;padding:0 20px}
+.sb-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.sb-link{display:flex;align-items:center;gap:8px;padding:6px 0;font-size:13px;font-weight:500;color:var(--slate);text-decoration:none;border-radius:6px;transition:color .15s;cursor:pointer}
+.sb-link:hover,.sb-link.active{color:var(--navy)}
+.sb-link.active{font-weight:600}
+.sb-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.sb-dot.navy{background:var(--navy)}.sb-dot.teal{background:var(--teal)}.sb-dot.orange{background:var(--orange)}.sb-dot.green{background:var(--green)}.sb-dot.slate{background:var(--slate)}
+
+/* MAIN CONTENT */
+.content{padding:40px 48px;max-width:900px}
+
+/* SECTION HEADERS */
+.sec-hdr{margin-top:56px;margin-bottom:28px;padding-bottom:14px;border-bottom:2px solid var(--border)}
+.sec-hdr:first-child{margin-top:0}
+.sec-eyebrow{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:6px}
+.sec-hdr h2{font-size:26px;font-weight:600;color:var(--dark);margin-bottom:6px}
+.sec-hdr p{font-size:14px;color:var(--slate);line-height:1.6}
+
+/* PLAYBOOK CARDS — sub-playbook links */
+.pb-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:40px}
+.pb-card{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:24px;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:all .2s;position:relative;overflow:hidden}
+.pb-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.pb-card.navy::after{background:var(--navy)}
+.pb-card.teal::after{background:var(--teal)}
+.pb-card.orange::after{background:var(--orange)}
+.pb-card.green::after{background:var(--green)}
+.pb-card:hover{box-shadow:0 6px 24px rgba(30,68,143,.12);transform:translateY(-2px);border-color:var(--teal)}
+.pb-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px;flex-shrink:0}
+.pb-icon.navy{background:var(--navy-lt)}.pb-icon.teal{background:var(--teal-lt)}.pb-icon.orange{background:var(--org-lt)}.pb-icon.green{background:var(--grn-lt)}
+.pb-card h3{font-size:15px;font-weight:600;color:var(--dark);margin-bottom:6px}
+.pb-card p{font-size:13px;color:var(--slate);flex:1;line-height:1.55;margin-bottom:16px}
+.pb-link{font-size:12.5px;font-weight:600;display:flex;align-items:center;gap:5px;margin-top:auto}
+.pb-link.navy{color:var(--navy)}.pb-link.teal{color:var(--teal)}.pb-link.orange{color:var(--orange)}.pb-link.green{color:var(--green)}
+.pb-tag{font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;display:inline-block;margin-bottom:12px;letter-spacing:.04em}
+.pb-tag.navy{background:var(--navy-lt);color:var(--navy)}
+.pb-tag.teal{background:var(--teal-lt);color:var(--green)}
+.pb-tag.orange{background:var(--org-lt);color:#B85020}
+.pb-tag.green{background:var(--grn-lt);color:var(--green)}
+
+/* CHECKLIST TIMELINE */
+.timeline{position:relative;padding-left:32px;margin-bottom:32px}
+.timeline::before{content:'';position:absolute;left:10px;top:8px;bottom:8px;width:2px;background:var(--border)}
+.tl-item{position:relative;margin-bottom:28px}
+.tl-item:last-child{margin-bottom:0}
+.tl-dot{position:absolute;left:-26px;top:3px;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;flex-shrink:0;z-index:1}
+.tl-dot.navy{background:var(--navy)}.tl-dot.teal{background:var(--teal)}.tl-dot.orange{background:var(--orange)}.tl-dot.green{background:var(--green)}.tl-dot.slate{background:var(--slate)}
+.tl-period{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.tl-period.navy{color:var(--navy)}.tl-period.teal{color:var(--teal)}.tl-period.orange{color:var(--orange)}.tl-period.green{color:var(--green)}.tl-period.slate{color:var(--slate)}
+.tl-title{font-size:15px;font-weight:600;color:var(--dark);margin-bottom:4px}
+.tl-desc{font-size:13px;color:var(--slate);line-height:1.55;margin-bottom:8px}
+.tl-pills{display:flex;flex-wrap:wrap;gap:5px}
+.tl-pill{font-size:11px;font-weight:500;padding:2px 9px;border-radius:14px;background:var(--navy-lt);color:var(--navy)}
+.tl-pill.teal{background:var(--teal-lt);color:var(--green)}
+.tl-pill.orange{background:var(--org-lt);color:#B85020}
+.tl-pill.green{background:var(--grn-lt);color:var(--green)}
+
+/* INFO CARDS */
+.info-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+.info-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px 22px}
+.info-card-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.info-card ul{padding-left:0;list-style:none}
+.info-card ul li{font-size:13px;color:var(--dark);margin-bottom:6px;padding-left:16px;position:relative;line-height:1.5}
+.info-card ul li::before{content:'›';position:absolute;left:0;color:var(--teal);font-weight:700}
+
+/* COMPETENCY GRID */
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px}
+.comp-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px 18px;display:flex;gap:14px;align-items:flex-start}
+.comp-num{font-size:22px;font-weight:600;color:var(--navy-lt);flex-shrink:0;line-height:1;min-width:32px;color:var(--navy);opacity:.35}
+.comp-info{}
+.comp-name{font-size:14px;font-weight:600;color:var(--dark);margin-bottom:3px}
+.comp-sub{font-size:12px;color:var(--slate);line-height:1.45}
+
+/* MILESTONE TABLE */
+.ms-table-wrap{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:24px}
+.ms-table{width:100%;border-collapse:collapse}
+.ms-table th{padding:10px 16px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--slate);background:var(--bg);border-bottom:1px solid var(--border);text-align:left}
+.ms-table td{padding:13px 16px;vertical-align:top;border-bottom:1px solid var(--border);font-size:13px;line-height:1.5}
+.ms-table tr:last-child td{border-bottom:none}
+.ms-table td:not(:last-child){border-right:1px solid var(--border)}
+.ms-table th:not(:last-child){border-right:1px solid var(--border)}
+.ms-badge{font-size:10px;font-weight:600;padding:2px 9px;border-radius:12px;display:inline-block;white-space:nowrap}
+.ms-badge.navy{background:var(--navy-lt);color:var(--navy)}
+.ms-badge.teal{background:var(--teal-lt);color:var(--green)}
+.ms-badge.orange{background:var(--org-lt);color:#B85020}
+.ms-badge.green{background:var(--grn-lt);color:var(--green)}
+.ms-badge.slate{background:var(--slt-lt);color:var(--slate)}
+
+/* CALLOUT BOX */
+.callout{border-radius:12px;padding:18px 22px;margin-bottom:24px;display:flex;gap:14px;align-items:flex-start}
+.callout.teal{background:var(--teal-lt);border:1px solid rgba(69,192,185,.3)}
+.callout.navy{background:var(--navy-lt);border:1px solid rgba(30,68,143,.2)}
+.callout.orange{background:var(--org-lt);border:1px solid rgba(243,125,83,.25)}
+.callout-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+.callout-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}
+.callout.teal .callout-label{color:var(--green)}
+.callout.navy .callout-label{color:var(--navy)}
+.callout.orange .callout-label{color:#B85020}
+.callout-title{font-size:15px;font-weight:600;color:var(--dark);margin-bottom:4px}
+.callout-desc{font-size:13px;color:var(--slate);line-height:1.55}
+.callout-link{font-size:12.5px;font-weight:600;color:var(--navy);text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-top:8px}
+.callout-link:hover{text-decoration:underline}
+
+/* PROSE */
+.prose{font-size:14px;color:var(--dark);line-height:1.7;margin-bottom:20px}
+.prose strong{font-weight:600}
+.prose-list{padding-left:0;list-style:none;margin-bottom:20px}
+.prose-list li{font-size:14px;color:var(--dark);padding-left:20px;position:relative;margin-bottom:8px;line-height:1.6}
+.prose-list li::before{content:'›';position:absolute;left:0;color:var(--teal);font-weight:700;font-size:16px;line-height:1.4}
+
+/* PHASE STRIP */
+.phase-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:32px}
+.ps-block{background:#fff;padding:20px;display:flex;flex-direction:column;gap:6px}
+.ps-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em}
+.ps-label.teal{color:var(--teal)}.ps-label.navy{color:var(--navy)}.ps-label.orange{color:var(--orange)}
+.ps-title{font-size:16px;font-weight:600;color:var(--dark)}
+.ps-sub{font-size:12px;color:var(--slate);line-height:1.5}
+.ps-items{margin-top:6px;padding-left:0;list-style:none}
+.ps-items li{font-size:12px;color:var(--slate);padding-left:14px;position:relative;margin-bottom:4px}
+.ps-items li::before{content:'·';position:absolute;left:0;color:var(--teal);font-weight:700}
+
+/* CERT GRID */
+.cert-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:32px}
+.cert-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px 12px;text-align:center}
+.cert-num{font-size:22px;margin-bottom:6px}
+.cert-name{font-size:11px;font-weight:600;color:var(--dark);line-height:1.3;margin-bottom:4px}
+.cert-when{font-size:10px;color:var(--slate)}
+
+/* ACTIVITY TABLE ROW */
+.act-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:24px}
+.act-table th{padding:9px 14px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--slate);background:var(--bg);border-bottom:1px solid var(--border);text-align:left}
+.act-table td{padding:12px 14px;font-size:13px;vertical-align:top;border-bottom:1px solid var(--border);line-height:1.5;color:var(--dark)}
+.act-table tr:last-child td{border-bottom:none}
+.act-table td:not(:last-child){border-right:1px solid var(--border)}
+.act-table th:not(:last-child){border-right:1px solid var(--border)}
+.metric{font-weight:600;color:var(--navy)}
+
+/* FOOTER */
+footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:24px;font-size:12px;margin-top:0}
+
+/* Dropdown nav */
+.nav .dropdown{position:relative;height:56px;display:flex;align-items:center}
+.nav .dropdown-trigger{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;font-weight:500;padding:0 14px;height:56px;display:flex;align-items:center;gap:5px;border-bottom:3px solid transparent;transition:all .15s;cursor:pointer;user-select:none}
+.nav .dropdown-trigger::after{content:'▾';font-size:10px;margin-top:1px}
+.nav .dropdown:hover .dropdown-trigger,.nav .dropdown.active .dropdown-trigger{color:#fff;border-bottom-color:var(--teal)}
+.nav .dropdown-menu{display:none;position:absolute;top:56px;left:0;background:var(--navy);border:1px solid rgba(255,255,255,.12);border-top:2px solid var(--teal);border-radius:0 0 8px 8px;min-width:200px;z-index:200;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.nav .dropdown:hover .dropdown-menu{display:block}
+.nav .dropdown-menu a{display:block;padding:12px 18px;font-size:13px;font-weight:500;color:rgba(255,255,255,.75);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.07);height:auto;border-bottom-color:rgba(255,255,255,.07) !important;transition:background .12s,color .12s}
+.nav .dropdown-menu a:last-child{border-bottom:none;border-radius:0 0 8px 8px}
+.nav .dropdown-menu a:hover{background:rgba(255,255,255,.08);color:#fff}
+.nav .dropdown-menu a.active{color:var(--teal);font-weight:600}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="logo">Checkr Sales Playbooks 2026</span>
+    <a href="index.html">Onboarding</a>
+    <a href="playbook.html" class="active">New Hire Playbook</a>
+  <div class="dropdown">
+    <span class="dropdown-trigger">Role Based Playbooks</span>
+    <div class="dropdown-menu">
+    <a href="playbook_commercial.html">Commercial AE Playbook</a>
+    <a href="playbook_enterprise.html">Enterprise AE Playbook</a>
+    <a href="playbook_bdr.html">BDR Playbook</a>
+    </div>
+  </div>
+    <a href="outbound.html">Outbound</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">New Hire Sales Playbook · 2026</div>
+  <h1>Your Complete Guide<br>to Your First Year at Checkr</h1>
+  <div class="hero-sub">Everything you need to know, do, and master as a new Account Executive — from your first day of pre-work through your first year in the field. This is your handbook.</div>
+  <div class="hero-badges">
+    <span class="badge">AE Handbook</span>
+    <span class="badge">3 Phases</span>
+    <span class="badge">5 Certifications</span>
+    <span class="badge">5 Milestones</span>
+    <span class="badge">Year 1 Ramp</span>
+  </div>
+</div>
+
+<div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:240px 1fr">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sb-section">
+    <div class="sb-label">In This Playbook</div>
+    <a href="#welcome" class="sb-link active"><span class="sb-dot navy"></span>Welcome & Overview</a>
+    <a href="#how-we-sell" class="sb-link"><span class="sb-dot teal"></span>How We Sell</a>
+    <a href="#your-playbooks" class="sb-link"><span class="sb-dot orange"></span>Your Role Playbooks</a>
+    <a href="#onboarding-phases" class="sb-link"><span class="sb-dot navy"></span>Onboarding Phases</a>
+    <a href="#daily-activities" class="sb-link"><span class="sb-dot orange"></span>Daily Activities</a>
+    <a href="#milestones" class="sb-link"><span class="sb-dot green"></span>Milestones & Ramp</a>
+    <a href="#tools" class="sb-link"><span class="sb-dot slate"></span>Your Tools</a>
+    <a href="#outbound" class="sb-link"><span class="sb-dot teal"></span>Outbound Motion</a>
+    <a href="#manager" class="sb-link"><span class="sb-dot navy"></span>Working with Your Manager</a>
+    <a href="#resources" class="sb-link"><span class="sb-dot slate"></span>Key Resources</a>
+  </div>
+  <div class="sb-section">
+    <div class="sb-label">Role Playbooks</div>
+    <a href="playbook_commercial.html" class="sb-link"><span class="sb-dot teal"></span>Commercial AE Playbook</a>
+    <a href="playbook_enterprise.html" class="sb-link"><span class="sb-dot navy"></span>Enterprise AE Playbook</a>
+    <a href="playbook_bdr.html" class="sb-link"><span class="sb-dot orange"></span>BDR Playbook</a>
+    <a href="outbound.html" class="sb-link"><span class="sb-dot green"></span>Outbound Playbook</a>
+</aside>
+
+<main class="content">
+
+  <!-- WELCOME -->
+  <div id="welcome">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Introduction</div>
+      <h2>Welcome to Checkr Sales</h2>
+      <p>This playbook is your handbook for your first year. Read it, use it, refer back to it.</p>
+    </div>
+
+    <p class="prose">Congratulations on joining the Checkr Sales team. You&#39;re stepping into a role at one of the fastest-moving companies in the background screening space &mdash; a market where the incumbents are legacy, the product is genuinely better, and the opportunity to build a meaningful book of business is real.</p>
+
+    <p class="prose">This playbook answers the question every new AE asks: <strong>&ldquo;What do I actually need to do, know, and prove in my first year?&rdquo;</strong> It covers your onboarding structure, how we sell, your daily activity minimums, how to use your tools, what your milestones are, and where to find everything else.</p>
+
+    <div class="callout teal">
+      <div class="callout-icon">&#128204;</div>
+      <div>
+        <div class="callout-label">How to Use This Playbook</div>
+        <div class="callout-title">This is a living document</div>
+        <div class="callout-desc">Read the whole thing once in your first week. Then come back to specific sections as you hit each phase. Your manager will reference this during every milestone check-in. The linked role playbooks are the deep-dive docs &mdash; this is the map.</div>
+      </div>
+    </div>
+
+    <div class="info-row">
+      <div class="info-card">
+        <div class="info-card-label">What Makes Checkr Different</div>
+        <ul>
+          <li>Purpose-built technology vs. legacy platforms</li>
+          <li>API-first integrations with all major ATS platforms</li>
+          <li>Candidate experience is a genuine differentiator</li>
+          <li>Compliance tooling built in (adverse action, band-the-box)</li>
+          <li>Transparent turnaround times across screening types</li>
+          <li>International screening now GA as of December 2025</li>
+          <li>Identity Verification (IDV) — newest product, launching Q1 2026</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">How You Win Deals</div>
+        <ul>
+          <li>Lead with pain, not product</li>
+          <li>MEDDPICC every opportunity from the first call</li>
+          <li>Use Command of the Message in every conversation</li>
+          <li>Find a champion before you find an economic buyer</li>
+          <li>Demo to pain — not to features</li>
+          <li>Anchor on candidate experience + compliance risk</li>
+          <li>Displacement sales — always articulate cost of inertia</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW WE SELL -->
+  <div id="how-we-sell">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Sales Methodology</div>
+      <h2>How We Sell at Checkr</h2>
+      <p>The frameworks and methodology every AE is expected to operate from day one.</p>
+    </div>
+
+    <p class="prose">Checkr uses three interconnected frameworks. You'll learn all three in pre-work and practice them in bootcamp — but you need to know them before you touch a live account.</p>
+
+    <div class="comp-grid">
+      <div class="comp-card">
+        <div class="comp-num">01</div>
+        <div class="comp-info">
+          <div class="comp-name">Command of the Message (CoM)</div>
+          <div class="comp-sub">Before / After Scenario, Required Capabilities, How We Do It Better, Proof Points, Discovery Questions. Every conversation starts here.</div>
+        </div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-num">02</div>
+        <div class="comp-info">
+          <div class="comp-name">MEDDPICC</div>
+          <div class="comp-sub">Metrics · Economic Buyer · Decision Criteria · Decision Process · Identify Pain · Champion · Competition. Applied to qualify and advance every opp.</div>
+        </div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-num">03</div>
+        <div class="comp-info">
+          <div class="comp-name">Checkr Sales Process — 7 Stages</div>
+          <div class="comp-sub">Prospect → Qualify → Discovery → Demo → Pricing → Legal/Security → Closed Won. Each stage has defined entry/exit criteria in Salesforce.</div>
+        </div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-num">04</div>
+        <div class="comp-info">
+          <div class="comp-name">Displacement Sales Model</div>
+          <div class="comp-sub">Most prospects already have a screening vendor. Your job is to articulate the cost of inertia and the risk of staying on a legacy platform.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout navy">
+      <div class="callout-icon">🎯</div>
+      <div>
+        <div class="callout-label">Core Selling Principle</div>
+        <div class="callout-title">Pain before product. Always.</div>
+        <div class="callout-desc">We do not open calls by talking about Checkr. We open by understanding the prospect's world — their current screening vendor, their frustrations, their compliance exposure, and what a better solution would mean for their business. Product comes after pain is confirmed.</div>
+      </div>
+    </div>
+
+    <p class="prose">The 8 core competencies you're being trained against are:</p>
+    <div class="comp-grid">
+      <div class="comp-card"><div class="comp-num">C1</div><div class="comp-info"><div class="comp-name">Product Knowledge</div><div class="comp-sub">What we sell and how to teach it</div></div></div>
+      <div class="comp-card"><div class="comp-num">C2</div><div class="comp-info"><div class="comp-name">ICP & Persona Fluency</div><div class="comp-sub">Who we sell to and why it matters</div></div></div>
+      <div class="comp-card"><div class="comp-num">C3</div><div class="comp-info"><div class="comp-name">Competitive Positioning</div><div class="comp-sub">Why we win, why others win, how to handle it</div></div></div>
+      <div class="comp-card"><div class="comp-num">C4</div><div class="comp-info"><div class="comp-name">Command of the Message</div><div class="comp-sub">Discovery, value articulation, proof points</div></div></div>
+      <div class="comp-card"><div class="comp-num">C5</div><div class="comp-info"><div class="comp-name">Sales Process & Qualification</div><div class="comp-sub">MEDDPICC, 7-stage process, SFDC hygiene</div></div></div>
+      <div class="comp-card"><div class="comp-num">C6</div><div class="comp-info"><div class="comp-name">Outbound Prospecting</div><div class="comp-sub">Account research, sequencing, messaging</div></div></div>
+      <div class="comp-card"><div class="comp-num">C7</div><div class="comp-info"><div class="comp-name">Deal Execution</div><div class="comp-sub">Demo, pricing, legal, close — end to end</div></div></div>
+      <div class="comp-card"><div class="comp-num">C8</div><div class="comp-info"><div class="comp-name">Productivity & Self-Management</div><div class="comp-sub">Calendar blocking, pipeline management, forecasting</div></div></div>
+    </div>
+    <p class="prose" style="margin-top:-8px"></p>
+  </div>
+
+  <!-- YOUR PLAYBOOKS -->
+  <div id="your-playbooks">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Role-Specific Guides</div>
+      <h2>Your Role Playbooks</h2>
+      <p>This playbook is the overview. These three documents are your deep-dive references for your specific role and the outbound motion.</p>
+    </div>
+
+    <div class="pb-cards">
+      <a href="playbook_commercial.html" class="pb-card teal">
+        <div class="pb-tag teal">Commercial AE</div>
+        <div class="pb-icon teal">🏢</div>
+        <h3>Commercial AE Playbook</h3>
+        <p>Your complete guide to the Commercial segment — ICP, territory, activity minimums, deal flow, and how to build your book in accounts under 1,000 employees.</p>
+        <span class="pb-link teal">Open Commercial Playbook →</span>
+      </a>
+      <a href="playbook_enterprise.html" class="pb-card navy">
+        <div class="pb-tag navy">Enterprise AE</div>
+        <div class="pb-icon navy">🏛</div>
+        <h3>Enterprise AE Playbook</h3>
+        <p>Your complete guide to the Enterprise segment — navigating complex multi-stakeholder deals, procurement, legal cycles, and multi-product expansions.</p>
+        <span class="pb-link navy">Open Enterprise Playbook →</span>
+      </a>
+      <a href="outbound.html" class="pb-card orange">
+        <div class="pb-tag orange">All AEs</div>
+        <div class="pb-icon orange">📤</div>
+        <h3>Outbound Playbook</h3>
+        <p>How to source pipeline from scratch — account prioritization, research toolkit, email and LinkedIn messaging, Athean sequences, and activity minimums.</p>
+        <span class="pb-link orange">Open Outbound Playbook →</span>
+      </a>
+    </div>
+
+    <div class="callout orange">
+      <div class="callout-icon">⚠️</div>
+      <div>
+        <div class="callout-label">Required Reading</div>
+        <div class="callout-title">Read your role playbook before live outreach begins</div>
+        <div class="callout-desc">You'll review the Outbound Playbook with your manager on Pre-Work Day 5. Your role-specific playbook should be read in full during Week 1 post-bootcamp — before you start working live accounts.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ONBOARDING PHASES -->
+  <div id="onboarding-phases">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Your Onboarding Structure</div>
+      <h2>Three Phases, One Year</h2>
+      <p>Onboarding is a structured year-long journey. Full schedules, sessions, and milestones live in the onboarding pages.</p>
+    </div>
+
+    <div class="phase-strip">
+      <div class="ps-block">
+        <div class="ps-label teal">Phase 1</div>
+        <div class="ps-title">Pre-Work</div>
+        <div class="ps-sub">Days 1–5 · ~22 hours · Complete before Bootcamp</div>
+        <ul class="ps-items">
+          <li>10 self-paced Mindtickle modules</li>
+          <li>Product, ICP, CoM, MEDDPICC, competitors, all 4 call types</li>
+          <li>Outbound Playbook review with your manager on Day 5</li>
+        </ul>
+        <a href="prework.html" style="display:inline-flex;align-items:center;gap:4px;margin-top:10px;font-size:12.5px;font-weight:600;color:var(--teal);text-decoration:none">View Pre-Work Schedule →</a>
+      </div>
+      <div class="ps-block">
+        <div class="ps-label navy">Phase 2</div>
+        <div class="ps-title">Bootcamp</div>
+        <div class="ps-sub">5 days · In-person · SF or Denver</div>
+        <ul class="ps-items">
+          <li>Day 1–2: Context, personas, cold call &amp; discovery role-plays</li>
+          <li>Day 3: Tools, demo &amp; pricing role-plays</li>
+          <li>Day 4: Outbound motion, sequencing, messaging</li>
+          <li>Day 5: Productivity, deal mechanics, certifications</li>
+        </ul>
+        <a href="bootcamp.html" style="display:inline-flex;align-items:center;gap:4px;margin-top:10px;font-size:12.5px;font-weight:600;color:var(--navy);text-decoration:none">View Bootcamp Schedule →</a>
+      </div>
+      <div class="ps-block">
+        <div class="ps-label orange">Phase 3</div>
+        <div class="ps-title">Post-Bootcamp</div>
+        <div class="ps-sub">Week 3 through Year 1</div>
+        <ul class="ps-items">
+          <li>Live outreach begins Week 3</li>
+          <li>Weekly Gong call reviews with manager</li>
+          <li>Bi-weekly Homeroom modules</li>
+          <li>Milestone check-ins at 30, 45, 90, 180, 365 days</li>
+        </ul>
+        <a href="milestones2.html" style="display:inline-flex;align-items:center;gap:4px;margin-top:10px;font-size:12.5px;font-weight:600;color:var(--orange);text-decoration:none">View My Milestones →</a>
+      </div>
+    </div>
+
+    <div class="info-row" style="margin-top:8px">
+      <div class="info-card">
+        <div class="info-card-label">More Onboarding Resources</div>
+        <ul>
+          <li><a href="syllabus.html" style="color:var(--navy);font-weight:500">Content Library</a> — every session, description, and learning objective</li>
+          <li><a href="competency.html" style="color:var(--navy);font-weight:500">Competency Framework</a> — the 8 core competencies with full learning arcs</li>
+          <li><a href="timeline.html" style="color:var(--navy);font-weight:500">Rep Journey Timeline</a> — Day 1 through Year 1 at a glance</li>
+          <li><a href="milestones.html" style="color:var(--navy);font-weight:500">Milestone Guide</a> — manager view with measurement criteria</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">5 Certifications — Completed at Bootcamp</div>
+        <ul>
+          <li>📞 Cold Call Certification</li>
+          <li>🔍 Discovery Call Certification</li>
+          <li>🖥 Demo Call Certification</li>
+          <li>💰 Pricing Call Certification</li>
+          <li>📝 Written Product Certification</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAILY ACTIVITIES -->
+  <div id="daily-activities">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Activity Standards</div>
+      <h2>Daily & Weekly Activity Minimums</h2>
+      <p>These are the floors, not the ceilings. Consistent activity is how you build pipeline when you're new.</p>
+    </div>
+
+    <p class="prose">Your manager will review actuals in Salesforce and Athean weekly. These numbers are set for your <strong>ramp period</strong> — once you're at full quota they may adjust by segment.</p>
+
+    <div class="ms-table-wrap">
+      <table class="ms-table">
+        <tr>
+          <th>Activity</th>
+          <th>Daily Minimum</th>
+          <th>Weekly Minimum</th>
+          <th>Where Tracked</th>
+        </tr>
+        <tr>
+          <td><strong>Outbound calls / dials</strong></td>
+          <td class="metric">15 dials</td>
+          <td class="metric">75 dials</td>
+          <td>Athean / Gong</td>
+        </tr>
+        <tr>
+          <td><strong>Athean sequence steps completed</strong></td>
+          <td class="metric">20 steps</td>
+          <td class="metric">100 steps</td>
+          <td>Athean</td>
+        </tr>
+        <tr>
+          <td><strong>New accounts added to sequence</strong></td>
+          <td>—</td>
+          <td class="metric">10–15 accounts</td>
+          <td>Athean / SFDC</td>
+        </tr>
+        <tr>
+          <td><strong>LinkedIn outreach (InMail or connection)</strong></td>
+          <td class="metric">5 messages</td>
+          <td class="metric">25 messages</td>
+          <td>LinkedIn Sales Nav</td>
+        </tr>
+        <tr>
+          <td><strong>Gong call review</strong></td>
+          <td class="metric">1 call</td>
+          <td class="metric">5 calls</td>
+          <td>Gong</td>
+        </tr>
+        <tr>
+          <td><strong>SFDC opportunity update</strong></td>
+          <td>—</td>
+          <td class="metric">All active opps</td>
+          <td>Salesforce</td>
+        </tr>
+        <tr>
+          <td><strong>Discovery meetings booked</strong> <em>(ramp target)</em></td>
+          <td>—</td>
+          <td class="metric">2–3 meetings</td>
+          <td>SFDC / Gong</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="callout teal">
+      <div class="callout-icon">💡</div>
+      <div>
+        <div class="callout-label">Pro Tip — Calendar Blocking</div>
+        <div class="callout-title">Protect your prospecting time first</div>
+        <div class="callout-desc">Block 9–11 AM every day for outbound calls before anything else lands on your calendar. The best call pickup rates are 8–10 AM and 4–5 PM in the prospect's timezone. Your manager can show you their calendar template on your first 1:1.</div>
+      </div>
+    </div>
+
+    <p class="prose"><a href="outbound.html" style="color:var(--navy);font-weight:600">See the Outbound Playbook for the full activity framework and sequencing guide →</a></p>
+  </div>
+
+  <!-- MILESTONES -->
+  <div id="milestones">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Ramp & Milestone Check-ins</div>
+      <h2>What You Need to Hit at Each Milestone</h2>
+      <p>Five check-ins over your first year. Your manager runs these. Come prepared.</p>
+    </div>
+
+    <div class="ms-table-wrap">
+      <table class="ms-table">
+        <tr>
+          <th>Milestone</th>
+          <th>What You Should Be Able to Do</th>
+          <th>How It's Measured</th>
+        </tr>
+        <tr>
+          <td><span class="ms-badge navy">After Week 1</span></td>
+          <td>Explain what Checkr does, describe our ICP and 3 personas, name 2 competitors and their weaknesses, navigate all 12 tools</td>
+          <td>Manager quiz, tool access confirmation, Mindtickle module completion</td>
+        </tr>
+        <tr>
+          <td><span class="ms-badge teal">After Bootcamp (Day 30)</span></td>
+          <td>Pass all 5 certifications, deliver a confident elevator pitch, run a full discovery using CoM, account list approved and first sequences live</td>
+          <td>Cert scores in Mindtickle, manager role-play observation, Athean activity</td>
+        </tr>
+        <tr>
+          <td><span class="ms-badge orange">Month 3</span></td>
+          <td>Qualified pipeline ≥ 3× monthly quota, 2+ demos completed, MEDDPICC complete on all active opps, first potential close on the horizon</td>
+          <td>SFDC pipeline review, Gong call scores, MEDDPICC completeness report</td>
+        </tr>
+        <tr>
+          <td><span class="ms-badge green">Month 6</span></td>
+          <td>First closed won deal, consistent weekly outreach cadence, pipeline self-sufficient (not manager-assisted), knows when to bring in SE</td>
+          <td>SFDC Closed Won, pipeline coverage, Gong trends, manager assessment</td>
+        </tr>
+        <tr>
+          <td><span class="ms-badge slate">Year 1</span></td>
+          <td>At or above ramp quota for the full year, repeatable pipeline motion, mentoring newer reps if applicable, Homeroom and cert completions 100%</td>
+          <td>Quota attainment, Salesforce activity history, Mindtickle completion report</td>
+        </tr>
+      </table>
+    </div>
+
+    <p class="prose"></p>
+  </div>
+
+  <!-- TOOLS -->
+  <div id="tools">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Your Tech Stack</div>
+      <h2>The 12 Sales Tools</h2>
+      <p>Every tool should be provisioned before Pre-Work Day 2. If anything is missing, contact Enablement immediately.</p>
+    </div>
+
+    <div class="ms-table-wrap">
+      <table class="act-table">
+        <tr>
+          <th>Tool</th>
+          <th>What It's For</th>
+          <th>When You'll Need It</th>
+        </tr>
+        <tr><td><strong>Salesforce</strong></td><td>CRM — all opportunity management, pipeline, quoting, order forms</td><td>Day 1 of outreach, every day</td></tr>
+        <tr><td><strong>Athean</strong></td><td>Sequencing, email automation, call logging, LinkedIn steps</td><td>Pre-Work Day 2 setup · Live Week 3</td></tr>
+        <tr><td><strong>Gong</strong></td><td>Call recording, call intelligence, deal boards, forecasting</td><td>Pre-Work listening · Every call</td></tr>
+        <tr><td><strong>LinkedIn Sales Navigator</strong></td><td>Prospecting, persona research, InMail outreach</td><td>Week 3 outreach onward</td></tr>
+        <tr><td><strong>Demandbase</strong></td><td>Intent data, MQA account lists, ABM targeting signals</td><td>Account prioritization (post-bootcamp)</td></tr>
+        <tr><td><strong>ZoomInfo</strong></td><td>Contact data, org charts, direct dials</td><td>Account research / prospecting</td></tr>
+        <tr><td><strong>Checkpoint</strong></td><td>Internal enablement hub — ICP content, battlecards, Homerooms</td><td>Pre-Work through ongoing</td></tr>
+        <tr><td><strong>Credal / SCOUT</strong></td><td>AI assistant — on-call research, talking points, account intelligence</td><td>Bootcamp Day 3 hands-on · Every call</td></tr>
+        <tr><td><strong>Sendoso</strong></td><td>Gifting and direct mail for outbound and deal acceleration</td><td>Mid-cycle deal acceleration</td></tr>
+        <tr><td><strong>Looker</strong></td><td>Revenue dashboard — your pipeline, team metrics, forecasting</td><td>Weekly pipeline reviews</td></tr>
+        <tr><td><strong>Confluence</strong></td><td>Company wiki — campaigns, events, partner docs, legal resources</td><td>Ongoing reference</td></tr>
+        <tr><td><strong>Ironclad</strong></td><td>Contract management — MSAs, redlines, order forms</td><td>Late-stage deals with legal involvement</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- OUTBOUND OVERVIEW -->
+  <div id="outbound">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Outbound Motion</div>
+      <h2>How Outbound Works at Checkr</h2>
+      <p>A quick overview — the full detail lives in the Outbound Playbook.</p>
+    </div>
+
+    <p class="prose">Checkr AEs own their own pipeline. Inbound helps, but it won't fill your number. The Outbound Playbook covers everything in depth — this section gives you the framework.</p>
+
+    <div class="info-row">
+      <div class="info-card">
+        <div class="info-card-label">The 5 Outbound Channels</div>
+        <ul>
+          <li><strong>Phone:</strong> Primary channel. Best times: 8–10 AM and 4–5 PM in prospect TZ</li>
+          <li><strong>Email via Athean:</strong> Personalized sequences — not mass blast</li>
+          <li><strong>LinkedIn:</strong> Research + InMail + connection requests</li>
+          <li><strong>Events:</strong> 6 event types — pre/post event sequences in Athean</li>
+          <li><strong>Partners:</strong> ATS referrals, partner team introductions</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Account Prioritization Order</div>
+        <ul>
+          <li><strong>Tier 1:</strong> High intent (Demandbase MQA) in ICP industries</li>
+          <li><strong>Tier 2:</strong> UserGems job-change signals — former champion moved to new co</li>
+          <li><strong>Tier 3:</strong> Closed-lost re-engagement (review with manager)</li>
+          <li><strong>Tier 4:</strong> ICP-fit companies with no prior Checkr history</li>
+          <li><strong>Unassigned:</strong> Check Salesforce views for unowned accounts in territory</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout orange">
+      <div class="callout-icon">📤</div>
+      <div>
+        <div class="callout-label">Full Detail</div>
+        <div class="callout-title">The Outbound Playbook covers everything</div>
+        <div class="callout-desc">Sequencing strategy, email and LinkedIn message templates, the Athean commercial collection, subject line best practices, account research workflow using ZoomInfo + Demandbase + Credal, and all activity minimums by segment.</div>
+        <a href="outbound.html" class="callout-link">Open Outbound Playbook →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MANAGER -->
+  <div id="manager">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Manager Relationship</div>
+      <h2>Working with Your Manager</h2>
+      <p>Your manager is your most important resource in your first year. Here's how to use that relationship well.</p>
+    </div>
+
+    <div class="ms-table-wrap">
+      <table class="act-table">
+        <tr><th>Cadence</th><th>Format</th><th>What to Bring</th></tr>
+        <tr>
+          <td><strong>Weekly 1:1</strong></td>
+          <td>30–45 min · Your calendar owns this</td>
+          <td>Gong calls you want reviewed, pipeline update, blockers, questions about deals</td>
+        </tr>
+        <tr>
+          <td><strong>Weekly Gong Call Review</strong></td>
+          <td>Manager-initiated · ~20 min</td>
+          <td>A call from the week — cold call or discovery preferred. Manager scores it against rubric.</td>
+        </tr>
+        <tr>
+          <td><strong>Pipeline Review</strong></td>
+          <td>Weekly or bi-weekly depending on segment</td>
+          <td>Every active opp with MEDDPICC fields updated. No surprises in your pipeline review.</td>
+        </tr>
+        <tr>
+          <td><strong>Milestone Check-ins</strong></td>
+          <td>30 / 45 / 90 / 180 / 365 days</td>
+          <td>Self-assessment against milestone criteria. Manager comes with Mindtickle and Gong data.</td>
+        </tr>
+        <tr>
+          <td><strong>Checkpoint Missions</strong></td>
+          <td>Manager-assigned · As needed</td>
+          <td>Targeted skill modules your manager assigns based on Gong gap analysis</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="callout navy">
+      <div class="callout-icon">🧭</div>
+      <div>
+        <div class="callout-label">Your Mentor</div>
+        <div class="callout-title">You'll be assigned a mentor before Bootcamp</div>
+        <div class="callout-desc">Your mentor is a senior AE in your segment. Schedule a weekly or bi-weekly sync with them. Use them for shadow calls, deal strategy, "how does this actually work here" questions, and honest feedback your manager might not give you on day one.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESOURCES -->
+  <div id="resources">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Key Resources</div>
+      <h2>Everything Else You Need</h2>
+      <p>Quick reference links to the most-used docs and tools.</p>
+    </div>
+    <div class="info-row">
+      <div class="info-card">
+        <div class="info-card-label">Onboarding Docs</div>
+        <ul>
+          <li><a href="https://docs.google.com/presentation/d/1ANmrs_lv7vUfkUGiFOi4PyKtlsJ3X9TjpLKxLvLhxoY/edit?usp=sharing" target="_blank">AE Bootcamp Deck</a></li>
+          <li><a href="https://docs.google.com/document/d/1SeLK_2c0olGbmBBqs66a6s0pP_lcTfTEIpSSIaRZJpo/edit?usp=sharing" target="_blank">AE Onboarding Guide</a></li>
+          <li><a href="https://docs.google.com/presentation/d/1dKguz1EA9N7Ofjnr6zsF01ZeRUps7C0a9FRNu81j2PU/edit" target="_blank">Compensation Guide</a></li>
+          <li><a href="https://www.myworkday.com/checkr/d/inst/2500$2/rel-task/2997$298.htmld" target="_blank">Workday Org Chart</a></li>
+          <li><a href="https://docs.google.com/document/d/1bnZiXsOO0TD3F8DHecYQwGolqIUYIWaBEQ9dFgUAppQ/edit" target="_blank">Sales Reading List</a></li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Role Playbooks</div>
+        <ul>
+          <li><a href="playbook_commercial.html">Commercial AE Playbook →</a></li>
+          <li><a href="playbook_enterprise.html">Enterprise AE Playbook →</a></li>
+          <li><a href="outbound.html">Outbound Playbook →</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-card">
+        <div class="info-card-label">Selling Checkr</div>
+        <ul>
+          <li><a href="https://checkr.atlassian.net/wiki/spaces/SAL/pages/2996666391/DIRECT+SALES+-+go+sales" target="_blank">All Sales Confluence</a> — go/sales</li>
+          <li><strong>Checkpoint</strong> — go/checkpoint</li>
+          <li><a href="https://docs.google.com/presentation/d/15YbL9-lKGCoTHOjfHnYTx-ZWHDlMlEnP98-QR6xyvzw/edit?usp=sharing" target="_blank">Checkr Full Deck / Sales Narrative</a></li>
+          <li><a href="https://checkr.atlassian.net/wiki/spaces/MAR/pages/1765082548/Product+hubs+go+producthubs" target="_blank">Product Hub</a></li>
+          <li><a href="https://checkr.atlassian.net/wiki/spaces/RD/pages/2789802084/Price+book" target="_blank">Price Book</a></li>
+          <li>CoM: <a href="https://drive.google.com/file/d/1_ag9xq6pP1q6B-cB1UwWDTT4bAuCdUHh/view" target="_blank">Summary</a> / <a href="https://drive.google.com/file/d/133Za0jWdBoEtfMVeE0ZATzgSutSVEVuM/view?usp=sharing" target="_blank">Full Framework</a></li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Who to Contact for What</div>
+        <ul>
+          <li><strong>Tool access issues:</strong> IT via Lumos or Okta</li>
+          <li><strong>Onboarding questions:</strong> Enablement team</li>
+          <li><strong>Deal strategy:</strong> Your manager or mentor</li>
+          <li><strong>Legal / MSA:</strong> Raul Moreno (VP Legal) or Leslie Ann Lopez</li>
+          <li><strong>Partner referrals:</strong> Ambreen Razaq</li>
+          <li><strong>Events:</strong> Jaime Keene</li>
+          <li><strong>Campaigns / ABM:</strong> Mariza Melendez</li>
+          <li><a href="https://checkr.atlassian.net/wiki/spaces/SAL/pages/1765081696/How+to+Get+Help" target="_blank">How to Get Help</a> (Confluence)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</main>

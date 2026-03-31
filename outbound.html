@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Outbound Playbook 2026 — Checkr Sales</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1E448F;--teal:#45C0B9;--orange:#F37D53;--green:#29736F;--slate:#67727C;
+  --white:#fff;--dark:#0B1626;--bg:#F7F9FC;--border:#D4DAE1;
+  --navy-lt:#EBF0FA;--teal-lt:#E6F7F6;--org-lt:#FEF0EB;--grn-lt:#E3F2F1;--slt-lt:#F1EFF8;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--dark);font-size:15px;line-height:1.6}
+
+/* NAV */
+.nav{background:var(--navy);padding:0 24px;display:flex;align-items:center;height:56px;position:sticky;top:0;z-index:100;gap:0}
+.nav .logo{color:#fff;font-weight:600;font-size:15px;margin-right:32px;flex-shrink:0}
+.nav a{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;font-weight:500;padding:0 14px;height:56px;display:flex;align-items:center;border-bottom:3px solid transparent;transition:all .15s}
+.nav a:hover,.nav a.active{color:#fff;border-bottom-color:var(--teal)}
+
+/* HERO */
+.hero{background:var(--navy);padding:52px 40px 44px;color:#fff;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-40px;bottom:-40px;width:340px;height:340px;border-radius:50%;background:rgba(243,125,83,.07);pointer-events:none}
+.hero::after{content:'';position:absolute;left:-60px;top:-60px;width:260px;height:260px;border-radius:50%;background:rgba(69,192,185,.05);pointer-events:none}
+.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+.hero h1{font-size:40px;font-weight:600;margin-bottom:12px;line-height:1.15;max-width:640px}
+.hero-sub{color:rgba(255,255,255,.72);font-size:16px;line-height:1.65;max-width:580px;margin-bottom:28px}
+.hero-badges{display:flex;gap:10px;flex-wrap:wrap}
+.badge{font-size:12px;font-weight:500;padding:5px 14px;border-radius:20px;background:rgba(255,255,255,.12);color:rgba(255,255,255,.9)}
+.badge.orange{background:rgba(243,125,83,.25);color:#FFD4C0}
+.back-link{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.6);font-size:13px;text-decoration:none;margin-bottom:20px;font-weight:500}
+.back-link:hover{color:#fff}
+
+/* LAYOUT */
+.page{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 56px);max-width:1400px;margin:0 auto}
+
+/* SIDEBAR */
+.sidebar{padding:28px 0;border-right:1px solid var(--border);background:#fff;position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto}
+.sb-section{margin-bottom:22px;padding:0 18px}
+.sb-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.sb-link{display:flex;align-items:center;gap:8px;padding:6px 0;font-size:13px;font-weight:500;color:var(--slate);text-decoration:none;border-radius:6px;transition:color .15s;cursor:pointer}
+.sb-link:hover,.sb-link.active{color:var(--navy)}
+.sb-link.active{font-weight:600}
+.sb-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.sb-dot.navy{background:var(--navy)}.sb-dot.teal{background:var(--teal)}.sb-dot.orange{background:var(--orange)}.sb-dot.green{background:var(--green)}.sb-dot.slate{background:var(--slate)}
+
+/* CONTENT */
+.content{padding:40px 48px;max-width:880px}
+
+/* SECTION HDR */
+.sec-hdr{margin-top:56px;margin-bottom:28px;padding-bottom:14px;border-bottom:2px solid var(--border)}
+.sec-hdr:first-child{margin-top:0}
+.sec-eyebrow{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:6px}
+.sec-hdr h2{font-size:26px;font-weight:600;color:var(--dark);margin-bottom:6px}
+.sec-hdr p{font-size:14px;color:var(--slate);line-height:1.6}
+
+/* CHANNEL CARDS */
+.channel-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:32px}
+.ch-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;display:flex;gap:14px;align-items:flex-start}
+.ch-icon{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.ch-icon.navy{background:var(--navy-lt)}
+.ch-icon.teal{background:var(--teal-lt)}
+.ch-icon.orange{background:var(--org-lt)}
+.ch-icon.green{background:var(--grn-lt)}
+.ch-icon.slate{background:var(--slt-lt)}
+.ch-name{font-size:14px;font-weight:600;color:var(--dark);margin-bottom:4px}
+.ch-sub{font-size:12.5px;color:var(--slate);line-height:1.5}
+.ch-badge{font-size:10px;font-weight:600;padding:1px 7px;border-radius:10px;display:inline-block;margin-bottom:6px}
+.ch-badge.primary{background:var(--org-lt);color:#B85020}
+.ch-badge.secondary{background:var(--navy-lt);color:var(--navy)}
+
+/* TIER TABLE */
+.tier-table-wrap{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:24px}
+.tier-table{width:100%;border-collapse:collapse}
+.tier-table th{padding:10px 16px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--slate);background:var(--bg);border-bottom:1px solid var(--border);text-align:left}
+.tier-table td{padding:13px 16px;vertical-align:top;border-bottom:1px solid var(--border);font-size:13px;line-height:1.5;color:var(--dark)}
+.tier-table tr:last-child td{border-bottom:none}
+.tier-table td:not(:last-child){border-right:1px solid var(--border)}
+.tier-table th:not(:last-child){border-right:1px solid var(--border)}
+.tier-badge{font-size:11px;font-weight:700;padding:3px 10px;border-radius:12px;display:inline-block;white-space:nowrap}
+.tier-badge.t1{background:var(--org-lt);color:#B85020}
+.tier-badge.t2{background:var(--navy-lt);color:var(--navy)}
+.tier-badge.t3{background:var(--teal-lt);color:var(--green)}
+.tier-badge.t4{background:var(--slt-lt);color:var(--slate)}
+.tier-badge.oc{background:var(--grn-lt);color:var(--green)}
+
+/* STEP SEQUENCE */
+.steps{display:flex;flex-direction:column;gap:0;margin-bottom:32px;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.step{display:grid;grid-template-columns:52px 1fr auto;gap:0;border-bottom:1px solid var(--border)}
+.step:last-child{border-bottom:none}
+.step-num{background:var(--bg);border-right:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--orange);padding:16px 0}
+.step-body{padding:14px 18px}
+.step-day{font-size:10px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--orange);margin-bottom:3px}
+.step-action{font-size:14px;font-weight:600;color:var(--dark);margin-bottom:3px}
+.step-desc{font-size:12.5px;color:var(--slate);line-height:1.5}
+.step-channel{padding:14px 18px;display:flex;align-items:flex-start;border-left:1px solid var(--border)}
+.ch-tag{font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;white-space:nowrap;margin-top:2px}
+.ch-tag.call{background:var(--teal-lt);color:var(--green)}
+.ch-tag.email{background:var(--navy-lt);color:var(--navy)}
+.ch-tag.li{background:#EAF0F6;color:#0A66C2}
+.ch-tag.task{background:var(--slt-lt);color:var(--slate)}
+
+/* INFO ROW */
+.info-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px}
+.info-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px 22px}
+.info-card-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.info-card ul{padding-left:0;list-style:none}
+.info-card ul li{font-size:13px;color:var(--dark);margin-bottom:7px;padding-left:16px;position:relative;line-height:1.5}
+.info-card ul li::before{content:'›';position:absolute;left:0;color:var(--orange);font-weight:700}
+.info-card ul li strong{font-weight:600}
+
+/* MESSAGE TEMPLATE */
+.msg-template{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:20px}
+.msg-hdr{padding:12px 18px;background:var(--bg);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.msg-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.09em;color:var(--slate)}
+.msg-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px}
+.msg-badge.email{background:var(--navy-lt);color:var(--navy)}
+.msg-badge.li{background:#EAF0F6;color:#0A66C2}
+.msg-badge.call{background:var(--teal-lt);color:var(--green)}
+.msg-body{padding:18px;font-size:13px;color:var(--dark);line-height:1.7;white-space:pre-wrap;font-family:inherit}
+.msg-body .bracket{color:var(--orange);font-weight:600}
+.msg-note{padding:10px 18px;background:var(--teal-lt);border-top:1px solid var(--border);font-size:12px;color:var(--green)}
+
+/* CALLOUT */
+.callout{border-radius:12px;padding:18px 22px;margin-bottom:24px;display:flex;gap:14px;align-items:flex-start}
+.callout.teal{background:var(--teal-lt);border:1px solid rgba(69,192,185,.3)}
+.callout.navy{background:var(--navy-lt);border:1px solid rgba(30,68,143,.2)}
+.callout.orange{background:var(--org-lt);border:1px solid rgba(243,125,83,.25)}
+.callout-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+.callout-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}
+.callout.teal .callout-label{color:var(--green)}
+.callout.navy .callout-label{color:var(--navy)}
+.callout.orange .callout-label{color:#B85020}
+.callout-title{font-size:15px;font-weight:600;color:var(--dark);margin-bottom:4px}
+.callout-desc{font-size:13px;color:var(--slate);line-height:1.55}
+
+/* ACTIVITY TABLE */
+.act-table-wrap{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:24px}
+.act-table{width:100%;border-collapse:collapse}
+.act-table th{padding:10px 16px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--slate);background:var(--bg);border-bottom:1px solid var(--border);text-align:left}
+.act-table td{padding:13px 16px;vertical-align:top;border-bottom:1px solid var(--border);font-size:13px;line-height:1.5;color:var(--dark)}
+.act-table tr:last-child td{border-bottom:none}
+.act-table td:not(:last-child){border-right:1px solid var(--border)}
+.act-table th:not(:last-child){border-right:1px solid var(--border)}
+.metric-num{font-size:18px;font-weight:600;color:var(--orange)}
+.metric-label{font-size:11px;color:var(--slate);margin-top:1px}
+
+/* RESEARCH FLOW */
+.research-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:24px;position:relative}
+.rf-step{background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px 12px;text-align:center;position:relative}
+.rf-step::after{content:'→';position:absolute;right:-14px;top:50%;transform:translateY(-50%);color:var(--orange);font-weight:700;font-size:14px;z-index:1}
+.rf-step:last-child::after{display:none}
+.rf-num{font-size:18px;font-weight:700;color:var(--orange);margin-bottom:4px}
+.rf-name{font-size:12px;font-weight:600;color:var(--dark);line-height:1.3;margin-bottom:3px}
+.rf-tool{font-size:10px;color:var(--slate)}
+
+/* PROSE */
+.prose{font-size:14px;color:var(--dark);line-height:1.7;margin-bottom:20px}
+.prose strong{font-weight:600}
+
+/* STAT STRIP */
+.stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:32px}
+.stat-block{background:#fff;padding:18px 16px;text-align:center}
+.stat-num{font-size:28px;font-weight:600;color:var(--orange);line-height:1;margin-bottom:4px}
+.stat-label{font-size:12px;color:var(--slate);line-height:1.4}
+
+/* SUBJECT LINE TABLE */
+.sl-table{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:24px}
+.sl-table table{width:100%;border-collapse:collapse}
+.sl-table th{padding:9px 14px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--slate);background:var(--bg);border-bottom:1px solid var(--border);text-align:left}
+.sl-table td{padding:11px 14px;font-size:13px;border-bottom:1px solid var(--border);line-height:1.5;color:var(--dark)}
+.sl-table tr:last-child td{border-bottom:none}
+.sl-table td:not(:last-child){border-right:1px solid var(--border)}
+.sl-table th:not(:last-child){border-right:1px solid var(--border)}
+.good{color:var(--green);font-weight:600;font-size:11px}
+.avoid{color:#B85020;font-weight:600;font-size:11px}
+
+/* ICP TABLE */
+.icp-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:28px}
+.icp-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px 12px}
+.icp-icon{font-size:20px;margin-bottom:6px}
+.icp-industry{font-size:12px;font-weight:600;color:var(--dark);margin-bottom:3px}
+.icp-size{font-size:11px;color:var(--slate);margin-bottom:6px}
+.icp-personas{font-size:11px;color:var(--slate);line-height:1.4}
+.icp-personas strong{font-weight:600;color:var(--dark)}
+
+/* FOOTER */
+footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:24px;font-size:12px;margin-top:0}
+
+/* Dropdown nav */
+.nav .dropdown{position:relative;height:56px;display:flex;align-items:center}
+.nav .dropdown-trigger{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;font-weight:500;padding:0 14px;height:56px;display:flex;align-items:center;gap:5px;border-bottom:3px solid transparent;transition:all .15s;cursor:pointer;user-select:none}
+.nav .dropdown-trigger::after{content:'▾';font-size:10px;margin-top:1px}
+.nav .dropdown:hover .dropdown-trigger,.nav .dropdown.active .dropdown-trigger{color:#fff;border-bottom-color:var(--teal)}
+.nav .dropdown-menu{display:none;position:absolute;top:56px;left:0;background:var(--navy);border:1px solid rgba(255,255,255,.12);border-top:2px solid var(--teal);border-radius:0 0 8px 8px;min-width:200px;z-index:200;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.nav .dropdown:hover .dropdown-menu{display:block}
+.nav .dropdown-menu a{display:block;padding:12px 18px;font-size:13px;font-weight:500;color:rgba(255,255,255,.75);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.07);height:auto;border-bottom-color:rgba(255,255,255,.07) !important;transition:background .12s,color .12s}
+.nav .dropdown-menu a:last-child{border-bottom:none;border-radius:0 0 8px 8px}
+.nav .dropdown-menu a:hover{background:rgba(255,255,255,.08);color:#fff}
+.nav .dropdown-menu a.active{color:var(--teal);font-weight:600}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="logo">Checkr Sales Playbooks 2026</span>
+    <a href="index.html">Onboarding</a>
+    <a href="playbook.html">New Hire Playbook</a>
+  <div class="dropdown">
+    <span class="dropdown-trigger">Role Based Playbooks</span>
+    <div class="dropdown-menu">
+    <a href="playbook_commercial.html">Commercial AE Playbook</a>
+    <a href="playbook_enterprise.html">Enterprise AE Playbook</a>
+    <a href="playbook_bdr.html">BDR Playbook</a>
+    </div>
+  </div>
+    <a href="outbound.html" class="active">Outbound</a>
+</nav>
+
+<div class="hero">
+  <a href="playbook.html" class="back-link">← Back to New Hire Playbook</a>
+  <div class="hero-eyebrow">Outbound Playbook · 2026</div>
+  <h1>How to Build Pipeline from Scratch</h1>
+  <div class="hero-sub">Everything you need to source, research, sequence, and convert outbound accounts — from account prioritization through booked discovery. Updated for the 2026 cohort.</div>
+  <div class="hero-badges">
+    <span class="badge orange">All AEs</span>
+    <span class="badge">Account Research Framework</span>
+    <span class="badge">5 Channels</span>
+    <span class="badge">Sequencing Guide</span>
+    <span class="badge">Message Templates</span>
+  </div>
+</div>
+
+<div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:220px 1fr">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sb-section">
+    <div class="sb-label">In This Playbook</div>
+    <a href="#philosophy" class="sb-link active"><span class="sb-dot orange"></span>Outbound Philosophy</a>
+    <a href="#icp" class="sb-link"><span class="sb-dot navy"></span>ICP & Target Accounts</a>
+    <a href="#prioritization" class="sb-link"><span class="sb-dot orange"></span>Account Prioritization</a>
+    <a href="#research" class="sb-link"><span class="sb-dot teal"></span>Account Research Workflow</a>
+    <a href="#channels" class="sb-link"><span class="sb-dot navy"></span>The 5 Outbound Channels</a>
+    <a href="#sequences" class="sb-link"><span class="sb-dot orange"></span>Sequencing in Athean</a>
+    <a href="#messaging" class="sb-link"><span class="sb-dot teal"></span>Email & LinkedIn Messaging</a>
+    <a href="#coldcall" class="sb-link"><span class="sb-dot orange"></span>Cold Call Framework</a>
+    <a href="#activity" class="sb-link"><span class="sb-dot green"></span>Activity Minimums</a>
+    <a href="#first30" class="sb-link"><span class="sb-dot slate"></span>Your First 30 Days</a>
+  </div>
+  <div class="sb-section">
+    <div class="sb-label">Other Playbooks</div>
+    <a href="playbook.html" class="sb-link"><span class="sb-dot navy"></span>New Hire Playbook</a>
+    <a href="playbook_commercial.html" class="sb-link"><span class="sb-dot teal"></span>Commercial AE Playbook</a>
+    <a href="playbook_enterprise.html" class="sb-link"><span class="sb-dot navy"></span>Enterprise AE Playbook</a>
+    <a href="playbook_bdr.html" class="sb-link"><span class="sb-dot orange"></span>BDR Playbook</a>
+  </div>
+</aside>
+
+<main class="content">
+
+  <!-- PHILOSOPHY -->
+  <div id="philosophy">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Outbound Philosophy</div>
+      <h2>Pipeline is Your Responsibility</h2>
+      <p>Inbound exists. It is not a strategy.</p>
+    </div>
+
+    <p class="prose">Every AE at Checkr owns their own pipeline. Inbound leads supplement your business — they do not replace the work of building it. The reps who hit quota in year one are the ones who treated outbound as a professional practice, not a necessary inconvenience.</p>
+
+    <p class="prose">Checkr is a <strong>displacement sale</strong>. The vast majority of your prospects already have a background screening vendor. Your job is not to sell them something new — it is to show them that their current vendor is costing them more than they realize, in time, compliance exposure, candidate drop-off, and operational complexity.</p>
+
+    <div class="stat-strip">
+      <div class="stat-block">
+        <div class="stat-num">75</div>
+        <div class="stat-label">Dials per week<br>minimum during ramp</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">100</div>
+        <div class="stat-label">Athean sequence<br>steps per week</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">25</div>
+        <div class="stat-label">LinkedIn messages<br>per week</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">2–3</div>
+        <div class="stat-label">Discovery meetings<br>booked per week</div>
+      </div>
+    </div>
+
+    <div class="callout orange">
+      <div class="callout-icon">🎯</div>
+      <div>
+        <div class="callout-label">Core Principle</div>
+        <div class="callout-title">Research first. Volume second.</div>
+        <div class="callout-desc">Spray-and-pray doesn't work in Checkr's market. Every outreach should demonstrate that you understand the prospect's industry, their likely screening pain, and what's at stake if they stay where they are. Personalization is what separates booked meetings from unread emails.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ICP -->
+  <div id="icp">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Target Accounts</div>
+      <h2>ICP & Personas</h2>
+      <p>Who you're targeting and why — the five industries Checkr wins in, and the four buyer personas.</p>
+    </div>
+
+    <p class="prose">Checkr's ICP spans five core industries where background screening volume is high, compliance requirements are complex, and the cost of a bad hire is significant. Your territory will be mapped to a subset of these industries — know the pain points cold before you pick up the phone.</p>
+
+    <div class="icp-grid">
+      <div class="icp-card">
+        <div class="icp-icon">🛍</div>
+        <div class="icp-industry">Retail</div>
+        <div class="icp-size">500–10,000 employees</div>
+        <div class="icp-personas">Pain: seasonal hiring speed, high-volume batch processing<br><strong>Best persona:</strong> VP HR, TA Director</div>
+      </div>
+      <div class="icp-card">
+        <div class="icp-icon">🏨</div>
+        <div class="icp-industry">Hospitality</div>
+        <div class="icp-size">250–5,000 employees</div>
+        <div class="icp-personas">Pain: multi-location compliance, candidate experience drop-off<br><strong>Best persona:</strong> CHRO, Regional HR Director</div>
+      </div>
+      <div class="icp-card">
+        <div class="icp-icon">🚗</div>
+        <div class="icp-industry">Gig / Staffing</div>
+        <div class="icp-size">Platform or agency</div>
+        <div class="icp-personas">Pain: speed to activate, API reliability, turnaround SLAs<br><strong>Best persona:</strong> Head of Operations, CPO</div>
+      </div>
+      <div class="icp-card">
+        <div class="icp-icon">🏥</div>
+        <div class="icp-industry">Healthcare</div>
+        <div class="icp-size">500–20,000 employees</div>
+        <div class="icp-personas">Pain: license verification, HIPAA compliance, credentialing speed<br><strong>Best persona:</strong> CHRO, Compliance Officer</div>
+      </div>
+      <div class="icp-card">
+        <div class="icp-icon">💻</div>
+        <div class="icp-industry">Tech / SaaS</div>
+        <div class="icp-size">150–5,000 employees</div>
+        <div class="icp-personas">Pain: ATS integration, international hiring, candidate experience<br><strong>Best persona:</strong> VP People, Head of TA</div>
+      </div>
+    </div>
+
+    <div class="info-row">
+      <div class="info-card">
+        <div class="info-card-label">The 4 Buyer Personas</div>
+        <ul>
+          <li><strong>CHRO / VP People:</strong> Strategic buyer. Cares about employer brand, compliance risk, and board-level metrics. Not in the weeds of screening ops.</li>
+          <li><strong>VP / Director of TA:</strong> Cares about time-to-fill, candidate conversion rates, and ATS integration reliability.</li>
+          <li><strong>HR Operations / People Ops:</strong> Your champion. Closest to the operational pain. Runs the screening workflow day-to-day.</li>
+          <li><strong>CPO / Head of Product</strong> (Gig/Tech): Cares about API reliability, developer experience, and SLA guarantees.</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Signals an Account is Worth Pursuing</div>
+        <ul>
+          <li>High intent score in Demandbase (MQA status)</li>
+          <li>Recent job posting for HR Ops, TA, or Compliance roles</li>
+          <li>Company is growing headcount rapidly (LinkedIn org signals)</li>
+          <li>Former Checkr champion moved to this company (UserGems)</li>
+          <li>Industry-specific regulatory change creating compliance urgency</li>
+          <li>Current vendor is First Advantage, Sterling, or HireRight</li>
+          <li>Closed-lost within last 12 months — revisit with new angle</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="prose">For full ICP detail, personas, and industry-specific discovery questions, see the ICP Hubs in <strong>Checkpoint (go/checkpoint)</strong> — one hub per industry.</p>
+  </div>
+
+  <!-- ACCOUNT PRIORITIZATION -->
+  <div id="prioritization">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Where to Focus First</div>
+      <h2>Account Prioritization</h2>
+      <p>Work this order every week. Always be working Tier 1 and Tier 2 before anything else.</p>
+    </div>
+
+    <div class="tier-table-wrap">
+      <table class="tier-table">
+        <tr>
+          <th style="width:18%">Tier</th>
+          <th style="width:30%">Account Type</th>
+          <th style="width:30%">Why It Matters</th>
+          <th>Where to Find Them</th>
+        </tr>
+        <tr>
+          <td><span class="tier-badge t1">Tier 1 · Hottest</span></td>
+          <td><strong>Demandbase MQA accounts</strong> showing high intent signals in your territory</td>
+          <td>They're researching screening solutions now. First to call wins.</td>
+          <td>Demandbase MQA list (manager shares weekly)</td>
+        </tr>
+        <tr>
+          <td><span class="tier-badge t2">Tier 2 · High</span></td>
+          <td><strong>UserGems job-change alerts</strong> — a former Checkr champion moved to a new company</td>
+          <td>Warm intro potential. They know Checkr. New company is likely a Checkr prospect.</td>
+          <td>UserGems alerts in Salesforce or Slack</td>
+        </tr>
+        <tr>
+          <td><span class="tier-badge t3">Tier 3 · Revisit</span></td>
+          <td><strong>Closed-lost accounts</strong> from the last 6–18 months</td>
+          <td>Loss reason may no longer apply. New contact, new decision maker, new pain.</td>
+          <td>Salesforce Closed Lost view · Review with manager</td>
+        </tr>
+        <tr>
+          <td><span class="tier-badge t4">Tier 4 · Build</span></td>
+          <td><strong>ICP-fit accounts</strong> with no prior Checkr history in your territory</td>
+          <td>Your long-term pipeline. Build this constantly.</td>
+          <td>ZoomInfo, LinkedIn Sales Nav, Demandbase browsing</td>
+        </tr>
+        <tr>
+          <td><span class="tier-badge oc">Opportunistic</span></td>
+          <td><strong>Unassigned or lapsed accounts</strong> in Salesforce</td>
+          <td>Untouched territory. Ask your manager about rules of engagement.</td>
+          <td>SFDC Unassigned Accounts view</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="callout navy">
+      <div class="callout-icon">📌</div>
+      <div>
+        <div class="callout-label">Manager Approval Required</div>
+        <div class="callout-title">Your account list must be approved before you start sequencing</div>
+        <div class="callout-desc">Before live outreach begins in Week 3, share your initial account list with your manager. They'll verify territory ownership, check for existing relationships, and help you prioritize by segment. This is not optional — ghosting an account that's already in a deal stage is a recoverable mistake that you can avoid.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESEARCH WORKFLOW -->
+  <div id="research">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Account Research</div>
+      <h2>The 5-Step Research Workflow</h2>
+      <p>Do this for every account before you put them into a sequence. Takes 10–15 minutes. Worth it every time.</p>
+    </div>
+
+    <div class="research-flow">
+      <div class="rf-step">
+        <div class="rf-num">1</div>
+        <div class="rf-name">Check Demandbase</div>
+        <div class="rf-tool">Intent score, MQA status, what pages they've visited</div>
+      </div>
+      <div class="rf-step">
+        <div class="rf-num">2</div>
+        <div class="rf-name">ZoomInfo Org Chart</div>
+        <div class="rf-tool">Find the HR Ops / TA / People contacts. Get direct dials.</div>
+      </div>
+      <div class="rf-step">
+        <div class="rf-num">3</div>
+        <div class="rf-name">LinkedIn Research</div>
+        <div class="rf-tool">Check company size, recent hires, any signals of change or growth</div>
+      </div>
+      <div class="rf-step">
+        <div class="rf-num">4</div>
+        <div class="rf-name">SCOUT via Credal</div>
+        <div class="rf-tool">Run the company name in SCOUT. Get talking points, industry pain frame, and relevant proof points automatically.</div>
+      </div>
+      <div class="rf-step">
+        <div class="rf-num">5</div>
+        <div class="rf-name">Check Salesforce</div>
+        <div class="rf-tool">Any prior activity, notes from previous AEs, or open/past opportunities?</div>
+      </div>
+    </div>
+
+    <div class="callout teal">
+      <div class="callout-icon">🤖</div>
+      <div>
+        <div class="callout-label">Use SCOUT</div>
+        <div class="callout-title">Credal's SCOUT agent does the research for you</div>
+        <div class="callout-desc">Type a company name into the #talking-points Slack channel (powered by Credal). SCOUT returns company size, industry context, likely screening pain points, relevant Checkr proof points, and suggested first-touch framing. Will Howard (Commercial AE) exceeded both his ramp quotas using this tool on every account. Use it.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHANNELS -->
+  <div id="channels">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">The 5 Outbound Channels</div>
+      <h2>Where You Prospect</h2>
+      <p>Use all five. Phone is primary. Email and LinkedIn support and follow up. Events and partners create warm openers.</p>
+    </div>
+
+    <div class="channel-grid">
+      <div class="ch-card">
+        <div class="ch-icon orange">📞</div>
+        <div>
+          <div class="ch-badge primary">Primary Channel</div>
+          <div class="ch-name">Phone / Cold Call</div>
+          <div class="ch-sub">Best pickup rates: 8–10 AM and 4–5 PM prospect timezone. Direct dials from ZoomInfo. Do not leave a voicemail on first dial — call back 3× before leaving one. See Cold Call Framework section for full structure.</div>
+        </div>
+      </div>
+      <div class="ch-card">
+        <div class="ch-icon navy">✉️</div>
+        <div>
+          <div class="ch-badge secondary">Supporting</div>
+          <div class="ch-name">Email via Athean</div>
+          <div class="ch-sub">Personalized sequences — not mass blast. Use the Commercial Collection in Athean as your starting point. Every email should reference something specific about the company or person. Subject lines matter most — see the messaging section.</div>
+        </div>
+      </div>
+      <div class="ch-card">
+        <div class="ch-icon" style="background:#EAF0F6">💼</div>
+        <div>
+          <div class="ch-badge secondary">Supporting</div>
+          <div class="ch-name">LinkedIn (Sales Navigator)</div>
+          <div class="ch-sub">Two uses: (1) Research — track job changes, company growth, persona titles. (2) Athean — InMail and connection requests with a personalized note. Don't pitch in the connection request. Build a reason to connect first.</div>
+        </div>
+      </div>
+      <div class="ch-card">
+        <div class="ch-icon green">🎪</div>
+        <div>
+          <div class="ch-badge secondary">Supplemental</div>
+          <div class="ch-name">Events</div>
+          <div class="ch-sub">6 event types managed by Jaime Keene (Events). Each event has pre/post sequences in Athean. Always add attendees to a sequence within 24 hours of an event. Events create warm touchpoints — use them.</div>
+        </div>
+      </div>
+      <div class="ch-card">
+        <div class="ch-icon teal">🤝</div>
+        <div>
+          <div class="ch-badge secondary">Supplemental</div>
+          <div class="ch-name">Partners (ATS Referrals)</div>
+          <div class="ch-sub">ATS partner referrals come through Ambreen Razaq (Partnerships). Ask your manager how to access the partner referral queue. ATS-referred accounts convert at a higher rate — treat them as warm inbound and respond within 24 hours.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEQUENCES -->
+  <div id="sequences">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Athean</div>
+      <h2>Sequencing Strategy</h2>
+      <p>How to use Athean sequences correctly — from account entry through touch completion.</p>
+    </div>
+
+    <p class="prose">There are 45+ sequences in Athean tagged and accessible via Athean. Do not create your own sequences before reviewing these with your manager. The <strong>Commercial Collection</strong> is your default starting point for most accounts.</p>
+
+    <div class="callout orange">
+      <div class="callout-icon">⚠️</div>
+      <div>
+        <div class="callout-label">Before You Start</div>
+        <div class="callout-title">Confirm sequence access and account approval with your manager first</div>
+        <div class="callout-desc">Do not add accounts to sequences until: (1) your account list is approved by your manager, (2) you've confirmed the account isn't already owned or in an active deal, and (3) you've done the 5-step research workflow. Un-sequencing a contact mid-touch creates a bad experience. Do the prep first.</div>
+      </div>
+    </div>
+
+    <p class="prose" style="margin-bottom:12px"><strong>The standard outreach sequence structure for new accounts:</strong></p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">D1</div>
+        <div class="step-body">
+          <div class="step-day">Day 1</div>
+          <div class="step-action">Personalized intro email — reference a specific company signal</div>
+          <div class="step-desc">Subject line tied to their industry pain. Body under 100 words. One CTA: 15-min call. No attachments.</div>
+        </div>
+        <div class="step-channel"><span class="ch-tag email">Email</span></div>
+      </div>
+      <div class="step">
+        <div class="step-num">D2</div>
+        <div class="step-body">
+          <div class="step-day">Day 2</div>
+          <div class="step-action">Cold call — direct dial from ZoomInfo</div>
+          <div class="step-desc">Use the elevator pitch from your cert. If no answer, no voicemail yet. Call at a different time than yesterday.</div>
+        </div>
+        <div class="step-channel"><span class="ch-tag call">Call</span></div>
+      </div>
+      <div class="step">
+        <div class="step-num">D4</div>
+        <div class="step-body">
+          <div class="step-day">Day 4</div>
+          <div class="step-action">LinkedIn connection request with a 1-sentence personalized note</div>
+          <div class="step-desc">Do not pitch in the note. Reference the company or a mutual connection. "I work with similar-size [industry] teams…"</div>
+        </div>
+        <div class="step-channel"><span class="ch-tag li">LinkedIn</span></div>
+      </div>
+      <div class="step">
+        <div class="step-num">D7</div>
+        <div class="step-body">
+          <div class="step-day">Day 7</div>
+          <div class="step-action">Follow-up email — new angle, shorter</div>
+          <div class="step-desc">Different hook than email 1. Try a pain-first opener or a relevant stat about their industry. Still under 80 words.</div>
+        </div>
+        <div class="step-channel"><span class="ch-tag email">Email</span></div>
+      </div>
+      <div class="step">
+        <div class="step-num">D8</div>
+        <div class="step-body">
+          <div class="step-day">Day 8</div>
+          <div class="step-action">Cold call — leave a voicemail this time</div>
+          <div class="step-desc">Under 20 seconds. State your name, company, one sentence of value, your callback number. Say callback number twice.</div>
+        </div>
+        <div class="step-channel"><span class="ch-tag call">Call</span></div>
+      </div>
+      <div class="step">
+        <div class="step-num">D12</div>
+        <div class="step-body">
+          <div class="step-day">Day 12</div>
+          <div class="step-action">LinkedIn InMail — if connected</div>
+          <div class="step-desc">Reference the email or call if applicable. Ask one direct question about their current screening setup.</div>
+        </div>
+        <div class="step-channel"><span class="ch-tag li">LinkedIn</span></div>
+      </div>
+      <div class="step">
+        <div class="step-num">D16</div>
+        <div class="step-body">
+          <div class="step-day">Day 16</div>
+          <div class="step-action">Break-up email — give them an easy out</div>
+          <div class="step-desc">"I'll stop reaching out after this — but if [pain point] is ever a priority, here's how to reach me." This email often gets replies. Keep it short and direct.</div>
+        </div>
+        <div class="step-channel"><span class="ch-tag email">Email</span></div>
+      </div>
+    </div>
+
+    <p class="prose">For event-specific, campaign, and closed-lost re-engagement sequences, see Confluence → <strong>Campaigns & Sequences</strong> or ask Mariza Melendez (ABM). All sequences are available in Athean under the <strong>Checkr 2026</strong> team library.</p>
+  </div>
+
+  <!-- MESSAGING -->
+  <div id="messaging">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Email & LinkedIn</div>
+      <h2>Messaging That Gets Responses</h2>
+      <p>The principles and templates that drive reply rates. Personalize every single one.</p>
+    </div>
+
+    <div class="info-row">
+      <div class="info-card">
+        <div class="info-card-label">What Gets Replies</div>
+        <ul>
+          <li><strong>Specificity:</strong> Reference the prospect's company, industry, or recent news</li>
+          <li><strong>Pain-first openers:</strong> Start with their problem, not your product</li>
+          <li><strong>Short:</strong> Under 100 words for first email. Under 80 for follow-ups.</li>
+          <li><strong>One CTA:</strong> "Are you open to a 15-minute call this week?" — not three asks</li>
+          <li><strong>Proof points:</strong> "We helped [similar company] reduce time-to-hire by 40%"</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">What Gets Ignored</div>
+        <ul>
+          <li>Opening with "Hi, I'm [name] from Checkr…" — they don't care yet</li>
+          <li>Paragraphs longer than 3 lines</li>
+          <li>Listing all Checkr's products in email 1</li>
+          <li>Generic subject lines: "Quick question" or "Following up"</li>
+          <li>Attachments on a cold email</li>
+          <li>Ending with multiple asks or a long calendar link paragraph</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="prose" style="margin-bottom:12px"><strong>Subject line guidance:</strong></p>
+    <div class="sl-table">
+      <table>
+        <tr><th>Context</th><th>Strong Subject Lines</th><th></th></tr>
+        <tr>
+          <td>Retail / High-volume hiring</td>
+          <td>[Company] seasonal screening turnaround</td>
+          <td><span class="good">✓ GOOD</span></td>
+        </tr>
+        <tr>
+          <td>Healthcare / Compliance</td>
+          <td>License verification + adverse action — [Company]</td>
+          <td><span class="good">✓ GOOD</span></td>
+        </tr>
+        <tr>
+          <td>Gig / Tech</td>
+          <td>API reliability for [Company]'s onboarding flow</td>
+          <td><span class="good">✓ GOOD</span></td>
+        </tr>
+        <tr>
+          <td>Any — pain framing</td>
+          <td>Candidate drop-off at the screening step</td>
+          <td><span class="good">✓ GOOD</span></td>
+        </tr>
+        <tr>
+          <td>Generic</td>
+          <td>Quick question / Following up / Introduction</td>
+          <td><span class="avoid">✗ AVOID</span></td>
+        </tr>
+        <tr>
+          <td>Product-first</td>
+          <td>Checkr background screening for [Company]</td>
+          <td><span class="avoid">✗ AVOID</span></td>
+        </tr>
+      </table>
+    </div>
+
+    <p class="prose" style="margin-bottom:12px"><strong>Email template — first touch (retail example):</strong></p>
+    <div class="msg-template">
+      <div class="msg-hdr">
+        <span class="msg-label">First Touch Email — Retail / High Volume</span>
+        <span class="msg-badge email">Email · Day 1</span>
+      </div>
+      <div class="msg-body">Subject: <span class="bracket">[Company]</span> seasonal screening turnaround
+
+Hi <span class="bracket">[First Name]</span>,
+
+Most retail HR teams I talk to lose candidates between offer and screening — usually because turnaround times from their current vendor stretch past what a seasonal hire will wait.
+
+Checkr has helped teams like <span class="bracket">[similar retailer]</span> cut turnaround by 40% and reduce candidate drop-off at that step.
+
+Worth a 15-minute call to see if the same applies to <span class="bracket">[Company]</span>?
+
+<span class="bracket">[Your name]</span></div>
+      <div class="msg-note">💡 Swap [similar retailer] for a real proof point from Checkpoint. Ask your manager for approved customer examples by industry.</div>
+    </div>
+
+    <p class="prose" style="margin-bottom:12px"><strong>LinkedIn connection note template:</strong></p>
+    <div class="msg-template">
+      <div class="msg-hdr">
+        <span class="msg-label">LinkedIn Connection Request</span>
+        <span class="msg-badge li">LinkedIn · Day 4</span>
+      </div>
+      <div class="msg-body">Hi <span class="bracket">[First Name]</span> — I work with HR and TA teams at <span class="bracket">[industry]</span> companies on their background screening operations. Happy to connect and share what I'm seeing others in your space doing differently.</div>
+      <div class="msg-note">💡 No pitch in the connection note. Wait for acceptance, then follow up with a question — not a pitch.</div>
+    </div>
+  </div>
+
+  <!-- COLD CALL -->
+  <div id="coldcall">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Cold Call Framework</div>
+      <h2>The Cold Call Structure</h2>
+      <p>The structure you certified on in Bootcamp — with full call guidance for live use.</p>
+    </div>
+
+    <div class="tier-table-wrap">
+      <table class="tier-table">
+        <tr><th style="width:22%">Stage</th><th style="width:40%">What to Say / Do</th><th>Why It Works</th></tr>
+        <tr>
+          <td><strong>Opening (0–10 sec)</strong><br><span style="color:var(--orange);font-size:11px">Hook</span></td>
+          <td>"Hey [name], this is [you] from Checkr — did I catch you at a bad time?"</td>
+          <td>Gives them control. "Bad time" disarms defensiveness and usually gets a real answer.</td>
+        </tr>
+        <tr>
+          <td><strong>Elevator Pitch (15–20 sec)</strong><br><span style="color:var(--orange);font-size:11px">Value Bridge</span></td>
+          <td>"We work with [industry] companies that are running background checks through [First Advantage / Sterling] and finding the turnaround times are hurting their ability to fill roles fast enough. That sound like anything you're dealing with?"</td>
+          <td>Names a competitor (sets context), names a pain, ends with a question — not a pitch.</td>
+        </tr>
+        <tr>
+          <td><strong>Discovery (if they engage)</strong><br><span style="color:var(--orange);font-size:11px">Pain Surface</span></td>
+          <td>"Tell me more about that — is it affecting your seasonal hiring or is it a year-round problem for you?"</td>
+          <td>Deepens pain. Demonstrates industry knowledge. Keeps them talking.</td>
+        </tr>
+        <tr>
+          <td><strong>Handle Objections</strong><br><span style="color:var(--orange);font-size:11px">Trap Setting</span></td>
+          <td>See Competitive Positioning section in Checkpoint for common objections by competitor (FA, Sterling, HireRight)</td>
+          <td>Pre-set traps in bootcamp. Use them here.</td>
+        </tr>
+        <tr>
+          <td><strong>CTA (close of call)</strong><br><span style="color:var(--orange);font-size:11px">Next Step</span></td>
+          <td>"I'd love to show you what a few of your peers in [industry] have done — do you have 20 minutes next [day] or [day] at [time]?"</td>
+          <td>Offer two specific times, not an open-ended ask. Specific times close.</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="callout teal">
+      <div class="callout-icon">🎙</div>
+      <div>
+        <div class="callout-label">Voicemail Template</div>
+        <div class="callout-title">Under 20 seconds. Name, company, one sentence, callback twice.</div>
+        <div class="callout-desc">"Hey [name], it's [your name] from Checkr — calling because we've been working with a few [industry] teams who were frustrated with their screening turnaround times. Worth a quick call — my number is [###-###-####], again that's [###-###-####]. Thanks."</div>
+      </div>
+    </div>
+
+    <div class="info-row">
+      <div class="info-card">
+        <div class="info-card-label">Common Objections & Responses</div>
+        <ul>
+          <li><strong>"We're happy with our current vendor."</strong> → "That's actually the most common thing I hear before people realize what they're missing — what's your current turnaround on criminal?"</li>
+          <li><strong>"Send me an email."</strong> → "Of course — can I ask one quick question first so I can make sure what I send is actually relevant to you?"</li>
+          <li><strong>"We just renewed our contract."</strong> → "Totally understand — when does that expire? It takes us 90 days to stand up a new integration. Worth connecting 6 months before."</li>
+          <li><strong>"Not the right person."</strong> → "Perfect — who should I be talking to about screening operations?" Get the name before you hang up.</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Best Practices</div>
+        <ul>
+          <li>Call between 8–10 AM and 4–5 PM in the prospect's timezone</li>
+          <li>Use direct dials from ZoomInfo — don't call the main line</li>
+          <li>Do not leave a voicemail on first 2 dials — call back at a different time</li>
+          <li>Log every call in Athean (not Salesforce directly) — auto-syncs</li>
+          <li>After a booked meeting: send a calendar invite within 5 minutes</li>
+          <li>Gong records every call — your manager reviews these weekly</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIVITY MINIMUMS -->
+  <div id="activity">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Activity Standards</div>
+      <h2>Activity Minimums by Segment</h2>
+      <p>These are ramp-period minimums. Ask your manager what the full-quota expectations are for your specific segment.</p>
+    </div>
+
+    <div class="act-table-wrap">
+      <table class="act-table">
+        <tr>
+          <th>Activity</th>
+          <th style="text-align:center">Commercial AE</th>
+          <th style="text-align:center">Enterprise AE</th>
+          <th>Where It's Tracked</th>
+        </tr>
+        <tr>
+          <td><strong>Outbound dials / week</strong></td>
+          <td style="text-align:center"><div class="metric-num">75</div><div class="metric-label">dials</div></td>
+          <td style="text-align:center"><div class="metric-num">50</div><div class="metric-label">dials</div></td>
+          <td>Athean / Gong</td>
+        </tr>
+        <tr>
+          <td><strong>Athean sequence steps / week</strong></td>
+          <td style="text-align:center"><div class="metric-num">100</div><div class="metric-label">steps</div></td>
+          <td style="text-align:center"><div class="metric-num">75</div><div class="metric-label">steps</div></td>
+          <td>Athean</td>
+        </tr>
+        <tr>
+          <td><strong>New accounts added to sequence / week</strong></td>
+          <td style="text-align:center"><div class="metric-num">10–15</div></td>
+          <td style="text-align:center"><div class="metric-num">5–10</div></td>
+          <td>Athean / SFDC</td>
+        </tr>
+        <tr>
+          <td><strong>LinkedIn outreach messages / week</strong></td>
+          <td style="text-align:center"><div class="metric-num">25</div></td>
+          <td style="text-align:center"><div class="metric-num">20</div></td>
+          <td>LinkedIn Sales Nav</td>
+        </tr>
+        <tr>
+          <td><strong>Gong call reviews / week</strong></td>
+          <td style="text-align:center"><div class="metric-num">5</div></td>
+          <td style="text-align:center"><div class="metric-num">5</div></td>
+          <td>Gong</td>
+        </tr>
+        <tr>
+          <td><strong>Discovery meetings booked / week</strong> <em>(ramp target)</em></td>
+          <td style="text-align:center"><div class="metric-num">2–3</div></td>
+          <td style="text-align:center"><div class="metric-num">1–2</div></td>
+          <td>SFDC / Gong</td>
+        </tr>
+        <tr>
+          <td><strong>SFDC opportunity updates</strong></td>
+          <td colspan="2" style="text-align:center"><div class="metric-num">All active opps · Weekly</div></td>
+          <td>Salesforce</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="callout navy">
+      <div class="callout-icon">🗓</div>
+      <div>
+        <div class="callout-label">Calendar Blocking</div>
+        <div class="callout-title">Protect prospecting time before meetings fill your calendar</div>
+        <div class="callout-desc">Block 9–11 AM every day as "Prospecting — Do Not Book." This is your outbound calling window. Block 4–5 PM as your second call block. Everything else — internal meetings, deal prep, admin — fills the gaps. If you don't block it, it will disappear.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FIRST 30 DAYS -->
+  <div id="first30">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Getting Started</div>
+      <h2>Your First 30 Days of Outbound</h2>
+      <p>A week-by-week ramp guide for your outbound motion from bootcamp through your first discovery calls.</p>
+    </div>
+
+    <div class="tier-table-wrap">
+      <table class="tier-table">
+        <tr><th style="width:20%">Period</th><th style="width:45%">Outbound Focus</th><th>What to Complete</th></tr>
+        <tr>
+          <td><strong>Bootcamp Week</strong><br><em>Week 2 of employment</em></td>
+          <td>Review the Outbound Playbook with your manager (Day 5). Build your initial account list by segment. Get sequence access confirmed in Athean.</td>
+          <td>Account list drafted, manager review scheduled, sequences confirmed accessible</td>
+        </tr>
+        <tr>
+          <td><strong>Post-Bootcamp Week 1</strong><br><em>Week 3 of employment</em></td>
+          <td><strong>Live outreach begins.</strong> Account list approved. Load first 15–20 accounts into sequences. Begin call block schedule. First dials go out.</td>
+          <td>15–20 accounts sequenced, call blocks on calendar, first 5 dials completed</td>
+        </tr>
+        <tr>
+          <td><strong>Post-Bootcamp Week 2</strong><br><em>Week 4 of employment</em></td>
+          <td>Full activity minimums in effect. First Gong call review with manager. Advanced industry deep-dive (Retail or Hospitality). Add 10–15 new accounts.</td>
+          <td>Full weekly activity minimums hit, manager call review done, industry deep-dive complete</td>
+        </tr>
+        <tr>
+          <td><strong>Month 2</strong></td>
+          <td>Refine messaging based on what's getting replies. Review first booked meetings with manager before the call. Use SCOUT on every new account. Advanced deep-dives continue.</td>
+          <td>First discovery meetings completed, messaging iteration in Athean, pipeline in Salesforce</td>
+        </tr>
+        <tr>
+          <td><strong>Month 3 (30-day milestone)</strong></td>
+          <td>Pipeline ≥ 3× monthly quota. MEDDPICC complete on all active opps. Manager milestone check-in.</td>
+          <td>30-day check-in with manager, SFDC pipeline review, first deals advancing to demo</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="info-row">
+      <div class="info-card">
+        <div class="info-card-label">In Checkpoint (go/checkpoint)</div>
+        <ul>
+          <li><a href="https://checkpoint.checkr.com/new/ui/learner/assets/hub/581684531224904820" target="_blank">Retail ICP Hub</a></li>
+          <li><a href="https://checkpoint.checkr.com/new/ui/learner/assets/hub/581683380022688326" target="_blank">Hospitality ICP Hub</a></li>
+          <li><a href="https://checkpoint.checkr.com/new/ui/learner/assets/hub/581683891778094196" target="_blank">Manufacturing ICP Hub</a></li>
+          <li><a href="https://checkpoint.checkr.com/new/ui/learner/assets/hub/578776316711582791" target="_blank">Transportation ICP Hub</a></li>
+          <li><a href="https://checkpoint.checkr.com/new/ui/learner/assets/hub/581685027595617396" target="_blank">Staffing ICP Hub</a></li>
+          <li><a href="https://checkpoint.checkr.com/new/ui/learner/assets/hub/581681519496542790" target="_blank">Competitive Intel Hub</a> &mdash; battlecards (FA, Sterling, HireRight)</li>
+          <li><a href="https://checkpoint.checkr.com/new/ui/learner/assets/asset/588773291750121758" target="_blank">Proof Points Library</a></li>
+          <li><a href="https://checkpoint.checkr.com/new/ui/learner/assets/hub/578611125424244973" target="_blank">Customer Stories</a></li>
+          <li><a href="https://checkpoint.checkr.com/new/ui/learner/assets/hub/581684700960012870/asset/584722953812377344" target="_blank">CoM Value Framework Workbook</a></li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Call Guides, Confluence &amp; People</div>
+        <ul>
+          <li><a href="https://docs.google.com/document/d/1z4s1txrgy2ZuUEeHyLaJKyW2ERGXOIuvbYMXRN7PT3I/edit?usp=sharing" target="_blank">Discovery Call Guide</a></li>
+          <li><a href="https://docs.google.com/document/d/1CdGIC36P4Coir_nyGXlMDDo38YCdsznW1zErGEzQ1ZY/edit" target="_blank">Outbound Call Framework</a></li>
+          <li><a href="https://checkr.atlassian.net/wiki/spaces/BD/pages/1942192300/Partner+Integration+Matrix" target="_blank">Partner Integration Matrix</a> &mdash; go/pim</li>
+          <li><a href="https://checkr.atlassian.net/wiki/spaces/SAL/pages/2039775429/Sendoso+-+Gifting+for+Sales" target="_blank">Sendoso &mdash; Gifting for Sales</a></li>
+          <li><strong>Messaging &amp; Gong examples:</strong> George So</li>
+          <li><strong>Events:</strong> Jaime Keene &nbsp;|&nbsp; <strong>Partners:</strong> Ambreen Razaq</li>
+          <li><strong>Campaigns / ABM:</strong> Mariza Melendez</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout orange">
+      <div class="callout-icon">🔗</div>
+      <div>
+        <div class="callout-label">Back to Overview</div>
+        <div class="callout-title">This playbook is part of the New Hire Sales Playbook</div>
+        <div class="callout-desc">The Outbound Playbook covers your pipeline-building motion in depth. For your full onboarding structure, role-specific guidance, certifications, milestones, and tool reference, return to the New Hire Playbook.</div>
+        <a href="playbook.html" style="color:var(--orange);font-weight:600;font-size:13px;text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-top:8px">← Back to New Hire Playbook</a>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+</div>
+
+<footer>Checkr Sales Enablement · Outbound Playbook 2026 · For internal use only · Updated for April 2026 Cohort</footer>
+
+<script>
+const sections = document.querySelectorAll('[id]');
+const links = document.querySelectorAll('.sb-link');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 80) current = s.id;
+  });
+  links.forEach(l => {
+    l.classList.remove('active');
+    if (l.getAttribute('href') === '#' + current) l.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

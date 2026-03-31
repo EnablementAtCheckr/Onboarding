@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>My Onboarding Milestones — Checkr Sales 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1E448F;--teal:#45C0B9;--orange:#F37D53;--green:#29736F;--slate:#67727C;
+  --white:#fff;--dark:#0B1626;--bg:#F7F9FC;--border:#D4DAE1;
+  --navy-lt:#EBF0FA;--teal-lt:#E6F7F6;--org-lt:#FEF0EB;--grn-lt:#E3F2F1;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--dark);font-size:15px;line-height:1.6}
+.nav{background:var(--navy);padding:0 24px;display:flex;align-items:center;height:56px;position:sticky;top:0;z-index:100;gap:0}
+.nav .logo{color:#fff;font-weight:600;font-size:15px;margin-right:32px;flex-shrink:0}
+.nav a{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;font-weight:500;padding:0 14px;height:56px;display:flex;align-items:center;border-bottom:3px solid transparent;transition:all .15s}
+.nav a:hover,.nav a.active{color:#fff;border-bottom-color:var(--teal)}
+.hero{background:var(--navy);padding:36px 24px 32px;color:#fff;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;right:-80px;top:-80px;width:400px;height:400px;border-radius:50%;background:rgba(69,192,185,.07);pointer-events:none}
+.hero-ey{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+.hero h1{font-size:38px;font-weight:600;margin-bottom:10px;line-height:1.2}
+.hero p{color:rgba(255,255,255,.72);font-size:15px;line-height:1.65}
+.main{padding:32px 24px}
+
+/* PERIOD STRIP */
+.period-strip{display:flex;gap:0;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:48px}
+.ps-item{flex:1;padding:16px;border-right:1px solid var(--border);cursor:pointer;transition:background .15s;text-decoration:none}
+.ps-item:last-child{border-right:none}
+.ps-item:hover,.ps-item.active{background:var(--navy-lt)}
+.ps-label{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin-bottom:4px}
+.ps-name{font-size:14px;font-weight:600;color:var(--dark)}
+.ps-item.wk1{border-top:3px solid var(--navy)}
+.ps-item.wk1b{border-top:3px solid var(--teal)}
+.ps-item.wk2{border-top:3px solid var(--teal)}
+.ps-item.m1{border-top:3px solid var(--orange)}
+.ps-item.m3{border-top:3px solid var(--green)}
+.ps-item.m6{border-top:3px solid var(--orange)}
+.ps-item.yr{border-top:3px solid var(--slate)}
+
+/* MILESTONE PANELS */
+.ms-panel{display:none}
+.ms-panel.active{display:block}
+
+/* MILESTONE CARD */
+.ms-card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:20px}
+.ms-card-hdr{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--border)}
+.ms-card-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.ms-card-icon.navy{background:var(--navy-lt)}
+.ms-card-icon.teal{background:var(--teal-lt)}
+.ms-card-icon.orange{background:var(--org-lt)}
+.ms-card-icon.green{background:var(--grn-lt)}
+.ms-card-icon.slate{background:#F1F2F4}
+.ms-comp{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;margin-bottom:3px}
+.ms-comp.navy{color:var(--navy)}.ms-comp.teal{color:var(--teal)}.ms-comp.orange{color:var(--orange)}.ms-comp.green{color:var(--green)}.ms-comp.slate{color:var(--slate)}
+.ms-card-title{font-size:15px;font-weight:600;color:var(--dark)}
+.ms-card-body{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0}
+.ms-col{padding:16px 20px;border-right:1px solid var(--border)}
+.ms-col:last-child{border-right:none}
+.ms-col-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--slate);margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.ms-col ul{padding-left:0;list-style:none}
+.ms-col ul li{font-size:13px;color:var(--dark);margin-bottom:7px;padding-left:14px;position:relative;line-height:1.5}
+.ms-col ul li::before{content:'›';position:absolute;left:0;color:var(--teal);font-weight:600}
+.ms-col p{font-size:13px;color:var(--dark);line-height:1.55}
+.s-pills{display:flex;flex-wrap:wrap;gap:5px}
+.s-pill{font-size:11px;font-weight:500;padding:3px 9px;border-radius:14px;background:var(--navy-lt);color:var(--navy);text-decoration:none}
+.s-pill:hover{background:var(--navy);color:#fff}
+.s-pill.teal{background:var(--teal-lt);color:var(--green)}
+.s-pill.teal:hover{background:var(--teal);color:#fff}
+.s-pill.orange{background:var(--org-lt);color:#B85020}
+.s-pill.orange:hover{background:var(--orange);color:#fff}
+
+/* PERIOD HEADER */
+.period-hdr{margin-bottom:24px}
+.period-hdr h2{font-size:24px;font-weight:600;color:var(--dark);margin-bottom:4px}
+.period-hdr p{font-size:14px;color:var(--slate)}
+
+/* MANAGER CHECK BOX */
+.manager-check{background:#fff;border:1.5px solid var(--teal);border-radius:12px;padding:18px 22px;margin-top:8px;margin-bottom:24px;display:flex;gap:16px;align-items:flex-start}
+.mc-icon{font-size:22px;flex-shrink:0;margin-top:2px}
+.mc-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--teal);margin-bottom:4px}
+.mc-title{font-size:15px;font-weight:600;color:var(--dark);margin-bottom:4px}
+.mc-desc{font-size:13px;color:var(--slate);line-height:1.55}
+
+footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:24px;font-size:12px;margin-top:40px}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <span class="logo">Checkr Sales Onboarding 2026</span>
+  <a href="index.html">Overview</a>
+  <a href="prework.html">Pre-Work</a>
+  <a href="bootcamp.html">Bootcamp</a>
+  <a href="syllabus.html">Content Library</a>
+  <a href="competency.html">Competency Framework</a>
+  <a href="milestones2.html" class="active">My Milestones</a>
+  <a href="timeline.html">Journey</a>
+  <a href="playbook.html">New Hire Playbooks</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-ey">My Onboarding Milestones</div>
+  <h1>What I Need to Know &amp; Do</h1>
+  <p>Written from your point of view &mdash; what you should be able to say, do, and demonstrate at each stage of your ramp. Your first week and bootcamp build the foundation. The two weeks after bootcamp are for certifications and your first live outreach. Coaching and milestones follow month by month.</p>
+</div>
+
+<div class="main">
+
+<div class="period-strip">
+  <div class="ps-item wk1 active" onclick="show('wk1')"><div class="ps-label">After Week 1</div><div class="ps-name">Pre-Work Done</div></div>
+  <div class="ps-item wk1b" onclick="show('wk1b')"><div class="ps-label">Weeks 2&ndash;3</div><div class="ps-name">After Bootcamp</div></div>
+  <div class="ps-item wk2" onclick="show('wk2')"><div class="ps-label">Weeks 4&ndash;5</div><div class="ps-name">Certifications</div></div>
+  <div class="ps-item m1" onclick="show('m1')"><div class="ps-label">Month 1</div><div class="ps-name">First Pipeline</div></div>
+  <div class="ps-item m3" onclick="show('m3')"><div class="ps-label">Month 3</div><div class="ps-name">Quota Ramp</div></div>
+  <div class="ps-item m6" onclick="show('m6')"><div class="ps-label">Month 6</div><div class="ps-name">Proficiency</div></div>
+  <div class="ps-item yr" onclick="show('yr')"><div class="ps-label">Year 1</div><div class="ps-name">Full Performance</div></div>
+</div>
+
+<!-- ── BOOTCAMP WEEK ─────────────────────────────────────────────────────── -->
+<div class="ms-panel active" id="panel-wk1">
+  <div class="period-hdr">
+    <h2>After Week 1: Pre-Work Complete</h2>
+    <p>By the end of Week 1 (pre-work Days 1&ndash;5), here is what you should know and understand before bootcamp begins. You haven&rsquo;t practiced the conversations yet &mdash; but you&rsquo;ve built the knowledge foundation that makes bootcamp productive.</p>
+  </div>
+
+  <div class="manager-check">
+    <div class="mc-icon">&#x1F4CB;</div>
+    <div>
+      <div class="mc-label">End of Week 1 Check-In</div>
+      <div class="mc-title">Manager pre-bootcamp check-in before Day 1 of bootcamp</div>
+      <div class="mc-desc">Your manager confirms pre-work completion, tool access, and any questions before bootcamp begins. This is a quick sync — not a formal review. Come with your top 2–3 questions from pre-work.</div>
+    </div>
+  </div>
+
+  <div class="ms-card">
+    <div class="ms-card-hdr">
+      <div class="ms-card-icon navy">&#x1F4E6;</div>
+      <div><div class="ms-comp navy">Product Knowledge</div><div class="ms-card-title">I know what Checkr does and can explain the problems we solve</div></div>
+    </div>
+    <div class="ms-card-body">
+      <div class="ms-col">
+        <div class="ms-col-label">What I can do</div>
+        <ul>
+          <li>Describe what background screening is and why employers need it</li>
+          <li>Name the three core pains Checkr addresses: slow TAT, compliance risk, and poor candidate experience</li>
+          <li>Describe Checkr&rsquo;s product portfolio at a high level from Product 101</li>
+          <li>Know where to find product resources in Checkpoint</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">How my manager checks this</div>
+        <ul>
+          <li>Manager asks: &ldquo;What does Checkr do and who needs it?&rdquo;</li>
+          <li>Pass = clear problem + high-level solution, uses the right vocabulary from pre-work</li>
+          <li>Note: full pitch polish happens at bootcamp &mdash; this is knowledge, not certification</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">Sessions that build this</div>
+        <div class="s-pills">
+          <a href="prework.html" class="s-pill">Review: Pains and Personas</a>
+          <a href="prework.html" class="s-pill">Product 101 &mdash; Full Product Suite</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ms-card">
+    <div class="ms-card-hdr">
+      <div class="ms-card-icon teal">&#x1F3AF;</div>
+      <div><div class="ms-comp teal">ICP &amp; Persona Fluency</div><div class="ms-card-title">I can describe our ICP, 5 industries, and the 4 buyer personas</div></div>
+    </div>
+    <div class="ms-card-body">
+      <div class="ms-col">
+        <div class="ms-col-label">What I can do</div>
+        <ul>
+          <li>Name all 5 ICP industries and explain which are full vs. partial fit</li>
+          <li>Describe the 4 buyer personas and what each one cares most about</li>
+          <li>Explain what triggers a company to start evaluating a new background check vendor</li>
+          <li>Come to bootcamp Day 1 ready to apply ICP knowledge in the &ldquo;Pains and Personas Activity&rdquo; activity</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">How my manager checks this</div>
+        <ul>
+          <li>Manager asks: &ldquo;Name the 5 ICP industries and which are full-fit.&rdquo;</li>
+          <li>Pass = correct answer from memory &mdash; no notes needed</li>
+          <li>Note: live persona mapping happens at bootcamp, not Week 1</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">Sessions that build this</div>
+        <div class="s-pills">
+          <a href="prework.html" class="s-pill teal">ICP &amp; Personas 101</a>
+          <a href="prework.html" class="s-pill teal">Industry Overviews &mdash; All 5 Verticals</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ms-card">
+    <div class="ms-card-hdr">
+      <div class="ms-card-icon orange">&#x1F94A;</div>
+      <div><div class="ms-comp orange">Competitive Positioning</div><div class="ms-card-title">I know who we compete with and our key differentiators</div></div>
+    </div>
+    <div class="ms-card-body">
+      <div class="ms-col">
+        <div class="ms-col-label">What I can do</div>
+        <ul>
+          <li>Name First Advantage, Sterling, and HireRight and describe why prospects choose them</li>
+          <li>State Checkr&rsquo;s top 3 differentiators in plain language</li>
+          <li>Know the key battlecard facts for each competitor from Competitor Overview 101</li>
+          <li>Come to bootcamp Day 1 ready to practice competitive positioning in &ldquo;Competition: Setting Traps &amp; Handling Objections&rdquo;</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">How my manager checks this</div>
+        <ul>
+          <li>Manager asks: &ldquo;Why do companies leave Sterling for Checkr?&rdquo;</li>
+          <li>Pass = can name at least 2 reasons from battlecard knowledge</li>
+          <li>Note: live competitive role-play happens at bootcamp Day 1</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">Sessions that build this</div>
+        <div class="s-pills">
+          <a href="prework.html" class="s-pill orange">Competitor Overview 101</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ms-card">
+    <div class="ms-card-hdr">
+      <div class="ms-card-icon navy">&#x1F5E3;</div>
+      <div><div class="ms-comp navy">Command of the Message</div><div class="ms-card-title">I understand the CoM framework and can name all 6 components</div></div>
+    </div>
+    <div class="ms-card-body">
+      <div class="ms-col">
+        <div class="ms-col-label">What I can do</div>
+        <ul>
+          <li>Name all 6 CoM components and explain what each one does</li>
+          <li>Explain the difference between a Before Scenario and a Required Capability</li>
+          <li>Know how Proof Points and Discovery Questions work in the CoM framework</li>
+          <li>Come to bootcamp Day 2 ready to build a CoM map in the Deep Dive workshop</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">How my manager checks this</div>
+        <ul>
+          <li>Manager asks: &ldquo;Name the 6 CoM components and what each one does.&rdquo;</li>
+          <li>Pass = all 6 named and explained correctly from memory</li>
+          <li>Note: building live CoM maps happens at bootcamp Day 2</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">Sessions that build this</div>
+        <div class="s-pills">
+          <a href="prework.html" class="s-pill">Command of the Message 101</a>
+          <a href="prework.html" class="s-pill">Call Overviews &mdash; All 4 Conversation Types</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ms-card">
+    <div class="ms-card-hdr">
+      <div class="ms-card-icon teal">&#x1F4DE;</div>
+      <div><div class="ms-comp teal">Effective Communication</div><div class="ms-card-title">I understand the structure of all 4 call types and have heard good examples</div></div>
+    </div>
+    <div class="ms-card-body">
+      <div class="ms-col">
+        <div class="ms-col-label">What I can do</div>
+        <ul>
+          <li>Know the structure of all 4 call types from Call Overviews: cold, discovery, demo, pricing</li>
+          <li>Have listened to at least 8&ndash;10 Gong calls from the curated library</li>
+          <li>Know what a good cold call opener, discovery question, and demo WOW moment sounds like</li>
+          <li>Come to bootcamp ready to practice &mdash; not to hear about the frameworks for the first time</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">How my manager checks this</div>
+        <ul>
+          <li>Gong listening log reviewed: 8&ndash;10 calls heard, reflections logged in Mindtickle</li>
+          <li>Manager asks: &ldquo;Walk me through how a cold call should open.&rdquo;</li>
+          <li>Pass = can describe structure from pre-work without reading from notes</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">Sessions that build this</div>
+        <div class="s-pills">
+          <a href="prework.html" class="s-pill teal">Call Overviews &mdash; All 4 Conversation Types</a>
+          <a href="prework.html" class="s-pill teal">Gong Call Library &mdash; Daily Listening</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ms-card">
+    <div class="ms-card-hdr">
+      <div class="ms-card-icon green">&#x1F4E4;</div>
+      <div><div class="ms-comp green">Outbound Motion &amp; Prospecting</div><div class="ms-card-title">I understand the outbound motion and know the tools I&rsquo;ll use</div></div>
+    </div>
+    <div class="ms-card-body">
+      <div class="ms-col">
+        <div class="ms-col-label">What I can do</div>
+        <ul>
+          <li>Know the 3-tool research stack: Demandbase → SCOUT → LinkedIn SN</li>
+          <li>Understand what Athean sequences are and how they work at a conceptual level</li>
+          <li>Have read the Outbound Playbook and understand daily activity minimums</li>
+          <li>Come to bootcamp Day 4 ready to do live research and build sequences &mdash; not learn what these tools are</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">How my manager checks this</div>
+        <ul>
+          <li>Manager asks: &ldquo;What&rsquo;s the research order when building a target account list?&rdquo;</li>
+          <li>Pass = Demandbase → SCOUT → LinkedIn SN &mdash; in the right order with explanation</li>
+          <li>Outbound Playbook reviewed and discussed in the Day 5 manager meeting</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">Sessions that build this</div>
+        <div class="s-pills">
+          <a href="prework.html" class="s-pill teal">Outbound Playbook Review &mdash; Manager Meeting</a>
+          <a href="prework.html" class="s-pill teal">Sales Tools Overview</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── AFTER BOOTCAMP: WEEKS 1-2 ──────────────────────────────────────────── -->
+
+<!-- ── AFTER BOOTCAMP: WEEKS 1-2 ──────────────────────────────────────────── -->
+<div class="ms-panel" id="panel-wk1b">
+  <div class="period-hdr">
+    <h2>Weeks 2&ndash;3: After Bootcamp</h2>
+    <p>By the end of Week 3 (after completing the 5-day in-person bootcamp), here is what you should be able to do. Bootcamp is where knowledge becomes practice &mdash; role-plays, calibrations, and live tool work. These are your conversation-ready benchmarks going into Week 4 certifications.</p>
+  </div>
+
+  <div class="manager-check">
+    <div class="mc-icon">&#x1F4CB;</div>
+    <div>
+      <div class="mc-label">End of Week 3 Check-In (Post-Bootcamp)</div>
+      <div class="mc-title">Bootcamp debrief, tool setup confirmed, certifications starting</div>
+      <div class="mc-desc">Manager reviews: All 10 tools active and in use? First sequences running? Role-play scores from bootcamp reviewed. Certifications started in Mindtickle. Any gaps from bootcamp that need to be addressed before live calls begin?</div>
+    </div>
+  </div>
+
+  <div class="ms-card">
+    <div class="ms-card-hdr">
+      <div class="ms-card-icon green">&#x1F4E4;</div>
+      <div><div class="ms-comp green">Outbound Motion &amp; Prospecting</div><div class="ms-card-title">My first outreach is live and I have a working daily system</div></div>
+    </div>
+    <div class="ms-card-body">
+      <div class="ms-col">
+        <div class="ms-col-label">What I can do</div>
+        <ul>
+          <li>Run daily outbound activity at or above my role minimums from Day 1 back at my desk</li>
+          <li>Have active Athean sequences running for at least 10 target accounts by end of Week 1</li>
+          <li>Use Demandbase, SCOUT, and LinkedIn SN to research accounts before adding them to sequences</li>
+          <li>Use the Persona/Trigger homework from bootcamp to inform my first batch of outreach</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">How my manager checks this</div>
+        <ul>
+          <li>Athean dashboard: at least 10 accounts in active sequences</li>
+          <li>Show me your account research process for one target account end-to-end</li>
+          <li>SFDC: at least one opportunity stage-1 created</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">Built during bootcamp at</div>
+        <div class="s-pills">
+          <a href="prework.html" class="s-pill teal">Outbound Playbook Review &mdash; Manager Meeting</a>
+          <a href="prework.html" class="s-pill teal">Sales Tools Overview</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ms-card">
+    <div class="ms-card-hdr">
+      <div class="ms-card-icon teal">&#x1F4F1;</div>
+      <div><div class="ms-comp teal">Productivity &amp; Tool Mastery</div><div class="ms-card-title">All 10 tools are active and integrated into my daily workflow</div></div>
+    </div>
+    <div class="ms-card-body">
+      <div class="ms-col">
+        <div class="ms-col-label">What I can do</div>
+        <ul>
+          <li>Gong auto-recording confirmed on all Zoom calls and I&rsquo;m reviewing my own calls daily</li>
+          <li>Salesforce opportunities created and MEDDPICC populated on every active deal</li>
+          <li>Checkpoint Homeroom modules on track &mdash; no missed assignments</li>
+          <li>Calendar blocked for daily outbound windows (10&ndash;12 and 4&ndash;6) every week</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">How my manager checks this</div>
+        <ul>
+          <li>Gong: auto-recording active and at least 2 self-review notes submitted</li>
+          <li>Checkpoint Homeroom: completion on track, no red items</li>
+          <li>SFDC: pipeline exists with correct fields, no orphan opportunities</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">Built during bootcamp at</div>
+        <div class="s-pills">
+          <a href="syllabus.html" class="s-pill">How to Be Productive</a>
+          <a href="syllabus.html" class="s-pill">Using Gong</a>
+          <a href="syllabus.html" class="s-pill">Tools: Looker and Homerooms</a>
+          <a href="syllabus.html" class="s-pill">Opp Walkthrough</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ms-card">
+    <div class="ms-card-hdr">
+      <div class="ms-card-icon orange">&#x1F3AF;</div>
+      <div><div class="ms-comp orange">Effective Communication</div><div class="ms-card-title">My certifications are started and I&rsquo;m listening to Gong calls every day</div></div>
+    </div>
+    <div class="ms-card-body">
+      <div class="ms-col">
+        <div class="ms-col-label">What I can do</div>
+        <ul>
+          <li>All 5 Mindtickle certifications started &mdash; at least 2 submitted for review by end of Week 2</li>
+          <li>Listening to 1&ndash;2 Gong calls from the curated call library every day, logging reflections</li>
+          <li>Self-coaching on talk ratio and question count from my own Gong recordings</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">How my manager checks this</div>
+        <ul>
+          <li>Mindtickle: certification progress confirmed, at least 2 submitted</li>
+          <li>Gong: listening log reviewed &mdash; 8&ndash;10 calls heard total from pre-work onward</li>
+          <li>Manager reviews at least 1 cert recording and provides feedback within 48 hours</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">What comes next</div>
+        <div class="s-pills">
+          <a href="syllabus.html" class="s-pill orange">Cold Call Certification</a>
+          <a href="syllabus.html" class="s-pill orange">Discovery Call Certification</a>
+          <a href="syllabus.html" class="s-pill orange">Demo Call Certification</a>
+          <a href="syllabus.html" class="s-pill orange">Pricing Call Certification</a>
+          <a href="syllabus.html" class="s-pill orange">Company Narrative Certification</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ms-panel" id="panel-wk2">
+  <div class="period-hdr">
+    <h2>Weeks 4&ndash;5: Certifications</h2>
+    <p>Five Mindtickle certifications to complete in Weeks 4&ndash;5, after bootcamp. These are recorded and scored by your manager against a rubric. Pass score is 80%. Live calls begin after all five are passed.</p>
+  </div>
+
+  <div class="manager-check">
+    <div class="mc-icon">&#x2705;</div>
+    <div>
+      <div class="mc-label">Certification Review</div>
+      <div class="mc-title">Manager scores and debriefs each certification within 48 hours</div>
+      <div class="mc-desc">Your manager reviews your recordings and provides written feedback. Any cert scored below 80% requires a re-record. Live calls begin after all 5 certs are passed.</div>
+    </div>
+  </div>
+
+  <div class="ms-card">
+    <div class="ms-card-hdr">
+      <div class="ms-card-icon teal">&#x260E;</div>
+      <div><div class="ms-comp teal">Effective Communication &mdash; Cold Call</div><div class="ms-card-title">Cold Call Certification</div></div>
+    </div>
+    <div class="ms-card-body">
+      <div class="ms-col">
+        <div class="ms-col-label">What I need to demonstrate</div>
+        <ul>
+          <li>A persona-specific opening hook that names the Before Scenario in the first 15 seconds</li>
+          <li>Handle the top 3 objections using the AAA method without breaking rhythm</li>
+          <li>Secure a clear next step before ending the call</li>
+          <li>Talk ratio under 60% &mdash; I ask, they talk</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">How I&rsquo;m assessed</div>
+        <ul>
+          <li>Record a live or simulated cold call in Mindtickle</li>
+          <li>Manager scores against the cold call rubric</li>
+          <li>Pass = 80% or above on all rubric dimensions</li>
+          <li>Retake available if below 80%</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">Built during bootcamp at</div>
+        <div class="s-pills">
+          <a href="syllabus.html" class="s-pill teal">Prep for Cold Call Exercise</a>
+          <a href="syllabus.html" class="s-pill teal">Cold Call Role-Play</a>
+          <a href="syllabus.html" class="s-pill teal">Cold Call Calibration</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ms-card">
+    <div class="ms-card-hdr">
+      <div class="ms-card-icon teal">&#x1F50E;</div>
+      <div><div class="ms-comp teal">Effective Communication &mdash; Discovery</div><div class="ms-card-title">Discovery Call Certification</div></div>
+    </div>
+    <div class="ms-card-body">
+      <div class="ms-col">
+        <div class="ms-col-label">What I need to demonstrate</div>
+        <ul>
+          <li>Open with context, not a pitch</li>
+          <li>Ask at least 3 open-ended questions that surface the Before Scenario</li>
+          <li>Quantify at least one pain point with the prospect&rsquo;s own words</li>
+          <li>Set a MAP and clear next step before ending the call</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">How I&rsquo;m assessed</div>
+        <ul>
+          <li>Record a live or simulated discovery call in Mindtickle</li>
+          <li>Manager scores on MAP framework, question quality, and CoM adherence</li>
+          <li>Pass = 80% or above</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">Built during bootcamp at</div>
+        <div class="s-pills">
+          <a href="syllabus.html" class="s-pill teal">Asking Good Questions</a>
+          <a href="syllabus.html" class="s-pill teal">Prep for Discovery Call Exercise</a>
+          <a href="syllabus.html" class="s-pill teal">Discovery Call Role-Play</a>
+          <a href="syllabus.html" class="s-pill teal">Discovery Call | Calibration</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ms-card">
+    <div class="ms-card-hdr">
+      <div class="ms-card-icon teal">&#x1F4BB;</div>
+      <div><div class="ms-comp teal">Effective Communication &mdash; Demo</div><div class="ms-card-title">Demo Call Certification</div></div>
+    </div>
+    <div class="ms-card-body">
+      <div class="ms-col">
+        <div class="ms-col-label">What I need to demonstrate</div>
+        <ul>
+          <li>Open the demo by referencing the prospect&rsquo;s Before Scenario from discovery</li>
+          <li>Show only the features relevant to their pain &mdash; no feature tours</li>
+          <li>Create at least one &ldquo;WOW moment&rdquo; tied to a specific business outcome</li>
+          <li>Close with a clear next step and MAP update</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">How I&rsquo;m assessed</div>
+        <ul>
+          <li>Record a live or simulated demo in Mindtickle</li>
+          <li>Manager scores on discovery-to-demo bridge and product relevance</li>
+          <li>Pass = 80% or above</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">Built during bootcamp at</div>
+        <div class="s-pills">
+          <a href="syllabus.html" class="s-pill teal">Demo Call Prep</a>
+          <a href="syllabus.html" class="s-pill teal">Demo Call Role-Play</a>
+          <a href="syllabus.html" class="s-pill teal">Demo Call Calibration</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ms-card">
+    <div class="ms-card-hdr">
+      <div class="ms-card-icon teal">&#x1F4B0;</div>
+      <div><div class="ms-comp teal">Effective Communication &mdash; Pricing</div><div class="ms-card-title">Pricing Call Certification</div></div>
+    </div>
+    <div class="ms-card-body">
+      <div class="ms-col">
+        <div class="ms-col-label">What I need to demonstrate</div>
+        <ul>
+          <li>Introduce pricing only after establishing value &mdash; never lead with price</li>
+          <li>Handle &ldquo;it&rsquo;s too expensive&rdquo; without discounting</li>
+          <li>Explain package differences in plain language tied to the prospect&rsquo;s needs</li>
+          <li>If it comes down to price, you&rsquo;ve already lost &mdash; demonstrate you know this</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">How I&rsquo;m assessed</div>
+        <ul>
+          <li>Record a live or simulated pricing call in Mindtickle</li>
+          <li>Manager scores on value-first positioning and objection handling</li>
+          <li>Pass = 80% or above</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">Built during bootcamp at</div>
+        <div class="s-pills">
+          <a href="syllabus.html" class="s-pill teal">Pricing Call Prep</a>
+          <a href="syllabus.html" class="s-pill teal">Pricing Call Role-Play</a>
+          <a href="syllabus.html" class="s-pill teal">Pricing Call Calibration</a>
+          <a href="syllabus.html" class="s-pill teal">Salesforce Quoting &amp; Order Forms</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ms-card">
+    <div class="ms-card-hdr">
+      <div class="ms-card-icon navy">&#x1F4AC;</div>
+      <div><div class="ms-comp navy">Command of the Message</div><div class="ms-card-title">Company Narrative Certification</div></div>
+    </div>
+    <div class="ms-card-body">
+      <div class="ms-col">
+        <div class="ms-col-label">What I need to demonstrate</div>
+        <ul>
+          <li>Deliver a 3&ndash;5 minute Checkr company narrative with no notes</li>
+          <li>Open with a customer pain, not a company history lesson</li>
+          <li>Connect the narrative to the persona I&rsquo;m speaking to</li>
+          <li>End with a clear &ldquo;why Checkr, why now&rdquo;</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">How I&rsquo;m assessed</div>
+        <ul>
+          <li>Record in Mindtickle or deliver live to manager</li>
+          <li>Scored on story structure, persona relevance, and differentiation</li>
+          <li>Pass = 80% or above</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">Built during bootcamp at</div>
+        <div class="s-pills">
+          <a href="syllabus.html" class="s-pill">Command of the Message Deep Dive</a>
+          <a href="syllabus.html" class="s-pill">Introductions &amp; Bootcamp Schedule Review</a>
+          <a href="syllabus.html" class="s-pill">Competition: Setting Traps &amp; Handling Objections</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── MONTH 1 ────────────────────────────────────────────────────────────── -->
+<div class="ms-panel" id="panel-m1">
+  <div class="period-hdr">
+    <h2>Month 1: First Pipeline</h2>
+    <p>By the 30-day mark I have active outbound sequences running, qualified opportunities in SFDC, and MEDDPICC populated on every active deal. Live calls have started.</p>
+  </div>
+
+  <div class="manager-check">
+    <div class="mc-icon">&#x1F4C5;</div>
+    <div>
+      <div class="mc-label">30-Day Manager Check-In</div>
+      <div class="mc-title">Pipeline coverage, MEDDPICC completeness, activity dashboard review</div>
+      <div class="mc-desc">I present my top 5 target accounts with Demandbase intent data, SCOUT triggers, and contacts identified. Manager reviews SFDC pipeline, sequence activity in Athean, and Gong call quality. I am added to the round-robin call rotation after this check-in.</div>
+    </div>
+  </div>
+
+  <div class="ms-card">
+    <div class="ms-card-hdr">
+      <div class="ms-card-icon green">&#x1F4E4;</div>
+      <div><div class="ms-comp green">Outbound Motion &amp; Prospecting</div><div class="ms-card-title">I have a working outbound system and active pipeline</div></div>
+    </div>
+    <div class="ms-card-body">
+      <div class="ms-col">
+        <div class="ms-col-label">What I can do</div>
+        <ul>
+          <li>Run daily outbound activity at or above my role minimums (calls, emails, sequences)</li>
+          <li>Use Demandbase intent signals to prioritize which accounts to work this week</li>
+          <li>Have active Athean sequences running for at least 20 target accounts</li>
+          <li>Book my first 2+ qualified discovery calls from cold outbound</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">How my manager checks this</div>
+        <ul>
+          <li>Outreach dashboard: sequences active, reply rate &gt;0%</li>
+          <li>SFDC: at least 1 new logo opportunity created with complete MEDDPICC</li>
+          <li>Gong: manager reviews 2+ calls per week</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">Relevant post-bootcamp modules</div>
+        <div class="s-pills">
+          <a href="syllabus.html" class="s-pill teal">Outbound Motion Advanced</a>
+          <a href="syllabus.html" class="s-pill teal">Weekly Gong Call Review</a>
+          <a href="syllabus.html" class="s-pill teal">30-Day Manager Check-In</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ms-card">
+    <div class="ms-card-hdr">
+      <div class="ms-card-icon orange">&#x1F4CB;</div>
+      <div><div class="ms-comp orange">Opportunity &amp; Revenue Management</div><div class="ms-card-title">I manage my pipeline with MEDDPICC discipline from day one</div></div>
+    </div>
+    <div class="ms-card-body">
+      <div class="ms-col">
+        <div class="ms-col-label">What I can do</div>
+        <ul>
+          <li>All SFDC opportunities have correct stage, close date, and MEDDPICC populated</li>
+          <li>I know what pipeline coverage ratio means and where I stand</li>
+          <li>I can explain my top 3 deals in a 2-minute pipeline review without pulling up notes</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">How my manager checks this</div>
+        <ul>
+          <li>SFDC inspection: all fields complete, next steps updated this week</li>
+          <li>Pipeline review: I present deal status without being prompted</li>
+          <li>MEDDPICC completeness score on all active opps</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">Relevant post-bootcamp modules</div>
+        <div class="s-pills">
+          <a href="syllabus.html" class="s-pill orange">Advanced CoM &amp; MEDDPICC</a>
+          <a href="syllabus.html" class="s-pill orange">30-Day Manager Check-In</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── MONTH 3 ────────────────────────────────────────────────────────────── -->
+<div class="ms-panel" id="panel-m3">
+  <div class="period-hdr">
+    <h2>Month 3: Quota Ramp Begins</h2>
+    <p>By the 90-day mark I have closed or am close to closing my first deal, all 5 industry deep-dives are complete, and I can run a full deal cycle independently.</p>
+  </div>
+
+  <div class="manager-check">
+    <div class="mc-icon">&#x1F3C6;</div>
+    <div>
+      <div class="mc-label">90-Day Milestone Review</div>
+      <div class="mc-title">Written self-assessment + pipeline presentation + all industry modules confirmed</div>
+      <div class="mc-desc">I submit a written self-assessment covering wins, gaps, and a 30-day action plan before this meeting. Manager reviews my SFDC pipeline, Mindtickle completion, and Gong call scores. All 5 advanced industry modules must be confirmed complete.</div>
+    </div>
+  </div>
+
+  <div class="ms-card">
+    <div class="ms-card-hdr">
+      <div class="ms-card-icon teal">&#x1F30D;</div>
+      <div><div class="ms-comp teal">ICP &amp; Persona Fluency</div><div class="ms-card-title">I know all 5 industries and can have a credible conversation in each</div></div>
+    </div>
+    <div class="ms-card-body">
+      <div class="ms-col">
+        <div class="ms-col-label">What I can do</div>
+        <ul>
+          <li>Complete all 5 advanced industry e-learning modules (Retail, Hospitality, Manufacturing, Transportation, Staffing)</li>
+          <li>Name at least 3 industry-specific pain triggers for each vertical</li>
+          <li>Tailor my cold call opener and discovery questions to the vertical I&rsquo;m calling</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">How my manager checks this</div>
+        <ul>
+          <li>All 5 advanced industry modules confirmed complete in Mindtickle</li>
+          <li>Cold: &ldquo;I&rsquo;m calling a Hospitality Ops Director &mdash; what do I say?&rdquo;</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">Relevant post-bootcamp modules</div>
+        <div class="s-pills">
+          <a href="syllabus.html" class="s-pill teal">Advanced Retail Deep Dive</a>
+          <a href="syllabus.html" class="s-pill teal">Advanced Hospitality Deep Dive</a>
+          <a href="syllabus.html" class="s-pill teal">Advanced Manufacturing Deep Dive</a>
+          <a href="syllabus.html" class="s-pill teal">Advanced Transportation Deep Dive</a>
+          <a href="syllabus.html" class="s-pill teal">Advanced Staffing Deep Dive</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ms-card">
+    <div class="ms-card-hdr">
+      <div class="ms-card-icon navy">&#x1F4BC;</div>
+      <div><div class="ms-comp navy">Opportunity &amp; Revenue Management</div><div class="ms-card-title">I am on track for my first close and managing pipeline like a senior rep</div></div>
+    </div>
+    <div class="ms-card-body">
+      <div class="ms-col">
+        <div class="ms-col-label">What I can do</div>
+        <ul>
+          <li>Have at least one deal in Stage 3+ with a MAP in place</li>
+          <li>Pipeline coverage ratio meets the 90-day target set by my manager</li>
+          <li>Self-assessment submitted before the review meeting &mdash; not during</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">How my manager checks this</div>
+        <ul>
+          <li>SFDC pipeline review: stage accuracy, MAP quality, next steps</li>
+          <li>Written self-assessment reviewed before meeting</li>
+          <li>Quota vs. ramp target discussion</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">Relevant post-bootcamp modules</div>
+        <div class="s-pills">
+          <a href="syllabus.html" class="s-pill">45-Day Pipeline Review</a>
+          <a href="syllabus.html" class="s-pill">90-Day Milestone Review</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── MONTH 6 ────────────────────────────────────────────────────────────── -->
+<div class="ms-panel" id="panel-m6">
+  <div class="period-hdr">
+    <h2>Month 6: Proficiency Review</h2>
+    <p>By Month 6 I have closed deals, my forecasting is reliable, and I can self-diagnose gaps in my own performance. I present my gap analysis &mdash; my manager doesn&rsquo;t prepare it for me.</p>
+  </div>
+
+  <div class="manager-check">
+    <div class="mc-icon">&#x1F4CA;</div>
+    <div>
+      <div class="mc-label">6-Month Proficiency Review</div>
+      <div class="mc-title">I present my gap analysis, action plan, and champion strategy</div>
+      <div class="mc-desc">I prepare and present my gap analysis between current quota attainment and target, a 30-day action plan, and a champion strategy review. Manager reviews quota attainment, champion health across my deals, and forecasting accuracy over the past 8 weeks.</div>
+    </div>
+  </div>
+
+  <div class="ms-card">
+    <div class="ms-card-hdr">
+      <div class="ms-card-icon orange">&#x1F4C8;</div>
+      <div><div class="ms-comp orange">All Competencies</div><div class="ms-card-title">I can self-assess, forecast accurately, and own my territory</div></div>
+    </div>
+    <div class="ms-card-body">
+      <div class="ms-col">
+        <div class="ms-col-label">What I can do</div>
+        <ul>
+          <li>Forecast within &plusmn;20% of my called number for the past 2 months</li>
+          <li>Present a gap analysis between current attainment and quota &mdash; with a plan</li>
+          <li>Identify my champion in every active deal and score their health honestly</li>
+          <li>Run an Executive Business Review (EBR) with an existing customer</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">How my manager checks this</div>
+        <ul>
+          <li>Quota attainment vs. ramp target reviewed</li>
+          <li>Champion strategy across pipeline inspected</li>
+          <li>Forecasting accuracy over previous 8 weeks reviewed</li>
+          <li>Gap analysis quality: is it honest and does the plan address root cause?</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">Relevant post-bootcamp modules</div>
+        <div class="s-pills">
+          <a href="syllabus.html" class="s-pill orange">6-Month Proficiency Review</a>
+          <a href="syllabus.html" class="s-pill orange">Manager-Assigned Missions</a>
+          <a href="syllabus.html" class="s-pill orange">Weekly Gong Call Review</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── YEAR 1 ─────────────────────────────────────────────────────────────── -->
+<div class="ms-panel" id="panel-yr">
+  <div class="period-hdr">
+    <h2>Year 1: Full Performance Review</h2>
+    <p>By the end of Year 1 I operate as a fully independent AE with a documented territory plan, a track record of pipeline generation, and clear Year 2 development goals.</p>
+  </div>
+
+  <div class="manager-check">
+    <div class="mc-icon">&#x1F3C5;</div>
+    <div>
+      <div class="mc-label">12-Month Performance Review</div>
+      <div class="mc-title">Territory plan presented · Full-year quota attainment · Year 2 goals documented</div>
+      <div class="mc-desc">I present my territory plan covering my top 20 accounts, Demandbase status, and next 90-day outbound strategy. Career development goals for Year 2 are documented in writing before this meeting. Manager reviews full-year quota attainment, pipeline health, and Gong coaching history.</div>
+    </div>
+  </div>
+
+  <div class="ms-card">
+    <div class="ms-card-hdr">
+      <div class="ms-card-icon navy">&#x1F3AF;</div>
+      <div><div class="ms-comp navy">All Competencies</div><div class="ms-card-title">I own my territory and can operate at full quota without close management</div></div>
+    </div>
+    <div class="ms-card-body">
+      <div class="ms-col">
+        <div class="ms-col-label">What I can do</div>
+        <ul>
+          <li>Present a territory plan for my top 20 accounts with Demandbase intent, SCOUT triggers, and next 90-day strategy</li>
+          <li>Full-year quota attainment reviewed and documented</li>
+          <li>Year 2 career development goals written and submitted before the meeting</li>
+          <li>Multi-thread on every Stage 3+ deal without being reminded</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">How my manager checks this</div>
+        <ul>
+          <li>Territory plan quality: strategic depth, not just a list of names</li>
+          <li>Full-year pipeline generation and quota attainment history</li>
+          <li>Year 2 goals: are they specific, measurable, and self-authored?</li>
+        </ul>
+      </div>
+      <div class="ms-col">
+        <div class="ms-col-label">Relevant post-bootcamp modules</div>
+        <div class="s-pills">
+          <a href="syllabus.html" class="s-pill">12-Month Performance Review</a>
+          <a href="syllabus.html" class="s-pill">Homeroom &mdash; Ongoing Bi-Weekly</a>
+          <a href="syllabus.html" class="s-pill">Manager-Assigned Missions</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<footer>Checkr Sales Onboarding 2026 &middot; My Onboarding Milestones &middot; Confidential &mdash; Internal Use Only</footer>
+
+<script>
+function show(id){
+  document.querySelectorAll('.ms-panel').forEach(function(p){p.style.display='none';});
+  document.querySelectorAll('.ps-item').forEach(function(b){b.classList.remove('active');});
+  document.getElementById('panel-'+id).style.display='block';
+  var ids=['wk1','wk1b','wk2','m1','m3','m6','yr'];
+  document.querySelectorAll('.ps-item')[ids.indexOf(id)].classList.add('active');
+  window.scrollTo({top:document.querySelector('.period-strip').offsetTop-70,behavior:'smooth'});
+}
+(function(){
+  document.querySelectorAll('.ms-panel').forEach(function(p){p.style.display='none';});
+  document.getElementById('panel-wk1').style.display='block';
+  document.getElementById('panel-wk1b').style.display='none';
+})();
+</script>
+</body>
+</html>

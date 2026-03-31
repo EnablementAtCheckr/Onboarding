@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Content Library — Checkr Sales 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1E448F;--teal:#45C0B9;--orange:#F37D53;--green:#29736F;--slate:#67727C;
+  --white:#fff;--dark:#0B1626;--bg:#F0F2F5;--border:#D4DAE1;
+  --navy-lt:#EBF0FA;--teal-lt:#E6F7F6;--org-lt:#FEF0EB;--grn-lt:#E3F2F1;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--dark);font-size:14px;line-height:1.5}
+
+/* NAV */
+.nav{background:var(--navy);padding:0 24px;display:flex;align-items:center;height:52px;position:sticky;top:0;z-index:100;gap:0;flex-wrap:nowrap;overflow-x:auto}
+.nav .logo{color:#fff;font-weight:600;font-size:13px;margin-right:20px;flex-shrink:0;white-space:nowrap}
+.nav a{color:rgba(255,255,255,.7);text-decoration:none;font-size:12px;font-weight:500;padding:0 9px;height:52px;display:flex;align-items:center;border-bottom:3px solid transparent;transition:all .15s;white-space:nowrap;flex-shrink:0}
+.nav a:hover,.nav a.active{color:#fff;border-bottom-color:var(--teal)}
+
+/* HERO */
+.hero{background:var(--navy);padding:36px 24px 32px;color:#fff}
+.hero-ey{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:8px}
+.hero h1{font-size:28px;font-weight:600;margin-bottom:6px}
+.hero p{color:rgba(255,255,255,.7);font-size:13px;max-width:800px}
+.hero-meta{display:flex;gap:20px;margin-top:12px;flex-wrap:wrap}
+.hero-stat{font-size:12px;color:rgba(255,255,255,.55)}
+.hero-stat strong{color:#fff;font-size:14px;font-weight:600;margin-right:3px}
+
+/* ROLE KEY BAR */
+.role-key{display:flex;gap:16px;align-items:center;padding:7px 24px;background:#fff;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.rk-label{font-size:11px;font-weight:600;color:var(--slate);text-transform:uppercase;letter-spacing:.06em;margin-right:4px}
+.rk-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--slate)}
+
+/* TOOLBAR */
+.toolbar{background:#fff;border-bottom:1px solid var(--border);padding:10px 24px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;position:sticky;top:52px;z-index:90}
+.toolbar-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--slate);flex-shrink:0}
+.search-box{position:relative;flex:0 0 280px}
+.search-box input{width:100%;padding:7px 12px 7px 30px;border:1px solid var(--border);border-radius:20px;font-size:13px;font-family:inherit;color:var(--dark);background:#F7F9FC;outline:none}
+.search-box input:focus{border-color:var(--navy);background:#fff}
+.search-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--slate);font-size:13px;pointer-events:none}
+.filter-group{display:flex;gap:5px;flex-wrap:wrap}
+.filter-btn{padding:5px 13px;border:1.5px solid var(--border);border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;background:#fff;color:var(--slate);font-family:inherit;transition:all .15s;letter-spacing:.02em}
+.filter-btn:hover{border-color:var(--navy);color:var(--navy)}
+.filter-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.sep{width:1px;height:22px;background:var(--border);margin:0 4px;flex-shrink:0}
+.src-btn{padding:5px 11px;border:1.5px solid var(--border);border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;background:#fff;font-family:inherit;transition:all .15s}
+.src-btn.act-cp{background:var(--navy-lt);color:var(--navy);border-color:var(--navy)}
+.src-btn.act-cf{background:var(--teal-lt);color:var(--green);border-color:var(--teal)}
+.src-btn.act-gd{background:var(--org-lt);color:#B85020;border-color:var(--orange)}
+.count-badge{font-size:12px;color:var(--slate);margin-left:auto;flex-shrink:0}
+.count-badge strong{color:var(--dark);font-weight:600}
+
+/* GRID — full width */
+.grid-wrap{padding:16px 24px 48px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:14px}
+
+/* CARD */
+.card{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:box-shadow .15s;display:flex;flex-direction:column}
+.card:hover{box-shadow:0 3px 18px rgba(0,0,0,.09)}
+.card.hidden{display:none}
+.card-hdr{padding:14px 16px 10px;border-bottom:1px solid var(--border)}
+.card-title-row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:7px}
+.card-title{font-size:14px;font-weight:600;color:var(--dark);line-height:1.35;flex:1}
+.src-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;flex-shrink:0;white-space:nowrap;align-self:flex-start;margin-top:2px}
+.src-checkpoint{background:var(--navy-lt);color:var(--navy)}
+.src-confluence{background:var(--teal-lt);color:var(--green)}
+.src-gdrive{background:var(--org-lt);color:#B85020}
+.src-other{background:#F1F2F4;color:var(--slate)}
+.card-roles{display:flex;gap:4px;flex-wrap:wrap}
+.rp{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;letter-spacing:.03em}
+.rp-req{background:var(--navy);color:#fff}
+.rp-rec{background:var(--navy-lt);color:var(--navy);border:1.5px solid var(--navy)}
+.card-desc{padding:11px 16px;font-size:12.5px;color:var(--slate);line-height:1.55;flex:1;border-bottom:1px solid var(--border)}
+
+/* SESSIONS */
+.card-sessions{padding:10px 16px;border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:6px}
+.sess-group{display:flex;align-items:flex-start;gap:6px;flex-wrap:wrap}
+.sess-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);flex-shrink:0;padding-top:3px;min-width:60px}
+.sess-pill{font-size:11px;font-weight:500;padding:2px 9px;border-radius:10px;text-decoration:none;transition:all .15s;display:inline-block}
+.pill-prework{background:#F0F2F5;color:var(--slate);border:1px solid var(--border)}
+.pill-prework:hover{background:var(--slate);color:#fff}
+.pill-bootcamp{background:var(--navy-lt);color:var(--navy);border:1px solid transparent}
+.pill-bootcamp:hover{background:var(--navy);color:#fff}
+
+/* KC BLOCK */
+.kc-block{border-top:0}
+.kc-toggle{padding:10px 16px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;background:#F7F9FC;transition:background .15s;user-select:none}
+.kc-toggle:hover{background:var(--navy-lt)}
+.kc-toggle.open .kc-arrow{transform:rotate(180deg)}
+.kc-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--slate)}
+.kc-arrow{font-size:9px;color:var(--slate);transition:transform .2s;display:inline-block}
+.kc-list{display:none;padding:0 16px 12px;list-style:none;counter-reset:kc-counter}
+.kc-list.open{display:flex;flex-direction:column;gap:6px;padding-top:10px}
+.kc-list li{font-size:12px;color:var(--dark);line-height:1.45;padding:8px 10px 8px 36px;background:#fff;border-radius:6px;border:1px solid var(--border);counter-increment:kc-counter;position:relative}
+.kc-list li::before{content:counter(kc-counter);position:absolute;left:10px;top:8px;width:18px;height:18px;background:var(--teal);color:#fff;border-radius:50%;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center;line-height:18px}
+
+/* NO RESULTS */
+.no-results{display:none;text-align:center;padding:60px 20px;color:var(--slate);grid-column:1/-1}
+.no-results h3{font-size:18px;color:var(--dark);margin-bottom:8px}
+
+footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:20px;font-size:12px}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <span class="logo">Checkr Sales Onboarding 2026</span>
+  <a href="index.html">Overview</a>
+  <a href="prework.html">Pre-Work</a>
+  <a href="bootcamp.html">Bootcamp</a>
+  <a href="syllabus.html" class="active">Content Library</a>
+  <a href="competency.html">Competency Framework</a>
+  <a href="milestones2.html">My Milestones</a>
+  <a href="timeline.html">Journey</a>
+  <a href="playbook.html">New Hire Playbooks</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-ey">Training Content Library</div>
+  <h1>All Learning Modules</h1>
+  <p>32 modules with knowledge checks, role assignments, and links to supporting pre-work and bootcamp sessions. Filter by role or source, or search by topic.</p>
+  <div class="hero-meta">
+    <div class="hero-stat"><strong>32</strong> modules</div>
+    <div class="hero-stat"><strong>128</strong> knowledge checks</div>
+    <div class="hero-stat"><strong>5</strong> roles &nbsp;AE &middot; CSM &middot; AM &middot; SE &middot; BDR</div>
+    <div class="hero-stat"><strong>3</strong> sources &nbsp;Checkpoint &middot; Confluence &middot; Google Drive</div>
+  </div>
+</div>
+
+<div class="role-key">
+  <span class="rk-label">Key:</span>
+  <div class="rk-item"><span class="rp rp-req" style="margin-right:3px">AE</span> Required</div>
+  <div class="rk-item"><span class="rp rp-rec" style="margin-right:3px">AE</span> Recommended</div>
+  <div class="rk-item" style="margin-left:8px"><span class="src-badge src-checkpoint">Checkpoint</span></div>
+  <div class="rk-item"><span class="src-badge src-confluence">Confluence</span></div>
+  <div class="rk-item"><span class="src-badge src-gdrive">Google Drive</span></div>
+  <div class="rk-item" style="margin-left:8px"><span class="sess-pill pill-prework">Pre-Work session</span></div>
+  <div class="rk-item"><span class="sess-pill pill-bootcamp">Bootcamp session</span></div>
+</div>
+
+<div class="toolbar">
+  <div class="search-box">
+    <span class="search-icon">&#x2315;</span>
+    <input type="text" id="search" placeholder="Search modules..." oninput="applyFilters()">
+  </div>
+  <div class="sep"></div>
+  <span class="toolbar-label">Role</span>
+  <div class="filter-group">
+    <button class="filter-btn" data-role="AE" onclick="toggleRole(this)">AE</button>
+    <button class="filter-btn" data-role="CSM" onclick="toggleRole(this)">CSM</button>
+    <button class="filter-btn" data-role="AM" onclick="toggleRole(this)">AM</button>
+    <button class="filter-btn" data-role="SE" onclick="toggleRole(this)">SE</button>
+    <button class="filter-btn" data-role="BDR" onclick="toggleRole(this)">BDR</button>
+  </div>
+  <div class="sep"></div>
+  <span class="toolbar-label">Source</span>
+  <div class="filter-group">
+    <button class="src-btn" data-src="checkpoint" onclick="toggleSrc(this)">Checkpoint</button>
+    <button class="src-btn" data-src="confluence" onclick="toggleSrc(this)">Confluence</button>
+    <button class="src-btn" data-src="gdrive" onclick="toggleSrc(this)">Google Drive</button>
+  </div>
+  <div class="sep"></div>
+  <button onclick="clearAll()" style="font-size:11px;color:var(--slate);background:none;border:none;cursor:pointer;font-family:inherit;padding:4px 8px;border-radius:6px" onmouseover="this.style.background='#F7F9FC'" onmouseout="this.style.background='none'">&#x2715; Clear</button>
+  <div class="count-badge">Showing <strong id="count-num">32</strong> of 32</div>
+</div>
+
+<div class="grid-wrap">
+  <div class="grid" id="card-grid">
+<div class="card" data-AE="req" data-CSM="req" data-AM="req" data-SE="req" data-BDR="req">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">Company Overview &amp; Mission</div>
+      <span class="src-badge src-checkpoint">Checkpoint</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-req">CSM</span><span class="rp rp-req">AM</span><span class="rp rp-req">SE</span><span class="rp rp-req">BDR</span></div>
+  </div>
+  <div class="card-desc">Checkr's history, mission, values, product portfolio overview, company structure, and the relationship between Checkr Core and Truework as a business unit.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Pre-Work</span><a href="bootcamp.html" class="sess-pill pill-prework">Review: Pains and Personas</a><a href="bootcamp.html" class="sess-pill pill-prework">Checkr Sales Process</a></div><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">Introductions &amp; Bootcamp Schedule Review</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Review: Pains and Personas</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>What is Checkr's core mission and what market does it primarily serve?</li><li>How does Checkr's technology-first approach differ from legacy background check vendors?</li><li>What is the difference between Checkr Core and Truework and how do they relate?</li><li>Who are Checkr's primary ICP segments by company size and key industry?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="rec" data-AM="req" data-SE="req" data-BDR="req">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">ICP &amp; Buyer Personas</div>
+      <span class="src-badge src-checkpoint">Checkpoint</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-rec">CSM</span><span class="rp rp-req">AM</span><span class="rp rp-req">SE</span><span class="rp rp-req">BDR</span></div>
+  </div>
+  <div class="card-desc">Deep dive into Checkr's ideal customer profiles, key buyer personas (HR, TA, Ops, Procurement), decision criteria by role, and the buying process across Enterprise, Commercial, and SMB segments.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Pre-Work</span><a href="bootcamp.html" class="sess-pill pill-prework">ICP & Personas 101</a><a href="bootcamp.html" class="sess-pill pill-prework">Review: Pains and Personas</a></div><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">Pains and Personas Activity</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Persona / Trigger Activity</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>What are the top 3 verticals Checkr serves and why is hiring volume significant for each?</li><li>Who are the typical buyer and champion roles in a Checkr deal and how do their motivations differ?</li><li>What triggers a company to evaluate a new background check vendor?</li><li>How does the decision-making process differ for Enterprise vs. Commercial vs. SMB customers?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="req" data-AM="req" data-SE="req" data-BDR="rec">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">Core Products: Background Screening Portfolio</div>
+      <span class="src-badge src-checkpoint">Checkpoint</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-req">CSM</span><span class="rp rp-req">AM</span><span class="rp rp-req">SE</span><span class="rp rp-rec">BDR</span></div>
+  </div>
+  <div class="card-desc">Comprehensive overview of all Checkr screening products: criminal (county, state, federal, national), MVR, drug testing, employment/education/license verification, ID verification, continuous criminal monitoring, and international checks.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Pre-Work</span><a href="bootcamp.html" class="sess-pill pill-prework">Product 101 — Full Product Suite</a></div><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">Product &amp; Industry Fireside Panel</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>What is the difference between a National Criminal Database search and a County Criminal search?</li><li>What does Continuous Criminal Monitoring (C-Crim) do and why do customers use it?</li><li>What does Checkr's employment verification product cover and what are typical SLAs?</li><li>When would a customer need an international background check vs. a domestic-only check?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="req" data-AM="req" data-SE="req" data-BDR="rec">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">Packages &amp; Screening Configurations</div>
+      <span class="src-badge src-confluence">Confluence</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-req">CSM</span><span class="rp rp-req">AM</span><span class="rp rp-req">SE</span><span class="rp rp-rec">BDR</span></div>
+  </div>
+  <div class="card-desc">How to structure background check packages — pre-built tiers (Basic, Standard, Pro), custom builds, county/federal criminal add-ons, aliases, and package configuration best practices by use case and vertical.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Pre-Work</span><a href="bootcamp.html" class="sess-pill pill-prework">Product 101 — Full Product Suite</a></div><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">Product &amp; Industry Fireside Panel</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Salesforce Quoting &amp; Order Forms</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>What screening components make up a standard criminal background check package?</li><li>How does Checkr's package tiering (Basic → Standard → Pro) align to different customer needs?</li><li>What is an alias search and when is it important to include in a package?</li><li>How does a customer configure and manage custom packages in the Checkr dashboard?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="req" data-AM="rec" data-SE="req" data-BDR="rec">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">Candidate Experience &amp; Applicant Flow</div>
+      <span class="src-badge src-checkpoint">Checkpoint</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-req">CSM</span><span class="rp rp-rec">AM</span><span class="rp rp-req">SE</span><span class="rp rp-rec">BDR</span></div>
+  </div>
+  <div class="card-desc">End-to-end walkthrough of the candidate-facing experience: invitation, mobile-first portal, status tracking, dispute process, and adverse action notifications — and why it matters in a sales conversation.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Pre-Work</span><a href="bootcamp.html" class="sess-pill pill-prework">Product 101 — Full Product Suite</a></div><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">Product &amp; Industry Fireside Panel</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>What can a candidate do inside the Checkr applicant portal?</li><li>What communication touchpoints does Checkr send to candidates and at what stages?</li><li>How does Checkr's adverse action workflow protect customers from compliance violations?</li><li>What makes Checkr's candidate experience measurably better than traditional providers?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="rec" data-AM="req" data-SE="req" data-BDR="rec">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">Integrations &amp; ATS/HRIS Ecosystem</div>
+      <span class="src-badge src-gdrive">Google Drive</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-rec">CSM</span><span class="rp rp-req">AM</span><span class="rp rp-req">SE</span><span class="rp rp-rec">BDR</span></div>
+  </div>
+  <div class="card-desc">Overview of Checkr's 100+ ATS/HRIS native integrations (ADP, Workday, Greenhouse, Lever, iCIMS, SAP, and more), the value of native vs. API integration, and how integrations are positioned in a sales cycle.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Pre-Work</span><a href="bootcamp.html" class="sess-pill pill-prework">Product 101 — Full Product Suite</a></div><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">Product &amp; Industry Fireside Panel</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">SE Partnership &amp; Rules of Engagement</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>Name 5 ATS/HRIS platforms with a native Checkr integration and their primary customer segment.</li><li>What is the typical implementation timeline for a standard ATS integration go-live?</li><li>How does deep integration (vs. a simple connector) create switching cost and retention value?</li><li>When should a customer choose Checkr's developer API instead of a pre-built integration?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="rec" data-AM="req" data-SE="rec" data-BDR="req">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">Audible Ready Pitch (Command of the Message)</div>
+      <span class="src-badge src-checkpoint">Checkpoint</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-rec">CSM</span><span class="rp rp-req">AM</span><span class="rp rp-rec">SE</span><span class="rp rp-req">BDR</span></div>
+  </div>
+  <div class="card-desc">The CoM framework for delivering a value-based pitch anchored in customer pain: Before State, After State, Required Capabilities, Value Drivers, and Proof Points. Core of the Checkr selling language.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Pre-Work</span><a href="bootcamp.html" class="sess-pill pill-prework">Command of the Message 101</a></div><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">Command of the Message Deep Dive</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Asking Good Questions</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>What are the four components of the Command of the Message (CoM) framework?</li><li>How do you describe a customer's 'Before State' and why do you start there (not with product)?</li><li>What is a proof point and how do you use one to validate a claim in a customer conversation?</li><li>Deliver a 90-second pitch on 'what Checkr does and who we serve' using CoM structure.</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="no" data-AM="req" data-SE="rec" data-BDR="rec">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">MEDDICC Qualification Framework</div>
+      <span class="src-badge src-checkpoint">Checkpoint</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-req">AM</span><span class="rp rp-rec">SE</span><span class="rp rp-rec">BDR</span></div>
+  </div>
+  <div class="card-desc">How to apply MEDDICC to qualify and advance every opportunity: Metrics, Economic Buyer, Decision Criteria, Decision Process, Identify Pain, Champion, Competition. Includes deal scoring and forecast tie-in.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Pre-Work</span><a href="bootcamp.html" class="sess-pill pill-prework">Checkr Sales Process</a></div><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">Opp Walkthrough</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>What does each letter in MEDDICC stand for and what question does each answer?</li><li>Why is identifying and testing the Economic Buyer critical to advancing a deal to Stage 3+?</li><li>How do you identify and test whether someone is a true Champion vs. a friendly Coach?</li><li>How does MEDDICC completeness directly affect forecast confidence and deal timing?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="no" data-AM="req" data-SE="rec" data-BDR="rec">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">Discovery Excellence: L2/L3 Question Bank</div>
+      <span class="src-badge src-gdrive">Google Drive</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-req">AM</span><span class="rp rp-rec">SE</span><span class="rp rp-rec">BDR</span></div>
+  </div>
+  <div class="card-desc">A curated set of Level 2 (pain) and Level 3 (impact/urgency) discovery questions organized by MEDDICC element, with example buyer responses, coaching notes, and a pre-call plan template.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Pre-Work</span><a href="bootcamp.html" class="sess-pill pill-prework">Call Overviews — All 4 Conversation Types</a></div><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">Asking Good Questions</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Prep for Discovery Call Exercise</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Discovery Call Role-Play</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Discovery Call | Calibration</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>What is the difference between a Level 1, Level 2, and Level 3 discovery question?</li><li>Give an example of a Level 2 question for uncovering pain around FCRA compliance risk.</li><li>How do you transition from uncovering pain in discovery to quantifying the business impact?</li><li>How do you use a 5-minute pre-call plan to ensure discovery stays focused on pain, not features?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="rec" data-AM="rec" data-SE="req" data-BDR="no">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">WOW Demo Framework &amp; Certification</div>
+      <span class="src-badge src-checkpoint">Checkpoint</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-rec">CSM</span><span class="rp rp-rec">AM</span><span class="rp rp-req">SE</span></div>
+  </div>
+  <div class="card-desc">How to structure and deliver an outcome-based product demo: set the stage (link to discovery), show three 'WOW moments,' handle questions with CoM, and confirm next step before leaving the call.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Pre-Work</span><a href="bootcamp.html" class="sess-pill pill-prework">Call Overviews — All 4 Conversation Types</a></div><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">Demo Call Prep</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Demo Call Role-Play</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Demo Call Calibration</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>What is the purpose of the 'set the stage' phase before you start the product demo?</li><li>How do you tie a specific product feature to an exact business outcome the buyer shared in discovery?</li><li>What are three 'WOW moments' in a standard Checkr product demo and why does each resonate?</li><li>How do you handle a feature gap or known limitation when it comes up during a live demo?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="no" data-AM="req" data-SE="no" data-BDR="req">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">Prospecting &amp; Pipeline Generation</div>
+      <span class="src-badge src-checkpoint">Checkpoint</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-req">AM</span><span class="rp rp-req">BDR</span></div>
+  </div>
+  <div class="card-desc">Outbound prospecting methodology: ICP account targeting, persona identification, Outreach sequence strategy, cold call framework, social selling via LinkedIn SalesNav, and daily prospecting habits.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Pre-Work</span><a href="bootcamp.html" class="sess-pill pill-prework">Outbound Playbook Review — Manager Meeting</a></div><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">Account Prioritization</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Using Gong</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Messaging &mdash; Emails &amp; LinkedIn</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Tools: Athean &amp; Sequences Deep Dive</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Best Practices for Productivity at Checkr</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>What criteria define a Tier 1 target account within Checkr's ICP?</li><li>How do you structure a multi-touch outreach sequence (email, phone, LinkedIn) for a cold prospect?</li><li>What are the key elements of a strong cold call opening using the CoM framework?</li><li>How do you use LinkedIn Sales Navigator to identify buying signals and prioritize your outreach queue?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="rec" data-AM="req" data-SE="rec" data-BDR="no">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">Business Value Assessment (BVA)</div>
+      <span class="src-badge src-checkpoint">Checkpoint</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-rec">CSM</span><span class="rp rp-req">AM</span><span class="rp rp-rec">SE</span></div>
+  </div>
+  <div class="card-desc">Framework for quantifying the customer's pain in financial terms: cost of status quo, value of automation, compliance risk exposure, and how to build a customer-verified ROI model that creates urgency.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">Opp Walkthrough</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>What are the four value levers Checkr uses in a standard BVA?</li><li>How do you gather the inputs needed to build a BVA during a discovery call (without being intrusive)?</li><li>What is the difference between a 'soft' and a 'hard' ROI in a BVA and when do you use each?</li><li>When in the sales cycle should a BVA be presented to the customer and in what format?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="rec" data-AM="req" data-SE="no" data-BDR="no">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">Pricing, Packaging &amp; Commercial Conversations</div>
+      <span class="src-badge src-gdrive">Google Drive</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-rec">CSM</span><span class="rp rp-req">AM</span></div>
+  </div>
+  <div class="card-desc">How Checkr's pricing model works (per-check, volume tiers, packages), price anchoring before quoting, handling 'you're too expensive,' rational drowning, and the internal discount approval process.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Pre-Work</span><a href="bootcamp.html" class="sess-pill pill-prework">Call Overviews — All 4 Conversation Types</a></div><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">Pricing Call Prep</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Pricing Call Role-Play</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Pricing Call Calibration</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Salesforce Quoting &amp; Order Forms</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>What is Checkr's primary pricing model and what factors drive volume-based discounts?</li><li>How do you anchor the conversation on value and ROI before introducing any pricing numbers?</li><li>What is 'rational drowning' and when do you deploy it in a commercial conversation?</li><li>What is the internal process and approval path for a non-standard discount or custom term?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="rec" data-AM="req" data-SE="req" data-BDR="rec">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">Competitive Differentiation &amp; Battlecards</div>
+      <span class="src-badge src-checkpoint">Checkpoint</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-rec">CSM</span><span class="rp rp-req">AM</span><span class="rp rp-req">SE</span><span class="rp rp-rec">BDR</span></div>
+  </div>
+  <div class="card-desc">Detailed comparison of Checkr vs. top competitors (First Advantage/FADV, HireRight, Sterling, Accurate): positioning angles, key proof points, trap-setting strategies, and how to protect against a competitive switch.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Pre-Work</span><a href="bootcamp.html" class="sess-pill pill-prework">Competitor Overview 101</a></div><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">Competition: Setting Traps &amp; Handling Objections</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Overcoming Inertia</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Overcoming Inertia | Ball Toss</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>What are Checkr's top 3 differentiation points vs. First Advantage (FADV)?</li><li>How does Checkr's fair chance and compliance toolset compare to Sterling's offering?</li><li>What is a 'trap' in the CoM sense and how do you set one early in a deal to protect against competitors?</li><li>How do you respond when a buyer says: 'We already have a background check vendor we're happy with'?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="rec" data-AM="req" data-SE="rec" data-BDR="rec">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">Objection Handling (CoM Response Framework)</div>
+      <span class="src-badge src-checkpoint">Checkpoint</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-rec">CSM</span><span class="rp rp-req">AM</span><span class="rp rp-rec">SE</span><span class="rp rp-rec">BDR</span></div>
+  </div>
+  <div class="card-desc">How to handle the most common Checkr sales objections using the four-step CoM response: acknowledge, redirect, proof point, confirm. Includes a curated library of top objections and responses.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Pre-Work</span><a href="bootcamp.html" class="sess-pill pill-prework">Competitor Overview 101</a></div><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">Overcoming Inertia</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Overcoming Inertia | Ball Toss</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Competition: Setting Traps &amp; Handling Objections</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>What are the four steps in the CoM objection response framework?</li><li>How do you respond to: 'Your turnaround times are slower than our current vendor'?</li><li>How do you respond to: 'We're locked into a multi-year contract with our current provider'?</li><li>How do you distinguish a real objection from a brush-off, and how does your response differ?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="req" data-AM="req" data-SE="rec" data-BDR="rec">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">Fair Chance Hiring &amp; Compliance</div>
+      <span class="src-badge src-checkpoint">Checkpoint</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-req">CSM</span><span class="rp rp-req">AM</span><span class="rp rp-rec">SE</span><span class="rp rp-rec">BDR</span></div>
+  </div>
+  <div class="card-desc">How Checkr's platform supports FCRA compliance, ban-the-box laws, adverse action workflows, and fair chance hiring analytics — and how to position compliance as a risk-mitigation differentiator in a sales conversation.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Pre-Work</span><a href="bootcamp.html" class="sess-pill pill-prework">Product 101 — Full Product Suite</a></div><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">SE Partnership &amp; Rules of Engagement</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Product &amp; Industry Fireside Panel</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>What is the FCRA and what obligations does it create for employers running background checks?</li><li>What is 'ban-the-box' legislation and how does it vary by state and municipality?</li><li>How does Checkr's automated adverse action workflow reduce compliance risk for customers?</li><li>Why is fair chance hiring an increasing business driver for enterprise employers — and for Checkr's brand?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="no" data-AM="req" data-SE="no" data-BDR="no">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">Sales Process: Stages, Gates &amp; Exit Criteria</div>
+      <span class="src-badge src-confluence">Confluence</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-req">AM</span></div>
+  </div>
+  <div class="card-desc">Checkr's defined sales stages, entry/exit criteria at each gate, what MEDDICC elements must be documented per stage, and how managers use stage quality to inspect deal health and forecast accuracy.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Pre-Work</span><a href="bootcamp.html" class="sess-pill pill-prework">Checkr Sales Process</a></div><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">Opp Walkthrough</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>What are Checkr's defined sales stages and what is the key exit criterion for Stage 2?</li><li>What MEDDICC elements must be documented before a deal can advance to Stage 3+?</li><li>What does a 'commit' forecast category mean vs. 'best case' vs. 'pipeline' in Clari?</li><li>How should an AE prepare their deal narrative for a stage-gate deal review with their manager?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="req" data-AM="req" data-SE="rec" data-BDR="req">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">SFDC Opportunity Management &amp; Hygiene</div>
+      <span class="src-badge src-confluence">Confluence</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-req">CSM</span><span class="rp rp-req">AM</span><span class="rp rp-rec">SE</span><span class="rp rp-req">BDR</span></div>
+  </div>
+  <div class="card-desc">How to build and maintain clean, inspection-ready opportunities in Salesforce: required fields, next-step documentation, opportunity naming, account data, and pipeline hygiene best practices.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Pre-Work</span><a href="bootcamp.html" class="sess-pill pill-prework">Checkr Sales Process</a></div><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">Opp Walkthrough</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Salesforce Quoting &amp; Order Forms</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>What are the required fields on a Checkr SFDC opportunity and why does each one matter?</li><li>How should 'next steps' be documented in SFDC — and how often must they be updated?</li><li>How do you quickly navigate your full account book and pipeline view in SFDC?</li><li>What distinguishes a new logo opportunity from an expansion opportunity in SFDC?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="no" data-AM="req" data-SE="no" data-BDR="no">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">Forecast Management: SFDC &amp; Clari</div>
+      <span class="src-badge src-confluence">Confluence</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-req">AM</span></div>
+  </div>
+  <div class="card-desc">How to submit and maintain an accurate weekly forecast using SFDC and Clari: forecast categories, deal confidence scoring, the weekly submission cadence, and how managers inspect forecast integrity.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Pre-Work</span><a href="bootcamp.html" class="sess-pill pill-prework">Checkr Sales Process</a></div><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">Tools: Looker and Homerooms</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">How to Be Productive</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>What are the forecast categories in Clari and what conviction level does each represent?</li><li>How and when do you update your forecast in Clari — and what is the weekly deadline?</li><li>How does a manager use Clari and SFDC to inspect forecast accuracy and identify early-warning signals?</li><li>What is 'sandbagging,' why does it undermine planning, and how do managers spot it?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="no" data-AM="rec" data-SE="no" data-BDR="req">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">Outreach: Sequences &amp; Personalized Messaging</div>
+      <span class="src-badge src-confluence">Confluence</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-rec">AM</span><span class="rp rp-req">BDR</span></div>
+  </div>
+  <div class="card-desc">How to use Outreach to build and run multi-touch prospecting sequences: sequence structure and length, personalization best practices by persona, A/B testing, engagement signals, and top-performing templates.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Pre-Work</span><a href="bootcamp.html" class="sess-pill pill-prework">Outbound Playbook Review — Manager Meeting</a></div><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">Tools: Athean &amp; Sequences Deep Dive</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Messaging &mdash; Emails &amp; LinkedIn</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Campaigns</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>What is the recommended sequence length and touch frequency for a cold outbound prospect?</li><li>How do you personalize an Outreach email template for a specific persona (e.g., Head of TA at a 500-person logistics company)?</li><li>How do you use Outreach task views to structure and prioritize your daily prospecting activity?</li><li>What engagement signals in Outreach indicate a prospect is warming up and worth a phone call?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="rec" data-AM="req" data-SE="no" data-BDR="req">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">LinkedIn Sales Navigator: Prospecting &amp; Account Mapping</div>
+      <span class="src-badge src-confluence">Confluence</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-rec">CSM</span><span class="rp rp-req">AM</span><span class="rp rp-req">BDR</span></div>
+  </div>
+  <div class="card-desc">How to use LinkedIn Sales Navigator for persona identification, account research, org chart mapping, lead generation, and layering social selling alongside an Outreach email and phone sequence.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Pre-Work</span><a href="bootcamp.html" class="sess-pill pill-prework">Outbound Playbook Review — Manager Meeting</a></div><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">Using Gong</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Account Prioritization</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>How do you use Sales Navigator to identify the right decision-maker (buyer vs. champion) at a target account?</li><li>What are 'buying signals' on LinkedIn and how do you use them to prioritize your outreach?</li><li>How do you build a target Account List in Sales Navigator aligned to your ICP criteria?</li><li>How do you use InMail vs. connection requests vs. email as part of a multi-touch sequence without being spammy?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="no" data-AM="rec" data-SE="no" data-BDR="req">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">ZoomInfo: Lead Intelligence &amp; Prospecting</div>
+      <span class="src-badge src-confluence">Confluence</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-rec">AM</span><span class="rp rp-req">BDR</span></div>
+  </div>
+  <div class="card-desc">How to use ZoomInfo for contact enrichment, org chart mapping, technographic signals, intent data, and building targeted prospect lists that feed Outreach sequences with qualified, accurate data.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Pre-Work</span><a href="bootcamp.html" class="sess-pill pill-prework">Outbound Playbook Review — Manager Meeting</a></div><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">Using Gong</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>How do you build a ZoomInfo prospect list filtered to your ICP (industry, company size, tech stack)?</li><li>What is technographic data in ZoomInfo and how do you use it to find integration-ready prospects?</li><li>How do you export ZoomInfo contacts into SFDC and Outreach without creating data duplicates?</li><li>Which ZoomInfo data fields are most reliable vs. most likely to be stale and why does it matter?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="req" data-AM="req" data-SE="req" data-BDR="rec">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">Gong: Call Recording, AI Insights &amp; Coaching</div>
+      <span class="src-badge src-confluence">Confluence</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-req">CSM</span><span class="rp rp-req">AM</span><span class="rp rp-req">SE</span><span class="rp rp-rec">BDR</span></div>
+  </div>
+  <div class="card-desc">How to set up Gong auto-recording, find curated call examples in the library, use AI call insights (talk ratio, questions asked, next steps), and how managers use Gong to coach AE performance at scale.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Pre-Work</span><a href="bootcamp.html" class="sess-pill pill-prework">Gong Call Library — 1-2 Calls Per Day</a></div><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">Using Gong</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">How to Be Productive</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>How do you set up Gong auto-recording for all Zoom customer calls?</li><li>How do you find the New Hire Discovery Call Library and curated coaching examples in Gong?</li><li>What Gong analytics does a sales manager use to identify coaching opportunities for an AE?</li><li>How do you use Gong's AI insights to improve your discovery talk ratio and question depth?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="rec" data-AM="req" data-SE="no" data-BDR="no">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">Mutual Action Plan (MAP)</div>
+      <span class="src-badge src-checkpoint">Checkpoint</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-rec">CSM</span><span class="rp rp-req">AM</span></div>
+  </div>
+  <div class="card-desc">How to create, introduce, and maintain a customer-facing Mutual Action Plan that aligns milestones, resources, and timing — and how a strong MAP accelerates deal velocity and builds champion accountability.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Pre-Work</span><a href="bootcamp.html" class="sess-pill pill-prework">Checkr Sales Process</a></div><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">Prep for Discovery Call Exercise</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Discovery Call Role-Play</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Opp Walkthrough</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>What are the key components of a Checkr MAP template?</li><li>When in the sales process do you introduce a MAP to the customer — and how do you frame it?</li><li>How do you use a MAP to create urgency, set a close date, and hold the customer accountable?</li><li>What does a 'dead MAP' look like and what does it signal about deal health and champion strength?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="no" data-AM="req" data-SE="no" data-BDR="no">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">Procurement Engagement &amp; Negotiation</div>
+      <span class="src-badge src-gdrive">Google Drive</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-req">AM</span></div>
+  </div>
+  <div class="card-desc">How to engage procurement as a member of the buy team: understanding their priorities, navigating legal redlines, protecting commercial value, keeping the champion engaged, and closing without unnecessary concessions.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">SE Partnership &amp; Rules of Engagement</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Opp Walkthrough</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>What are the top 3 priorities procurement teams typically have when evaluating a new vendor?</li><li>How do you re-engage the business Champion when procurement is stalling or has gone dark?</li><li>What are the most common contract redlines from customers and how do you escalate them?</li><li>How do you protect price in a procurement negotiation while maintaining a constructive relationship?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="rec" data-AM="req" data-SE="no" data-BDR="no">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">Legal Process: NDA, MSA &amp; Order Forms</div>
+      <span class="src-badge src-confluence">Confluence</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-rec">CSM</span><span class="rp rp-req">AM</span></div>
+  </div>
+  <div class="card-desc">Step-by-step process for initiating legal documents, managing NDA/MSA redlines, requesting order forms, tracking legal status in SFDC, and escalating blockers through the right internal channels.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">SE Partnership &amp; Rules of Engagement</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Salesforce Quoting &amp; Order Forms</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>When is an NDA required in a Checkr sales cycle and how do you initiate the request?</li><li>What is the standard process for getting a Checkr MSA approved and who signs off internally?</li><li>How do you request a custom order form and what information is required to submit the request?</li><li>What is the escalation path if a customer's legal team introduces unusual or non-standard terms?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="req" data-AM="req" data-SE="req" data-BDR="no">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">Customer Onboarding &amp; CSM Handoff Process</div>
+      <span class="src-badge src-confluence">Confluence</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-req">CSM</span><span class="rp rp-req">AM</span><span class="rp rp-req">SE</span></div>
+  </div>
+  <div class="card-desc">How a new customer transitions from AE to CSM at deal close: the handoff checklist, required information, onboarding phases, go-live timeline expectations, and how the AE supports early customer success.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">Opp Walkthrough</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>What information must be passed from AE to CSM at deal close for a smooth, trust-building handoff?</li><li>What does a Checkr customer's onboarding timeline look like in the first 90 days?</li><li>What is the AE's role during the customer's implementation phase after the deal is closed?</li><li>How do you set accurate customer expectations for go-live timing, configuration, and integration setup?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="req" data-AM="req" data-SE="no" data-BDR="no">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">Expansion Selling &amp; Cross-Sell Playbook</div>
+      <span class="src-badge src-checkpoint">Checkpoint</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-req">CSM</span><span class="rp rp-req">AM</span></div>
+  </div>
+  <div class="card-desc">How to identify, prioritize, and pursue expansion within the existing customer base: multi-product cross-sell (C-Crim, International, Drug), new BU land, volume growth, and AE/CSM co-selling partnership.</div>
+  
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>What signals indicate an existing customer is ready and receptive to an expansion conversation?</li><li>How do you decide which multi-product expansion to lead with (C-Crim vs. International vs. Drug)?</li><li>What is the difference between an upsell and a cross-sell, and how does each affect ARR?</li><li>How do you partner with a CSM to identify and convert expansion opportunities without stepping on their relationship?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="req" data-AM="req" data-SE="rec" data-BDR="no">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">Checkr Analytics &amp; Customer Reporting</div>
+      <span class="src-badge src-confluence">Confluence</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-req">CSM</span><span class="rp rp-req">AM</span><span class="rp rp-rec">SE</span></div>
+  </div>
+  <div class="card-desc">Overview of Checkr's built-in analytics for customers: turnaround time reporting, candidate funnel metrics, adjudication trends, and how to leverage analytics data in a business case or Executive Business Review.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">Tools: Looker and Homerooms</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>What reports and dashboards does Checkr provide to customers through the admin portal?</li><li>How do turnaround time and completion rate analytics build a business case for switching to Checkr?</li><li>How do you use Checkr analytics data in an Executive Business Review (EBR) to prove value?</li><li>What is Checkr Analytics and how does it help customers benchmark their own hiring funnel performance?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="rec" data-AM="req" data-SE="no" data-BDR="no">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">Account Planning &amp; Territory Strategy</div>
+      <span class="src-badge src-gdrive">Google Drive</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-rec">CSM</span><span class="rp rp-req">AM</span></div>
+  </div>
+  <div class="card-desc">How to build and execute a strategic account plan: account tiering (T1/T2/T3), whitespace analysis, stakeholder mapping, expansion plays, competitive exposure analysis, and annual target-setting.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Pre-Work</span><a href="bootcamp.html" class="sess-pill pill-prework">Outbound Playbook Review — Manager Meeting</a></div><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">Account Prioritization</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Using Gong</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>How do you tier your account book into Tier 1, 2, and 3 accounts — and what drives the tiering criteria?</li><li>What are the 6 core elements of a complete Checkr account plan?</li><li>How do you identify whitespace for new logo acquisition or expansion within your assigned territory?</li><li>How often should an account plan be updated and what business event should trigger a major revision?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="no" data-AM="req" data-SE="no" data-BDR="req">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">Demandbase: Intent Signals &amp; ABM Targeting</div>
+      <span class="src-badge src-confluence">Confluence</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-req">AM</span><span class="rp rp-req">BDR</span></div>
+  </div>
+  <div class="card-desc">How to use Demandbase intent signals and account engagement scores to prioritize outreach, identify warm in-market accounts, and coordinate with Marketing on targeted ABM campaigns.</div>
+  <div class="card-sessions"><div class="sess-group"><span class="sess-label">Pre-Work</span><a href="bootcamp.html" class="sess-pill pill-prework">Outbound Playbook Review — Manager Meeting</a></div><div class="sess-group"><span class="sess-label">Bootcamp</span><a href="bootcamp.html" class="sess-pill pill-bootcamp">Using Gong</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Account Prioritization</a><a href="bootcamp.html" class="sess-pill pill-bootcamp">Campaigns</a></div></div>
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>What is 'intent data' and how does Demandbase surface it for your target account list?</li><li>How do you use a Demandbase engagement score to rank and prioritize your daily outreach queue?</li><li>How does Demandbase data integrate with SFDC and Outreach to create a seamless prospecting workflow?</li><li>What are the top 3 practical use cases for Demandbase in a commercial or enterprise AE's daily routine?</li></ol></div>
+</div>
+<div class="card" data-AE="req" data-CSM="req" data-AM="req" data-SE="no" data-BDR="no">
+  <div class="card-hdr">
+    <div class="card-title-row">
+      <div class="card-title">Executive Business Review (EBR) Framework</div>
+      <span class="src-badge src-checkpoint">Checkpoint</span>
+    </div>
+    <div class="card-roles"><span class="rp rp-req">AE</span><span class="rp rp-req">CSM</span><span class="rp rp-req">AM</span></div>
+  </div>
+  <div class="card-desc">How to prepare, structure, and deliver an EBR: agenda template, value realization summary (what we delivered), roadmap preview, and how to position renewal and expansion without being transactional.</div>
+  
+  <div class="kc-block"><div class="kc-toggle" onclick="toggleKC(this)"><span class="kc-label">&#x1F4CB; Knowledge Checks (4)</span><span class="kc-arrow">&#x25BC;</span></div><ol class="kc-list"><li>What is the purpose of an EBR and how does it differ from a standard quarterly business review?</li><li>What data, proof points, and visual formats make an EBR presentation compelling to an executive buyer?</li><li>How do you position renewal and expansion opportunities inside an EBR conversation naturally?</li><li>Who should be invited to an EBR from the customer side, and how do you get the right people in the room?</li></ol></div>
+</div>
+    <div class="no-results" id="no-results">
+      <h3>No modules match your filters</h3>
+      <p>Try adjusting your search or clearing filters.</p>
+      <button onclick="clearAll()" style="margin-top:14px;padding:8px 20px;background:var(--navy);color:#fff;border:none;border-radius:8px;cursor:pointer;font-family:inherit;font-size:13px">Clear all filters</button>
+    </div>
+  </div>
+</div>
+
+<footer>Checkr Sales Onboarding 2026 &middot; Content Library &middot; Confidential &mdash; Internal Use Only</footer>
+
+<script>
+var activeRoles={}, activeSrc=null;
+
+function toggleRole(btn){
+  var r=btn.getAttribute('data-role');
+  if(activeRoles[r]){delete activeRoles[r];btn.classList.remove('active');}
+  else{activeRoles[r]=true;btn.classList.add('active');}
+  applyFilters();
+}
+function toggleSrc(btn){
+  var s=btn.getAttribute('data-src');
+  if(activeSrc===s){activeSrc=null;btn.classList.remove('act-cp','act-cf','act-gd');}
+  else{
+    document.querySelectorAll('.src-btn').forEach(function(b){b.classList.remove('act-cp','act-cf','act-gd');});
+    activeSrc=s;
+    var cls=s==='checkpoint'?'act-cp':s==='confluence'?'act-cf':'act-gd';
+    btn.classList.add(cls);
+  }
+  applyFilters();
+}
+function applyFilters(){
+  var q=document.getElementById('search').value.toLowerCase().trim();
+  var roles=Object.keys(activeRoles);
+  var visible=0;
+  document.querySelectorAll('.card').forEach(function(c){
+    var show=true;
+    if(q){
+      var txt=c.querySelector('.card-title').textContent.toLowerCase()+c.querySelector('.card-desc').textContent.toLowerCase();
+      if(txt.indexOf(q)===-1) show=false;
+    }
+    if(show&&roles.length>0){
+      var ok=roles.some(function(r){return c.getAttribute('data-'+r)==='req'||c.getAttribute('data-'+r)==='rec';});
+      if(!ok) show=false;
+    }
+    if(show&&activeSrc){
+      var badge=c.querySelector('.src-badge');
+      var srcMap={checkpoint:'src-checkpoint',confluence:'src-confluence',gdrive:'src-gdrive'};
+      if(!badge||!badge.classList.contains(srcMap[activeSrc])) show=false;
+    }
+    c.classList.toggle('hidden',!show);
+    if(show) visible++;
+  });
+  document.getElementById('count-num').textContent=visible;
+  document.getElementById('no-results').style.display=visible===0?'block':'none';
+}
+function clearAll(){
+  activeRoles={};activeSrc=null;
+  document.getElementById('search').value='';
+  document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active');});
+  document.querySelectorAll('.src-btn').forEach(function(b){b.classList.remove('act-cp','act-cf','act-gd');});
+  applyFilters();
+}
+function toggleKC(hdr){
+  hdr.classList.toggle('open');
+  var list=hdr.nextElementSibling;
+  list.classList.toggle('open');
+}
+</script>
+</body>
+</html>

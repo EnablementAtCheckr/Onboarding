@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Enterprise AE Playbook — Checkr 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1E448F;--teal:#45C0B9;--orange:#F37D53;--green:#29736F;--slate:#67727C;
+  --white:#fff;--dark:#0B1626;--bg:#F7F9FC;--border:#D4DAE1;
+  --navy-lt:#EBF0FA;--teal-lt:#E6F7F6;--org-lt:#FEF0EB;--grn-lt:#E3F2F1;--slt-lt:#F1EFF8;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--dark);font-size:15px;line-height:1.6}
+
+.nav{background:var(--navy);padding:0 24px;display:flex;align-items:center;height:56px;position:sticky;top:0;z-index:100;gap:0}
+.nav .logo{color:#fff;font-weight:600;font-size:15px;margin-right:32px;flex-shrink:0}
+.nav a{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;font-weight:500;padding:0 14px;height:56px;display:flex;align-items:center;border-bottom:3px solid transparent;transition:all .15s}
+.nav a:hover,.nav a.active{color:#fff;border-bottom-color:var(--teal)}
+
+.hero{background:var(--navy);padding:52px 40px 44px;color:#fff;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-40px;bottom:-60px;width:340px;height:340px;border-radius:50%;background:rgba(69,192,185,.07);pointer-events:none}
+.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+.hero h1{font-size:40px;font-weight:600;margin-bottom:12px;line-height:1.15;max-width:660px}
+.hero-sub{color:rgba(255,255,255,.72);font-size:16px;line-height:1.65;max-width:600px;margin-bottom:28px}
+.hero-badges{display:flex;gap:10px;flex-wrap:wrap}
+.badge{font-size:12px;font-weight:500;padding:5px 14px;border-radius:20px;background:rgba(255,255,255,.12);color:rgba(255,255,255,.9)}
+.back-link{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.6);font-size:13px;text-decoration:none;margin-bottom:20px;font-weight:500}
+.back-link:hover{color:#fff}
+
+.page-wrap{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 56px);max-width:1400px;margin:0 auto}
+
+.sidebar{padding:28px 0;border-right:1px solid var(--border);background:#fff;position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto}
+.sb-section{margin-bottom:22px;padding:0 18px}
+.sb-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.sb-link{display:flex;align-items:center;gap:8px;padding:6px 0;font-size:13px;font-weight:500;color:var(--slate);text-decoration:none;transition:color .15s}
+.sb-link:hover,.sb-link.active{color:var(--navy);font-weight:600}
+.sb-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.sb-dot.navy{background:var(--navy)}.sb-dot.teal{background:var(--teal)}.sb-dot.orange{background:var(--orange)}.sb-dot.green{background:var(--green)}.sb-dot.slate{background:var(--slate)}
+
+.content{padding:40px 48px;max-width:880px}
+
+.sec-hdr{margin-top:56px;margin-bottom:24px;padding-bottom:14px;border-bottom:2px solid var(--border)}
+.sec-hdr:first-child{margin-top:0}
+.sec-eyebrow{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:6px}
+.sec-hdr h2{font-size:26px;font-weight:600;color:var(--dark);margin-bottom:6px}
+.sec-hdr p{font-size:14px;color:var(--slate);line-height:1.6}
+
+.stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:28px}
+.stat-block{background:#fff;padding:18px 14px;text-align:center}
+.stat-num{font-size:24px;font-weight:600;color:var(--teal);line-height:1;margin-bottom:4px}
+.stat-label{font-size:11px;color:var(--slate);line-height:1.4}
+
+.info-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px}
+.info-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px 22px}
+.info-card-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.info-card ul{padding-left:0;list-style:none}
+.info-card ul li{font-size:13px;color:var(--dark);margin-bottom:7px;padding-left:16px;position:relative;line-height:1.5}
+.info-card ul li::before{content:'›';position:absolute;left:0;color:var(--teal);font-weight:700}
+.info-card ul li strong{font-weight:600}
+
+.tbl-wrap{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:24px}
+.tbl{width:100%;border-collapse:collapse}
+.tbl th{padding:10px 14px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--slate);background:var(--bg);border-bottom:1px solid var(--border);text-align:left}
+.tbl td{padding:12px 14px;font-size:13px;vertical-align:top;border-bottom:1px solid var(--border);line-height:1.5;color:var(--dark)}
+.tbl tr:last-child td{border-bottom:none}
+.tbl td:not(:last-child){border-right:1px solid var(--border)}
+.tbl th:not(:last-child){border-right:1px solid var(--border)}
+.tbl td strong{font-weight:600}
+.tbl tr:nth-child(even) td{background:#FAFBFD}
+
+.ramp-wrap{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:auto;margin-bottom:24px}
+.ramp-tbl{width:100%;border-collapse:collapse;min-width:620px}
+.ramp-tbl th{padding:9px 12px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--slate);background:var(--bg);border-bottom:1px solid var(--border);text-align:center}
+.ramp-tbl th:first-child{text-align:left}
+.ramp-tbl td{padding:11px 12px;font-size:12px;border-bottom:1px solid var(--border);text-align:center;color:var(--dark)}
+.ramp-tbl td:first-child{text-align:left;font-weight:500}
+.ramp-tbl tr:last-child td{border-bottom:none}
+.ramp-tbl tr:nth-child(even) td{background:#FAFBFD}
+.ramp-tbl td strong{font-weight:600;color:var(--navy)}
+
+.callout{border-radius:12px;padding:18px 22px;margin-bottom:24px;display:flex;gap:14px;align-items:flex-start}
+.callout.teal{background:var(--teal-lt);border:1px solid rgba(69,192,185,.3)}
+.callout.navy{background:var(--navy-lt);border:1px solid rgba(30,68,143,.2)}
+.callout.orange{background:var(--org-lt);border:1px solid rgba(243,125,83,.25)}
+.callout.green{background:var(--grn-lt);border:1px solid rgba(41,115,111,.2)}
+.callout-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+.callout-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}
+.callout.teal .callout-label{color:var(--green)}.callout.navy .callout-label{color:var(--navy)}.callout.orange .callout-label{color:#B85020}.callout.green .callout-label{color:var(--green)}
+.callout-title{font-size:15px;font-weight:600;color:var(--dark);margin-bottom:4px}
+.callout-desc{font-size:13px;color:var(--slate);line-height:1.55}
+
+.pipe-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.pipe-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:18px;position:relative;overflow:hidden}
+.pipe-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.pipe-card.inb::after{background:var(--teal)}.pipe-card.bdr::after{background:var(--navy)}.pipe-card.out::after{background:var(--orange)}.pipe-card.par::after{background:var(--green)}
+.pipe-pct{font-size:28px;font-weight:600;line-height:1;margin-bottom:5px}
+.inb .pipe-pct{color:var(--teal)}.bdr .pipe-pct{color:var(--navy)}.out .pipe-pct{color:var(--orange)}.par .pipe-pct{color:var(--green)}
+.pipe-name{font-size:12px;font-weight:600;color:var(--dark);margin-bottom:4px}
+.pipe-desc{font-size:11px;color:var(--slate);line-height:1.5}
+
+.stages{display:flex;flex-direction:column;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:24px}
+.stage-row{display:grid;grid-template-columns:44px 1fr 1fr;border-bottom:1px solid var(--border)}
+.stage-row:last-child{border-bottom:none}
+.stage-num{background:var(--bg);border-right:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--teal);padding:14px 0}
+.stage-body{padding:13px 16px;border-right:1px solid var(--border)}
+.stage-name{font-size:13px;font-weight:600;color:var(--dark);margin-bottom:3px}
+.stage-tag{font-size:10px;font-weight:600;padding:1px 7px;border-radius:10px;display:inline-block;margin-bottom:5px}
+.t-omit{background:var(--slt-lt);color:var(--slate)}.t-pipe{background:var(--teal-lt);color:var(--green)}.t-bc{background:var(--org-lt);color:#B85020}.t-com{background:var(--navy-lt);color:var(--navy)}.t-cw{background:var(--grn-lt);color:var(--green)}
+.stage-desc{font-size:12px;color:var(--slate);line-height:1.5}
+.stage-exit{padding:13px 16px}
+.stage-exit-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--slate);margin-bottom:5px}
+.stage-exit-text{font-size:12px;color:var(--dark);line-height:1.5}
+
+.persona-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+.persona-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:18px 20px}
+.persona-title{font-size:14px;font-weight:600;color:var(--dark);margin-bottom:4px}
+.persona-tag{font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;display:inline-block;margin-bottom:8px}
+.p-tag-champion{background:var(--org-lt);color:#B85020}
+.p-tag-eb{background:var(--navy-lt);color:var(--navy)}
+.p-tag-influ{background:var(--teal-lt);color:var(--green)}
+.p-tag-gate{background:var(--slt-lt);color:var(--slate)}
+.persona-concern{font-size:12px;color:var(--slate);line-height:1.5;margin-bottom:6px}
+.persona-entry{font-size:12px;color:var(--dark);line-height:1.5}
+.persona-entry strong{font-weight:600;color:var(--teal)}
+
+.cadence-list{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:24px}
+.cadence-item{display:flex;gap:14px;align-items:flex-start;padding:14px 18px;border-bottom:1px solid var(--border)}
+.cadence-item:last-child{border-bottom:none}
+.cadence-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+.cadence-freq{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--teal);margin-bottom:3px}
+.cadence-name{font-size:14px;font-weight:600;color:var(--dark);margin-bottom:3px}
+.cadence-desc{font-size:12.5px;color:var(--slate);line-height:1.5}
+
+.prose{font-size:14px;color:var(--dark);line-height:1.7;margin-bottom:16px}
+.prose strong{font-weight:600}
+h3.sub{font-size:16px;font-weight:600;color:var(--dark);margin-bottom:10px;margin-top:24px}
+
+footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:24px;font-size:12px}
+
+/* Dropdown nav */
+.nav .dropdown{position:relative;height:56px;display:flex;align-items:center}
+.nav .dropdown-trigger{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;font-weight:500;padding:0 14px;height:56px;display:flex;align-items:center;gap:5px;border-bottom:3px solid transparent;transition:all .15s;cursor:pointer;user-select:none}
+.nav .dropdown-trigger::after{content:'▾';font-size:10px;margin-top:1px}
+.nav .dropdown:hover .dropdown-trigger,.nav .dropdown.active .dropdown-trigger{color:#fff;border-bottom-color:var(--teal)}
+.nav .dropdown-menu{display:none;position:absolute;top:56px;left:0;background:var(--navy);border:1px solid rgba(255,255,255,.12);border-top:2px solid var(--teal);border-radius:0 0 8px 8px;min-width:200px;z-index:200;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.nav .dropdown:hover .dropdown-menu{display:block}
+.nav .dropdown-menu a{display:block;padding:12px 18px;font-size:13px;font-weight:500;color:rgba(255,255,255,.75);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.07);height:auto;border-bottom-color:rgba(255,255,255,.07) !important;transition:background .12s,color .12s}
+.nav .dropdown-menu a:last-child{border-bottom:none;border-radius:0 0 8px 8px}
+.nav .dropdown-menu a:hover{background:rgba(255,255,255,.08);color:#fff}
+.nav .dropdown-menu a.active{color:var(--teal);font-weight:600}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="logo">Checkr Sales Playbooks 2026</span>
+    <a href="index.html">Onboarding</a>
+    <a href="playbook.html">New Hire Playbook</a>
+  <div class="dropdown active">
+    <span class="dropdown-trigger">Role Based Playbooks</span>
+    <div class="dropdown-menu">
+    <a href="playbook_commercial.html">Commercial AE Playbook</a>
+    <a href="playbook_enterprise.html" class="active">Enterprise AE Playbook</a>
+    <a href="playbook_bdr.html">BDR Playbook</a>
+    </div>
+  </div>
+    <a href="outbound.html">Outbound</a>
+</nav>
+
+<div class="hero">
+  <a href="playbook.html" class="back-link">← Back to New Hire Playbook</a>
+  <div class="hero-eyebrow">Enterprise AE Playbook · 2026</div>
+  <h1>Enterprise Account Executive Playbook</h1>
+  <div class="hero-sub">Your complete guide to running complex, multi-stakeholder enterprise deals at Checkr — from pipeline generation through revenue management.</div>
+  <div class="hero-badges">
+    <span class="badge">5,000+ Employees</span>
+    <span class="badge">$100K–$1M+ Deals</span>
+    <span class="badge">3–9 Month Cycles</span>
+    <span class="badge">8-Month ENT Ramp</span>
+    <span class="badge">Depth Over Velocity</span>
+  </div>
+</div>
+
+<div class="page-wrap">
+<aside class="sidebar">
+  <div class="sb-section">
+    <div class="sb-label">In This Playbook</div>
+    <a href="#role" class="sb-link active"><span class="sb-dot teal"></span>Your Role</a>
+    <a href="#sales-math" class="sb-link"><span class="sb-dot navy"></span>Sales Math & Quota</a>
+    <a href="#ramp" class="sb-link"><span class="sb-dot teal"></span>Ramp Schedule</a>
+    <a href="#pipeline" class="sb-link"><span class="sb-dot orange"></span>Pipeline Sources</a>
+    <a href="#outbound" class="sb-link"><span class="sb-dot orange"></span>Outbound Motion</a>
+    <a href="#stakeholders" class="sb-link"><span class="sb-dot navy"></span>Stakeholder Map</a>
+    <a href="#opp-mgmt" class="sb-link"><span class="sb-dot green"></span>Opportunity Management</a>
+    <a href="#se-partnership" class="sb-link"><span class="sb-dot teal"></span>SE Partnership</a>
+    <a href="#forecasting" class="sb-link"><span class="sb-dot navy"></span>Forecasting</a>
+    <a href="#revenue-mgmt" class="sb-link"><span class="sb-dot green"></span>Revenue Management</a>
+    <a href="#cadence" class="sb-link"><span class="sb-dot slate"></span>Operating Cadence</a>
+    <a href="#expectations" class="sb-link"><span class="sb-dot slate"></span>Job Expectations</a>
+    <a href="#resources" class="sb-link"><span class="sb-dot slate"></span>Key Resources</a>
+  </div>
+  <div class="sb-section">
+    <div class="sb-label">Other Playbooks</div>
+    <a href="playbook.html" class="sb-link"><span class="sb-dot navy"></span>New Hire Playbook</a>
+    <a href="playbook_commercial.html" class="sb-link"><span class="sb-dot teal"></span>Commercial AE Playbook</a>
+    <a href="playbook_bdr.html" class="sb-link"><span class="sb-dot orange"></span>BDR Playbook</a>
+    <a href="outbound.html" class="sb-link"><span class="sb-dot green"></span>Outbound Playbook</a>
+  </div>
+</aside>
+
+<main class="content">
+
+  <!-- ROLE -->
+  <div id="role">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Your Role</div>
+      <h2>Enterprise Account Executive Overview</h2>
+      <p>What Enterprise AE means at Checkr, who you sell to, and what you own.</p>
+    </div>
+    <p class="prose">The Enterprise Sales role at Checkr focuses on driving revenue with large, complex customers — typically organizations with <strong>5,000+ employees or $450M+ in annual revenue</strong>. Deal sizes generally range from <strong>$100K to over $1M</strong>, with sales cycles averaging <strong>3–9 months</strong> depending on deal complexity.</p>
+    <p class="prose">While Commercial AEs emphasize velocity, Enterprise AEs emphasize <strong>depth</strong> — building alignment across HR, Talent, and IT, crafting ROI-driven business cases, and ensuring a smooth handoff from bookings to revenue once customers begin running checks. You'll navigate multi-stakeholder sales cycles, often partnering with Solution Consultants, Legal, and Security.</p>
+    <p class="prose">Your role centers on three major areas:</p>
+
+    <div class="stat-strip">
+      <div class="stat-block"><div class="stat-num">>5K</div><div class="stat-label">Employee count<br>of your accounts</div></div>
+      <div class="stat-block"><div class="stat-num">$100K+</div><div class="stat-label">Typical deal size<br>(up to $1M+)</div></div>
+      <div class="stat-block"><div class="stat-num">3–9 mo</div><div class="stat-label">Average<br>sales cycle</div></div>
+      <div class="stat-block"><div class="stat-num">8 mo</div><div class="stat-label">ENT ramp<br>(5 mo UMM)</div></div>
+    </div>
+
+    <div class="info-row">
+      <div class="info-card">
+        <div class="info-card-label">Your 3 Core Responsibilities</div>
+        <ul>
+          <li><strong>Pipeline Generation</strong> — Enough pipeline at all times to achieve booking and revenue goals</li>
+          <li><strong>Opportunity Management</strong> — Progressing complex, multi-stakeholder sales cycles with discipline</li>
+          <li><strong>Revenue Management</strong> — Partnering with CS and Implementation to ensure closed deals convert to active, revenue-generating customers</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Segmentation</div>
+        <ul>
+          <li><strong>Enterprise AEs:</strong> &gt;15,000 employees — this is you (ENT)</li>
+          <li><strong>Upper Mid-Market AEs:</strong> 5,000–15,000 employees — this is you (UMM)</li>
+          <li><strong>Commercial AEs:</strong> &lt;5,000 employees — not your segment</li>
+          <li><strong>SMB:</strong> &lt;300 checks/year — not your segment</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout navy">
+      <div class="callout-icon">💰</div>
+      <div>
+        <div class="callout-label">Ramp Guarantee</div>
+        <div class="callout-title">Non-recoverable guarantee payouts protect your income while you build pipeline</div>
+        <div class="callout-desc">ENT AEs receive 5 months of non-recoverable guarantee payouts and are expected to be 100% ramped by end of Month 8. UMM AEs receive 3 months of non-recoverable guarantee payouts and are expected to be fully ramped by end of Month 5. After the guarantee period, your standard compensation plan applies.</div>
+      </div>
+    </div>
+
+    <div class="callout navy">
+      <div class="callout-icon">📋</div>
+      <div>
+        <div class="callout-label">Process First</div>
+        <div class="callout-title">We have a sales process that works. Follow it.</div>
+        <div class="callout-desc">Everyone has different personalities — that doesn't mean you can't put your own spin on things. It does mean you follow the process and maintain impeccable data hygiene in Salesforce. No exceptions.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SALES MATH -->
+  <div id="sales-math">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">The Numbers</div>
+      <h2>Sales Math & Activity Targets</h2>
+      <p>Revenue is an outcome. These leading indicators keep you on track to hit it.</p>
+    </div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <tr><th>Metric</th><th>Weekly</th><th>Monthly</th><th>Quarterly</th></tr>
+        <tr><td><strong>Unique Accounts Touched (Prospects)</strong></td><td>5</td><td>20</td><td>60</td></tr>
+        <tr><td><strong>Outbound Calls / week</strong></td><td>50</td><td>200</td><td>600</td></tr>
+        <tr><td><strong>New SQOs (all sources)</strong></td><td>0.5–1</td><td>2–4</td><td>6–12</td></tr>
+      </table>
+    </div>
+    <p class="prose">Track your metrics in the <strong>Looker Enterprise Dashboard</strong> — your manager will share the link during onboarding. Enterprise deals are larger and slower-moving than commercial, so pipeline coverage and deal quality matter more than raw volume.</p>
+
+    <div class="callout teal">
+      <div class="callout-icon">📊</div>
+      <div>
+        <div class="callout-label">Performance Guidelines</div>
+        <div class="callout-title">Consistent performance against booking and revenue targets is required</div>
+        <div class="callout-desc">Underperformance may result in a coaching memo or subsequently a PIP. The goal of any plan is to find the right process for replicable, consistent success. Reach out to your manager directly for specifics. Reference the Checkr Employee Handbook in Confluence for company-wide policies.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RAMP -->
+  <div id="ramp">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Your First 6+ Months</div>
+      <h2>Ramp Schedule</h2>
+      <p>ENT: 8-month ramp with 5-month guarantee. UMM: 5-month ramp with 3-month guarantee.</p>
+    </div>
+    <p class="prose">During ramp, your focus is on getting up to speed on Checkr's products and building top-of-funnel pipeline through strategic outbound and BDR partnership. These are the metrics you will be measured on as you ramp.</p>
+    <div class="ramp-wrap">
+      <table class="ramp-tbl">
+        <tr><th>KPI</th><th>Month 0</th><th>Month 1</th><th>Month 2</th><th>Month 3</th><th>Month 4</th><th>Month 5</th></tr>
+        <tr><td>Unique Accounts Touched</td><td>—</td><td>20</td><td>20</td><td>20</td><td>20</td><td>20</td></tr>
+        <tr><td>Outbound Calls / week</td><td>—</td><td>50</td><td>50</td><td>50</td><td>50</td><td>50</td></tr>
+        <tr><td>New Opps Added</td><td>—</td><td>2</td><td>3</td><td>3</td><td>3</td><td>3</td></tr>
+        <tr><td>Inbound SQOs</td><td>—</td><td>1</td><td>2</td><td>2</td><td>2</td><td>2</td></tr>
+        <tr><td>Outbound SQOs</td><td>—</td><td>1</td><td>1</td><td>2</td><td>2</td><td>2</td></tr>
+        <tr><td>BDR-Sourced SQOs</td><td>—</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+        <tr><td>Partner SQOs</td><td>—</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+        <tr><td>Pipeline Created</td><td>—</td><td>$250K</td><td>$400K</td><td>$500K</td><td>$500K</td><td>$500K</td></tr>
+        <tr><td><strong>Bookings</strong></td><td>—</td><td>—</td><td>—</td><td><strong>$50K</strong></td><td><strong>$100K</strong></td><td><strong>$150K</strong></td></tr>
+      </table>
+    </div>
+    <div class="callout teal">
+      <div class="callout-icon">💡</div>
+      <div>
+        <div class="callout-label">Ramp Focus</div>
+        <div class="callout-title">Build pipeline first — everything else follows</div>
+        <div class="callout-desc">Your first and foremost focus during ramp is building top-of-funnel pipeline through strategic outbound and your BDR partnership. Revenue follows pipeline. Pipeline follows activity. Activity follows discipline.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PIPELINE SOURCES -->
+  <div id="pipeline">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Where Deals Come From</div>
+      <h2>Pipeline Sources</h2>
+      <p>Four channels. Know your mix and manage to it.</p>
+    </div>
+    <div class="pipe-grid">
+      <div class="pipe-card inb">
+        <div class="pipe-pct">~50%</div>
+        <div class="pipe-name">Inbound / Marketing</div>
+        <div class="pipe-desc">MQLs from marketing, pre-qualified by SDR team. Follow up within 24 hours.</div>
+      </div>
+      <div class="pipe-card bdr">
+        <div class="pipe-pct">~30%</div>
+        <div class="pipe-name">BDR-Driven Outbound</div>
+        <div class="pipe-desc">Your BDR partner (2 AEs per BDR) generates qualified pipeline in your territory. Follow up rapidly and continue their momentum.</div>
+      </div>
+      <div class="pipe-card out">
+        <div class="pipe-pct">~15%</div>
+        <div class="pipe-name">AE Self-Generated</div>
+        <div class="pipe-desc">~100–150 target accounts. 3–5 stakeholders per account. Minimum 1–2 outbound SQOs/month. Aim higher.</div>
+      </div>
+      <div class="pipe-card par">
+        <div class="pipe-pct">~5%</div>
+        <div class="pipe-name">Partner-Generated</div>
+        <div class="pipe-desc">ATS partner referrals. Highest propensity to buy. Respond within 24 hours — treat as warm inbound.</div>
+      </div>
+    </div>
+
+    <div class="callout navy">
+      <div class="callout-icon">🤝</div>
+      <div>
+        <div class="callout-label">BDR Partnership</div>
+        <div class="callout-title">The AE/BDR partnership should function as a single pipeline-generation team</div>
+        <div class="callout-desc">Collaborate weekly on: target account strategy, sequencing and messaging input, and progress reviews. BDRs are responsible for creating new engagement and early qualification. You're responsible for advancing those opportunities to close. When a BDR sources a qualified opp, follow up rapidly and continue the narrative they established.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OUTBOUND MOTION -->
+  <div id="outbound">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Self-Generated Pipeline</div>
+      <h2>Outbound Motion</h2>
+      <p>15% of your pipeline — ~100–150 target accounts, 3–5 stakeholders per account, multi-threaded outreach.</p>
+    </div>
+    <p class="prose">Enterprise AEs are expected to generate approximately <strong>15% of their pipeline through self-sourced outbound</strong>. You'll be assigned a focused list of <strong>~100–150 target accounts</strong> that meet the Enterprise ICP (5,000+ employees, $450M+ annual revenue), viewable in SFDC under your manager's hierarchy.</p>
+    <p class="prose">Athean should be multi-threaded and strategic — leveraging <strong>phone, email, and LinkedIn</strong> to build alignment and uncover business pain. All activity goes through Athean. Block at least one hour daily for focused outbound prospecting. Target a minimum of <strong>1–2 new outbound SQOs per month</strong>.</p>
+
+    <div class="info-row">
+      <div class="info-card">
+        <div class="info-card-label">Account Research Order</div>
+        <ul>
+          <li><strong>1. Demandbase</strong> — Intent score, MQA status, pages visited</li>
+          <li><strong>2. SCOUT (Credal)</strong> — Pain points, talking points, company context</li>
+          <li><strong>3. LinkedIn Sales Nav</strong> — Org chart, stakeholder titles, growth signals</li>
+          <li><strong>4. ZoomInfo</strong> — Direct dials, emails, full org structure</li>
+          <li><strong>5. Salesforce</strong> — Prior Checkr activity, existing relationships</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Enterprise Account Prioritization</div>
+        <ul>
+          <li><strong>Tier 1:</strong> Demandbase MQA — high intent, researching now</li>
+          <li><strong>Tier 2:</strong> UserGems — former champion moved to a new org</li>
+          <li><strong>Tier 3:</strong> Closed-lost re-engagement — confirm with manager first</li>
+          <li><strong>Tier 4:</strong> ICP-fit accounts with no prior Checkr history</li>
+          <li><strong>Pro Tip:</strong> Target accounts with ATS tech stacks we integrate with — highest propensity to buy</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout orange">
+      <div class="callout-icon">📤</div>
+      <div>
+        <div class="callout-label">Full Detail</div>
+        <div class="callout-title">The Outbound Playbook covers sequencing, messaging, and cold call frameworks in full</div>
+        <div class="callout-desc">Account research workflow, email and LinkedIn templates, 7-step Athean sequence structure, cold call framework with objection handling, subject line guidance, and activity minimums by segment (Enterprise vs. Commercial).</div>
+        <a href="outbound.html" style="color:var(--orange);font-weight:600;font-size:13px;text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-top:8px">Open Outbound Playbook →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- STAKEHOLDER MAP -->
+  <div id="stakeholders">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Multi-Threading Strategy</div>
+      <h2>Enterprise Stakeholder Map</h2>
+      <p>Multi-thread from day one. Enterprise deals are lost when a single contact goes dark.</p>
+    </div>
+    <p class="prose">In enterprise deals you need relationships at multiple levels. Your champion gets you in — but your champion alone won't close the deal. Map and engage every stakeholder from the first discovery call onward.</p>
+
+    <div class="persona-grid">
+      <div class="persona-card">
+        <div class="persona-tag p-tag-eb">Economic Buyer</div>
+        <div class="persona-title">CHRO / VP People</div>
+        <div class="persona-concern">Cares about: Employer brand, compliance risk, board-level metrics, total cost of workforce operations. Not in the weeds of screening ops.</div>
+        <div class="persona-entry"><strong>Entry point:</strong> Go through HR Ops champion first. Never cold-approach the CHRO — reach them with a warm intro and a clear business case.</div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-tag p-tag-influ">Key Influencer</div>
+        <div class="persona-title">VP / Director of TA</div>
+        <div class="persona-concern">Cares about: Time-to-fill, candidate conversion rates, ATS integration reliability, screening drop-off at the offer stage.</div>
+        <div class="persona-entry"><strong>Entry point:</strong> Lead with screening turnaround pain and candidate experience data. Can become a champion if their pain is acute.</div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-tag p-tag-champion">Best Champion</div>
+        <div class="persona-title">HR Operations / People Ops</div>
+        <div class="persona-concern">Cares about: Day-to-day screening workflow, vendor headaches, turnaround SLAs, error rates, adjudication complexity.</div>
+        <div class="persona-entry"><strong>Entry point:</strong> Your most likely champion. Engage early and deep. Know their workflow cold. Coach them to sell Checkr internally when you're not in the room.</div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-tag p-tag-gate">Gatekeeper / Required</div>
+        <div class="persona-title">Legal / Compliance</div>
+        <div class="persona-concern">Cares about: FCRA compliance, adverse action, ban-the-box, data privacy, contract terms and MSA redlines.</div>
+        <div class="persona-entry"><strong>Entry point:</strong> Engage through your champion. Have Raul Moreno (VP Legal) available for complex legal questions. Don't let legal become a blocker — pre-empt objections.</div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-tag p-tag-gate">Late-Stage Required</div>
+        <div class="persona-title">Procurement</div>
+        <div class="persona-concern">Cares about: Total cost of ownership, contract terms, vendor consolidation, compliance with vendor management policies.</div>
+        <div class="persona-entry"><strong>Entry point:</strong> Late-stage only. Your champion and EB should brief Procurement before you engage. Come with a clear business case and TCO analysis.</div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-tag p-tag-influ">Technical Evaluator</div>
+        <div class="persona-title">IT / HRIS</div>
+        <div class="persona-concern">Cares about: ATS integration complexity, data security, API reliability, InfoSec compliance, SSO and directory requirements.</div>
+        <div class="persona-entry"><strong>Entry point:</strong> Needed for security review. Engage your SE early so they can build a technical relationship in parallel with your business relationship.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPP MANAGEMENT -->
+  <div id="opp-mgmt">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Moving Deals Forward</div>
+      <h2>Opportunity Management</h2>
+      <p>Enterprise deals are won in the middle of the funnel, not at the end. The work that matters most happens in discovery and establishing requirements.</p>
+    </div>
+
+    <h3 class="sub">The 6-Stage Sales Process</h3>
+    <div class="stages">
+      <div class="stage-row">
+        <div class="stage-num">1</div>
+        <div class="stage-body">
+          <div class="stage-tag t-omit">Forecast: Omitted</div>
+          <div class="stage-name">Interest</div>
+          <div class="stage-desc">Discovery call scheduled. At least one contact associated. NOT counted in pipeline. Update within 24 hours of disco call.</div>
+        </div>
+        <div class="stage-exit"><div class="stage-exit-label">Exit Criteria</div><div class="stage-exit-text">Discovery completed, pain documented, MEDDPICC started</div></div>
+      </div>
+      <div class="stage-row">
+        <div class="stage-num">2</div>
+        <div class="stage-body">
+          <div class="stage-tag t-pipe">Forecast: Pipeline (~35%)</div>
+          <div class="stage-name">Discovery</div>
+          <div class="stage-desc">Validate pains Checkr can support. Identify current state, negative consequences, compelling event. Map tech stack, competitive landscape, and org chart. Begin multi-threading.</div>
+        </div>
+        <div class="stage-exit"><div class="stage-exit-label">Exit Criteria</div><div class="stage-exit-text">Pain confirmed, champion identified, MEDDPICC fields populated</div></div>
+      </div>
+      <div class="stage-row">
+        <div class="stage-num">3</div>
+        <div class="stage-body">
+          <div class="stage-tag t-pipe">Forecast: Pipeline</div>
+          <div class="stage-name">Establish Requirements</div>
+          <div class="stage-desc">Uncover required capabilities and map to positive business outcomes. Engage SE. Build business case. Multi-thread to additional champions. Surface Economic Buyer. Begin security review process if required.</div>
+        </div>
+        <div class="stage-exit"><div class="stage-exit-label">Exit Criteria</div><div class="stage-exit-text">Champion confirmed, EB identified and accessible, SE engaged, business case drafted</div></div>
+      </div>
+      <div class="stage-row">
+        <div class="stage-num">4</div>
+        <div class="stage-body">
+          <div class="stage-tag t-bc">Forecast: Best Case (60%)</div>
+          <div class="stage-name">Propose / Evaluate</div>
+          <div class="stage-desc">Proposal and business case delivered. Multi-stakeholder evaluation underway. Executive sponsor meeting if appropriate. Security and legal review in progress.</div>
+        </div>
+        <div class="stage-exit"><div class="stage-exit-label">Exit Criteria</div><div class="stage-exit-text">Proposal accepted in principle, pricing in range, legal review started, close plan agreed</div></div>
+      </div>
+      <div class="stage-row">
+        <div class="stage-num">5</div>
+        <div class="stage-body">
+          <div class="stage-tag t-com">Forecast: Commit (90%+)</div>
+          <div class="stage-name">Negotiate / Close</div>
+          <div class="stage-desc">MSA and security review in flight or complete. Pricing agreed. Legal redlines managed. Close date must be accurate. Create a Slack channel for all deals &gt;$100K for deal team alignment.</div>
+        </div>
+        <div class="stage-exit"><div class="stage-exit-label">Exit Criteria</div><div class="stage-exit-text">MSA signed, order form executed, kickoff scheduled</div></div>
+      </div>
+      <div class="stage-row">
+        <div class="stage-num">6</div>
+        <div class="stage-body">
+          <div class="stage-tag t-cw">Closed Won → Revenue Management</div>
+          <div class="stage-name">Revenue Management</div>
+          <div class="stage-desc">Complete all post-close activities. Facilitate Implementation handoff. Monitor consumption. Process upsells per ROE. You remain the business-side escalation point for the first 4 weeks.</div>
+        </div>
+        <div class="stage-exit"><div class="stage-exit-label">Your Responsibility</div><div class="stage-exit-text">Customer actively running checks. Implementation handoff complete at Week 4.</div></div>
+      </div>
+    </div>
+
+    <h3 class="sub">Champion Development</h3>
+    <p class="prose">In enterprise deals, your champion is everything. Without a strong internal advocate who actively sells Checkr when you're not in the room, you will lose deals you should win.</p>
+    <div class="info-row">
+      <div class="info-card">
+        <div class="info-card-label">Building a Strong Champion</div>
+        <ul>
+          <li>Identify your champion early — typically HR Ops or VP of TA who has direct pain</li>
+          <li>Coach them on how to sell internally — give them the business case language</li>
+          <li>Test them: "If I'm not in the room, what do you say when someone asks why Checkr?"</li>
+          <li>Multi-thread above your champion — their departure should not kill a deal</li>
+          <li>Share proof points, case studies, and ROI data they can use in internal conversations</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Business Case Creation</div>
+        <ul>
+          <li>Quantify the Before Scenario with the prospect's own numbers — turnaround time, drop-off rate, compliance incidents</li>
+          <li>Build the ROI case in their language: what does fixing this mean in dollars?</li>
+          <li>Use the Meeting Prep doc template (see Confluence) before every multi-stakeholder call</li>
+          <li>Create an SA (Success Agreement) for complex deals — align on what success looks like before close</li>
+          <li>Executive Engagement Playbook in Confluence — use it for C-suite meetings</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout teal">
+      <div class="callout-icon">💬</div>
+      <div>
+        <div class="callout-label">Deals Over $100K</div>
+        <div class="callout-title">Create a dedicated Slack channel for your deal team</div>
+        <div class="callout-desc">Include your manager, SE, and relevant CS or legal resources. Keep all stakeholders aligned on deal progress, next steps, and blockers. This creates internal urgency and ensures nothing falls through the cracks in a long complex cycle.</div>
+      </div>
+    </div>
+
+    <h3 class="sub">Working with RFPs</h3>
+    <p class="prose">Enterprise AEs sometimes receive RFPs (Requests for Proposal). Our win rate on blind RFPs is historically low — always consult your manager and SE before committing to respond.</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <tr><th>RFP Type</th><th>SDR Action</th><th>AE Action</th></tr>
+        <tr><td><strong>Blind RFP</strong> (no prior communication)</td><td>Attempt to get them on a call. If they refuse, move to Recycle.</td><td>Do not respond without a call. If SDR gets them on a call, SDR creates Stage 1 opp and transfers to you.</td></tr>
+        <tr><td><strong>Non-blind RFP</strong> (prior communication exists)</td><td>Creates Stage 1 opp and transfers to AE.</td><td>Review with manager and SE. Decide whether to participate. If yes, move to Stage 2 and follow standard process. If no, close the opp.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- SE PARTNERSHIP -->
+  <div id="se-partnership">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Solution Engineering</div>
+      <h2>SE Partnership & Rules of Engagement</h2>
+      <p>SEs are deal accelerators — not gatekeepers. You are the deal quarterback. Use SEs strategically.</p>
+    </div>
+    <p class="prose">Solution Engineers add credibility on technical and product depth questions that you can't answer alone. Brief them well, use them at the right moments, and debrief after every engagement.</p>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <tr><th>Scenario</th><th>Involve SE?</th><th>How</th></tr>
+        <tr><td>Prospect asks detailed technical integration questions (ATS, API, data security)</td><td><strong>Yes</strong></td><td>Brief SE before the call. They handle technical depth while you own the relationship and the room.</td></tr>
+        <tr><td>Deal is &gt;$100K moving into Establish Requirements</td><td><strong>Yes</strong></td><td>Proactively bring SE in. Complex deals need technical alignment early, not as a last-minute add.</td></tr>
+        <tr><td>Security review or InfoSec questionnaire required</td><td><strong>Yes</strong></td><td>SE leads the security review process. Introduce them to the prospect's IT/security contact directly.</td></tr>
+        <tr><td>Demo for a multi-stakeholder group including IT or HRIS</td><td><strong>Yes</strong></td><td>SE co-presents technical aspects. You present the business case and run the room.</td></tr>
+        <tr><td>Simple discovery call with an HR Ops buyer</td><td>Typically no</td><td>Run discovery solo. Bring SE in when technical requirements surface in the conversation.</td></tr>
+        <tr><td>Pricing call with HR buyer only</td><td>Typically no</td><td>You own pricing conversations. SE is not needed unless technical contract terms are being negotiated.</td></tr>
+      </table>
+    </div>
+
+    <div class="callout navy">
+      <div class="callout-icon">🏈</div>
+      <div>
+        <div class="callout-label">You Are the Deal Quarterback</div>
+        <div class="callout-title">How to brief your SE effectively</div>
+        <div class="callout-desc">Before any SE involvement, share: (1) deal context and where you are in the process, (2) what the prospect cares most about, (3) what technical questions have come up, and (4) what outcome you need from the SE engagement. A well-briefed SE closes deals. An under-briefed SE creates confusion.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORECASTING -->
+  <div id="forecasting">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Forecasting</div>
+      <h2>Forecasting Your Business</h2>
+      <p>Submit by EOD Wednesday PST in Gong each week. Accuracy target: ±10%.</p>
+    </div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <tr><th>When</th><th>Participants</th><th>Objective</th></tr>
+        <tr><td><strong>Wednesday EOD PST</strong></td><td>AEs (async via Gong)</td><td>Submit commit and best case for bookings and revenue</td></tr>
+        <tr><td><strong>Thursday AM</strong></td><td>AEs + 1st Line Managers</td><td>Confirm SFDC fields updated, weekly forecast tracker reviewed</td></tr>
+        <tr><td><strong>Thursday PM</strong></td><td>1st Line Managers + RevOps Dir</td><td>Managers present forecast for RevOps and leadership inspection</td></tr>
+        <tr><td><strong>Friday AM</strong></td><td>Rev Leaders, SVP Sales, RevOps</td><td>Leadership forecast review and final call</td></tr>
+      </table>
+    </div>
+
+    <div class="info-row">
+      <div class="info-card">
+        <div class="info-card-label">Forecast Checklist — Before You Submit</div>
+        <ul>
+          <li>Are all Quotes correct? Price, eACV, Contract Type?</li>
+          <li>Did I have a relevant meeting for each committed opp this week?</li>
+          <li>Is the Close Date accurate — or am I being optimistic?</li>
+          <li>Are Next Steps dated with a specific action on every active opp?</li>
+          <li>Is Forecast Category consistent with the current Stage?</li>
+          <li>Have I pressure-tested volume with the prospect recently?</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Next Steps Field — Non-Negotiable</div>
+        <ul>
+          <li>Always date your Next Steps entry on every active opp</li>
+          <li>Format: "11/3 — Sent MSA redlines to legal. Following up Friday if no response."</li>
+          <li>Every active opp must have a dated next step at all times</li>
+          <li>This is what powers accurate forecasting and surfaces risks early</li>
+          <li>No next step = manager assumes the deal is stalled</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVENUE MANAGEMENT -->
+  <div id="revenue-mgmt">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Post-Close</div>
+      <h2>Revenue Management</h2>
+      <p>Bookings → Revenue is your responsibility. You own it until Implementation hands off to CS.</p>
+    </div>
+    <p class="prose">As an Enterprise AE, you don't just close deals — you ensure your closed deals convert to active, revenue-generating customers. Enterprise deals that don't ramp are a direct hit to your revenue number.</p>
+
+    <h3 class="sub">Post-Close Activities — Complete on Every Deal</h3>
+    <div class="info-row">
+      <div class="info-card">
+        <div class="info-card-label">Required Post-Close Actions</div>
+        <ul>
+          <li><strong>PennDOT / Utah DOT</strong> — State-specific compliance requirements for MVR checks</li>
+          <li><strong>Credit Check configuration</strong> — FCRA-compliant setup if applicable to the deal</li>
+          <li><strong>ESS Jira Ticket</strong> — Submit the customer setup ticket to Implementation</li>
+          <li><strong>Expected ramp timeline</strong> — Provide Implementation with a realistic estimate of when the customer will run first checks</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Handoff Process</div>
+        <ul>
+          <li>Schedule kickoff call between customer, Implementation Specialist, and yourself</li>
+          <li>Provide Implementation with a full deal summary: products, volumes, ATS integration, key contacts</li>
+          <li>Stay involved through the first 4 weeks post-kickoff — you're the business-side escalation point</li>
+          <li>After 4 weeks: Implementation hands off to CSM (if ACV &gt;$10K) or Tech Touch (if ACV &lt;$10K)</li>
+          <li>Reference the B2R Playbook in Confluence for escalation procedures</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub">Upsells & Expansion — ROE</h3>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <tr><th>Scenario</th><th>Who Owns It</th><th>What You Need to Know</th></tr>
+        <tr><td><strong>New prospect — no prior Checkr history</strong></td><td>You (Enterprise AE)</td><td>Create opp in SFDC before any sales activity begins</td></tr>
+        <tr><td><strong>Upsell opportunity during initial relationship period</strong></td><td>You (with conditions)</td><td>Create opp in SFDC first. CS must be aware and in agreement. Document thoroughly.</td></tr>
+        <tr><td><strong>Expansion after initial relationship period</strong></td><td>Customer Success</td><td>CS owns expansion after the initial relationship window. Consult your manager on any edge case.</td></tr>
+        <tr><td><strong>Inbound from a current customer</strong></td><td>CS / AAM team</td><td>Route to CS. Do not work customer inbounds without CS knowledge and agreement.</td></tr>
+      </table>
+    </div>
+
+    <div class="callout orange">
+      <div class="callout-icon">⚠️</div>
+      <div>
+        <div class="callout-label">When ROE is Broken</div>
+        <div class="callout-title">Broken ROE — regardless of intent — puts your payment at risk</div>
+        <div class="callout-desc">Know whether you're working with a Prospect or an Existing Customer before touching any account. SFDC is the source of record. When in doubt, ask your manager, Sr. Director, or RevOps partner before starting any sales activity.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPERATING CADENCE -->
+  <div id="cadence">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">How We Operate</div>
+      <h2>Enterprise Sales Operating Cadence</h2>
+      <p>The recurring rhythms of the Enterprise team. Show up to these consistently.</p>
+    </div>
+    <div class="cadence-list">
+      <div class="cadence-item">
+        <div class="cadence-icon">👤</div>
+        <div>
+          <div class="cadence-freq">Weekly</div>
+          <div class="cadence-name">1:1 with Your Manager</div>
+          <div class="cadence-desc">KPIs, pipeline status, deal strategy, blockers, coaching and development. Come prepared with your top 3 deal updates and any forecast changes.</div>
+        </div>
+      </div>
+      <div class="cadence-item">
+        <div class="cadence-icon">📊</div>
+        <div>
+          <div class="cadence-freq">Weekly · EOD Wednesday PST</div>
+          <div class="cadence-name">Bookings Forecast (async via Gong)</div>
+          <div class="cadence-desc">Submit commit and best case for bookings and revenue. Non-negotiable — on time every single week. Your manager will deep-dive into forecast motion as part of your onboarding.</div>
+        </div>
+      </div>
+      <div class="cadence-item">
+        <div class="cadence-icon">👥</div>
+        <div>
+          <div class="cadence-freq">Weekly</div>
+          <div class="cadence-name">Team Meeting</div>
+          <div class="cadence-desc">Team forecast review, key deal insights, business updates, peer best practices, quick trainings. Required attendance — camera on, questions asked.</div>
+        </div>
+      </div>
+      <div class="cadence-item">
+        <div class="cadence-icon">🏢</div>
+        <div>
+          <div class="cadence-freq">Monthly</div>
+          <div class="cadence-name">Checkr All Hands</div>
+          <div class="cadence-desc">Company-wide goal review, wins, rotating speakers. Required attendance.</div>
+        </div>
+      </div>
+      <div class="cadence-item">
+        <div class="cadence-icon">📰</div>
+        <div>
+          <div class="cadence-freq">Weekly</div>
+          <div class="cadence-name">Sales Homeroom</div>
+          <div class="cadence-desc">Video, blog, and quiz covering product, messaging, and process updates. Required — complete on time and retain the information.</div>
+        </div>
+      </div>
+      <div class="cadence-item">
+        <div class="cadence-icon">📦</div>
+        <div>
+          <div class="cadence-freq">Quarterly</div>
+          <div class="cadence-name">Product Enablement</div>
+          <div class="cadence-desc">Review of prior quarter product releases. Enterprise deals often involve newer products like IDV and International — stay current on what you're selling.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JOB EXPECTATIONS -->
+  <div id="expectations">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Standards</div>
+      <h2>Job Expectations</h2>
+      <p>How you're expected to show up every day.</p>
+    </div>
+    <div class="info-row">
+      <div class="info-card">
+        <div class="info-card-label">Availability & Time Off</div>
+        <ul>
+          <li>Available 8:00 AM–5:00 PM local time for inbound meetings when not on PTO</li>
+          <li>Request PTO in Workday at least 2 weeks in advance for planning purposes</li>
+          <li>Ad hoc PTO requests approved at manager's discretion</li>
+          <li>Update your calendar correctly while on PTO — you will not receive inbound leads while on PTO</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Being a Team Player</div>
+        <ul>
+          <li><strong>Help your peers</strong> — always willing to assist cross-functional teammates, proactively and when asked</li>
+          <li><strong>Show up</strong> — all team meetings, camera on, questions asked, stay engaged</li>
+          <li><strong>Own it</strong> — own your revenue target, your career development, and your communication to leadership</li>
+          <li><strong>Exemplify #ownership</strong> — Checkr's core value that defines how we work</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESOURCES -->
+  <div id="resources">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Quick Reference</div>
+      <h2>Key Resources</h2>
+      <p>Bookmark these.</p>
+    </div>
+    <div class="info-row">
+      <div class="info-card">
+        <div class="info-card-label">Role &amp; Onboarding Docs</div>
+        <ul>
+          <li><a href="https://docs.google.com/presentation/d/1ANmrs_lv7vUfkUGiFOi4PyKtlsJ3X9TjpLKxLvLhxoY/edit?usp=sharing" target="_blank">AE Bootcamp Deck</a></li>
+          <li><a href="https://docs.google.com/presentation/d/12z8fofhFgb39cXFGl2YjzrIZXdBrw4qtx1pjh1CEVO8/edit?usp=sharing" target="_blank">Sales Math Deck</a> — compensation mechanics and targets</li>
+          <li><a href="https://www.myworkday.com/checkr/d/inst/2500$2/rel-task/2997$298.htmld" target="_blank">Workday Org Chart</a></li>
+          <li><a href="https://docs.google.com/document/d/1xt7n8vl-2P5ZqlJsxZAn_WeH8TaOR1IbE67UaoMN_cc/edit" target="_blank">Executive Engagement Playbook</a> (Confluence)</li>
+          <li><a href="https://checkr.atlassian.net/wiki/spaces/SAL/pages/2262007910/B2R+Playbook" target="_blank">B2R Playbook</a> — escalations during handoff</li>
+          <li><a href="https://docs.google.com/document/d/1GdI3I1-fHpLFxqh3jNTwOf6J3aJ-L9NGo8qwJ_KRdcI/edit" target="_blank">Meeting Prep Doc Template</a></li>
+          <li><a href="https://checkr.atlassian.net/wiki/spaces/RS/pages/3374645260/2025+Segmentation+Logic+GTM+Coverage" target="_blank">Sales Segmentation Logic</a></li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Selling Checkr</div>
+        <ul>
+          <li><a href="https://checkr.atlassian.net/wiki/spaces/SAL/pages/2996666391/DIRECT+SALES+-+go+sales" target="_blank">All Sales Confluence</a> — go/sales</li>
+          <li><strong>Checkpoint</strong> — go/checkpoint (all training and info)</li>
+          <li><a href="https://docs.google.com/presentation/d/15YbL9-lKGCoTHOjfHnYTx-ZWHDlMlEnP98-QR6xyvzw/edit?usp=sharing" target="_blank">Checkr Full Deck / Sales Narrative</a></li>
+          <li><a href="https://checkr.atlassian.net/wiki/spaces/MAR/pages/1765082548/Product+hubs+go+producthubs" target="_blank">Product Hub</a></li>
+          <li><a href="https://checkr.atlassian.net/wiki/spaces/RD/pages/2789802084/Price+book" target="_blank">Price Book</a></li>
+          <li>CoM: <a href="https://drive.google.com/file/d/1_ag9xq6pP1q6B-cB1UwWDTT4bAuCdUHh/view" target="_blank">Summary</a> / <a href="https://drive.google.com/file/d/133Za0jWdBoEtfMVeE0ZATzgSutSVEVuM/view?usp=sharing" target="_blank">Full Framework</a></li>
+          <li><a href="https://docs.google.com/spreadsheets/d/12NRiRRp0eR32GY9vv35aWVVPwIYlT0N-5Dc3MbrFaUE/edit" target="_blank">Proof Points Library</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-card">
+        <div class="info-card-label">Reporting</div>
+        <ul>
+          <li><a href="https://checkrinternal.cloud.looker.com/dashboards/3367" target="_blank">Looker Enterprise Dashboard</a> — your primary performance view</li>
+          <li><a href="https://checkr.atlassian.net/wiki/spaces/SAL/pages/1765081957/Sales+Segmentation+%282021%29%3A+ROE" target="_blank">Sales Segmentation: ROE</a></li>
+          <li><a href="https://checkr.atlassian.net/wiki/spaces/PEOPLE/pages/466387860/Checkr+Employee+Handbook" target="_blank">Checkr Employee Handbook</a></li>
+          <li><a href="https://checkr.atlassian.net/wiki/spaces/SAL/pages/1765081696/How+to+Get+Help" target="_blank">How to Get Help</a> (Confluence)</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">People to Know</div>
+        <ul>
+          <li><strong>SE Manager:</strong> Christian Eastman</li>
+          <li><strong>SE Field:</strong> Tyler Gettel</li>
+          <li><strong>Legal / MSA:</strong> Raul Moreno (VP Legal), Leslie Ann Lopez</li>
+          <li><strong>Partnerships:</strong> Ambreen Razaq</li>
+          <li><strong>Events:</strong> Jaime Keene</li>
+          <li><strong>ABM / Campaigns:</strong> Mariza Melendez</li>
+          <li><strong>Tools support:</strong> #enablement-tools-support in Slack</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</main>

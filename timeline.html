@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Onboarding Journey — Checkr Sales 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1E448F;--teal:#45C0B9;--orange:#F37D53;--green:#29736F;--slate:#67727C;
+  --white:#fff;--dark:#0B1626;--bg:#F7F9FC;--border:#D4DAE1;
+  --navy-lt:#EBF0FA;--teal-lt:#E6F7F6;--org-lt:#FEF0EB;--grn-lt:#E3F2F1;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--dark);font-size:14px;line-height:1.5}
+
+/* NAV */
+.nav{background:var(--navy);padding:0 32px;display:flex;align-items:center;height:52px;gap:0;position:sticky;top:0;z-index:100}
+.nav .logo{color:#fff;font-weight:600;font-size:14px;margin-right:28px;flex-shrink:0}
+.nav a{color:rgba(255,255,255,.7);text-decoration:none;font-size:12.5px;font-weight:500;padding:0 14px;height:52px;display:flex;align-items:center;border-bottom:3px solid transparent;transition:all .15s}
+.nav a:hover,.nav a.active{color:#fff;border-bottom-color:var(--teal)}
+
+/* HERO */
+.hero{background:var(--navy);padding:44px 32px 36px;color:#fff}
+.hero-ey{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
+.hero h1{font-size:32px;font-weight:600;margin-bottom:6px}
+.hero p{color:rgba(255,255,255,.7);font-size:13.5px;max-width:520px}
+
+/* MAIN */
+.main{max-width:1160px;margin:0 auto;padding:40px 32px 80px}
+
+/* LEGEND */
+.legend{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:36px;padding:14px 20px;background:#fff;border:1px solid var(--border);border-radius:10px}
+.leg-item{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--slate)}
+.leg-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0}
+
+/* ─── TIMELINE CONTAINER ─────────────────────────────────────────────────── */
+.timeline{position:relative;padding-bottom:40px}
+
+/* Horizontal spine */
+.timeline::before{
+  content:'';position:absolute;top:52px;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--teal),var(--navy) 30%,var(--orange) 65%,var(--green));
+  border-radius:2px;z-index:0;
+}
+
+/* ─── PHASE ROWS ─────────────────────────────────────────────────────────── */
+.phases{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:0;position:relative;z-index:1}
+
+/* Phase column */
+.phase-col{position:relative;padding-top:0}
+
+/* Phase header node — sits on the spine */
+.phase-node{
+  display:flex;flex-direction:column;align-items:center;
+  margin-bottom:24px;
+}
+.phase-dot{
+  width:24px;height:24px;border-radius:50%;border:3px solid var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:0;flex-shrink:0;
+  position:relative;z-index:2;
+  box-shadow:0 0 0 3px var(--bg);
+}
+.phase-dot.teal{background:var(--teal)}
+.phase-dot.navy{background:var(--navy)}
+.phase-dot.orange{background:var(--orange)}
+
+.phase-label{
+  margin-top:10px;padding:8px 14px;border-radius:20px;
+  font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  text-align:center;
+}
+.phase-label.teal{background:var(--teal-lt);color:var(--green)}
+.phase-label.navy{background:var(--navy-lt);color:var(--navy)}
+.phase-label.orange{background:var(--org-lt);color:#B85020}
+
+.phase-sub{font-size:11px;color:var(--slate);text-align:center;margin-top:4px}
+
+/* ─── TIME BLOCKS ────────────────────────────────────────────────────────── */
+.blocks{display:flex;flex-direction:column;gap:0;padding:0 8px}
+
+/* A time block groups a period label + its event pills */
+.time-block{margin-bottom:20px}
+.time-block-label{
+  font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:4px 10px;border-radius:4px;display:inline-block;margin-bottom:8px;
+}
+.time-block-label.teal{background:var(--teal);color:#fff}
+.time-block-label.navy{background:var(--navy);color:#fff}
+.time-block-label.orange{background:var(--orange);color:#fff}
+.time-block-label.green{background:var(--green);color:#fff}
+.time-block-label.slate{background:var(--slate);color:#fff}
+
+.pills{display:flex;flex-direction:column;gap:5px}
+
+/* Event pills */
+.pill{
+  padding:7px 11px;border-radius:7px;font-size:12px;
+  line-height:1.4;position:relative;
+  border-left:3px solid transparent;
+}
+.pill.prework{background:#fff;border-color:var(--teal);color:var(--dark);border:1px solid var(--border);border-left:3px solid var(--teal)}
+.pill.bootcamp{background:#fff;border-color:var(--navy);color:var(--dark);border:1px solid var(--border);border-left:3px solid var(--navy)}
+.pill.module{background:#fff;border-color:var(--orange);color:var(--dark);border:1px solid var(--border);border-left:3px solid var(--orange)}
+.pill.milestone{background:#fff;border-color:var(--green);color:var(--dark);border:1px solid var(--border);border-left:3px solid var(--green);font-weight:500}
+.pill.coaching{background:#fff;border-color:var(--slate);color:var(--dark);border:1px solid var(--border);border-left:3px solid var(--slate)}
+.pill.cert{background:var(--navy-lt);border:1px solid var(--navy);border-left:3px solid var(--navy);color:var(--navy);font-weight:600}
+
+.pill-type{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;opacity:.6;display:block;margin-bottom:1px}
+
+/* Divider between phase cols */
+.phase-col + .phase-col{border-left:1px dashed var(--border);padding-left:8px;margin-left:-1px}
+
+/* ─── YEAR 1 STRIP ────────────────────────────────────────────────────────── */
+.year-strip{
+  margin-top:40px;
+  background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;
+}
+.year-hdr{background:var(--slate);padding:14px 24px;display:flex;align-items:center;gap:12px}
+.year-hdr h3{font-size:14px;font-weight:600;color:#fff}
+.year-hdr p{font-size:12px;color:rgba(255,255,255,.65)}
+.year-months{display:grid;grid-template-columns:repeat(12,1fr);border-top:1px solid var(--border)}
+.month-col{padding:12px 8px;border-right:1px solid var(--border);min-height:110px}
+.month-col:last-child{border-right:none}
+.month-num{font-size:10px;font-weight:700;color:var(--slate);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.month-event{
+  font-size:10.5px;line-height:1.4;padding:3px 6px;border-radius:4px;
+  margin-bottom:4px;
+}
+.month-event.module{background:var(--org-lt);color:#B85020}
+.month-event.milestone{background:var(--grn-lt);color:var(--green);font-weight:600}
+.month-event.coaching{background:var(--bg);color:var(--slate)}
+.month-event.cert{background:var(--navy-lt);color:var(--navy);font-weight:600}
+
+/* ─── BOOTCAMP DETAIL ────────────────────────────────────────────────────── */
+.bootcamp-detail{
+  margin-top:40px;background:#fff;border:1px solid var(--border);
+  border-radius:12px;overflow:hidden;
+}
+.bc-hdr{background:var(--navy);padding:14px 24px;display:flex;align-items:center;gap:12px}
+.bc-hdr h3{font-size:14px;font-weight:600;color:#fff}
+.bc-hdr p{font-size:12px;color:rgba(255,255,255,.65)}
+.bc-days{display:grid;grid-template-columns:repeat(6,1fr)}
+.bc-day{padding:12px 10px;border-right:1px solid var(--border);min-height:200px}
+.bc-day:last-child{border-right:none}
+.bc-day-hdr{font-size:10px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.bc-day-theme{font-size:11px;color:var(--slate);font-style:italic;margin-bottom:10px;line-height:1.35;border-bottom:1px solid var(--border);padding-bottom:8px}
+.bc-session{
+  font-size:10.5px;line-height:1.4;padding:4px 7px;border-radius:4px;
+  margin-bottom:4px;
+}
+.bc-session.ilt{background:var(--navy-lt);color:var(--navy)}
+.bc-session.workshop{background:var(--teal-lt);color:var(--green)}
+.bc-session.roleplay{background:var(--org-lt);color:#B85020}
+.bc-session.activity{background:var(--grn-lt);color:var(--green)}
+.bc-session.cert{background:var(--navy-lt);color:var(--navy);font-weight:600}
+.bc-session.lunch{background:var(--bg);color:var(--slate);font-style:italic}
+
+footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:20px;font-size:11.5px;margin-top:40px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="logo">Checkr Sales Onboarding 2026</span>
+  <a href="index.html">Overview</a>
+  <a href="prework.html">Pre-Work</a>
+  <a href="bootcamp.html">Bootcamp</a>
+  <a href="syllabus.html">Content Library</a>
+  <a href="competency.html">Competency Framework</a>
+  <a href="milestones2.html">My Milestones</a>
+  <a href="timeline.html" class="active">Journey</a>
+  <a href="playbook.html">New Hire Playbooks</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-ey">Checkr Sales Onboarding 2026</div>
+  <h1>The Rep's Journey</h1>
+  <p>A timeline of every session, module, and milestone from Day 1 of employment through the end of Year 1.</p>
+</div>
+
+<div class="main">
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <div class="leg-item"><div class="leg-dot" style="background:var(--teal)"></div>Pre-work</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--navy)"></div>Bootcamp session</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--orange)"></div>Post-bootcamp module</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--green)"></div>Milestone / check-in</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--slate)"></div>Ongoing coaching</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--navy);border:2px solid var(--navy)"></div>Certification</div>
+  </div>
+
+  <!-- MAIN THREE-PHASE TIMELINE -->
+  <div class="timeline">
+    <div class="phases">
+
+      <!-- PHASE 1: PRE-WORK -->
+      <div class="phase-col">
+        <div class="phase-node">
+          <div class="phase-dot teal"></div>
+          <div class="phase-label teal">Phase 1 · Pre-Work</div>
+          <div class="phase-sub">Day 2 of employment → Bootcamp Day 1<br>~4 hours/day · 4 days · 16 hours total</div>
+        </div>
+        <div class="blocks">
+
+          <div class="time-block">
+            <div class="time-block-label teal">Day 1 — Employment</div>
+            <div class="pills">
+              <div class="pill prework"><span class="pill-type">HR / IT</span>NHO, laptop setup, Okta, benefits, payroll</div>
+              <div class="pill prework"><span class="pill-type">Manager</span>Buddy lunch &amp; team intro</div>
+            </div>
+          </div>
+
+          <div class="time-block">
+            <div class="time-block-label teal">Day 2 — Tuesday</div>
+            <div class="pills">
+              <div class="pill prework"><span class="pill-type">ILT · Mandatory</span>Welcome to Checkr Sales — Enablement Kickoff</div>
+              <div class="pill prework"><span class="pill-type">Self-study</span>Sales Tools Setup &amp; Access Confirmation</div>
+              <div class="pill prework"><span class="pill-type">e-Learning</span>Checkr Sales Process 101</div>
+            </div>
+          </div>
+
+          <div class="time-block">
+            <div class="time-block-label teal">Day 3</div>
+            <div class="pills">
+              <div class="pill prework"><span class="pill-type">e-Learning</span>Product 101: Packages &amp; Screenings</div>
+              <div class="pill prework"><span class="pill-type">e-Learning</span>ICP &amp; Personas 101</div>
+            </div>
+          </div>
+
+          <div class="time-block">
+            <div class="time-block-label teal">Day 4</div>
+            <div class="pills">
+              <div class="pill prework"><span class="pill-type">e-Learning</span>Command of the Message 101</div>
+              <div class="pill prework"><span class="pill-type">e-Learning</span>Competitor Overview 101</div>
+            </div>
+          </div>
+
+          <div class="time-block">
+            <div class="time-block-label teal">Day 5</div>
+            <div class="pills">
+              <div class="pill prework"><span class="pill-type">e-Learning</span>Industry Overviews: Retail &amp; Hospitality</div>
+              <div class="pill prework"><span class="pill-type">e-Learning</span>Industry Overviews: Mfg, Transport &amp; Staffing</div>
+            </div>
+          </div>
+
+          <div class="time-block">
+            <div class="time-block-label teal">Day 6</div>
+            <div class="pills">
+              <div class="pill prework"><span class="pill-type">e-Learning</span>Outbound Playbook 101</div>
+              <div class="pill prework"><span class="pill-type">Gong</span>Call Library: Listen to 3 recordings</div>
+            </div>
+          </div>
+
+          <div class="time-block">
+            <div class="time-block-label teal">Week 2</div>
+            <div class="pills">
+              <div class="pill prework"><span class="pill-type">Self-study</span>Complete all pre-work modules</div>
+              <div class="pill prework"><span class="pill-type">Self-study</span>Read the Outbound Playbook (go/outbound)</div>
+              <div class="pill prework"><span class="pill-type">Daily</span>Gong call listening (1 call/day)</div>
+              <div class="pill milestone"><span class="pill-type">Manager check-in</span>Week 1 Check-In</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PHASE 2: BOOTCAMP -->
+      <div class="phase-col">
+        <div class="phase-node">
+          <div class="phase-dot navy"></div>
+          <div class="phase-label navy">Phase 2 · Bootcamp</div>
+          <div class="phase-sub">April 13–18 · San Francisco<br>5 days · In-person · No lecture-only sessions</div>
+        </div>
+        <div class="blocks">
+
+          <div class="time-block">
+            <div class="time-block-label navy">Day 1 · Monday</div>
+            <div class="pills">
+              <div class="pill bootcamp"><span class="pill-type">ILT</span>Welcome &amp; Schedule Review</div>
+              <div class="pill bootcamp"><span class="pill-type">Split session</span>Role Overview &amp; Expectations</div>
+              <div class="pill bootcamp"><span class="pill-type">Workshop</span>CoM Deep Dive: Before &amp; After Scenarios</div>
+              <div class="pill bootcamp"><span class="pill-type">Workshop</span>ICP &amp; Personas Workshop</div>
+              <div class="pill bootcamp"><span class="pill-type">Workshop</span>Competitor Positioning Deep Dive</div>
+              <div class="pill bootcamp"><span class="pill-type">Product · PM presenters</span>Full product suite: Packages, Criminal, MVR, Candidate Experience, International, IDV, Assess</div>
+            </div>
+          </div>
+
+          <div class="time-block">
+            <div class="time-block-label navy">Day 2 · Tuesday</div>
+            <div class="pills">
+              <div class="pill bootcamp"><span class="pill-type">ILT</span>Verifications &amp; Drug / Occ Health</div>
+              <div class="pill bootcamp"><span class="pill-type">Workshop</span>Asking Good Questions</div>
+              <div class="pill bootcamp"><span class="pill-type">Workshop</span>CoM &amp; MEDDPICC Deep Dive</div>
+              <div class="pill bootcamp"><span class="pill-type">Role-play + calibration</span>Cold Call Framework, Role-Play &amp; Calibration</div>
+            </div>
+          </div>
+
+          <div class="time-block">
+            <div class="time-block-label navy">Day 3 · Wednesday</div>
+            <div class="pills">
+              <div class="pill bootcamp"><span class="pill-type">Role-play + calibration</span>Discovery Call Framework, Role-Play &amp; Calibration</div>
+              <div class="pill bootcamp"><span class="pill-type">Workshop</span>Overcoming Inertia &amp; Objection Handling</div>
+              <div class="pill bootcamp"><span class="pill-type">Workshop</span>Using AI &amp; Credal on Live Calls</div>
+            </div>
+          </div>
+
+          <div class="time-block">
+            <div class="time-block-label navy">Day 4 · Thursday</div>
+            <div class="pills">
+              <div class="pill bootcamp"><span class="pill-type">Role-play + calibration</span>Demo Call Framework, Scavenger Hunt &amp; Role-Play</div>
+              <div class="pill bootcamp"><span class="pill-type">ILT</span>SE Partnership &amp; Rules of Engagement</div>
+              <div class="pill bootcamp"><span class="pill-type">Role-play</span>Pricing Call Overview &amp; Role-Play</div>
+              <div class="pill bootcamp"><span class="pill-type">ILT</span>Salesforce Quoting, Legal &amp; MSA</div>
+            </div>
+          </div>
+
+          <div class="time-block">
+            <div class="time-block-label navy">Day 5 · Friday</div>
+            <div class="pills">
+              <div class="pill bootcamp"><span class="pill-type">Workshop</span>Outbound Playbook, Prospecting &amp; Sequencing</div>
+              <div class="pill bootcamp"><span class="pill-type">Workshop</span>Messaging — Emails &amp; LinkedIn</div>
+              <div class="pill bootcamp"><span class="pill-type">ILT</span>Partners &amp; Events</div>
+              <div class="pill bootcamp"><span class="pill-type">ILT</span>ABM Campaigns</div>
+              <div class="pill bootcamp"><span class="pill-type">Fireside</span>Opportunity Walkthrough (Senior AEs)</div>
+            </div>
+          </div>
+
+          <div class="time-block">
+            <div class="time-block-label navy">Day 6 · Saturday</div>
+            <div class="pills">
+              <div class="pill bootcamp"><span class="pill-type">Workshop</span>Gong: Call Intelligence, Deal Boards &amp; Forecasting</div>
+              <div class="pill bootcamp"><span class="pill-type">ILT</span>Revenue Management / Looker</div>
+              <div class="pill bootcamp"><span class="pill-type">Fireside</span>Day/Week in the Life — Waylon Purser</div>
+              <div class="pill cert">🎓 5 Certifications: Cold Call · Discovery · Demo · Pricing · Written Product</div>
+              <div class="pill milestone"><span class="pill-type">Submit</span>Prioritized Account List</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PHASE 3: POST-BOOTCAMP (first ~2 months shown here, rest in month grid) -->
+      <div class="phase-col">
+        <div class="phase-node">
+          <div class="phase-dot orange"></div>
+          <div class="phase-label orange">Phase 3 · Post-Bootcamp</div>
+          <div class="phase-sub">Week 3 of employment → End of Year 1<br>Modules · Coaching · Milestones</div>
+        </div>
+        <div class="blocks">
+
+          <div class="time-block">
+            <div class="time-block-label orange">Weeks 3–4</div>
+            <div class="pills">
+              <div class="pill module"><span class="pill-type">Live outreach begins</span>Sequences active in Outreach</div>
+              <div class="pill module"><span class="pill-type">e-Learning</span>Advanced Retail &amp; Hospitality Deep Dives</div>
+              <div class="pill module"><span class="pill-type">e-Learning</span>Advanced CoM &amp; MEDDPICC</div>
+              <div class="pill module"><span class="pill-type">e-Learning</span>Checkpoint &amp; AI Tools Deep Dive</div>
+              <div class="pill coaching"><span class="pill-type">Gong · Daily</span>5 additional call reviews with manager</div>
+              <div class="pill milestone"><span class="pill-type">Manager check-in</span>Week 3 Check-In</div>
+              <div class="pill milestone"><span class="pill-type">Manager check-in</span>Week 4 Check-In</div>
+            </div>
+          </div>
+
+          <div class="time-block">
+            <div class="time-block-label orange">Month 2</div>
+            <div class="pills">
+              <div class="pill module"><span class="pill-type">e-Learning</span>Advanced Manufacturing, Transport &amp; Staffing</div>
+              <div class="pill module"><span class="pill-type">e-Learning</span>Outbound Motion Advanced</div>
+              <div class="pill milestone"><span class="pill-type">First opp</span>First Qualified Opportunity Created in SFDC</div>
+              <div class="pill milestone"><span class="pill-type">First call</span>First Live Discovery Call — Gong reviewed within 24 hrs</div>
+              <div class="pill milestone"><span class="pill-type">30-day check-in</span>30-Day Manager Check-In · Round Robin begins</div>
+            </div>
+          </div>
+
+          <div class="time-block">
+            <div class="time-block-label green">Month 3</div>
+            <div class="pills">
+              <div class="pill milestone"><span class="pill-type">45-day review</span>45-Day Pipeline Review</div>
+              <div class="pill milestone"><span class="pill-type">90-day review</span>90-Day Milestone Review · Self-assessment</div>
+              <div class="pill coaching"><span class="pill-type">Ongoing · Weekly</span>Gong call reviews with manager</div>
+              <div class="pill coaching"><span class="pill-type">Bi-weekly</span>Homeroom modules in Checkpoint</div>
+            </div>
+          </div>
+
+          <div class="time-block">
+            <div class="time-block-label slate">Months 4–11</div>
+            <div class="pills">
+              <div class="pill coaching"><span class="pill-type">Ongoing</span>Weekly Gong reviews &amp; manager coaching</div>
+              <div class="pill coaching"><span class="pill-type">Bi-weekly</span>Homeroom modules — product, campaigns, competitive updates</div>
+              <div class="pill coaching"><span class="pill-type">As assigned</span>Checkpoint Missions based on coaching gaps</div>
+              <div class="pill milestone"><span class="pill-type">Month 6 review</span>6-Month Proficiency Review</div>
+            </div>
+          </div>
+
+          <div class="time-block">
+            <div class="time-block-label green">Month 12</div>
+            <div class="pills">
+              <div class="pill milestone"><span class="pill-type">Year 1 review</span>12-Month Performance Review</div>
+              <div class="pill milestone"><span class="pill-type">Territory plan</span>Top 20 accounts, career development goals documented</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- /phases -->
+  </div><!-- /timeline -->
+
+
+  <!-- BOOTCAMP DAY-BY-DAY DETAIL -->
+  <div class="bootcamp-detail">
+    <div class="bc-hdr">
+      <div>
+        <h3>Bootcamp in Detail — April 13–18, San Francisco</h3>
+        <p>Every session across 6 days · Workshops, role-plays, calibrations, and certifications</p>
+      </div>
+    </div>
+    <div class="bc-days">
+
+      <div class="bc-day">
+        <div class="bc-day-hdr">Day 1 · Mon</div>
+        <div class="bc-day-theme">Welcome, Methodology, Positioning &amp; Product</div>
+        <div class="bc-session ilt">Welcome &amp; Schedule Review</div>
+        <div class="bc-session ilt">Role Overview &amp; Expectations ↗ split</div>
+        <div class="bc-session workshop">CoM Before &amp; After Scenarios</div>
+        <div class="bc-session workshop">ICP &amp; Personas Workshop</div>
+        <div class="bc-session workshop">Competitor Positioning</div>
+        <div class="bc-session ilt">Product Suite: Packages → IDV → Assess</div>
+        <div class="bc-session ilt">Dashboard &amp; Analytics</div>
+      </div>
+
+      <div class="bc-day">
+        <div class="bc-day-hdr">Day 2 · Tue</div>
+        <div class="bc-day-theme">Product Deep Dive &amp; Call Foundations</div>
+        <div class="bc-session ilt">Verifications</div>
+        <div class="bc-session ilt">Drug &amp; Occ Health</div>
+        <div class="bc-session workshop">Asking Good Questions</div>
+        <div class="bc-session workshop">CoM &amp; MEDDPICC Deep Dive</div>
+        <div class="bc-session roleplay">Cold Call Framework</div>
+        <div class="bc-session roleplay">Cold Call Role-Play</div>
+        <div class="bc-session activity">Cold Call Calibration</div>
+      </div>
+
+      <div class="bc-day">
+        <div class="bc-day-hdr">Day 3 · Wed</div>
+        <div class="bc-day-theme">Discovery, Objections &amp; AI Tools</div>
+        <div class="bc-session roleplay">Discovery Call Framework</div>
+        <div class="bc-session roleplay">Discovery Call Role-Play</div>
+        <div class="bc-session activity">Discovery Calibration</div>
+        <div class="bc-session workshop">Overcoming Inertia</div>
+        <div class="bc-session workshop">Using AI &amp; Credal on Live Calls</div>
+      </div>
+
+      <div class="bc-day">
+        <div class="bc-day-hdr">Day 4 · Thu</div>
+        <div class="bc-day-theme">Demo, Pricing &amp; Deal Mechanics</div>
+        <div class="bc-session roleplay">Demo Call Framework</div>
+        <div class="bc-session activity">Demo Scavenger Hunt</div>
+        <div class="bc-session roleplay">Demo Role-Play</div>
+        <div class="bc-session ilt">SE Partnership &amp; ROE</div>
+        <div class="bc-session roleplay">Pricing Call Role-Play</div>
+        <div class="bc-session ilt">SFDC Quoting &amp; Legal / MSA</div>
+      </div>
+
+      <div class="bc-day">
+        <div class="bc-day-hdr">Day 5 · Fri</div>
+        <div class="bc-day-theme">Outbound Motion, Partners &amp; Campaigns</div>
+        <div class="bc-session workshop">Account Research: Demandbase, SCOUT, LI SN</div>
+        <div class="bc-session workshop">Prospecting Workflow &amp; Sequencing</div>
+        <div class="bc-session workshop">Messaging — Emails &amp; LinkedIn</div>
+        <div class="bc-session ilt">Partners</div>
+        <div class="bc-session ilt">Events</div>
+        <div class="bc-session ilt">ABM Campaigns</div>
+        <div class="bc-session activity">Opportunity Walkthrough (Senior AEs)</div>
+      </div>
+
+      <div class="bc-day" style="background:var(--navy-lt)">
+        <div class="bc-day-hdr">Day 6 · Sat</div>
+        <div class="bc-day-theme">Productivity, Tools &amp; Certifications</div>
+        <div class="bc-session ilt">How to be Productive</div>
+        <div class="bc-session workshop">Gong: Call Intelligence &amp; Deal Boards</div>
+        <div class="bc-session ilt">Revenue Management / Looker</div>
+        <div class="bc-session ilt">Time Management &amp; Tips &amp; Tricks</div>
+        <div class="bc-session activity">Day in the Life — Waylon Purser</div>
+        <div class="bc-session cert">🎓 5 Certifications</div>
+        <div class="bc-session cert">✓ Account List Submission</div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- YEAR 1 MONTH-BY-MONTH -->
+  <div class="year-strip" style="margin-top:40px">
+    <div class="year-hdr">
+      <div>
+        <h3>Year 1 at a Glance — Month by Month</h3>
+        <p>Key modules, milestones, and coaching touchpoints across the first 12 months</p>
+      </div>
+    </div>
+    <div class="year-months">
+
+      <div class="month-col">
+        <div class="month-num">Month 1</div>
+        <div class="month-event cert">5 Certifications</div>
+        <div class="month-event module">Adv. Retail &amp; Hospitality</div>
+        <div class="month-event module">Adv. CoM &amp; MEDDPICC</div>
+        <div class="month-event milestone">Wk 3 &amp; 4 Check-ins</div>
+      </div>
+
+      <div class="month-col">
+        <div class="month-num">Month 2</div>
+        <div class="month-event module">Adv. Mfg, Transport, Staffing</div>
+        <div class="month-event module">Outbound Advanced</div>
+        <div class="month-event milestone">First Opp Created</div>
+        <div class="month-event milestone">30-Day Check-In</div>
+      </div>
+
+      <div class="month-col">
+        <div class="month-num">Month 3</div>
+        <div class="month-event milestone">45-Day Pipeline Review</div>
+        <div class="month-event milestone">90-Day Review</div>
+        <div class="month-event coaching">Weekly Gong Reviews</div>
+        <div class="month-event coaching">Homeroom (bi-weekly)</div>
+      </div>
+
+      <div class="month-col">
+        <div class="month-num">Month 4</div>
+        <div class="month-event coaching">Weekly Gong Reviews</div>
+        <div class="month-event coaching">Homeroom (bi-weekly)</div>
+        <div class="month-event coaching">Checkpoint Missions</div>
+      </div>
+
+      <div class="month-col">
+        <div class="month-num">Month 5</div>
+        <div class="month-event coaching">Weekly Gong Reviews</div>
+        <div class="month-event coaching">Homeroom (bi-weekly)</div>
+        <div class="month-event coaching">Checkpoint Missions</div>
+      </div>
+
+      <div class="month-col" style="background:var(--grn-lt)">
+        <div class="month-num" style="color:var(--green)">Month 6</div>
+        <div class="month-event coaching">Weekly Gong Reviews</div>
+        <div class="month-event coaching">Homeroom (bi-weekly)</div>
+        <div class="month-event milestone">6-Month Proficiency Review</div>
+      </div>
+
+      <div class="month-col">
+        <div class="month-num">Month 7</div>
+        <div class="month-event coaching">Weekly Gong Reviews</div>
+        <div class="month-event coaching">Homeroom (bi-weekly)</div>
+        <div class="month-event coaching">Checkpoint Missions</div>
+      </div>
+
+      <div class="month-col">
+        <div class="month-num">Month 8</div>
+        <div class="month-event coaching">Weekly Gong Reviews</div>
+        <div class="month-event coaching">Homeroom (bi-weekly)</div>
+      </div>
+
+      <div class="month-col">
+        <div class="month-num">Month 9</div>
+        <div class="month-event coaching">Weekly Gong Reviews</div>
+        <div class="month-event coaching">Homeroom (bi-weekly)</div>
+        <div class="month-event coaching">Checkpoint Missions</div>
+      </div>
+
+      <div class="month-col">
+        <div class="month-num">Month 10</div>
+        <div class="month-event coaching">Weekly Gong Reviews</div>
+        <div class="month-event coaching">Homeroom (bi-weekly)</div>
+      </div>
+
+      <div class="month-col">
+        <div class="month-num">Month 11</div>
+        <div class="month-event coaching">Weekly Gong Reviews</div>
+        <div class="month-event coaching">Homeroom (bi-weekly)</div>
+        <div class="month-event coaching">Checkpoint Missions</div>
+      </div>
+
+      <div class="month-col" style="background:var(--grn-lt)">
+        <div class="month-num" style="color:var(--green)">Month 12</div>
+        <div class="month-event coaching">Weekly Gong Reviews</div>
+        <div class="month-event coaching">Homeroom (bi-weekly)</div>
+        <div class="month-event milestone">12-Month Review</div>
+        <div class="month-event milestone">Territory Plan</div>
+        <div class="month-event milestone">Career Dev Goals</div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<footer>Checkr Sales Enablement · 2026 · Based on January 2026 Bootcamp Cohort</footer>
+
+</body>
+</html>

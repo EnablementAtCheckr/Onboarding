@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BDR Playbook — Checkr 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1E448F;--teal:#45C0B9;--orange:#F37D53;--green:#29736F;--slate:#67727C;
+  --white:#fff;--dark:#0B1626;--bg:#F7F9FC;--border:#D4DAE1;
+  --navy-lt:#EBF0FA;--teal-lt:#E6F7F6;--org-lt:#FEF0EB;--grn-lt:#E3F2F1;--slt-lt:#F1EFF8;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--dark);font-size:15px;line-height:1.6}
+
+.nav{background:var(--navy);padding:0 24px;display:flex;align-items:center;height:56px;position:sticky;top:0;z-index:100;gap:0}
+.nav .logo{color:#fff;font-weight:600;font-size:15px;margin-right:32px;flex-shrink:0}
+.nav a{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;font-weight:500;padding:0 14px;height:56px;display:flex;align-items:center;border-bottom:3px solid transparent;transition:all .15s}
+.nav a:hover,.nav a.active{color:#fff;border-bottom-color:var(--teal)}
+
+.hero{background:var(--navy);padding:52px 40px 44px;color:#fff;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-40px;bottom:-60px;width:340px;height:340px;border-radius:50%;background:rgba(69,192,185,.07);pointer-events:none}
+.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+.hero h1{font-size:40px;font-weight:600;margin-bottom:12px;line-height:1.15;max-width:660px}
+.hero-sub{color:rgba(255,255,255,.72);font-size:16px;line-height:1.65;max-width:600px;margin-bottom:28px}
+.hero-badges{display:flex;gap:10px;flex-wrap:wrap}
+.badge{font-size:12px;font-weight:500;padding:5px 14px;border-radius:20px;background:rgba(255,255,255,.12);color:rgba(255,255,255,.9)}
+.back-link{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.6);font-size:13px;text-decoration:none;margin-bottom:20px;font-weight:500}
+.back-link:hover{color:#fff}
+
+.page-wrap{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 56px);max-width:1400px;margin:0 auto}
+
+.sidebar{padding:28px 0;border-right:1px solid var(--border);background:#fff;position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto}
+.sb-section{margin-bottom:22px;padding:0 18px}
+.sb-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.sb-link{display:flex;align-items:center;gap:8px;padding:6px 0;font-size:13px;font-weight:500;color:var(--slate);text-decoration:none;transition:color .15s}
+.sb-link:hover,.sb-link.active{color:var(--navy);font-weight:600}
+.sb-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.sb-dot.navy{background:var(--navy)}.sb-dot.teal{background:var(--teal)}.sb-dot.orange{background:var(--orange)}.sb-dot.green{background:var(--green)}.sb-dot.slate{background:var(--slate)}
+
+.content{padding:40px 48px;max-width:880px}
+
+.sec-hdr{margin-top:56px;margin-bottom:24px;padding-bottom:14px;border-bottom:2px solid var(--border)}
+.sec-hdr:first-child{margin-top:0}
+.sec-eyebrow{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:6px}
+.sec-hdr h2{font-size:26px;font-weight:600;color:var(--dark);margin-bottom:6px}
+.sec-hdr p{font-size:14px;color:var(--slate);line-height:1.6}
+
+.stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:28px}
+.stat-block{background:#fff;padding:18px 14px;text-align:center}
+.stat-num{font-size:24px;font-weight:600;color:var(--teal);line-height:1;margin-bottom:4px}
+.stat-label{font-size:11px;color:var(--slate);line-height:1.4}
+
+.info-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px}
+.info-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px 22px}
+.info-card-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.info-card ul{padding-left:0;list-style:none}
+.info-card ul li{font-size:13px;color:var(--dark);margin-bottom:7px;padding-left:16px;position:relative;line-height:1.5}
+.info-card ul li::before{content:'›';position:absolute;left:0;color:var(--teal);font-weight:700}
+.info-card ul li strong{font-weight:600}
+
+.tbl-wrap{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:24px}
+.tbl{width:100%;border-collapse:collapse}
+.tbl th{padding:10px 14px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--slate);background:var(--bg);border-bottom:1px solid var(--border);text-align:left}
+.tbl td{padding:12px 14px;font-size:13px;vertical-align:top;border-bottom:1px solid var(--border);line-height:1.5;color:var(--dark)}
+.tbl tr:last-child td{border-bottom:none}
+.tbl td:not(:last-child){border-right:1px solid var(--border)}
+.tbl th:not(:last-child){border-right:1px solid var(--border)}
+.tbl td strong{font-weight:600}
+.tbl tr:nth-child(even) td{background:#FAFBFD}
+
+.callout{border-radius:12px;padding:18px 22px;margin-bottom:24px;display:flex;gap:14px;align-items:flex-start}
+.callout.teal{background:var(--teal-lt);border:1px solid rgba(69,192,185,.3)}
+.callout.navy{background:var(--navy-lt);border:1px solid rgba(30,68,143,.2)}
+.callout.orange{background:var(--org-lt);border:1px solid rgba(243,125,83,.25)}
+.callout.green{background:var(--grn-lt);border:1px solid rgba(41,115,111,.2)}
+.callout-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+.callout-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}
+.callout.teal .callout-label{color:var(--green)}.callout.navy .callout-label{color:var(--navy)}.callout.orange .callout-label{color:#B85020}.callout.green .callout-label{color:var(--green)}
+.callout-title{font-size:15px;font-weight:600;color:var(--dark);margin-bottom:4px}
+.callout-desc{font-size:13px;color:var(--slate);line-height:1.55}
+
+/* Partnership split */
+.partnership-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+.p-card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.p-card-hdr{padding:14px 18px;font-size:13px;font-weight:600;color:#fff}
+.p-card-hdr.bdr{background:var(--teal)}
+.p-card-hdr.ae{background:var(--navy)}
+.p-card-body{padding:14px 18px}
+.p-card-body ul{padding-left:0;list-style:none}
+.p-card-body ul li{font-size:13px;color:var(--dark);margin-bottom:7px;padding-left:16px;position:relative;line-height:1.5}
+.p-card-body ul li::before{content:'›';position:absolute;left:0;font-weight:700}
+.bdr-li::before{color:var(--teal)}
+.ae-li::before{color:var(--navy)}
+
+/* SQL criteria */
+.criteria-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+.crit-card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.crit-hdr{padding:12px 18px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff}
+.crit-hdr.sql{background:var(--orange)}
+.crit-hdr.sqo{background:var(--navy)}
+.crit-body{padding:14px 18px}
+.crit-body ul{padding-left:0;list-style:none}
+.crit-body ul li{font-size:13px;color:var(--dark);margin-bottom:7px;padding-left:16px;position:relative;line-height:1.5}
+.crit-body ul li::before{content:'›';position:absolute;left:0;color:var(--teal);font-weight:700}
+.crit-body ul li strong{font-weight:600;color:var(--dark)}
+
+.cadence-list{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:24px}
+.cadence-item{display:flex;gap:14px;align-items:flex-start;padding:14px 18px;border-bottom:1px solid var(--border)}
+.cadence-item:last-child{border-bottom:none}
+.cadence-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+.cadence-freq{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--teal);margin-bottom:3px}
+.cadence-name{font-size:14px;font-weight:600;color:var(--dark);margin-bottom:3px}
+.cadence-desc{font-size:12.5px;color:var(--slate);line-height:1.5}
+
+.prose{font-size:14px;color:var(--dark);line-height:1.7;margin-bottom:16px}
+.prose strong{font-weight:600}
+h3.sub{font-size:16px;font-weight:600;color:var(--dark);margin-bottom:10px;margin-top:24px}
+
+footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:24px;font-size:12px}
+
+/* Dropdown nav */
+.nav .dropdown{position:relative;height:56px;display:flex;align-items:center}
+.nav .dropdown-trigger{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;font-weight:500;padding:0 14px;height:56px;display:flex;align-items:center;gap:5px;border-bottom:3px solid transparent;transition:all .15s;cursor:pointer;user-select:none}
+.nav .dropdown-trigger::after{content:'▾';font-size:10px;margin-top:1px}
+.nav .dropdown:hover .dropdown-trigger,.nav .dropdown.active .dropdown-trigger{color:#fff;border-bottom-color:var(--teal)}
+.nav .dropdown-menu{display:none;position:absolute;top:56px;left:0;background:var(--navy);border:1px solid rgba(255,255,255,.12);border-top:2px solid var(--teal);border-radius:0 0 8px 8px;min-width:200px;z-index:200;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.nav .dropdown:hover .dropdown-menu{display:block}
+.nav .dropdown-menu a{display:block;padding:12px 18px;font-size:13px;font-weight:500;color:rgba(255,255,255,.75);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.07);height:auto;border-bottom-color:rgba(255,255,255,.07) !important;transition:background .12s,color .12s}
+.nav .dropdown-menu a:last-child{border-bottom:none;border-radius:0 0 8px 8px}
+.nav .dropdown-menu a:hover{background:rgba(255,255,255,.08);color:#fff}
+.nav .dropdown-menu a.active{color:var(--teal);font-weight:600}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="logo">Checkr Sales Playbooks 2026</span>
+    <a href="index.html">Onboarding</a>
+    <a href="playbook.html">New Hire Playbook</a>
+  <div class="dropdown active">
+    <span class="dropdown-trigger">Role Based Playbooks</span>
+    <div class="dropdown-menu">
+    <a href="playbook_commercial.html">Commercial AE Playbook</a>
+    <a href="playbook_enterprise.html">Enterprise AE Playbook</a>
+    <a href="playbook_bdr.html" class="active">BDR Playbook</a>
+    </div>
+  </div>
+    <a href="outbound.html">Outbound</a>
+</nav>
+
+<div class="hero">
+  <a href="playbook.html" class="back-link">← Back to New Hire Playbook</a>
+  <div class="hero-eyebrow">BDR Playbook · 2026</div>
+  <h1>Business Development Representative Playbook</h1>
+  <div class="hero-sub">Your complete guide to generating qualified pipeline as a BDR — activity expectations, account research, the AE/BDR partnership, SQL/SQO criteria, and your operating cadence.</div>
+  <div class="hero-badges">
+    <span class="badge">Pipeline Generation</span>
+    <span class="badge">AE/BDR Partnership</span>
+    <span class="badge">SQL &amp; SQO Criteria</span>
+    <span class="badge">Activity Standards</span>
+  </div>
+</div>
+
+<div class="page-wrap">
+<aside class="sidebar">
+  <div class="sb-section">
+    <div class="sb-label">In This Playbook</div>
+    <a href="#role" class="sb-link active"><span class="sb-dot teal"></span>Your Role</a>
+    <a href="#activity" class="sb-link"><span class="sb-dot orange"></span>Activity Standards</a>
+    <a href="#accounts" class="sb-link"><span class="sb-dot navy"></span>Account Prioritization</a>
+    <a href="#research" class="sb-link"><span class="sb-dot teal"></span>Account Research</a>
+    <a href="#partnership" class="sb-link"><span class="sb-dot navy"></span>AE/BDR Partnership</a>
+    <a href="#oneonone" class="sb-link"><span class="sb-dot teal"></span>Weekly 1:1 Structure</a>
+    <a href="#sql-sqo" class="sb-link"><span class="sb-dot orange"></span>SQL &amp; SQO Criteria</a>
+    <a href="#post-meeting" class="sb-link"><span class="sb-dot green"></span>Post-Meeting Rules</a>
+    <a href="#cadence" class="sb-link"><span class="sb-dot slate"></span>Operating Cadence</a>
+    <a href="#resources" class="sb-link"><span class="sb-dot slate"></span>Key Resources</a>
+  </div>
+  <div class="sb-section">
+    <div class="sb-label">Other Playbooks</div>
+    <a href="playbook.html" class="sb-link"><span class="sb-dot navy"></span>New Hire Playbook</a>
+    <a href="outbound.html" class="sb-link"><span class="sb-dot orange"></span>Outbound Playbook</a>
+    <a href="playbook_commercial.html" class="sb-link"><span class="sb-dot teal"></span>Commercial AE</a>
+    <a href="playbook_enterprise.html" class="sb-link"><span class="sb-dot navy"></span>Enterprise AE</a>
+  </div>
+</aside>
+
+<main class="content">
+
+  <!-- ROLE -->
+  <div id="role">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Your Role</div>
+      <h2>BDR Overview</h2>
+      <p>What a BDR does at Checkr and how you fit into the revenue engine.</p>
+    </div>
+
+    <p class="prose">As a BDR at Checkr, your job is to generate qualified pipeline for the AE team through strategic outbound prospecting. You are not responsible for closing deals — you are responsible for finding the right people, creating interest, and handing off qualified opportunities so AEs can advance them to close.</p>
+
+    <p class="prose">You sit at the very top of the funnel. The quality of your outreach — how well you research accounts, how targeted your messaging is, and how accurately you qualify — directly determines the quality of pipeline the team has to work with. <strong>Precision matters more than volume alone.</strong></p>
+
+    <div class="stat-strip">
+      <div class="stat-block"><div class="stat-num">50</div><div class="stat-label">Outbound calls<br>per day</div></div>
+      <div class="stat-block"><div class="stat-num">50</div><div class="stat-label">Emails / LinkedIn<br>messages per day</div></div>
+      <div class="stat-block"><div class="stat-num">18</div><div class="stat-label">Unique accounts<br>touched per day</div></div>
+      <div class="stat-block"><div class="stat-num">4–7</div><div class="stat-label">Monthly outbound<br>SQOs (ENT 4 / Comm 7)</div></div>
+    </div>
+
+    <div class="callout navy">
+      <div class="callout-icon">🎯</div>
+      <div>
+        <div class="callout-label">Your North Star</div>
+        <div class="callout-title">You create the opportunity — the AE closes it</div>
+        <div class="callout-desc">BDRs must CREATE the opportunity in Salesforce to receive credit. Do not create an opportunity on an account you have been tag-teaming with your AE — that rule exists to protect everyone's commission and keeps the data clean for forecasting.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIVITY STANDARDS -->
+  <div id="activity">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Activity Standards</div>
+      <h2>Daily Activity Minimums</h2>
+      <p>These are floors, not targets. The best BDRs exceed them consistently — but start here and build the habit first.</p>
+    </div>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <tr><th>Activity</th><th>BDR Daily</th><th>Comm AE Daily (ref)</th><th>Ent AE Daily (ref)</th></tr>
+        <tr><td><strong>Unique Accounts Touched</strong></td><td><strong>18</strong></td><td>4</td><td>1</td></tr>
+        <tr><td><strong>Outbound Calls</strong></td><td><strong>50</strong></td><td>10</td><td>10</td></tr>
+        <tr><td><strong>Personalized Emails / LinkedIn Messages</strong></td><td><strong>50</strong></td><td>10</td><td>—</td></tr>
+        <tr><td><strong>Prospects Sequenced</strong></td><td><strong>10</strong></td><td>11</td><td>N/A</td></tr>
+        <tr><td><strong>Monthly Outbound SQOs</strong></td><td><strong>4 (ENT) / 7 (Comm)</strong></td><td>2</td><td>1</td></tr>
+      </table>
+    </div>
+
+    <div class="callout teal">
+      <div class="callout-icon">💡</div>
+      <div>
+        <div class="callout-label">Reverse-Engineer Your Goals</div>
+        <div class="callout-title">Don't just hit the minimums — understand why they are what they are</div>
+        <div class="callout-desc">Use the <a href="https://docs.google.com/spreadsheets/d/1_u7YqTUXFbTE_W7KyNioX4nQYXoK5VAAPlBKCTyvYis/edit?usp=sharing" target="_blank" style="color:var(--green);font-weight:600">AE quota calculator</a> and <a href="https://docs.google.com/spreadsheets/d/1qes4UopOzZQgy--EufgaG1GsB6-6vGkYnXVjOyuZldQ/edit?usp=sharing" target="_blank" style="color:var(--green);font-weight:600">meeting calculator</a> to see how daily activity connects to monthly SQO targets. You can plug in your own conversion rates once you have data.</div>
+      </div>
+    </div>
+
+    <div class="callout orange">
+      <div class="callout-icon">⚠️</div>
+      <div>
+        <div class="callout-label">The Inbound Trap</div>
+        <div class="callout-title">Inbound is not where you will hit your number</div>
+        <div class="callout-desc">Inbound feels productive because the prospect already has interest — but it is the result of previous outbound work or luck. Work inbounds appropriately, but deliberately block dedicated time every day for outbound. That is where your quota lives.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACCOUNT PRIORITIZATION -->
+  <div id="accounts">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Where to Focus</div>
+      <h2>Account Prioritization</h2>
+      <p>It is your responsibility to identify the top priority accounts within your book each month. Pick a theme and go deep.</p>
+    </div>
+
+    <p class="prose">Each week or month, pick a theme — a particular industry or ICP segment — so you can use the same value prop, pain points, and mindset across your outreach. For example, spend a month focused on restaurants, get deep into that perspective, then switch to retail clothing stores. Become a mini-SME on each segment before moving on.</p>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <tr><th>Priority</th><th>Signal</th><th>Where to Find It</th><th>Why It Matters</th></tr>
+        <tr>
+          <td><strong>Tier 1 — Hottest</strong></td>
+          <td>Demandbase MQA / high intent score</td>
+          <td>Demandbase — manager shares weekly list</td>
+          <td>They're actively researching screening solutions. First to call wins.</td>
+        </tr>
+        <tr>
+          <td><strong>Tier 2 — High</strong></td>
+          <td>UserGems job-change alert — former Checkr champion at a new company</td>
+          <td>UserGems alerts in Salesforce or Slack</td>
+          <td>Warm intro potential. They know Checkr. New company is likely a prospect.</td>
+        </tr>
+        <tr>
+          <td><strong>Tier 3 — Events</strong></td>
+          <td>Attendees from recent events or webinars</td>
+          <td>Event lists from Jaime Keene (Events)</td>
+          <td>Warm touchpoint already created — sequence within 24 hours of event.</td>
+        </tr>
+        <tr>
+          <td><strong>Tier 4 — ICP Blitz</strong></td>
+          <td>ICP-fit companies with no prior Checkr history in your territory</td>
+          <td>SFDC account views, Demandbase browse, LinkedIn Sales Nav</td>
+          <td>Your long-term pipeline. Build this consistently each month.</td>
+        </tr>
+        <tr>
+          <td><strong>AE-Assigned Accounts</strong></td>
+          <td>Accounts your AE flags as highest intent based on DemandBase or focus areas</td>
+          <td>Weekly 1:1 with your AE</td>
+          <td>These are your highest-priority target for the week. Work these first.</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="info-row">
+      <div class="info-card">
+        <div class="info-card-label">Enterprise-Specific Outbound</div>
+        <ul>
+          <li>All ENT SQLs must be on assigned accounts — no unassigned targets</li>
+          <li>Focus list aligns with DemandBase meeting agenda (Monday AM for ENT)</li>
+          <li><a href="https://docs.google.com/document/d/1Tit8Tiqjg3MRMEQ653typqPaPEyfPBKRc2_0HoaVEUQ/edit?usp=sharing" target="_blank" style="color:var(--navy);font-weight:500">Enterprise-Specific Outbound Notes</a> — from Steve Sanders</li>
+          <li><a href="https://docs.google.com/presentation/d/1JBg2SWyhhhfWvswVKPLesTJ27htyDO9NJZmc4VsAbC4/edit?usp=sharing" target="_blank" style="color:var(--navy);font-weight:500">Enterprise Outbound Deck</a></li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Commercial-Specific Outbound</div>
+        <ul>
+          <li>Wider account universe — 200+ ICP-fit accounts in SFDC under your manager</li>
+          <li>Target 3–5 contacts per account across HR, TA, and Ops</li>
+          <li>25% of Commercial pipeline should come from BDR outbound</li>
+          <li><a href="https://docs.google.com/document/d/12qpiby0dZ1l2S-aJiW7JUq9KE3l9VAsQcCpW38zuYek/edit?usp=sharing" target="_blank" style="color:var(--navy);font-weight:500">Commercial-Specific Outbound Notes</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACCOUNT RESEARCH -->
+  <div id="research">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Account Research</div>
+      <h2>Research Before You Dial</h2>
+      <p>Checkr pays for world-class research tools. Use them in the right order.</p>
+    </div>
+
+    <p class="prose">Many tools overlap — Demandbase, LinkedIn, and ZoomInfo all have account research, intent data, and AI summaries. Use them in the priority order below. For news, Google's News tab and Gemini are also fast and effective.</p>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <tr><th style="width:15%">Step</th><th style="width:20%">Tool</th><th>What You're Looking For</th></tr>
+        <tr><td><strong>1st</strong></td><td><strong>Demandbase</strong></td><td>Intent score, MQA status, which Checkr pages they've visited — highest signal for prioritization</td></tr>
+        <tr><td><strong>2nd</strong></td><td><strong>LinkedIn Sales Nav</strong></td><td>Org chart, persona titles, growth signals, recent job postings, company news</td></tr>
+        <tr><td><strong>3rd</strong></td><td><strong>SCOUT (Credal)</strong></td><td>AI-generated company summary, pain points relevant to BGC, Checkr talking points — type the company name in #talking-points in Slack</td></tr>
+        <tr><td><strong>4th</strong></td><td><strong>ZoomInfo</strong></td><td>Direct dials, contact emails, full org chart with titles — use last to find contacts after you've targeted the right account</td></tr>
+        <tr><td><strong>5th</strong></td><td><strong>Salesforce</strong></td><td>Any prior Checkr activity, existing relationships, open or past opportunities — always check before reaching out</td></tr>
+      </table>
+    </div>
+
+    <div class="callout teal">
+      <div class="callout-icon">🤖</div>
+      <div>
+        <div class="callout-label">Use SCOUT</div>
+        <div class="callout-title">Credal's SCOUT agent does the research heavy lifting for you</div>
+        <div class="callout-desc">Type a company name into the <strong>#talking-points</strong> Slack channel. SCOUT returns industry context, likely BGC pain points, relevant Checkr proof points, and a suggested outreach frame. Use it on every new account before you write your first email.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AE/BDR PARTNERSHIP -->
+  <div id="partnership">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Working with Your AE</div>
+      <h2>AE / BDR Partnership</h2>
+      <p>The partnership is built on tight alignment and consistent communication. You function as a single pipeline-generation team.</p>
+    </div>
+
+    <p class="prose">Each Enterprise AE is partnered with a BDR (2 AEs to 1 BDR). Commercial BDRs support a broader book. Regardless of segment, the most effective partnerships share strategy, align on messaging, and review progress together every week.</p>
+
+    <div class="partnership-grid">
+      <div class="p-card">
+        <div class="p-card-hdr bdr">What the BDR brings to the 1:1</div>
+        <div class="p-card-body">
+          <ul>
+            <li class="bdr-li">Current pipeline — including accounts you're working outside of AE-provided lists (UserGems, events, ICP blitz)</li>
+            <li class="bdr-li">Update on progress and current state of last week's AE-assigned accounts</li>
+            <li class="bdr-li">Meetings happening this week — talk through handoffs so AEs are prepared for the call</li>
+            <li class="bdr-li">Feedback loop: what SQLs happened, were they qualified? What should we start / stop / continue?</li>
+          </ul>
+        </div>
+      </div>
+      <div class="p-card">
+        <div class="p-card-hdr ae">What the AE brings to the 1:1</div>
+        <div class="p-card-body">
+          <ul>
+            <li class="ae-li">Accounts with highest intent for BDR to focus on this week — based on DemandBase signals and any other focus areas for the month</li>
+            <li class="ae-li">Outreach plan for each assigned account — clear assignment of activity and messaging</li>
+            <li class="ae-li">Feedback on recent meetings: were the SQLs qualified? What additional context would help future outreach?</li>
+            <li class="ae-li">Strategic guidance on which verticals, personas, or signals to prioritize</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout navy">
+      <div class="callout-icon">📅</div>
+      <div>
+        <div class="callout-label">1:1 Scheduling</div>
+        <div class="callout-title">Meet weekly — consistently. Monday afternoon or Tuesday morning.</div>
+        <div class="callout-desc">Monday afternoon or Tuesday morning is the ideal timing — it aligns with the DemandBase meeting for the ENT team and lets you set the plan for the week early. If there is nothing to talk about, that itself is something to talk about. No pipeline, no meetings, no strategy = a problem worth diagnosing together.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEKLY 1:1 STRUCTURE -->
+  <div id="oneonone">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Weekly Rhythm</div>
+      <h2>Weekly 1:1 Structure</h2>
+      <p>Come prepared. The 1:1 only works if both sides show up ready.</p>
+    </div>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <tr><th>Agenda Item</th><th>BDR Owns</th><th>AE Owns</th></tr>
+        <tr>
+          <td><strong>Pipeline Review</strong></td>
+          <td>Current pipeline status, accounts in progress, sequences active</td>
+          <td>Confirm awareness of active opps, flag any deal context BDR should know</td>
+        </tr>
+        <tr>
+          <td><strong>This Week's Account Assignments</strong></td>
+          <td>Ask for clarification on messaging, personas, or context for each account</td>
+          <td>Provide accounts with highest intent + outreach plan per account</td>
+        </tr>
+        <tr>
+          <td><strong>Meeting Handoffs</strong></td>
+          <td>Brief AE on each meeting booked this week — prospect context, pain surfaced, how the call went</td>
+          <td>Confirm readiness, ask clarifying questions before the meeting</td>
+        </tr>
+        <tr>
+          <td><strong>SQL Quality Feedback</strong></td>
+          <td>Ask: which SQLs from last week were qualified? Why or why not?</td>
+          <td>Give honest, specific feedback — this makes future BDR outreach better</td>
+        </tr>
+        <tr>
+          <td><strong>Start / Stop / Continue</strong></td>
+          <td>Flag what is and isn't working in current outreach</td>
+          <td>Share deal insights that can improve top-of-funnel messaging</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- SQL / SQO CRITERIA -->
+  <div id="sql-sqo">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Qualification Standards</div>
+      <h2>SQL &amp; SQO Criteria</h2>
+      <p>Know the difference cold. These criteria determine whether you get credit — and whether the opp has real legs.</p>
+    </div>
+
+    <div class="callout orange">
+      <div class="callout-icon">⚠️</div>
+      <div>
+        <div class="callout-label">Critical Rule</div>
+        <div class="callout-title">BDRs must CREATE the opportunity to receive credit</div>
+        <div class="callout-desc">Do not create an opportunity on an account you have been tag-teaming with your AE. If the AE gets them on the hook first and you want credit: you need 5 touch points with at least 2–3 different contacts in the last 30 days before you can be added to the opp.</div>
+      </div>
+    </div>
+
+    <div class="criteria-grid">
+      <div class="crit-card">
+        <div class="crit-hdr sql">SQL — Sales Qualified Lead</div>
+        <div class="crit-body">
+          <p style="font-size:12px;color:var(--slate);margin-bottom:10px;line-height:1.5">The minimum bar to move a lead into a qualified opportunity. You must gather all of these before creating the opp.</p>
+          <ul>
+            <li>How many background checks do they run per year?</li>
+            <li>Who is their current BGC provider?</li>
+            <li>How long are they in their current contract? <strong>(1 year max to be able to book)</strong></li>
+            <li>What time of year do they evaluate HR Tech and how often?</li>
+            <li>Do they use an ATS, and if so which one?</li>
+            <li>Confirmed persona / ICP fit</li>
+            <li>All ENT SQLs must be assigned accounts</li>
+            <li>Understanding of pain — why are they willing to take a call? What do they want to learn?</li>
+          </ul>
+          <p style="font-size:12px;color:var(--slate);margin-top:10px;font-style:italic">SQL notes must live on the Account Level AND in the Qualification Notes section on the opportunity.</p>
+        </div>
+      </div>
+      <div class="crit-card">
+        <div class="crit-hdr sqo">SQO — Sales Qualified Opportunity (PINT)</div>
+        <div class="crit-body">
+          <p style="font-size:12px;color:var(--slate);margin-bottom:10px;line-height:1.5">The PINT framework — all four elements should be confirmed before moving to SQO.</p>
+          <ul>
+            <li><strong>P — Pain:</strong> Confidence that we can solve their specific issue</li>
+            <li><strong>I — Influence:</strong> Person has influence over the decision</li>
+            <li><strong>N — Next Steps:</strong> Solidified next steps with a purpose — a technical call or demo, not a "touch base"</li>
+            <li><strong>T — Timeline:</strong> Realistic timeline for evaluation and decision</li>
+          </ul>
+          <p style="font-size:12px;color:var(--slate);margin-top:10px;line-height:1.5;font-style:italic">If next steps are scheduled without solidified pain, the opp will still progress to SQO — but pain must be confirmed before advancing further.</p>
+          <p style="font-size:12px;color:var(--slate);margin-top:8px;line-height:1.5;font-style:italic">For RFP processes: wait until you have the RFP in hand and have confirmed you are participating before moving to qualified.</p>
+          <p style="font-size:12px;font-weight:600;color:var(--orange);margin-top:8px">Once the meeting takes place: progression to qualified, closed lost, or a nurture plan must be identified and executed within 24 hours.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POST-MEETING -->
+  <div id="post-meeting">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">After the Meeting</div>
+      <h2>Post-Meeting Expectations</h2>
+      <p>What happens after a BDR-sourced meeting — and who is responsible for what.</p>
+    </div>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <tr><th>Scenario</th><th>Who Owns It</th><th>What Happens</th></tr>
+        <tr>
+          <td><strong>Meeting goes well → opp advances</strong></td>
+          <td>AE owns the opp from this point</td>
+          <td>BDR is not responsible for follow-up post-SQO. The AE drives it to close.</td>
+        </tr>
+        <tr>
+          <td><strong>Opp goes Closed Lost</strong></td>
+          <td>Account returns to BDR for nurture</td>
+          <td>BDR can add to a nurture sequence or trade for a new account during quarterly refreshes.</td>
+        </tr>
+        <tr>
+          <td><strong>New opp opened within 60 days of Closed Lost</strong></td>
+          <td>BDR who sourced the original opp</td>
+          <td>The BDR that sourced the original opp gets credit for the new opportunity. 60-day window.</td>
+        </tr>
+        <tr>
+          <td><strong>Quarterly account refreshes</strong></td>
+          <td>BDR + Manager</td>
+          <td>Accounts that went CL and have been nurtured can be traded for new assigned accounts at the quarterly refresh.</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- OPERATING CADENCE -->
+  <div id="cadence">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">How We Operate</div>
+      <h2>Operating Cadence</h2>
+      <p>The recurring rhythms of the BDR team. Show up to these consistently.</p>
+    </div>
+    <div class="cadence-list">
+      <div class="cadence-item">
+        <div class="cadence-icon">👤</div>
+        <div>
+          <div class="cadence-freq">Weekly · Mon PM or Tue AM</div>
+          <div class="cadence-name">1:1 with Your AE Partner</div>
+          <div class="cadence-desc">Review pipeline, assign accounts for the week, talk through handoffs, and give/receive feedback on SQL quality. Come prepared — see the 1:1 Structure section above.</div>
+        </div>
+      </div>
+      <div class="cadence-item">
+        <div class="cadence-icon">📞</div>
+        <div>
+          <div class="cadence-freq">Weekly · Tuesday &amp; Wednesday</div>
+          <div class="cadence-name">Outbound Call Blitz</div>
+          <div class="cadence-desc">Dedicated 1-hour team blitz. Make 20+ dials during each session. This is protected prospecting time — block it and protect it.</div>
+        </div>
+      </div>
+      <div class="cadence-item">
+        <div class="cadence-icon">📊</div>
+        <div>
+          <div class="cadence-freq">Weekly</div>
+          <div class="cadence-name">1:1 with Your Manager</div>
+          <div class="cadence-desc">Review KPIs, pipeline progress, activity numbers, blockers, and coaching. Come with your Athean dashboard open and your top accounts ready to discuss.</div>
+        </div>
+      </div>
+      <div class="cadence-item">
+        <div class="cadence-icon">👥</div>
+        <div>
+          <div class="cadence-freq">Weekly</div>
+          <div class="cadence-name">Team Meeting</div>
+          <div class="cadence-desc">Recognize wins, review pacing, peer best practices, quick trainings. Required attendance.</div>
+        </div>
+      </div>
+      <div class="cadence-item">
+        <div class="cadence-icon">📰</div>
+        <div>
+          <div class="cadence-freq">Weekly</div>
+          <div class="cadence-name">Sales Homeroom</div>
+          <div class="cadence-desc">Video, blog, and quiz covering product, messaging, and process updates. Required — complete on time and retain the information.</div>
+        </div>
+      </div>
+      <div class="cadence-item">
+        <div class="cadence-icon">🏢</div>
+        <div>
+          <div class="cadence-freq">Monthly</div>
+          <div class="cadence-name">Checkr All Hands</div>
+          <div class="cadence-desc">Company-wide goal review, wins, rotating speakers. Required attendance.</div>
+        </div>
+      </div>
+      <div class="cadence-item">
+        <div class="cadence-icon">🔄</div>
+        <div>
+          <div class="cadence-freq">Quarterly</div>
+          <div class="cadence-name">Account Refresh</div>
+          <div class="cadence-desc">Review and refresh your assigned account list with your manager and AE partner. Swap out closed-lost accounts that have been nurtured for fresh ICP-fit targets.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESOURCES -->
+  <div id="resources">
+    <div class="sec-hdr">
+      <div class="sec-eyebrow">Quick Reference</div>
+      <h2>Key Resources</h2>
+      <p>Bookmark these.</p>
+    </div>
+    <div class="info-row">
+      <div class="info-card">
+        <div class="info-card-label">Outbound &amp; Research</div>
+        <ul>
+          <li><a href="outbound.html">Outbound Playbook</a> — sequencing, messaging, cold call framework</li>
+          <li><a href="https://docs.google.com/document/d/1CdGIC36P4Coir_nyGXlMDDo38YCdsznW1zErGEzQ1ZY/edit" target="_blank">Outbound Call Framework</a></li>
+          <li><a href="https://docs.google.com/spreadsheets/d/1_u7YqTUXFbTE_W7KyNioX4nQYXoK5VAAPlBKCTyvYis/edit?usp=sharing" target="_blank">AE Quota Calculator</a></li>
+          <li><a href="https://docs.google.com/spreadsheets/d/1qes4UopOzZQgy--EufgaG1GsB6-6vGkYnXVjOyuZldQ/edit?usp=sharing" target="_blank">Meeting Calculator</a></li>
+          <li><a href="https://docs.google.com/document/d/1Tit8Tiqjg3MRMEQ653typqPaPEyfPBKRc2_0HoaVEUQ/edit?usp=sharing" target="_blank">Enterprise Outbound Notes</a> — Steve Sanders</li>
+          <li><a href="https://docs.google.com/presentation/d/1JBg2SWyhhhfWvswVKPLesTJ27htyDO9NJZmc4VsAbC4/edit?usp=sharing" target="_blank">Enterprise Outbound Deck</a></li>
+          <li><a href="https://docs.google.com/document/d/12qpiby0dZ1l2S-aJiW7JUq9KE3l9VAsQcCpW38zuYek/edit?usp=sharing" target="_blank">Commercial Outbound Notes</a></li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">In Checkpoint (go/checkpoint)</div>
+        <ul>
+          <li><a href="https://checkpoint.checkr.com/new/ui/learner/assets/hub/581684531224904820" target="_blank">Retail ICP Hub</a></li>
+          <li><a href="https://checkpoint.checkr.com/new/ui/learner/assets/hub/581683380022688326" target="_blank">Hospitality ICP Hub</a></li>
+          <li><a href="https://checkpoint.checkr.com/new/ui/learner/assets/hub/581683891778094196" target="_blank">Manufacturing ICP Hub</a></li>
+          <li><a href="https://checkpoint.checkr.com/new/ui/learner/assets/hub/578776316711582791" target="_blank">Transportation ICP Hub</a></li>
+          <li><a href="https://checkpoint.checkr.com/new/ui/learner/assets/hub/581685027595617396" target="_blank">Staffing ICP Hub</a></li>
+          <li><a href="https://checkpoint.checkr.com/new/ui/learner/assets/hub/581681519496542790" target="_blank">Competitive Intel Hub</a></li>
+          <li><a href="https://checkpoint.checkr.com/new/ui/learner/assets/asset/588773291750121758" target="_blank">Proof Points Library</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-card">
+        <div class="info-card-label">Partnership &amp; Process</div>
+        <ul>
+          <li><strong>BDR Lead:</strong> Andi Harmon</li>
+          <li><strong>Sales Manager (ENT):</strong> Steve Sanders</li>
+          <li>1:1 Discussion Topics &amp; Action Items tracker — ask your manager for the link</li>
+          <li><a href="https://checkr.atlassian.net/wiki/spaces/SAL/pages/1765081957/Sales+Segmentation+%282021%29%3A+ROE" target="_blank">Sales Segmentation: ROE</a></li>
+          <li><a href="https://checkr.atlassian.net/wiki/spaces/SAL/pages/1765081696/How+to+Get+Help" target="_blank">How to Get Help</a> (Confluence)</li>
+          <li><strong>Tools support:</strong> #enablement-tools-support in Slack</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Selling Checkr</div>
+        <ul>
+          <li><a href="https://checkr.atlassian.net/wiki/spaces/SAL/pages/2996666391/DIRECT+SALES+-+go+sales" target="_blank">All Sales Confluence</a> — go/sales</li>
+          <li><a href="https://docs.google.com/presentation/d/15YbL9-lKGCoTHOjfHnYTx-ZWHDlMlEnP98-QR6xyvzw/edit?usp=sharing" target="_blank">Checkr Full Deck / Sales Narrative</a></li>
+          <li><a href="https://checkr.atlassian.net/wiki/spaces/MAR/pages/1765082548/Product+hubs+go+producthubs" target="_blank">Product Hub</a></li>
+          <li>CoM: <a href="https://drive.google.com/file/d/1_ag9xq6pP1q6B-cB1UwWDTT4bAuCdUHh/view" target="_blank">Summary</a> / <a href="https://drive.google.com/file/d/133Za0jWdBoEtfMVeE0ZATzgSutSVEVuM/view?usp=sharing" target="_blank">Full Framework</a></li>
+          <li><a href="https://checkr.atlassian.net/wiki/spaces/PEOPLE/pages/466387860/Checkr+Employee+Handbook" target="_blank">Checkr Employee Handbook</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout teal">
+      <div class="callout-icon">🔗</div>
+      <div>
+        <div class="callout-label">Part of a Larger System</div>
+        <div class="callout-title">This playbook connects to the full New Hire Sales Playbook system</div>
+        <div class="callout-desc">The New Hire Playbook covers your onboarding structure, certifications, milestones, and tool reference. The Outbound Playbook has the complete sequencing, messaging, and cold call detail for your outbound motion.</div>
+        <div style="display:flex;gap:16px;margin-top:10px">
+          <a href="playbook.html" style="color:var(--teal);font-weight:600;font-size:13px;text-decoration:none">← New Hire Playbook</a>
+          <a href="outbound.html" style="color:var(--teal);font-weight:600;font-size:13px;text-decoration:none">Outbound Playbook →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+</div>
+
+<footer>Checkr Sales Enablement · BDR Playbook 2026 · For internal use only</footer>
+
+<script>
+const sections = document.querySelectorAll('[id]');
+const links = document.querySelectorAll('.sb-link');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) current = s.id; });
+  links.forEach(l => {
+    l.classList.remove('active');
+    if (l.getAttribute('href') === '#' + current) l.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
