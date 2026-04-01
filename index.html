@@ -107,6 +107,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--dark);fon
 footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:24px;font-size:12px;margin-top:40px}
 
 /* EXPORT BUTTON */
+.export-btn{display:inline-flex;align-items:center;padding:5px 14px;background:var(--navy);color:#fff;border:none;border-radius:20px;font-size:11.5px;font-weight:600;cursor:pointer;font-family:inherit;letter-spacing:.01em;transition:background .15s;white-space:nowrap}
+.export-btn:hover{background:var(--teal)}
+.export-btn:disabled{opacity:.6;cursor:default}
 
 /* EXEC SUMMARY */
 .exec-summary{margin-bottom:56px}
@@ -153,7 +156,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;paddi
   <a href="competency.html">Competency Framework</a>
   <a href="milestones2.html">My Milestones</a>
   <a href="timeline.html">Journey</a>
-  <a href="playbook.html">New Hire Playbooks</a>
 </nav>
 
 <div class="hero">
@@ -173,7 +175,13 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;paddi
 
 
   <!-- EXECUTIVE SUMMARY -->
-  <div class="sec-title">Executive Summary — What We're Changing &amp; Why</div>
+  <div class="sec-title" style="display:flex;align-items:center;justify-content:space-between">
+    <span>Executive Summary — What We're Changing &amp; Why</span>
+    <button onclick="exportExecSummary()" class="export-btn" title="Export as PDF">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" style="margin-right:5px;vertical-align:-1px"><path d="M8 1v9M5 7l3 3 3-3M2 11v1a2 2 0 002 2h8a2 2 0 002-2v-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Export PDF
+    </button>
+  </div>
   <div class="exec-summary" id="exec-summary-block">
     <div class="exec-header">
       <div class="ey">For Sales Leadership · April 2026 Cohort</div>
@@ -253,6 +261,26 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;paddi
   </div>
 
   <script>
+  function exportExecSummary() {
+    const btn = document.querySelector('.export-btn');
+    btn.textContent = 'Preparing…';
+    btn.disabled = true;
+
+    // Open a new window with just the exec summary content, styled for print
+    const w = window.open('', '_blank', 'width=900,height=700');
+    w.document.write(`<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Checkr Sales Onboarding 2026 — Executive Summary</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --navy:#1E448F;--teal:#45C0B9;--orange:#F37D53;--green:#29736F;--slate:#67727C;
+    --dark:#0B1626;--bg:#F7F9FC;--border:#D4DAE1;
+    --navy-lt:#EBF0FA;--teal-lt:#E6F7F6;--org-lt:#FEF0EB;--grn-lt:#E3F2F1;
+  }
   body{font-family:'DM Sans',sans-serif;color:var(--dark);background:#fff;padding:0;font-size:13px;line-height:1.6}
 
   /* Print header */
@@ -408,7 +436,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;paddi
       <p>A visual timeline of every session and milestone from Day 1 through Year 1 — pre-work, bootcamp day-by-day, and post-bootcamp.</p>
       <span class="dc-link teal">View timeline →</span>
     </a>
-    <a href="milestones2.html" class="doc-card">
+    <a href="milestones.html" class="doc-card">
       <div class="dc-icon orange">📊</div>
       <h3>Milestone Guide</h3>
       <p>What reps should be able to do at each milestone — Week 1, Month 1, Month 3, Month 6, and Year 1 — with how to measure it and supporting sessions.</p>
@@ -488,29 +516,29 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;paddi
   </div>
 
   <!-- MILESTONES -->
-  <div class="sec-title">Milestone Check-Ins — <a href="milestones2.html" style="color:var(--navy);font-weight:600;text-decoration:none;font-size:11px">View full guide →</a></div>
+  <div class="sec-title">Milestone Check-Ins — <a href="milestones.html" style="color:var(--navy);font-weight:600;text-decoration:none;font-size:11px">View full guide →</a></div>
   <div class="milestones">
-    <a href="milestones2.html#week1" class="ms-item wk">
+    <a href="milestones.html#week1" class="ms-item wk">
       <div class="ms-label">Week 1</div>
       <div class="ms-name">Immersion complete</div>
       <div class="ms-desc">Tools confirmed, product basics known, ICP understood, expectations set</div>
     </a>
-    <a href="milestones2.html#month1" class="ms-item m1">
+    <a href="milestones.html#month1" class="ms-item m1">
       <div class="ms-label">Month 1</div>
       <div class="ms-name">First opp created</div>
       <div class="ms-desc">All 4 certs passed, CoM applied, live outreach active, first SFDC opp with MEDDPICC</div>
     </a>
-    <a href="milestones2.html#month3" class="ms-item m3">
+    <a href="milestones.html#month3" class="ms-item m3">
       <div class="ms-label">Month 3</div>
       <div class="ms-name">Full cycle ownership</div>
       <div class="ms-desc">Running disco, demo, pricing independently — first deal closing without shadowing</div>
     </a>
-    <a href="milestones2.html#month6" class="ms-item m6">
+    <a href="milestones.html#month6" class="ms-item m6">
       <div class="ms-label">Month 6</div>
       <div class="ms-name">Proficiency review</div>
       <div class="ms-desc">Quota pacing, champion development, forecasting accuracy, peer contribution</div>
     </a>
-    <a href="milestones2.html#year1" class="ms-item yr">
+    <a href="milestones.html#year1" class="ms-item yr">
       <div class="ms-label">Year 1</div>
       <div class="ms-name">Territory ownership</div>
       <div class="ms-desc">Consistent quota, strategic account plan, career development documented</div>
@@ -533,6 +561,18 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;paddi
   </div>
 
 </div>
+
+
+  <!-- ROLLOUT CHECKLIST LINK -->
+  <div class="sec-title">Rollout Planning</div>
+  <div class="doc-cards" style="grid-template-columns:repeat(1,1fr);max-width:360px">
+    <a href="Checkr_Rollout_Checklist_2026.xlsx" class="doc-card">
+      <div class="dc-icon green">📋</div>
+      <h3>April 13 Rollout Checklist</h3>
+      <p>95 tasks across logistics, presenters, attendees, content, food, tech, and post-bootcamp follow-through. Sorted by due date with critical items flagged.</p>
+      <span class="dc-link green">Open spreadsheet →</span>
+    </a>
+  </div>
 
 <footer>Checkr Sales Enablement · 2026 · Based on January 2026 Bootcamp Cohort</footer>
 </body>
