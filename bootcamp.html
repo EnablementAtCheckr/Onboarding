@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bootcamp Schedule — Checkr Sales 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1E448F;--teal:#45C0B9;--orange:#F37D53;--green:#29736F;--slate:#67727C;
+  --white:#fff;--dark:#0B1626;--bg:#F7F9FC;--border:#D4DAE1;
+  --navy-lt:#EBF0FA;--teal-lt:#E6F7F6;--org-lt:#FEF0EB;--grn-lt:#E3F2F1;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--dark);font-size:15px;line-height:1.6}
+
+/* NAV */
+.nav{background:var(--navy);padding:0 24px;display:flex;align-items:center;height:56px;position:sticky;top:0;z-index:100;gap:0}
+.nav .logo{color:#fff;font-weight:600;font-size:15px;margin-right:32px;flex-shrink:0;letter-spacing:.01em}
+.nav a{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;font-weight:500;padding:0 16px;height:56px;display:flex;align-items:center;border-bottom:3px solid transparent;transition:all .15s}
+.nav a:hover,.nav a.active{color:#fff;border-bottom-color:var(--teal)}
+
+/* HERO */
+.hero{background:var(--navy);padding:40px 24px 36px;color:#fff;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;right:-80px;top:-80px;width:400px;height:400px;border-radius:50%;background:rgba(69,192,185,.08);pointer-events:none}
+.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+.hero h1{font-size:42px;font-weight:600;margin-bottom:10px;line-height:1.15}
+.hero p{color:rgba(255,255,255,.72);font-size:16px;margin-bottom:32px;line-height:1.6}
+.hero-badges{display:flex;gap:10px;flex-wrap:wrap}
+.badge{font-size:12px;font-weight:500;padding:5px 14px;border-radius:20px;background:rgba(255,255,255,.12);color:rgba(255,255,255,.9)}
+
+/* MAIN */
+.main{padding:32px 8px}
+
+/* SECTION TITLE */
+.sec-title{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:20px;margin-top:48px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.sec-title:first-child{margin-top:0}
+
+/* DAY NAV STRIP */
+.day-nav{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:40px}
+.day-nav-btn{background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:14px 16px;cursor:pointer;text-align:left;font-family:inherit;transition:all .15s;text-decoration:none;display:block;color:inherit}
+.day-nav-btn:hover{border-color:var(--teal);background:var(--teal-lt)}
+.day-nav-btn.active{border-color:var(--navy);background:var(--navy-lt)}
+.dnb-day{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:4px}
+.dnb-theme{font-size:13px;font-weight:600;color:var(--dark);line-height:1.35}
+.day-nav-btn.d1 .dnb-day{color:var(--navy)}
+.day-nav-btn.d2 .dnb-day{color:var(--teal)}
+.day-nav-btn.d3 .dnb-day{color:var(--orange)}
+.day-nav-btn.d4 .dnb-day{color:var(--green)}
+.day-nav-btn.d5 .dnb-day{color:var(--slate)}
+.day-nav-btn.d1.active,.day-nav-btn.d1:hover{border-color:var(--navy);background:var(--navy-lt)}
+.day-nav-btn.d2.active,.day-nav-btn.d2:hover{border-color:var(--teal);background:var(--teal-lt)}
+.day-nav-btn.d3.active,.day-nav-btn.d3:hover{border-color:var(--orange);background:var(--org-lt)}
+.day-nav-btn.d4.active,.day-nav-btn.d4:hover{border-color:var(--green);background:var(--grn-lt)}
+.day-nav-btn.d5.active,.day-nav-btn.d5:hover{border-color:var(--slate);background:#F1F2F4}
+
+/* DAY PANEL */
+.day-panel{display:none}
+.day-panel.active{display:block}
+
+/* DAY HEADER */
+.day-hdr{border-radius:12px 12px 0 0;padding:24px 32px 20px;margin-bottom:0;color:#fff}
+.day-hdr.d1{background:var(--navy)}
+.day-hdr.d2{background:var(--teal)}
+.day-hdr.d3{background:var(--orange)}
+.day-hdr.d4{background:var(--green)}
+.day-hdr.d5{background:var(--slate)}
+.dh-label{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:6px}
+.dh-title{font-size:26px;font-weight:600;margin-bottom:4px}
+.dh-sub{font-size:13px;color:rgba(255,255,255,.7);font-style:italic}
+
+/* SCHEDULE TABLE */
+.sched-wrap{background:#fff;border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;overflow-x:auto;overflow-y:visible;margin-bottom:40px}
+table{width:100%;border-collapse:collapse;table-layout:auto}
+thead tr{background:var(--dark)}
+thead th{padding:10px 10px;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.7);text-align:left}
+thead th:nth-child(1){width:60px}thead th:nth-child(2){width:72px}thead th:nth-child(4){width:100px}thead th:nth-child(5){width:130px}thead th:nth-child(6){width:160px}thead th:nth-child(7){width:280px;text-align:center}thead th:nth-child(8){width:160px}
+tbody tr{border-bottom:1px solid var(--border);transition:background .1s}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover:not(.break-row):not(.lunch-row):not(.social-row){background:var(--bg)}
+tbody td{padding:10px 10px;font-size:13px;vertical-align:top;word-wrap:break-word;overflow-wrap:break-word}
+.time-cell{font-size:12.5px;font-weight:600;color:var(--slate);white-space:nowrap;padding-top:14px}
+.session-name{font-weight:600;color:var(--dark);margin-bottom:3px}
+.session-prework{font-size:11.5px;color:var(--slate);margin-top:4px;line-height:1.4}
+.session-prework span{font-weight:600;color:var(--teal)}
+
+/* SESSION TYPE PILLS */
+.type-pill{display:inline-block;font-size:11px;font-weight:600;padding:2px 9px;border-radius:10px;white-space:nowrap}
+.tp-inperson{background:var(--navy-lt);color:var(--navy)}
+.tp-ilt{background:var(--navy-lt);color:var(--navy)}
+.tp-workshop{background:var(--teal-lt);color:var(--green)}
+.tp-roleplay{background:var(--org-lt);color:#B85020}
+.tp-activity{background:var(--grn-lt);color:var(--green)}
+.tp-prep{background:#F5F0FF;color:#5B21B6}
+.tp-calibration{background:#FFF7ED;color:#9A3412}
+.tp-fireside{background:var(--navy-lt);color:var(--navy)}
+.tp-classroom{background:var(--bg);color:var(--slate)}
+.tp-other{background:var(--bg);color:var(--slate)}
+
+/* BREAK / LUNCH / SOCIAL ROWS */
+.break-row td,.lunch-row td,.social-row td{padding:7px 16px;color:var(--slate);font-size:12.5px;font-style:italic}
+.break-row{background:#FAFBFC}
+.lunch-row{background:#FFFBF5}
+.social-row{background:#F0FAF9}
+.break-row td:first-child,.lunch-row td:first-child,.social-row td:first-child{font-weight:600;font-style:normal;font-size:12px}
+.divider-label{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--slate)}
+
+/* PRESENTER CELL */
+.presenter{font-size:12.5px;color:var(--dark)}
+.presenter-tbd{font-size:12px;color:var(--orange);font-style:italic}
+
+/* NOTES CELL */
+.notes-cell{font-size:11.5px;color:var(--slate);line-height:1.45;white-space:normal;word-wrap:break-word;overflow-wrap:break-word;min-width:120px}
+.notes-cell .flag{color:var(--orange);font-weight:600}
+
+/* EVENING EVENT */
+.evening-card{background:#fff;border:1.5px solid var(--teal);border-radius:12px;padding:20px 24px;display:flex;align-items:flex-start;gap:20px;margin-bottom:40px}
+.ec-icon{font-size:28px;flex-shrink:0;margin-top:2px}
+.ec-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:4px}
+.ec-title{font-size:17px;font-weight:600;color:var(--dark);margin-bottom:6px}
+.ec-desc{font-size:13px;color:var(--slate);line-height:1.55}
+.ec-tbd{font-size:12px;color:var(--orange);font-style:italic;margin-top:6px}
+
+footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:24px;font-size:12px;margin-top:40px}
+
+.dur-cell{font-size:12.5px;color:var(--slate);font-weight:600;white-space:nowrap;padding-right:4px}
+.slides-cell{text-align:left;vertical-align:top;padding:10px 10px}
+.slides-upload{display:flex;align-items:flex-start;justify-content:flex-start}
+.upload-btn{cursor:pointer;display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;background:var(--navy-lt);border:1px solid var(--border);transition:all .15s;position:relative}
+.upload-btn:hover{background:var(--navy);border-color:var(--navy)}
+.upload-btn:hover .upload-icon{color:#fff}
+.upload-icon{font-size:14px;color:var(--navy);pointer-events:none}
+.upload-btn input[type=file]{position:absolute;opacity:0;width:100%;height:100%;cursor:pointer}
+.slide-link{font-size:11px;color:var(--teal);text-decoration:none;font-weight:600;display:block;white-space:normal;word-break:break-word;overflow:visible}
+.slide-link:hover{color:var(--navy)}
+.link-input{width:100%;font-size:11px;padding:4px 6px;border:1px solid var(--border);border-radius:6px;font-family:inherit;color:var(--dark);background:#fff;outline:none;box-sizing:border-box}
+.link-input:focus{border-color:var(--teal)}
+.link-input::placeholder{color:var(--slate);opacity:.7}
+.slides-input-wrap{padding:2px 0}
+.recording-cell{text-align:left;vertical-align:top;padding:10px 10px}
+.rec-input{width:100%;font-size:11px;padding:4px 6px;border:1px solid var(--border);border-radius:6px;font-family:inherit;color:var(--dark);background:#fff;outline:none;box-sizing:border-box}
+.rec-input:focus{border-color:var(--teal)}
+.rec-input::placeholder{color:var(--slate);opacity:.7}
+.rec-link{font-size:11px;color:var(--teal);text-decoration:none;font-weight:600;display:block;white-space:normal;word-break:break-word;overflow:hidden}
+.rec-link:hover{color:var(--navy)}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="logo">Checkr Sales Onboarding 2026</span>
+  <a href="index.html">Overview</a>
+  <a href="prework.html">Pre-Work</a>
+  <a href="bootcamp.html" class="active">Bootcamp</a>
+  <a href="competency.html">Competency Framework</a>
+  <a href="milestones2.html">My Milestones</a>
+  <a href="timeline.html">Journey</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Checkr Sales Onboarding 2026</div>
+  <h1>Bootcamp Schedule</h1>
+  <p>Five days · In-person · San Francisco or Denver · 9:00 AM – 5:00 PM daily. Select a day below to view the full schedule.</p>
+  <div class="hero-badges">
+    <span class="badge">5 Days In-Person</span>
+    <span class="badge">SF or Denver</span>
+    <span class="badge">Workshops &amp; Role-Plays</span>
+    <span class="badge">Happy Hour — Tuesday</span>
+    <span class="badge">Group Dinner — Thursday</span>
+  </div>
+  <div style="margin-top:24px">
+    <button id="export-btn" onclick="exportSchedule()" style="display:inline-flex;align-items:center;gap:6px;padding:8px 20px;background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.4);border-radius:24px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s" onmouseover="this.style.background='#45C0B9';this.style.borderColor='#45C0B9'" onmouseout="this.style.background='rgba(255,255,255,.15)';this.style.borderColor='rgba(255,255,255,.4)'">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 1v9M5 7l3 3 3-3M2 11v1a2 2 0 002 2h8a2 2 0 002-2v-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Export Schedule
+    </button>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- DAY NAV -->
+  <div class="sec-title">Select a Day</div>
+  <div class="day-nav">
+    <button class="day-nav-btn d1 active" onclick="showDay(1)">
+      <div class="dnb-day">Day 1 · Monday</div>
+      <div class="dnb-theme">Context &amp; Foundation</div>
+      <div class="dnb-sub">Pains &amp; personas &middot; Competition &middot; Fireside Panel</div>
+    </button>
+    <button class="day-nav-btn d2" onclick="showDay(2)">
+      <div class="dnb-day">Day 2 · Tuesday</div>
+      <div class="dnb-theme">Practicing the Conversations We Have</div>
+      <div class="dnb-sub">CoM &middot; Cold call &middot; Discovery</div>
+    </button>
+    <button class="day-nav-btn d3" onclick="showDay(3)">
+      <div class="dnb-day">Day 3 · Wednesday</div>
+      <div class="dnb-theme">How We Sell</div>
+      <div class="dnb-sub">Athean &middot; AI tools &middot; Demo &middot; Pricing &middot; SE</div>
+    </button>
+    <button class="day-nav-btn d4" onclick="showDay(4)">
+      <div class="dnb-day">Day 4 · Thursday</div>
+      <div class="dnb-theme">Outbound Motion &amp; Prospecting</div>
+      <div class="dnb-sub">Account research &middot; Gong &middot; Partners &middot; Events &middot; Jeopardy</div>
+    </button>
+    <button class="day-nav-btn d5" onclick="showDay(5)">
+      <div class="dnb-day">Day 5 · Friday</div>
+      <div class="dnb-theme">Increasing Productivity</div>
+      <div class="dnb-sub">Best practices &middot; Tips &amp; Tricks &middot; Ask Nik</div>
+    </button>
+  </div>
+
+  <!-- ── DAY 1 ─────────────────────────────────────────────────────────────── -->
+  <div class="day-panel active" id="day-1">
+        <div class="day-hdr d1">
+      <div class="dh-label">Day 1 &middot; Monday</div>
+      <div class="dh-title">Context &amp; Foundation</div>
+      <div class="dh-sub">Pains &amp; personas &middot; Competition &middot; Fireside Chat</div>
+    </div>
+    <div class="sched-wrap">
+      <table>
+        <thead><tr><th>Start</th><th>Duration</th><th>Session</th><th>Format</th><th>Presenter</th><th>Notes</th><th>Slides</th><th>Recording</th></tr></thead>
+                                <tbody>
+          <tr data-key="day1__introductions">
+            <td class="time-cell">9:00</td>
+            <td class="dur-cell">30 min</td>
+            <td><div class="session-name">Bootcamp | Introductions</div></td>
+            <td><span class="type-pill tp-classroom">Classroom</span></td>
+            <td><div class="presenter">George So</div></td>
+            <td class="notes-cell"></td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day1__pains_and_personas_review">
+            <td class="time-cell">9:30</td>
+            <td class="dur-cell">45 min</td>
+            <td><div class="session-name">Bootcamp | Pains and Personas Review</div><div class="session-prework"><span>Pre-work:</span> The Problem We Solve (pre-work) &middot; ICP &amp; Personas 101 (pre-work)</div></td>
+            <td><span class="type-pill tp-classroom">Classroom</span></td>
+            <td><div class="presenter">George So</div></td>
+            <td class="notes-cell">Review the problems we solve and the ICPs</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr class="break-row"><td class="time-cell">10:15</td><td class="dur-cell">15 min</td><td colspan="6"><span class="divider-label">&#x2615; Break</span></td></tr>
+          <tr data-key="day1__overcoming_inertia">
+            <td class="time-cell">10:30</td>
+            <td class="dur-cell">45 min</td>
+            <td><div class="session-name">Bootcamp: Overcoming Inertia</div><div class="session-prework"><span>Pre-work:</span> Competition (pre-work)</div></td>
+            <td><span class="type-pill tp-classroom">Classroom</span></td>
+            <td><div class="presenter">George So</div></td>
+            <td class="notes-cell"></td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day1__competition_review">
+            <td class="time-cell">11:15</td>
+            <td class="dur-cell">45 min</td>
+            <td><div class="session-name">Bootcamp | Competition Review</div><div class="session-prework"><span>Pre-work:</span> Competition (pre-work)</div></td>
+            <td><span class="type-pill tp-activity">Activity</span></td>
+            <td><div class="presenter">George So</div></td>
+            <td class="notes-cell"></td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr class="lunch-row"><td class="time-cell">12:00</td><td class="dur-cell"></td><td colspan="6"><span class="divider-label">&#x1F37D; Lunch</span></td></tr>
+          <tr data-key="day1__sales_all_hands">
+            <td class="time-cell">1:00</td>
+            <td class="dur-cell">1 hr</td>
+            <td><div class="session-name">Sales All Hands</div></td>
+            <td><span class="type-pill tp-ilt">Company Meeting</span></td>
+            <td><div class="presenter">All</div></td>
+            <td class="notes-cell">New reps attend as observers</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day1__pains_personas_competition_activity">
+            <td class="time-cell">2:00</td>
+            <td class="dur-cell">30 min</td>
+            <td><div class="session-name">Bootcamp | Pains, Personas and Competition Activity</div><div class="session-prework"><span>Pre-work:</span> The Problem We Solve (pre-work) &middot; ICP &amp; Personas 101 (pre-work)</div></td>
+            <td><span class="type-pill tp-activity">Activity</span></td>
+            <td><div class="presenter">George/Nicole</div></td>
+            <td class="notes-cell"></td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day1__fireside_chat">
+            <td class="time-cell">2:30</td>
+            <td class="dur-cell">1 hr</td>
+            <td><div class="session-name">Bootcamp: Fireside Chat</div><div class="session-prework"><span>Pre-work:</span> Submit product questions in Mindtickle before bootcamp</div></td>
+            <td><span class="type-pill tp-fireside">Panel</span></td>
+            <td><div class="presenter">PMM &amp; Enablement</div></td>
+            <td class="notes-cell">Questions crowdsourced from pre-work via Mindtickle</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr class="break-row"><td class="time-cell">3:30</td><td class="dur-cell">15 min</td><td colspan="6"><span class="divider-label">&#x2615; Break</span></td></tr>
+          <tr class="break-row"><td class="time-cell">3:45</td><td class="dur-cell">1 hr</td><td colspan="6"><span class="divider-label">&#x23F3; Buffer</span></td></tr>
+          <tr data-key="day1__day_1_debrief_feedback">
+            <td class="time-cell">4:45</td>
+            <td class="dur-cell">15 min</td>
+            <td><div class="session-name">Bootcamp | Day 1 Debrief/Feedback</div></td>
+            <td><span class="type-pill tp-classroom">Classroom</span></td>
+            <td><div class="presenter">George/Nicole</div></td>
+            <td class="notes-cell">What landed &middot; Open questions &middot; Preview of Day 2</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+        
+          <tr class="feedback-row">
+            <td colspan="8" style="padding:14px 20px;text-align:center;background:var(--bg);border-top:2px solid var(--navy)">
+              <a href="https://enablementatcheckr.github.io/NewHireOnboarding/bootcamp_day1_feedback.html" target="_blank" rel="noopener" class="feedback-btn" style="display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;text-decoration:none;padding:10px 28px;border-radius:8px;font-size:13px;font-weight:600;font-family:inherit;letter-spacing:.03em">
+                &#x1F4CB; Day 1 Feedback Form
+              </a>
+              <div style="font-size:11px;color:var(--slate);margin-top:6px">Submit your session ratings and feedback for today</div>
+            </td>
+          </tr>
+</tbody>
+      </table>
+    </div>
+  </div>
+  <div class="day-panel" id="day-2">
+        <div class="day-hdr d2">
+      <div class="dh-label">Day 2 &middot; Tuesday</div>
+      <div class="dh-title">Practicing the Conversations We Have</div>
+      <div class="dh-sub">Asking Good Questions &middot; CoM &middot; Cold call &middot; Discovery</div>
+    </div>
+    <div class="sched-wrap">
+      <table>
+        <thead><tr><th>Start</th><th>Duration</th><th>Session</th><th>Format</th><th>Presenter</th><th>Notes</th><th>Slides</th><th>Recording</th></tr></thead>
+                                <tbody>
+          <tr data-key="day2__recap_day_2">
+            <td class="time-cell">9:00</td>
+            <td class="dur-cell">15 min</td>
+            <td><div class="session-name">Bootcamp | Recap and Day 2 Schedule</div></td>
+            <td><span class="type-pill tp-classroom">Recap</span></td>
+            <td><div class="presenter">George/Nicole</div></td>
+            <td class="notes-cell"></td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day2__asking_good_questions">
+            <td class="time-cell">9:15</td>
+            <td class="dur-cell">30 min</td>
+            <td><div class="session-name">Bootcamp | Asking Good Questions</div></td>
+            <td><span class="type-pill tp-workshop">Workshop</span></td>
+            <td><div class="presenter">George So</div></td>
+            <td class="notes-cell"></td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day2__com_deep_dive">
+            <td class="time-cell">9:45</td>
+            <td class="dur-cell">45 min</td>
+            <td><div class="session-name">Bootcamp | Command of the Message Deep Dive</div><div class="session-prework"><span>Pre-work:</span> CoM 101 (pre-work)</div></td>
+            <td><span class="type-pill tp-workshop">Workshop</span></td>
+            <td><div class="presenter">George So</div></td>
+            <td class="notes-cell"></td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr class="break-row"><td class="time-cell">10:30</td><td class="dur-cell">15 min</td><td colspan="6"><span class="divider-label">&#x2615; Break</span></td></tr>
+          <tr data-key="day2__prep_cold_call">
+            <td class="time-cell">10:45</td>
+            <td class="dur-cell">45 min</td>
+            <td><div class="session-name">Bootcamp | Prep for Cold Call Exercise</div><div class="session-prework"><span>Pre-work:</span> Cold Call Overview (pre-work)</div></td>
+            <td><span class="type-pill tp-prep">Prep</span></td>
+            <td><div class="presenter">Ryley Padilla (BDR)</div></td>
+            <td class="notes-cell"></td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day2__cold_call_role_play">
+            <td class="time-cell">11:30</td>
+            <td class="dur-cell">45 min</td>
+            <td><div class="session-name">Bootcamp | Cold Call Role-Play</div></td>
+            <td><span class="type-pill tp-roleplay">Role-Play</span></td>
+            <td><div class="presenter">George So</div></td>
+            <td class="notes-cell">Paired practice &middot; Partner rotation &middot; Cert prep</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr class="lunch-row"><td class="time-cell">12:15</td><td class="dur-cell"></td><td colspan="6"><span class="divider-label">&#x1F37D; Lunch</span></td></tr>
+          <tr data-key="day2__cold_call_calibration">
+            <td class="time-cell">1:00</td>
+            <td class="dur-cell">30 min</td>
+            <td><div class="session-name">Bootcamp | Cold Call Calibration</div></td>
+            <td><span class="type-pill tp-calibration">Review</span></td>
+            <td><div class="presenter">George/Nicole</div></td>
+            <td class="notes-cell">Group listening &middot; Score against rubric</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day2__prep_discovery_call">
+            <td class="time-cell">1:30</td>
+            <td class="dur-cell">45 min</td>
+            <td><div class="session-name">Bootcamp | Prep for Discovery Call Exercise</div><div class="session-prework"><span>Pre-work:</span> Discovery Call Overview (pre-work)</div></td>
+            <td><span class="type-pill tp-prep">Prep</span></td>
+            <td><div class="presenter">Gina Evans (Ent AE)</div></td>
+            <td class="notes-cell"></td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day2__discovery_call_role_play">
+            <td class="time-cell">2:15</td>
+            <td class="dur-cell">45 min</td>
+            <td><div class="session-name">Bootcamp | Discovery Call Role-Play</div></td>
+            <td><span class="type-pill tp-roleplay">Role-Play</span></td>
+            <td><div class="presenter">George/Nicole</div></td>
+            <td class="notes-cell">Full discovery call &middot; Rotate roles &middot; Cert prep</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr class="break-row"><td class="time-cell">3:00</td><td class="dur-cell">15 min</td><td colspan="6"><span class="divider-label">&#x2615; Break</span></td></tr>
+          <tr data-key="day2__buffer_time">
+            <td class="time-cell">3:15</td>
+            <td class="dur-cell">45 min</td>
+            <td><div class="session-name">BUFFER TIME</div><div class="session-prework"><span>Pre-work:</span> Sales Process 101 (pre-work)</div></td>
+            <td><span class="type-pill tp-activity">Activity</span></td>
+            <td><div class="presenter">N/A</div></td>
+            <td class="notes-cell">Creating quotes &middot; MSA effective date &middot; Order forms</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day2__discovery_call_calibration">
+            <td class="time-cell">4:00</td>
+            <td class="dur-cell">45 min</td>
+            <td><div class="session-name">Bootcamp | Discovery Call Calibration</div></td>
+            <td><span class="type-pill tp-calibration">Review</span></td>
+            <td><div class="presenter">George/Nicole</div></td>
+            <td class="notes-cell">Group listening and structured feedback</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day2__day_2_debrief_feedback">
+            <td class="time-cell">4:45</td>
+            <td class="dur-cell">15 min</td>
+            <td><div class="session-name">Bootcamp | Day 2 Debrief/Feedback</div></td>
+            <td><span class="type-pill tp-classroom">Classroom</span></td>
+            <td><div class="presenter">George/Nicole</div></td>
+            <td class="notes-cell"></td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr class="social-row"><td class="time-cell">5:00</td><td class="dur-cell">1 hr 30 min</td><td colspan="6"><span class="divider-label">&#x1F37B; Happy Hour in Office</span></td></tr>
+        
+          <tr class="feedback-row">
+            <td colspan="8" style="padding:14px 20px;text-align:center;background:var(--bg);border-top:2px solid var(--teal)">
+              <a href="https://enablementatcheckr.github.io/NewHireOnboarding/bootcamp_day2_feedback.html" target="_blank" rel="noopener" class="feedback-btn" style="display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;text-decoration:none;padding:10px 28px;border-radius:8px;font-size:13px;font-weight:600;font-family:inherit;letter-spacing:.03em">
+                &#x1F4CB; Day 2 Feedback Form
+              </a>
+              <div style="font-size:11px;color:var(--slate);margin-top:6px">Submit your session ratings and feedback for today</div>
+            </td>
+          </tr>
+</tbody>
+      </table>
+    </div>
+  </div>
+  <div class="day-panel" id="day-3">
+        <div class="day-hdr d3">
+      <div class="dh-label">Day 3 &middot; Wednesday</div>
+      <div class="dh-title">How We Sell</div>
+      <div class="dh-sub">Demo call &middot; SE Partnership &middot; AI tools &middot; Pricing call &middot; Athean</div>
+    </div>
+    <div class="sched-wrap">
+      <table>
+        <thead><tr><th>Start</th><th>Duration</th><th>Session</th><th>Format</th><th>Presenter</th><th>Notes</th><th>Slides</th><th>Recording</th></tr></thead>
+                                <tbody>
+          <tr data-key="day3__recap_day_3">
+            <td class="time-cell">9:00</td>
+            <td class="dur-cell">15 min</td>
+            <td><div class="session-name">Bootcamp | Recap and Day 3 Schedule</div></td>
+            <td><span class="type-pill tp-classroom">Recap</span></td>
+            <td><div class="presenter">George/Nicole</div></td>
+            <td class="notes-cell"></td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day3__demo_call_prep">
+            <td class="time-cell">9:15</td>
+            <td class="dur-cell">45 min</td>
+            <td><div class="session-name">Bootcamp | Demo Call Prep</div><div class="session-prework"><span>Pre-work:</span> Demo Call Overview (pre-work)</div></td>
+            <td><span class="type-pill tp-prep">Prep</span></td>
+            <td><div class="presenter">George So</div></td>
+            <td class="notes-cell"></td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day3__se_partnership">
+            <td class="time-cell">10:00</td>
+            <td class="dur-cell">1 hr</td>
+            <td><div class="session-name">Bootcamp | SE Partnership &amp; Rules of Engagement</div></td>
+            <td><span class="type-pill tp-classroom">Classroom</span></td>
+            <td><div class="presenter">Christian Eastman</div></td>
+            <td class="notes-cell">When/how to involve SE &middot; Commercial vs. Enterprise ROE</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr class="break-row"><td class="time-cell">11:00</td><td class="dur-cell">15 min</td><td colspan="6"><span class="divider-label">&#x2615; Break</span></td></tr>
+          <tr data-key="day3__tools_ai_credal">
+            <td class="time-cell">11:15</td>
+            <td class="dur-cell">30 min</td>
+            <td><div class="session-name">Tools: Using AI &amp; Credal on Live Calls</div><div class="session-prework"><span>Pre-work:</span> Tools set up from pre-work</div></td>
+            <td><span class="type-pill tp-activity">Activity</span></td>
+            <td><div class="presenter">George So</div></td>
+            <td class="notes-cell">Credal on-call AI &middot; SCOUT</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day3__demo_call_role_play">
+            <td class="time-cell">11:45</td>
+            <td class="dur-cell">30 min</td>
+            <td><div class="session-name">Bootcamp | Demo Call Role-Play</div></td>
+            <td><span class="type-pill tp-roleplay">Role-Play</span></td>
+            <td><div class="presenter">George So</div></td>
+            <td class="notes-cell">10-min demo &middot; Peer + facilitator feedback &middot; Cert prep</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr class="lunch-row"><td class="time-cell">12:15</td><td class="dur-cell"></td><td colspan="6"><span class="divider-label">&#x1F37D; Lunch</span></td></tr>
+          <tr data-key="day3__demo_call_calibration">
+            <td class="time-cell">1:00</td>
+            <td class="dur-cell">45 min</td>
+            <td><div class="session-name">Bootcamp | Demo Call Calibration</div></td>
+            <td><span class="type-pill tp-activity">Activity</span></td>
+            <td><div class="presenter">George/Nicole</div></td>
+            <td class="notes-cell">Group listening &middot; Score against demo rubric</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day3__pricing_call_prep">
+            <td class="time-cell">1:45</td>
+            <td class="dur-cell">45 min</td>
+            <td><div class="session-name">Bootcamp | Pricing Call Prep</div><div class="session-prework"><span>Pre-work:</span> Pricing Call Overview (pre-work)</div></td>
+            <td><span class="type-pill tp-prep">Prep</span></td>
+            <td><div class="presenter">George So</div></td>
+            <td class="notes-cell">Lead with value</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day3__pricing_call_role_play">
+            <td class="time-cell">2:30</td>
+            <td class="dur-cell">30 min</td>
+            <td><div class="session-name">Bootcamp | Pricing Call Role-Play</div></td>
+            <td><span class="type-pill tp-roleplay">Role-Play</span></td>
+            <td><div class="presenter">George So</div></td>
+            <td class="notes-cell">Paired practice &middot; Positioning vs. discounting &middot; Cert prep</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr class="break-row"><td class="time-cell">3:00</td><td class="dur-cell">15 min</td><td colspan="6"><span class="divider-label">&#x2615; Break</span></td></tr>
+          <tr data-key="day3__tools_athean_sequences">
+            <td class="time-cell">3:15</td>
+            <td class="dur-cell">45 min</td>
+            <td><div class="session-name">Bootcamp | Tools: Athean &amp; Sequences Deep Dive</div></td>
+            <td><span class="type-pill tp-activity">Activity</span></td>
+            <td><div class="presenter">George So</div></td>
+            <td class="notes-cell">Commercial Collection &middot; Sequence variables &middot; AI personalization</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day3__pricing_call_calibration">
+            <td class="time-cell">4:00</td>
+            <td class="dur-cell">45 min</td>
+            <td><div class="session-name">Bootcamp | Pricing Call Calibration</div></td>
+            <td><span class="type-pill tp-calibration">Calibration</span></td>
+            <td><div class="presenter">George/Nicole</div></td>
+            <td class="notes-cell">Group listening and structured feedback</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day3__day_3_debrief_feedback">
+            <td class="time-cell">4:45</td>
+            <td class="dur-cell">15 min</td>
+            <td><div class="session-name">Bootcamp | Day 3 Debrief/Feedback</div></td>
+            <td><span class="type-pill tp-classroom">Debrief</span></td>
+            <td><div class="presenter">George/Nicole</div></td>
+            <td class="notes-cell">Key takeaways &middot; Preview of Day 4 (Outbound)</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr class="social-row"><td class="time-cell"></td><td class="dur-cell"></td><td colspan="6"><span class="divider-label">&#x1F4DA; Homework: Review Outbound Playbook (go/outbound)</span></td></tr>
+        
+          <tr class="feedback-row">
+            <td colspan="8" style="padding:14px 20px;text-align:center;background:var(--bg);border-top:2px solid var(--orange)">
+              <a href="https://enablementatcheckr.github.io/NewHireOnboarding/bootcamp_day3_feedback.html" target="_blank" rel="noopener" class="feedback-btn" style="display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#fff;text-decoration:none;padding:10px 28px;border-radius:8px;font-size:13px;font-weight:600;font-family:inherit;letter-spacing:.03em">
+                &#x1F4CB; Day 3 Feedback Form
+              </a>
+              <div style="font-size:11px;color:var(--slate);margin-top:6px">Submit your session ratings and feedback for today</div>
+            </td>
+          </tr>
+</tbody>
+      </table>
+    </div>
+  </div>
+  <div class="day-panel" id="day-4">
+        <div class="day-hdr d4">
+      <div class="dh-label">Day 4 &middot; Thursday</div>
+      <div class="dh-title">Outbound Motion &amp; Prospecting</div>
+      <div class="dh-sub">Account research &middot; Gong &middot; Partners &middot; Events &middot; Messaging &middot; Jeopardy</div>
+    </div>
+    <div class="sched-wrap">
+      <table>
+        <thead><tr><th>Start</th><th>Duration</th><th>Session</th><th>Format</th><th>Presenter</th><th>Notes</th><th>Slides</th><th>Recording</th></tr></thead>
+                                <tbody>
+          <tr data-key="day4__recap_day_4">
+            <td class="time-cell">9:00</td>
+            <td class="dur-cell">15 min</td>
+            <td><div class="session-name">Bootcamp | Recap and Day 4 Schedule</div></td>
+            <td><span class="type-pill tp-classroom">Recap</span></td>
+            <td><div class="presenter">George/Nicole</div></td>
+            <td class="notes-cell"></td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day4__account_prioritization">
+            <td class="time-cell">9:15</td>
+            <td class="dur-cell">15 min</td>
+            <td><div class="session-name">Bootcamp | Account Prioritization</div></td>
+            <td><span class="type-pill tp-activity">Activity</span></td>
+            <td><div class="presenter">George So</div></td>
+            <td class="notes-cell">Demandbase MQA lists &middot; Intent signals</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day4__using_gong">
+            <td class="time-cell">9:30</td>
+            <td class="dur-cell">45 min</td>
+            <td><div class="session-name">Bootcamp | Using Gong</div></td>
+            <td><span class="type-pill tp-activity">Activity</span></td>
+            <td><div class="presenter">George So</div></td>
+            <td class="notes-cell">Call Intelligence &middot; Deal Boards &middot; Forecasting</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr class="break-row"><td class="time-cell">10:15</td><td class="dur-cell">15 min</td><td colspan="6"><span class="divider-label">&#x2615; Break</span></td></tr>
+          <tr data-key="day4__partners">
+            <td class="time-cell">10:30</td>
+            <td class="dur-cell">30 min</td>
+            <td><div class="session-name">Bootcamp | Partners</div></td>
+            <td><span class="type-pill tp-classroom">Classroom</span></td>
+            <td><div class="presenter">Ambreen R</div></td>
+            <td class="notes-cell">Partner team structure &middot; ATS referrals</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day4__events">
+            <td class="time-cell">11:00</td>
+            <td class="dur-cell">1 hr</td>
+            <td><div class="session-name">Bootcamp | Events</div></td>
+            <td><span class="type-pill tp-classroom">Classroom</span></td>
+            <td><div class="presenter">Jaime K</div></td>
+            <td class="notes-cell">6 event types &middot; Pre/post event sequences &middot; ABM framework</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr class="lunch-row"><td class="time-cell">12:00</td><td class="dur-cell"></td><td colspan="6"><span class="divider-label">&#x1F37D; Lunch</span></td></tr>
+          <tr data-key="day4__other_outbound_channels">
+            <td class="time-cell">1:00</td>
+            <td class="dur-cell">15 min</td>
+            <td><div class="session-name">Bootcamp | Other Outbound Channels</div></td>
+            <td><span class="type-pill tp-classroom">Classroom</span></td>
+            <td><div class="presenter">George So</div></td>
+            <td class="notes-cell">Closed-lost re-engagement &middot; UserGems &middot; Unassigned accounts</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day4__campaigns">
+            <td class="time-cell">1:15</td>
+            <td class="dur-cell">45 min</td>
+            <td><div class="session-name">Bootcamp | Campaigns</div></td>
+            <td><span class="type-pill tp-classroom">Classroom</span></td>
+            <td><div class="presenter">Mariza S</div></td>
+            <td class="notes-cell">Active campaigns in Confluence &middot; ABM framework</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day4__messaging_emails_linkedin">
+            <td class="time-cell">2:00</td>
+            <td class="dur-cell">45 min</td>
+            <td><div class="session-name">Bootcamp | Messaging &mdash; Emails &amp; LinkedIn</div></td>
+            <td><span class="type-pill tp-activity">Activity</span></td>
+            <td><div class="presenter">George So</div></td>
+            <td class="notes-cell">Subject lines &middot; Message structure &middot; LinkedIn strategy</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr class="break-row"><td class="time-cell">2:45</td><td class="dur-cell">15 min</td><td colspan="6"><span class="divider-label">&#x2615; Break</span></td></tr>
+          <tr data-key="day4__tools_looker_homerooms">
+            <td class="time-cell">3:00</td>
+            <td class="dur-cell">15 min</td>
+            <td><div class="session-name">Bootcamp | Tools: Looker and Homerooms</div></td>
+            <td><span class="type-pill tp-workshop">Tools</span></td>
+            <td><div class="presenter">Enablement</div></td>
+            <td class="notes-cell">Revenue dashboard &middot; Homeroom overview &middot; Missions</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day4__opp_walkthrough">
+            <td class="time-cell">3:15</td>
+            <td class="dur-cell">30 min</td>
+            <td><div class="session-name">Bootcamp | Opp Walkthrough</div><div class="session-prework"><span>Pre-work:</span> Sales Process 101 (pre-work)</div></td>
+            <td><span class="type-pill tp-activity">Activity</span></td>
+            <td><div class="presenter">Sean Beatty + Gilbert Munoz</div></td>
+            <td class="notes-cell">Real deal walkthroughs</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day4__jeopardy">
+            <td class="time-cell">3:45</td>
+            <td class="dur-cell">1 hr</td>
+            <td><div class="session-name">Jeopardy</div></td>
+            <td><span class="type-pill tp-activity">Activity</span></td>
+            <td><div class="presenter">Everyone</div></td>
+            <td class="notes-cell">Quiz across pre-work and all 5 days of bootcamp content</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day4__day_4_debrief_feedback">
+            <td class="time-cell">4:45</td>
+            <td class="dur-cell">15 min</td>
+            <td><div class="session-name">Bootcamp | Day 4 Debrief/Feedback</div></td>
+            <td><span class="type-pill tp-classroom">Classroom</span></td>
+            <td><div class="presenter">George/Nicole</div></td>
+            <td class="notes-cell"></td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+        
+          <tr class="feedback-row">
+            <td colspan="8" style="padding:14px 20px;text-align:center;background:var(--bg);border-top:2px solid var(--green)">
+              <a href="https://enablementatcheckr.github.io/NewHireOnboarding/bootcamp_day4_feedback.html" target="_blank" rel="noopener" class="feedback-btn" style="display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;text-decoration:none;padding:10px 28px;border-radius:8px;font-size:13px;font-weight:600;font-family:inherit;letter-spacing:.03em">
+                &#x1F4CB; Day 4 Feedback Form
+              </a>
+              <div style="font-size:11px;color:var(--slate);margin-top:6px">Submit your session ratings and feedback for today</div>
+            </td>
+          </tr>
+</tbody>
+      </table>
+    </div>
+    <div class="evening-card">
+      <div class="ec-icon">&#x1F37D;</div>
+      <div>
+        <div class="ec-label">Thursday Evening &middot; 6:00 PM</div>
+        <div class="ec-title">Cohort Connection Dinner</div>
+        <div class="ec-desc">Full bootcamp cohort + facilitators. Informal dinner &mdash; no agenda, no slides.</div>
+        <div class="ec-tbd">[?] Restaurant, address, and budget TBD &mdash; please confirm</div>
+      </div>
+    </div>
+  </div>
+  <div class="day-panel" id="day-5">
+        <div class="day-hdr d5">
+      <div class="dh-label">Day 5 &middot; Friday</div>
+      <div class="dh-title">Increasing Productivity</div>
+      <div class="dh-sub">Productivity &middot; Best practices &middot; Week in the Life &middot; Tips &amp; Tricks &middot; Ask Nik</div>
+    </div>
+    <div class="sched-wrap">
+      <table>
+        <thead><tr><th>Start</th><th>Duration</th><th>Session</th><th>Format</th><th>Presenter</th><th>Notes</th><th>Slides</th><th>Recording</th></tr></thead>
+                                <tbody>
+          <tr data-key="day5__recap_day_5">
+            <td class="time-cell">9:00</td>
+            <td class="dur-cell">15 min</td>
+            <td><div class="session-name">Bootcamp | Recap and Day 5 Schedule</div></td>
+            <td><span class="type-pill tp-classroom">Recap</span></td>
+            <td><div class="presenter">George/Nicole</div></td>
+            <td class="notes-cell">Open Q&amp;A with sales leadership</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day5__how_to_be_productive">
+            <td class="time-cell">9:15</td>
+            <td class="dur-cell">30 min</td>
+            <td><div class="session-name">Bootcamp | How to Be Productive</div></td>
+            <td><span class="type-pill tp-classroom">Classroom</span></td>
+            <td><div class="presenter">George So</div></td>
+            <td class="notes-cell">3 work buckets &middot; Best call times &middot; Calendar blocking</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day5__best_practices_productivity">
+            <td class="time-cell">9:45</td>
+            <td class="dur-cell">45 min</td>
+            <td><div class="session-name">Bootcamp | Best Practices for Productivity at Checkr</div></td>
+            <td><span class="type-pill tp-classroom">Classroom</span></td>
+            <td><div class="presenter">George So</div></td>
+            <td class="notes-cell">Time Management &middot; Revenue Management &middot; Partner Management</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr class="break-row"><td class="time-cell">10:30</td><td class="dur-cell">15 min</td><td colspan="6"><span class="divider-label">&#x2615; Break</span></td></tr>
+          <tr data-key="day5__week_in_life_of_ae">
+            <td class="time-cell">10:45</td>
+            <td class="dur-cell">45 min</td>
+            <td><div class="session-name">Bootcamp | Week in the Life of an AE</div></td>
+            <td><span class="type-pill tp-classroom">Classroom</span></td>
+            <td><div class="presenter">Waylon Purser</div></td>
+            <td class="notes-cell">What to do beginning/end of day/week &middot; Inbound, Outbound, Opp Mgmt</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day5__sfdc_quoting_order_forms">
+            <td class="time-cell">11:30</td>
+            <td class="dur-cell">45 min</td>
+            <td><div class="session-name">Bootcamp | Salesforce Quoting &amp; Order Forms Preview</div><div class="session-prework"><span>Pre-work:</span> Sales Process 101 (pre-work)</div></td>
+            <td><span class="type-pill tp-activity">Activity</span></td>
+            <td><div class="presenter">Kevin Dunn (Comm AE)</div></td>
+            <td class="notes-cell">Creating quotes &middot; MSA effective date &middot; Subscription terms</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr class="lunch-row"><td class="time-cell">12:15</td><td class="dur-cell"></td><td colspan="6"><span class="divider-label">&#x1F37D; Lunch</span></td></tr>
+          <tr data-key="day5__tips_and_tricks">
+            <td class="time-cell">1:00</td>
+            <td class="dur-cell">30 min</td>
+            <td><div class="session-name">Bootcamp | Tips and Tricks</div></td>
+            <td><span class="type-pill tp-classroom">Classroom</span></td>
+            <td><div class="presenter">George So</div></td>
+            <td class="notes-cell">Productivity Hacks that Help</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day5__ask_nik_anything">
+            <td class="time-cell">1:30</td>
+            <td class="dur-cell">1 hr</td>
+            <td><div class="session-name">Bootcamp | Ask Nik Anything</div></td>
+            <td><span class="type-pill tp-fireside">Q &amp; A</span></td>
+            <td><div class="presenter">George/Nicole</div></td>
+            <td class="notes-cell">Nik will join for last hour</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+          <tr data-key="day5__wrap_up_feedback_survey">
+            <td class="time-cell">2:30</td>
+            <td class="dur-cell">15 min</td>
+            <td><div class="session-name">Bootcamp | Wrap-Up &amp; Feedback Survey</div></td>
+            <td><span class="type-pill tp-classroom">Classroom</span></td>
+            <td><div class="presenter">George/Nicole</div></td>
+            <td class="notes-cell">Week recap &middot; Group photo &middot; Feedback survey in Mindtickle</td>
+            <td class="slides-cell"><div class="slides-input-wrap">
+        <input class="link-input" type="text" placeholder="Paste Google Drive link…" onchange="saveSlideLink(this,this.closest('tr'))" onfocus="this.select()">
+      </div></td>
+            <td class="recording-cell"><input class="rec-input" type="text" placeholder="Paste Google Drive link…" onchange="saveRecLink(this,this.closest('tr'))" onfocus="this.select()"></td>
+          </tr>
+        
+          <tr class="feedback-row">
+            <td colspan="8" style="padding:14px 20px;text-align:center;background:var(--bg);border-top:2px solid var(--slate)">
+              <a href="https://enablementatcheckr.github.io/NewHireOnboarding/bootcamp_day5_feedback.html" target="_blank" rel="noopener" class="feedback-btn" style="display:inline-flex;align-items:center;gap:8px;background:var(--slate);color:#fff;text-decoration:none;padding:10px 28px;border-radius:8px;font-size:13px;font-weight:600;font-family:inherit;letter-spacing:.03em">
+                &#x1F4CB; Day 5 Feedback Form
+              </a>
+              <div style="font-size:11px;color:var(--slate);margin-top:6px">Submit your session ratings and feedback for today</div>
+            </td>
+          </tr>
+</tbody>
+      </table>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<footer>Checkr Sales Onboarding 2026 &middot; Bootcamp Schedule &middot; Confidential — Internal Use Only</footer>
+
+<script>
+// ── Day switching ────────────────────────────────────────────────────────────
+function showDay(n) {
+  for (var i = 1; i <= 5; i++) {
+    var panel = document.getElementById('day-' + i);
+    var btn   = document.querySelectorAll('.day-nav-btn')[i - 1];
+    if (panel) { panel.style.display = (i === n) ? 'block' : 'none'; }
+    if (btn)   { btn.classList.toggle('active', i === n); }
+  }
+}
+
+// ── links.json helpers ───────────────────────────────────────────────────────
+var LINKS_URL = 'links.json';
+var linksCache = {};
+
+function loadLinks() {
+  fetch(LINKS_URL + '?cb=' + Date.now())
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      linksCache = data;
+      applyLinks();
+    })
+    .catch(function() {
+      // Running locally or fetch blocked — silent fail, inputs still work
+    });
+}
+
+function applyLinks() {
+  document.querySelectorAll('tr[data-key]').forEach(function(row) {
+    var key = row.getAttribute('data-key');
+    var entry = linksCache[key];
+    if (!entry) return;
+
+    // Slides
+    var slidesCell = row.querySelector('.slides-cell');
+    if (slidesCell && entry.slides) {
+      var slabel = entry.slides_label || 'Slides';
+      slidesCell.innerHTML = '<a class="slide-link" href="' + entry.slides + '" target="_blank" rel="noopener">&#x1F4CE; ' + slabel + '</a>';
+    }
+
+    // Recording
+    var recCell = row.querySelector('.recording-cell');
+    if (recCell && entry.recording) {
+      var rlabel = entry.recording_label || 'Recording';
+      recCell.innerHTML = '<a class="rec-link" href="' + entry.recording + '" target="_blank" rel="noopener">&#x25B6; ' + rlabel + '</a>';
+    }
+  });
+}
+
+function saveSlideLink(input, row) {
+  var url = input.value.trim();
+  if (!url) return;
+  var key = row.getAttribute('data-key');
+  var slabel = (linksCache[key] && linksCache[key].slides_label) ? linksCache[key].slides_label : 'Slides';
+  var cell = input.parentElement;
+  cell.innerHTML = '<a class="slide-link" href="' + url + '" target="_blank" rel="noopener">&#x1F4CE; ' + slabel + '</a>'
+                 + '<br><small style="color:var(--slate);font-size:10px">Update links.json to persist</small>';
+  if (key && linksCache[key] !== undefined) { linksCache[key].slides = url; }
+}
+
+function saveRecLink(input, row) {
+  var url = input.value.trim();
+  if (!url) return;
+  var key = row.getAttribute('data-key');
+  var cell = input.parentElement;
+  var label = prompt('Label for this recording (e.g. "Day 1 - Pains & Personas"):', 'Recording') || 'Recording';
+  cell.innerHTML = '<a class="rec-link" href="' + url + '" target="_blank" rel="noopener">&#x25B6; ' + label + '</a>'
+                 + '<br><small style="color:var(--slate);font-size:10px">Update links.json to persist</small>';
+  if (key && linksCache[key] !== undefined) {
+    linksCache[key].recording = url;
+    linksCache[key].recording_label = label;
+  }
+}
+
+function handleUpload(input, row) {
+  var file = input.files[0];
+  if (!file) return;
+  var cell = row.querySelector('.slides-cell');
+  var url = URL.createObjectURL(file);
+  cell.innerHTML = '<a class="slide-link" href="' + url + '" target="_blank">&#x1F4CE; ' + file.name + '</a>';
+}
+
+// ── Init ─────────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function () {
+  showDay(1);
+  loadLinks();
+});
+
+function exportSchedule(){
+  var btn=document.getElementById('export-btn');
+  btn.disabled=true; btn.textContent='Preparing...';
+  var panels=document.querySelectorAll('.day-panel');
+  var colors=['#1E448F','#45C0B9','#F37D53','#29736F','#67727C'];
+  var labels=[
+    {d:'Day 1 - Monday',t:'Context & Foundation'},
+    {d:'Day 2 - Tuesday',t:'Practicing the Conversations We Have'},
+    {d:'Day 3 - Wednesday',t:'How We Sell'},
+    {d:'Day 4 - Thursday',t:'Outbound Motion & Prospecting'},
+    {d:'Day 5 - Friday',t:'Increasing Productivity'}
+  ];
+  var css='*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,sans-serif;font-size:10px;color:#0B1626}.cover{background:#0B1626;padding:48px;page-break-after:always}.cey{color:#45C0B9;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}.cover h1{font-size:28px;font-weight:700;color:#fff;margin-bottom:6px}.cover p{font-size:12px;color:rgba(255,255,255,.6)}.ds{padding:16px;page-break-after:always}.ds:last-child{page-break-after:auto}.dh{padding:12px 18px;border-radius:5px 5px 0 0}.dl{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:2px}.dt{font-size:17px;font-weight:700;color:#fff}table{width:100%;border-collapse:collapse;table-layout:auto}thead{background:#0B1626}thead th{padding:5px 7px;font-size:8px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.6);text-align:left}thead th:nth-child(1){width:78px}thead th:nth-child(2){width:30%}thead th:nth-child(3){width:82px}thead th:nth-child(4){width:120px}tbody tr{border-bottom:1px solid #D4DAE1}tbody td{padding:6px 7px;vertical-align:top;font-size:9.5px;word-wrap:break-word;overflow-wrap:break-word}.tc{font-weight:700;color:#67727C}.sn{font-weight:700;margin-bottom:1px}.pw{font-size:8.5px;color:#67727C;margin-top:2px}.pill{display:inline-block;font-size:8px;font-weight:700;padding:1px 5px;border-radius:5px}.p-ilt,.p-inperson{background:#EBF0FA;color:#1E448F}.p-workshop{background:#E6F7F6;color:#29736F}.p-roleplay{background:#FEF0EB;color:#B85020}.p-activity{background:#E3F2F1;color:#29736F}.p-prep{background:#F5F0FF;color:#5B21B6}.p-calibration{background:#FFF7ED;color:#9A3412}.p-fireside,.p-classroom,.p-other,.p-panel{background:#F7F9FC;color:#67727C}.brk td{background:#FAFBFC;color:#67727C;font-style:italic;font-size:9px;padding:3px 7px}.lnch td{background:#FFFBF5;color:#B45309;font-weight:700;font-size:9px;padding:3px 7px}.soc td{background:#E6F7F6;color:#29736F;font-weight:700;font-size:9px;padding:3px 7px}.notes{color:#67727C;font-size:9px}.evb{margin-top:8px;border:1.5px solid #45C0B9;border-radius:5px;padding:8px 12px}.evl{font-size:7.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#45C0B9;margin-bottom:2px}.evt{font-size:12px;font-weight:700;margin-bottom:2px}.evd{font-size:9px;color:#67727C}.evtbd{font-size:8.5px;color:#F37D53;font-style:italic;margin-top:2px}@media print{.ds{page-break-after:always}.ds:last-child{page-break-after:auto}}';
+  var html='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Checkr Bootcamp Schedule 2026</title><style>'+css+'<\/style></head><body>';
+  html+='<div class="cover"><div class="cey">Checkr Sales Enablement | 2026</div><h1>Bootcamp Schedule</h1><p>Five days | In-person | SF or Denver | 9:00 AM - 5:00 PM daily</p><p style="margin-top:10px;font-size:9px;color:rgba(255,255,255,.3)">Confidential | Internal Sales Use Only</p></div>';
+  for(var i=1;i<=5;i++){
+    var panel=document.getElementById('day-'+i);
+    var lbl=labels[i-1];var col=colors[i-1];
+    var tbl=panel.querySelector('table');var eve=panel.querySelector('.evening-card');
+    html+='<div class="ds"><div class="dh" style="background:'+col+'"><div class="dl">'+lbl.d+'</div><div class="dt">'+lbl.t+'</div></div>';
+    if(tbl){
+      html+='<table><thead><tr><th>Start</th><th>Duration</th><th>Session</th><th>Format</th><th>Presenter</th><th>Notes</th><th>Slides</th><th>Recording</th></tr></thead><tbody>';
+      tbl.querySelectorAll('tbody tr').forEach(function(row){
+        var rc=row.className||'';
+        if(rc.indexOf('break-row')>-1){var lb=row.querySelector('.divider-label');html+='<tr class="brk"><td colspan="6">'+(lb?lb.textContent:'Break')+'</td></tr>';}
+        else if(rc.indexOf('lunch-row')>-1){html+='<tr class="lnch"><td colspan="6">Lunch</td></tr>';}
+        else if(rc.indexOf('social-row')>-1){var lb2=row.querySelector('.divider-label');html+='<tr class="soc"><td colspan="6">'+(lb2?lb2.textContent:'Social')+'</td></tr>';}
+        else{var tds=row.querySelectorAll('td');if(tds.length>=5){var snel=tds[1].querySelector('.session-name');var snt=snel?snel.textContent.trim():tds[1].textContent.trim();var pwel=tds[1].querySelector('.session-prework');var pwt=pwel?pwel.textContent.trim():'';var pel=tds[2].querySelector('.type-pill');var pt=pel?pel.textContent.trim():'';var pc='p-'+pt.toLowerCase().replace(/[^a-z]/g,'').substring(0,12);var pr=tds[3].textContent.trim();var nt=tds[4].textContent.trim();html+='<tr><td class="tc">'+tds[0].textContent.trim()+'</td><td><div class="sn">'+snt+'</div>'+(pwt?'<div class="pw">'+pwt+'</div>':'')+'</td><td><span class="pill '+pc+'">'+pt+'</span></td><td>'+pr+'</td><td class="notes">'+nt+'</td></tr>';}}
+      });
+      html+='</tbody></table>';
+    }
+    if(eve){var el=eve.querySelector('.ec-label');var et=eve.querySelector('.ec-title');var ed=eve.querySelector('.ec-desc');var etbd=eve.querySelector('.ec-tbd');html+='<div class="evb"><div class="evl">'+(el?el.textContent:'')+'</div><div class="evt">'+(et?et.textContent:'')+'</div><div class="evd">'+(ed?ed.textContent:'')+'</div>'+(etbd?'<div class="evtbd">'+etbd.textContent+'</div>':'')+'</div>';}
+    html+='</div>';
+  }
+  html+='</body></html>';
+  var win=window.open('','_blank');
+  win.document.write(html);win.document.close();
+  win.onload=function(){setTimeout(function(){win.print();btn.disabled=false;btn.innerHTML='<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 1v9M5 7l3 3 3-3M2 11v1a2 2 0 002 2h8a2 2 0 002-2v-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Export Schedule';},400);};
+}
+
+
+function saveRec(input, row) {
+  var url = input.value.trim();
+  if (!url) return;
+  var cell = input.parentElement;
+  cell.innerHTML = '<a class="rec-link" href="' + url + '" target="_blank" rel="noopener">&#x25B6; Recording</a>';
+}
+
+function handleUpload(input, row) {
+  var file = input.files[0];
+  if(!file) return;
+  var cell = row.querySelector('.slides-cell');
+  var url = URL.createObjectURL(file);
+  cell.innerHTML = '<a class="slide-link" href="' + url + '" target="_blank" title="' + file.name + '">&#x1F4CE; ' + file.name + '</a>';
+}
+</script>
+</script>
+</script>
+</body>
+</html>

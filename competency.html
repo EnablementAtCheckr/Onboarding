@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Competency Framework — Checkr Sales Onboarding 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1E448F;--teal:#45C0B9;--orange:#F37D53;--green:#29736F;--slate:#67727C;
+  --white:#fff;--dark:#0B1626;--bg:#F7F9FC;--border:#D4DAE1;
+  --navy-lt:#EBF0FA;--teal-lt:#E6F7F6;--org-lt:#FEF0EB;--grn-lt:#E3F2F1;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--dark);font-size:14px;line-height:1.6}
+.nav{background:var(--navy);padding:0 24px;display:flex;align-items:center;height:52px;position:sticky;top:0;z-index:100;gap:0}
+.nav .logo{color:#fff;font-weight:600;font-size:14px;margin-right:28px;flex-shrink:0}
+.nav a{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;font-weight:500;padding:0 14px;height:52px;display:flex;align-items:center;border-bottom:3px solid transparent;transition:all .15s}
+.nav a:hover,.nav a.active{color:#fff;border-bottom-color:var(--teal)}
+.hero{background:var(--navy);padding:36px 24px 32px;color:#fff}
+.hero-ey{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
+.hero h1{font-size:32px;font-weight:600;margin-bottom:8px}
+.hero p{color:rgba(255,255,255,.7);font-size:15px;}
+.back{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.6);font-size:13px;text-decoration:none;margin-bottom:16px}
+.back:hover{color:#fff}
+.main{padding:32px 24px}
+
+/* COMPETENCY BLOCK */
+.comp-block{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:20px}
+.comp-block.sub-block{margin-left:40px;border-color:var(--teal);border-radius:8px}
+
+.cb-hdr{display:flex;align-items:center;gap:0;padding:0;cursor:pointer}
+.cb-num{width:52px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;color:#fff;align-self:stretch}
+.cb-num.navy{background:var(--navy)}
+.cb-num.teal{background:var(--teal)}
+.cb-num.orange{background:var(--orange)}
+.cb-num.green{background:var(--green)}
+.cb-num.slate{background:var(--slate)}
+.cb-info{flex:1;padding:16px 20px}
+.cb-title{font-size:16px;font-weight:600;color:var(--dark);margin-bottom:3px}
+.cb-sub{font-size:13px;color:var(--slate)}
+.cb-toggle{padding:16px 20px;color:var(--slate);font-size:20px;transition:transform .2s;flex-shrink:0}
+.cb-toggle.open{transform:rotate(90deg)}
+
+.cb-body{display:none;padding:20px;border-top:1px solid var(--border)}
+.cb-body.open{display:grid;grid-template-columns:0.8fr 0.75fr 2.2fr;gap:16px}
+.phase-col h4{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--slate);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.phase-col ul{padding-left:16px}
+.phase-col ul li{font-size:13px;color:var(--dark);margin-bottom:6px;line-height:1.5}
+.phase-col.teal h4{color:var(--teal)}
+.phase-col.navy h4{color:var(--navy)}
+.phase-col.orange h4{color:var(--orange)}
+
+/* SESSION PILLS */
+.s-pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.s-pill{font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;background:var(--navy-lt);color:var(--navy);text-decoration:none;transition:all .12s;border:none;cursor:pointer}
+.s-pill:hover{background:var(--navy);color:#fff}
+.s-pill.teal{background:var(--teal-lt);color:var(--green)}
+.s-pill.teal:hover{background:var(--teal);color:#fff}
+.s-pill.orange{background:var(--org-lt);color:#B85020}
+.s-pill.orange:hover{background:var(--orange);color:#fff}
+
+.comp-block.umbrella .cb-hdr{cursor:default}
+.sub-blocks{padding:0 20px 20px}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <span class="logo">Checkr Sales Onboarding 2026</span>
+  <a href="index.html">Overview</a>
+  <a href="prework.html">Pre-Work</a>
+  <a href="bootcamp.html">Bootcamp</a>
+  <a href="competency.html" class="active">Competency Framework</a>
+  <a href="milestones2.html">My Milestones</a>
+  <a href="timeline.html">Journey</a>
+</nav>
+<div class="hero">
+  <a href="index.html" class="back">← Back to Overview</a>
+  <div class="hero-ey">Competency Framework</div>
+  <h1>The 8 Core Competencies</h1>
+  <p>What great looks like at Checkr — grounded in the January 2026 cohort. Each competency maps pre-work, bootcamp, and post-bootcamp reinforcement. Click a competency to expand its learning arc.</p>
+</div>
+<div class="main">
+
+<div class="comp-block" id="c1">
+  <div class="cb-hdr" onclick="toggle('c1')">
+    <div class="cb-num navy">01</div>
+    <div class="cb-info"><div class="cb-title">Product Knowledge</div><div class="cb-sub">What we sell and how to teach it to a prospect</div></div>
+    <div class="cb-toggle" id="t-c1">›</div>
+  </div>
+  <div class="cb-body" id="b-c1">
+    <div class="phase-col teal">
+      <h4>Pre-Work</h4>
+      <ul>
+        <li>Product 101 (~5 hours, Days 3–4)</li>
+        <li>Covers: packages &amp; add-ons, criminal, MVR/DoT, candidate experience, international, IDV, assess &amp; adjudication, verifications, drug &amp; occ health, professional services, dashboard &amp; analytics</li>
+      </ul>
+    </div>
+    <div class="phase-col navy">
+      <h4>Bootcamp</h4>
+      <div class="s-pills">
+        <a href="syllabus.html" class="s-pill">Bootcamp: Fireside Chat</a>
+      </div>
+      <p style="font-size:12px;color:var(--slate);margin-top:8px;font-style:italic">Product 101 is completed in pre-work. The Day 1 Fireside Panel brings PMMs in to answer questions that surfaced during pre-work — submitted by reps in Mindtickle before bootcamp begins.</p>
+    </div>
+    <div class="phase-col orange">
+      <h4>Post-Bootcamp</h4>
+      <ul>
+        <li>Company Narrative Certification — Weeks 3–4 (3–5 min, persona-specific, no notes)</li>
+        <li>Homeroom product update modules (bi-weekly, ongoing)</li>
+        <li>Manager spot-checks product knowledge via Gong call reviews</li>
+        <li>Advanced product questions answered via Checkpoint Seller Copilot</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="comp-block" id="c2">
+  <div class="cb-hdr" onclick="toggle('c2')">
+    <div class="cb-num teal">02</div>
+    <div class="cb-info"><div class="cb-title">ICP & Persona Fluency</div><div class="cb-sub">Who we sell to and why it matters</div></div>
+    <div class="cb-toggle" id="t-c2">›</div>
+  </div>
+  <div class="cb-body" id="b-c2">
+    <div class="phase-col teal">
+      <h4>Pre-Work</h4>
+      <ul>
+        <li>ICP &amp; Personas 101</li>
+        <li>Industry Overviews — All 5 Verticals (~4–5 hours, Days 4–5)</li>
+        <li>Review: Oscar in Ops, Helen in HR, Travis in TA persona PDFs</li>
+        <li>Review: ICP hubs in Checkpoint for each vertical</li>
+      </ul>
+    </div>
+    <div class="phase-col navy">
+      <h4>Bootcamp</h4>
+      <div class="s-pills">
+        <a href="syllabus.html" class="s-pill">Bootcamp | Pains and Personas Review</a>
+      </div>
+      <p style="font-size:12px;color:var(--slate);margin-top:8px;font-style:italic">A follow-up to the pre-work ICP &amp; Personas 101 module. Reps apply the framework with a live exercise: map pain triggers to specific personas for accounts in their territory.</p>
+    </div>
+    <div class="phase-col orange">
+      <h4>Post-Bootcamp</h4>
+      <ul>
+        <li>Advanced Retail deep dive — Checkpoint e-learning (Weeks 3–4)</li>
+        <li>Advanced Hospitality deep dive — Checkpoint e-learning (Weeks 3–4)</li>
+        <li>Advanced Manufacturing deep dive — Checkpoint e-learning (Month 2)</li>
+        <li>Advanced Transportation deep dive — Checkpoint e-learning (Month 2)</li>
+        <li>Advanced Staffing deep dive — Checkpoint e-learning (Month 2)</li>
+        <li>ABM campaign Homeroom modules aligned to active industry campaigns</li>
+        <li>Persona/Trigger Activity — completed in bootcamp Day 2 · Rep continues applying in live outreach Week 3+</li>
+        <li>Manager check: rep articulates 3 pain points per ICP industry by Month 1</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="comp-block" id="c3">
+  <div class="cb-hdr" onclick="toggle('c3')">
+    <div class="cb-num orange">03</div>
+    <div class="cb-info"><div class="cb-title">Competitive Positioning</div><div class="cb-sub">Why we win, why others win, how to handle it live</div></div>
+    <div class="cb-toggle" id="t-c3">›</div>
+  </div>
+  <div class="cb-body" id="b-c3">
+    <div class="phase-col teal">
+      <h4>Pre-Work</h4>
+      <ul>
+        <li>Competitor Overview 101</li>
+        <li>Battlecard review in Checkpoint</li>
+      </ul>
+    </div>
+    <div class="phase-col navy">
+      <h4>Bootcamp</h4>
+      <div class="s-pills">
+        <a href="syllabus.html" class="s-pill">Bootcamp | Competition Review</a>
+        <a href="syllabus.html" class="s-pill">Bootcamp: Overcoming Inertia</a>
+      </div>
+    </div>
+    <div class="phase-col orange">
+      <h4>Post-Bootcamp</h4>
+      <ul>
+        <li>Homeroom competitive updates (ongoing)</li>
+        <li>Manager reviews Gong calls where competitor mentioned</li>
+        <li>Competitive Intel Hub in Checkpoint</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="comp-block" id="c4">
+  <div class="cb-hdr" onclick="toggle('c4')">
+    <div class="cb-num green">04</div>
+    <div class="cb-info"><div class="cb-title">Command of the Message</div><div class="cb-sub">The CoM framework applied to every conversation</div></div>
+    <div class="cb-toggle" id="t-c4">›</div>
+  </div>
+  <div class="cb-body" id="b-c4">
+    <div class="phase-col teal">
+      <h4>Pre-Work</h4>
+      <ul>
+        <li>Command of the Message 101</li>
+        <li>MEDDPICC overview (in CoM 101)</li>
+        <li>CoM Workbook review in Checkpoint</li>
+      </ul>
+    </div>
+    <div class="phase-col navy">
+      <h4>Bootcamp</h4>
+      <div class="s-pills">
+        <a href="syllabus.html" class="s-pill">Bootcamp | Command of the Message Deep Dive</a>
+        <a href="syllabus.html" class="s-pill">Bootcamp | Asking Good Questions</a>
+      </div>
+      <p style="font-size:12px;color:var(--slate);margin-top:8px;font-style:italic">MEDDPICC is embedded within the CoM Deep Dive and reinforced through the Review of 4 Conversations. Required fields must be populated in SFDC on all active opportunities.</p>
+    </div>
+    <div class="phase-col orange">
+      <h4>Post-Bootcamp</h4>
+      <ul>
+        <li>Advanced CoM & MEDDPICC module (Weeks 3–4)</li>
+        <li>MEDDPICC fields required on all SFDC opps</li>
+        <li>CoM rubric used in every Gong call review</li>
+        <li>Month 1: Manager runs live CoM role-play (≥80% required)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- COMPETENCY 5 — UMBRELLA -->
+<div class="comp-block umbrella" id="c5" style="border-color:var(--teal);border-width:2px">
+  <div class="cb-hdr">
+    <div class="cb-num teal">05</div>
+    <div class="cb-info">
+      <div class="cb-title">Effective Communication</div>
+      <div class="cb-sub">Umbrella competency: Bootcamp | Asking Good Questions + all four sales conversations</div>
+    </div>
+  </div>
+  <div class="sub-blocks">
+    <div class="comp-block sub-block" id="c5a">
+      <div class="cb-hdr" onclick="toggle('c5a')">
+        <div class="cb-num teal" style="font-size:13px">5a</div>
+        <div class="cb-info"><div class="cb-title" style="font-size:14px">Bootcamp | Asking Good Questions</div><div class="cb-sub">The foundational skill that unlocks everything else</div></div>
+        <div class="cb-toggle" id="t-c5a">›</div>
+      </div>
+      <div class="cb-body" id="b-c5a">
+        <div class="phase-col teal"><h4>Pre-Work</h4><ul><li>Gong Call Library: Listen to 3 Calls</li><li>Draft 5 open-ended questions for a Retail HR Director</li></ul></div>
+        <div class="phase-col navy"><h4>Bootcamp</h4><div class="s-pills"><a href="syllabus.html" class="s-pill teal">Bootcamp | Asking Good Questions</a></div></div>
+        <div class="phase-col orange"><h4>Post-Bootcamp</h4><ul><li>Every Gong call reviewed for question quality</li><li>#talking-points Credal for live call support</li><li>Manager flags yes/no questions in weekly coaching</li></ul></div>
+      </div>
+    </div>
+    <div class="comp-block sub-block" id="c5b">
+      <div class="cb-hdr" onclick="toggle('c5b')">
+        <div class="cb-num teal" style="font-size:13px">5b</div>
+        <div class="cb-info"><div class="cb-title" style="font-size:14px">The Cold Call</div><div class="cb-sub">Opening conversations and handling the top 5 objections live</div></div>
+        <div class="cb-toggle" id="t-c5b">›</div>
+      </div>
+      <div class="cb-body" id="b-c5b">
+        <div class="phase-col teal"><h4>Pre-Work</h4><ul><li>Cold Call Framework 101 (in Checkpoint)</li><li>Listen to 1 cold call in Gong call library</li><li>Draft opener for Retail HR and Hospitality Ops personas</li></ul></div>
+        <div class="phase-col navy"><h4>Bootcamp</h4><div class="s-pills">
+          <a href="syllabus.html" class="s-pill teal">Bootcamp | Prep for Cold Call Exercise</a>
+          <a href="syllabus.html" class="s-pill teal">Bootcamp | Cold Call Role-Play</a>
+          <a href="syllabus.html" class="s-pill teal">Bootcamp | Cold Call Calibration</a>
+          <a href="syllabus.html" class="s-pill teal">Bootcamp: Overcoming Inertia</a>
+          <a href="syllabus.html" class="s-pill teal">Tools: Using AI &amp; Credal on Live Calls</a>
+        </div></div>
+        <div class="phase-col orange"><h4>Post-Bootcamp</h4><ul><li>Cold Call Certification (pass ≥80%)</li><li>Live calls begin Week 3 — manager reviews 2 Gong calls</li><li>Daily call logging in Outreach (10+/day)</li></ul></div>
+      </div>
+    </div>
+    <div class="comp-block sub-block" id="c5c">
+      <div class="cb-hdr" onclick="toggle('c5c')">
+        <div class="cb-num teal" style="font-size:13px">5c</div>
+        <div class="cb-info"><div class="cb-title" style="font-size:14px">The Discovery Call</div><div class="cb-sub">Running a structured, pain-focused conversation</div></div>
+        <div class="cb-toggle" id="t-c5c">›</div>
+      </div>
+      <div class="cb-body" id="b-c5c">
+        <div class="phase-col teal"><h4>Pre-Work</h4><ul><li>Listen to 1 discovery call in Gong call library</li><li>Draft 3 discovery questions per ICP industry</li><li>Review MAP concept</li></ul></div>
+        <div class="phase-col navy"><h4>Bootcamp</h4><div class="s-pills">
+          <a href="syllabus.html" class="s-pill teal">Bootcamp | Asking Good Questions</a>
+          <a href="syllabus.html" class="s-pill teal">Bootcamp | Prep for Discovery Call Exercise</a>
+          <a href="syllabus.html" class="s-pill teal">Bootcamp | Discovery Call Role-Play</a>
+          <a href="syllabus.html" class="s-pill teal">Bootcamp | Discovery Call Calibration</a>
+        </div></div>
+        <div class="phase-col orange"><h4>Post-Bootcamp</h4><ul><li>Discovery Call Certification (pass required)</li><li>First live disco logged in SFDC, Gong-reviewed within 24 hrs</li><li>MEDDPICC must be populated before advancing to next stage</li></ul></div>
+      </div>
+    </div>
+    <div class="comp-block sub-block" id="c5d">
+      <div class="cb-hdr" onclick="toggle('c5d')">
+        <div class="cb-num teal" style="font-size:13px">5d</div>
+        <div class="cb-info"><div class="cb-title" style="font-size:14px">The Demo Call</div><div class="cb-sub">A solution sell — not a feature tour</div></div>
+        <div class="cb-toggle" id="t-c5d">›</div>
+      </div>
+      <div class="cb-body" id="b-c5d">
+        <div class="phase-col teal"><h4>Pre-Work</h4><ul><li>Watch 1 demo recording in Gong call library</li><li>Access Checkr demo environment and practice navigating</li></ul></div>
+        <div class="phase-col navy"><h4>Bootcamp</h4><div class="s-pills">
+          <a href="syllabus.html" class="s-pill teal">Bootcamp | Demo Call Prep</a>
+          <a href="syllabus.html" class="s-pill teal">Bootcamp | Demo Call Role-Play</a>
+          <a href="syllabus.html" class="s-pill teal">Bootcamp | Demo Call Calibration</a>
+          <a href="syllabus.html" class="s-pill teal">Bootcamp | SE Bootcamp | Partnership &amp; Rules of Engagement</a>
+        </div></div>
+        <div class="phase-col orange"><h4>Post-Bootcamp</h4><ul><li>Demo Call Certification (pass ≥80%)</li><li>Month 2 check-in: manager reviews 1 live Gong demo</li><li>No opp advances to Established Requirements without a completed demo</li></ul></div>
+      </div>
+    </div>
+    <div class="comp-block sub-block" id="c5e">
+      <div class="cb-hdr" onclick="toggle('c5e')">
+        <div class="cb-num teal" style="font-size:13px">5e</div>
+        <div class="cb-info"><div class="cb-title" style="font-size:14px">The Pricing Call</div><div class="cb-sub">Talking price, building quotes, navigating legal, closing</div></div>
+        <div class="cb-toggle" id="t-c5e">›</div>
+      </div>
+      <div class="cb-body" id="b-c5e">
+        <div class="phase-col teal"><h4>Pre-Work</h4><ul><li>Listen to 1 pricing call in Gong call library</li><li>Review Checkr.com/pricing and 3 packages</li><li>SFDC quoting process overview</li></ul></div>
+        <div class="phase-col navy"><h4>Bootcamp</h4><div class="s-pills">
+          <a href="syllabus.html" class="s-pill teal">Bootcamp | Pricing Call Calibration</a>
+          <a href="syllabus.html" class="s-pill teal">Bootcamp | Pricing Call Prep</a>
+          <a href="syllabus.html" class="s-pill teal">Bootcamp | Pricing Call Role-Play</a>
+          <a href="syllabus.html" class="s-pill teal">Bootcamp | Pricing Call Calibration</a>
+          <a href="syllabus.html" class="s-pill teal">Salesforce Quoting &amp; Order Forms</a>
+          <a href="syllabus.html" class="s-pill teal">Bootcamp | SE Bootcamp | Partnership &amp; Rules of Engagement</a>
+        </div></div>
+        <div class="phase-col orange"><h4>Post-Bootcamp</h4><ul><li>Pricing Call Certification (pass required)</li><li>Every quote built in SFDC, reviewed at deal review</li><li>Month 3: first full deal close expected</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="comp-block" id="c6">
+  <div class="cb-hdr" onclick="toggle('c6')">
+    <div class="cb-num navy">06</div>
+    <div class="cb-info"><div class="cb-title">Outbound Motion & Prospecting</div><div class="cb-sub">Building and executing the full outbound system</div></div>
+    <div class="cb-toggle" id="t-c6">›</div>
+  </div>
+  <div class="cb-body" id="b-c6">
+    <div class="phase-col teal"><h4>Pre-Work</h4><ul><li>Outbound Playbook Review — 1:1 meeting with manager (Day 5)</li><li>Confirm Demandbase and LinkedIn SN access</li><li>Review daily activity minimums by role</li></ul></div>
+    <div class="phase-col navy"><h4>Bootcamp</h4><div class="s-pills">
+      <a href="syllabus.html" class="s-pill">Bootcamp | Account Prioritization</a>
+      <a href="syllabus.html" class="s-pill">Bootcamp | Using Gong</a>
+      <a href="syllabus.html" class="s-pill">Bootcamp | Tools: Athean &amp; Sequences Deep Dive</a>
+      <a href="syllabus.html" class="s-pill">Messaging — Emails &amp; LinkedIn</a>
+      <a href="syllabus.html" class="s-pill">Bootcamp | Other Outbound Channels</a>
+      <a href="syllabus.html" class="s-pill">Bootcamp | Partners</a>
+      <a href="syllabus.html" class="s-pill">Bootcamp | Events</a>
+    </div></div>
+    <div class="phase-col orange"><h4>Post-Bootcamp</h4><ul><li>Live sequences active Week 3 — manager reviews Outreach dashboard</li><li>First SFDC opp created with MEDDPICC by Month 1</li><li>Outbound Motion Advanced module (Month 2)</li><li>UserGems alert actioned on 21st monthly</li></ul></div>
+  </div>
+</div>
+
+<div class="comp-block" id="c7">
+  <div class="cb-hdr" onclick="toggle('c7')">
+    <div class="cb-num orange">07</div>
+    <div class="cb-info"><div class="cb-title">Opportunity & Revenue Management</div><div class="cb-sub">Owning pipeline health, forecasting, and ensuring booked revenue converts</div></div>
+    <div class="cb-toggle" id="t-c7">›</div>
+  </div>
+  <div class="cb-body" id="b-c7">
+    <div class="phase-col teal"><h4>Pre-Work</h4><ul><li>Checkr Sales Process 101</li><li>SFDC opportunity fields and stage overview</li></ul></div>
+    <div class="phase-col navy"><h4>Bootcamp</h4><div class="s-pills">
+      <a href="syllabus.html" class="s-pill">Bootcamp | Opp Walkthrough</a>
+      <a href="syllabus.html" class="s-pill">Salesforce Quoting &amp; Order Forms</a>
+      <a href="syllabus.html" class="s-pill">Bootcamp | How to Be Productive</a>
+      <a href="syllabus.html" class="s-pill">Tools: Gong- Call Intelligence</a>
+    </div></div>
+    <div class="phase-col orange"><h4>Post-Bootcamp</h4><ul><li>30-day, 45-day, 90-day, 6-month, 12-month milestone reviews</li><li>Weekly Friday forecast review with leadership</li><li>Looker dashboard checked every Monday</li><li>Month 6: forecasting accuracy within 15% of called number</li></ul></div>
+  </div>
+</div>
+
+<div class="comp-block" id="c8">
+  <div class="cb-hdr" onclick="toggle('c8')">
+    <div class="cb-num slate">08</div>
+    <div class="cb-info"><div class="cb-title">Productivity & Tool Mastery</div><div class="cb-sub">Working the full Checkr tech stack efficiently every day</div></div>
+    <div class="cb-toggle" id="t-c8">›</div>
+  </div>
+  <div class="cb-body" id="b-c8">
+    <div class="phase-col teal"><h4>Pre-Work</h4><ul><li>Sales Tools Setup (all 10 tools incl. Athean &amp; Sendoso, Lumos checklist)</li><li>Join required Slack channels</li><li>Install ZoomInfo Chrome extension</li></ul></div>
+    <div class="phase-col navy"><h4>Bootcamp</h4><div class="s-pills">
+      <a href="syllabus.html" class="s-pill">Bootcamp | How to Be Productive</a>
+      <a href="syllabus.html" class="s-pill">Bootcamp | Using Gong</a>
+      <a href="syllabus.html" class="s-pill">Bootcamp | Tools: Athean &amp; Sequences Deep Dive</a>
+      <a href="syllabus.html" class="s-pill">Bootcamp | Tools: Looker and Homerooms</a>
+      <a href="syllabus.html" class="s-pill">Tools: Using AI &amp; Credal on Live Calls</a>
+      <a href="syllabus.html" class="s-pill">Bootcamp | Best Practices for Productivity at Checkr</a>
+    </div></div>
+    <div class="phase-col orange"><h4>Post-Bootcamp</h4><ul><li>Week 1: all 8 tools confirmed and navigated independently</li><li>Checkpoint & AI Tools Deep Dive (Weeks 3–4)</li><li>Homeroom completion required bi-weekly — managers see live compliance grid</li><li>Manager-assigned Missions based on Gong gaps</li></ul></div>
+  </div>
+</div>
+
+</div>
+<script>
+function toggle(id){
+  const b=document.getElementById('b-'+id);
+  const t=document.getElementById('t-'+id);
+  const isOpen=b.classList.contains('open');
+  b.classList.toggle('open');
+  t.classList.toggle('open');
+}
+</script>
+</body>
+</html>
