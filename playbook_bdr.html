@@ -10,677 +10,683 @@
 :root{
   --navy:#1E448F;--teal:#45C0B9;--orange:#F37D53;--green:#29736F;--slate:#67727C;
   --white:#fff;--dark:#0B1626;--bg:#F7F9FC;--border:#D4DAE1;
-  --navy-lt:#EBF0FA;--teal-lt:#E6F7F6;--org-lt:#FEF0EB;--grn-lt:#E3F2F1;--slt-lt:#F1EFF8;
+  --navy-lt:#EBF0FA;--teal-lt:#E6F7F6;--org-lt:#FEF0EB;--grn-lt:#E3F2F1;
 }
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--dark);font-size:15px;line-height:1.6}
-
+body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--dark);font-size:15px;line-height:1.6}
 .nav{background:var(--navy);padding:0 24px;display:flex;align-items:center;height:56px;position:sticky;top:0;z-index:100;gap:0}
 .nav .logo{color:#fff;font-weight:600;font-size:15px;margin-right:32px;flex-shrink:0}
 .nav a{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;font-weight:500;padding:0 14px;height:56px;display:flex;align-items:center;border-bottom:3px solid transparent;transition:all .15s}
 .nav a:hover,.nav a.active{color:#fff;border-bottom-color:var(--teal)}
-
 .hero{background:var(--navy);padding:52px 40px 44px;color:#fff;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;right:-40px;bottom:-60px;width:340px;height:340px;border-radius:50%;background:rgba(69,192,185,.07);pointer-events:none}
+.hero::before{content:"";position:absolute;right:-40px;bottom:-60px;width:340px;height:340px;border-radius:50%;background:rgba(69,192,185,.07);pointer-events:none}
 .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
 .hero h1{font-size:40px;font-weight:600;margin-bottom:12px;line-height:1.15;max-width:660px}
-.hero-sub{color:rgba(255,255,255,.72);font-size:16px;line-height:1.65;max-width:600px;margin-bottom:28px}
-.hero-badges{display:flex;gap:10px;flex-wrap:wrap}
-.badge{font-size:12px;font-weight:500;padding:5px 14px;border-radius:20px;background:rgba(255,255,255,.12);color:rgba(255,255,255,.9)}
+.hero-sub{color:rgba(255,255,255,.72);font-size:16px;line-height:1.65;max-width:600px;margin-bottom:24px}
 .back-link{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.6);font-size:13px;text-decoration:none;margin-bottom:20px;font-weight:500}
 .back-link:hover{color:#fff}
-
 .page-wrap{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 56px);max-width:1400px;margin:0 auto}
-
 .sidebar{padding:28px 0;border-right:1px solid var(--border);background:#fff;position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto}
 .sb-section{margin-bottom:22px;padding:0 18px}
 .sb-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--border)}
-.sb-link{display:flex;align-items:center;gap:8px;padding:6px 0;font-size:13px;font-weight:500;color:var(--slate);text-decoration:none;transition:color .15s}
+.sb-link{display:flex;align-items:center;gap:8px;padding:6px 0;font-size:13px;font-weight:500;color:var(--slate);text-decoration:none;transition:color .15s;cursor:pointer}
 .sb-link:hover,.sb-link.active{color:var(--navy);font-weight:600}
-.sb-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
-.sb-dot.navy{background:var(--navy)}.sb-dot.teal{background:var(--teal)}.sb-dot.orange{background:var(--orange)}.sb-dot.green{background:var(--green)}.sb-dot.slate{background:var(--slate)}
-
+.sb-num{width:18px;height:18px;border-radius:50%;background:var(--navy-lt);color:var(--navy);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .content{padding:40px 48px;max-width:880px}
-
 .sec-hdr{margin-top:56px;margin-bottom:24px;padding-bottom:14px;border-bottom:2px solid var(--border)}
 .sec-hdr:first-child{margin-top:0}
 .sec-eyebrow{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:6px}
 .sec-hdr h2{font-size:26px;font-weight:600;color:var(--dark);margin-bottom:6px}
 .sec-hdr p{font-size:14px;color:var(--slate);line-height:1.6}
-
-.stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:28px}
-.stat-block{background:#fff;padding:18px 14px;text-align:center}
-.stat-num{font-size:24px;font-weight:600;color:var(--teal);line-height:1;margin-bottom:4px}
-.stat-label{font-size:11px;color:var(--slate);line-height:1.4}
-
-.info-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px}
-.info-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px 22px}
-.info-card-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-.info-card ul{padding-left:0;list-style:none}
-.info-card ul li{font-size:13px;color:var(--dark);margin-bottom:7px;padding-left:16px;position:relative;line-height:1.5}
-.info-card ul li::before{content:'›';position:absolute;left:0;color:var(--teal);font-weight:700}
-.info-card ul li strong{font-weight:600}
-
-.tbl-wrap{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:24px}
-.tbl{width:100%;border-collapse:collapse}
-.tbl th{padding:10px 14px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--slate);background:var(--bg);border-bottom:1px solid var(--border);text-align:left}
-.tbl td{padding:12px 14px;font-size:13px;vertical-align:top;border-bottom:1px solid var(--border);line-height:1.5;color:var(--dark)}
-.tbl tr:last-child td{border-bottom:none}
-.tbl td:not(:last-child){border-right:1px solid var(--border)}
-.tbl th:not(:last-child){border-right:1px solid var(--border)}
-.tbl td strong{font-weight:600}
-.tbl tr:nth-child(even) td{background:#FAFBFD}
-
+h3{font-size:18px;font-weight:600;color:var(--dark);margin:28px 0 10px}
+h4{font-size:15px;font-weight:600;color:var(--navy);margin:20px 0 8px}
+.prose{font-size:14px;color:var(--dark);line-height:1.75;margin-bottom:16px}
+ul.list{list-style:none;padding:0;margin-bottom:16px}
+ul.list li{font-size:14px;color:var(--dark);padding:5px 0 5px 20px;position:relative;line-height:1.6}
+ul.list li::before{content:"\203A";position:absolute;left:0;color:var(--teal);font-weight:700;font-size:16px;line-height:1.4}
+ul.list li ul.list{margin-top:6px;margin-bottom:0}
+ul.list li ul.list li::before{color:var(--slate)}
+ol.numbered{padding-left:20px;margin-bottom:16px}
+ol.numbered li{font-size:14px;color:var(--dark);padding:4px 0 4px 8px;line-height:1.6}
+.kpi-table{width:100%;border-collapse:collapse;margin-bottom:24px;border-radius:10px;overflow:hidden;border:1px solid var(--border)}
+.kpi-table th{background:var(--navy);color:#fff;padding:11px 14px;font-size:12px;font-weight:600;text-align:left}
+.kpi-table td{padding:11px 14px;font-size:13px;border-bottom:1px solid var(--border);vertical-align:middle}
+.kpi-table tr:last-child td{border-bottom:none}
+.kpi-table tr:nth-child(even) td{background:#FAFBFC}
+.kpi-table td:first-child{font-weight:600;color:var(--dark)}
+.kpi-table td:not(:first-child){text-align:center;color:var(--slate)}
 .callout{border-radius:12px;padding:18px 22px;margin-bottom:24px;display:flex;gap:14px;align-items:flex-start}
 .callout.teal{background:var(--teal-lt);border:1px solid rgba(69,192,185,.3)}
 .callout.navy{background:var(--navy-lt);border:1px solid rgba(30,68,143,.2)}
-.callout.orange{background:var(--org-lt);border:1px solid rgba(243,125,83,.25)}
-.callout.green{background:var(--grn-lt);border:1px solid rgba(41,115,111,.2)}
-.callout-icon{font-size:20px;flex-shrink:0;margin-top:1px}
-.callout-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}
-.callout.teal .callout-label{color:var(--green)}.callout.navy .callout-label{color:var(--navy)}.callout.orange .callout-label{color:#B85020}.callout.green .callout-label{color:var(--green)}
+.callout-icon{font-size:20px;flex-shrink:0;margin-top:2px}
+.callout-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:3px}
+.callout.teal .callout-label{color:var(--green)}
+.callout.navy .callout-label{color:var(--navy)}
 .callout-title{font-size:15px;font-weight:600;color:var(--dark);margin-bottom:4px}
 .callout-desc{font-size:13px;color:var(--slate);line-height:1.55}
-
-/* Partnership split */
-.partnership-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
-.p-card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
-.p-card-hdr{padding:14px 18px;font-size:13px;font-weight:600;color:#fff}
-.p-card-hdr.bdr{background:var(--teal)}
-.p-card-hdr.ae{background:var(--navy)}
-.p-card-body{padding:14px 18px}
-.p-card-body ul{padding-left:0;list-style:none}
-.p-card-body ul li{font-size:13px;color:var(--dark);margin-bottom:7px;padding-left:16px;position:relative;line-height:1.5}
-.p-card-body ul li::before{content:'›';position:absolute;left:0;font-weight:700}
-.bdr-li::before{color:var(--teal)}
-.ae-li::before{color:var(--navy)}
-
-/* SQL criteria */
-.criteria-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
-.crit-card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
-.crit-hdr{padding:12px 18px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff}
-.crit-hdr.sql{background:var(--orange)}
-.crit-hdr.sqo{background:var(--navy)}
-.crit-body{padding:14px 18px}
-.crit-body ul{padding-left:0;list-style:none}
-.crit-body ul li{font-size:13px;color:var(--dark);margin-bottom:7px;padding-left:16px;position:relative;line-height:1.5}
-.crit-body ul li::before{content:'›';position:absolute;left:0;color:var(--teal);font-weight:700}
-.crit-body ul li strong{font-weight:600;color:var(--dark)}
-
-.cadence-list{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:24px}
-.cadence-item{display:flex;gap:14px;align-items:flex-start;padding:14px 18px;border-bottom:1px solid var(--border)}
-.cadence-item:last-child{border-bottom:none}
-.cadence-icon{font-size:18px;flex-shrink:0;margin-top:1px}
-.cadence-freq{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--teal);margin-bottom:3px}
-.cadence-name{font-size:14px;font-weight:600;color:var(--dark);margin-bottom:3px}
-.cadence-desc{font-size:12.5px;color:var(--slate);line-height:1.5}
-
-.prose{font-size:14px;color:var(--dark);line-height:1.7;margin-bottom:16px}
-.prose strong{font-weight:600}
-h3.sub{font-size:16px;font-weight:600;color:var(--dark);margin-bottom:10px;margin-top:24px}
-
-footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:24px;font-size:12px}
-
-/* Dropdown nav */
-.nav .dropdown{position:relative;height:56px;display:flex;align-items:center}
-.nav .dropdown-trigger{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;font-weight:500;padding:0 14px;height:56px;display:flex;align-items:center;gap:5px;border-bottom:3px solid transparent;transition:all .15s;cursor:pointer;user-select:none}
-.nav .dropdown-trigger::after{content:'▾';font-size:10px;margin-top:1px}
-.nav .dropdown:hover .dropdown-trigger,.nav .dropdown.active .dropdown-trigger{color:#fff;border-bottom-color:var(--teal)}
-.nav .dropdown-menu{display:none;position:absolute;top:56px;left:0;background:var(--navy);border:1px solid rgba(255,255,255,.12);border-top:2px solid var(--teal);border-radius:0 0 8px 8px;min-width:200px;z-index:200;box-shadow:0 8px 24px rgba(0,0,0,.3)}
-.nav .dropdown:hover .dropdown-menu{display:block}
-.nav .dropdown-menu a{display:block;padding:12px 18px;font-size:13px;font-weight:500;color:rgba(255,255,255,.75);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.07);height:auto;border-bottom-color:rgba(255,255,255,.07) !important;transition:background .12s,color .12s}
-.nav .dropdown-menu a:last-child{border-bottom:none;border-radius:0 0 8px 8px}
-.nav .dropdown-menu a:hover{background:rgba(255,255,255,.08);color:#fff}
-.nav .dropdown-menu a.active{color:var(--teal);font-weight:600}
+.values-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+.value-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px 18px}
+.value-name{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.value-desc{font-size:13px;color:var(--slate);line-height:1.5}
+.schedule-block{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:24px}
+.schedule-hdr{background:var(--navy);color:#fff;padding:14px 20px;font-size:14px;font-weight:600}
+.schedule-row{display:grid;grid-template-columns:100px 1fr;border-bottom:1px solid var(--border)}
+.schedule-row:last-child{border-bottom:none}
+.schedule-time{padding:12px 16px;font-size:12px;font-weight:600;color:var(--navy);background:var(--navy-lt);border-right:1px solid var(--border)}
+.schedule-task{padding:12px 16px;font-size:13px;color:var(--dark);line-height:1.5}
+.schedule-task span{display:block;font-size:11px;color:var(--slate);margin-top:2px}
+.tier-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.tier-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px 20px}
+.tier-label{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:12px;margin-bottom:8px}
+.tier-label.must-win{background:#FEE2E2;color:#991B1B}
+.tier-label.t1{background:var(--org-lt);color:#B85020}
+.tier-label.t2{background:var(--navy-lt);color:var(--navy)}
+.tier-label.t3{background:var(--teal-lt);color:var(--green)}
+.tier-title{font-size:14px;font-weight:600;color:var(--dark);margin-bottom:6px}
+.slack-table{width:100%;border-collapse:collapse;margin-bottom:24px}
+.slack-table td{padding:10px 14px;font-size:13px;border-bottom:1px solid var(--border);vertical-align:top}
+.slack-table tr:last-child td{border-bottom:none}
+.slack-table td:first-child{font-family:monospace;font-size:12px;color:var(--navy);font-weight:600;white-space:nowrap;width:240px}
+.slack-table td:last-child{color:var(--slate)}
+.tools-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+.tool-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px 18px;display:flex;gap:12px;align-items:flex-start}
+.tool-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;background:var(--navy-lt)}
+.tool-name{font-size:13px;font-weight:600;color:var(--dark);margin-bottom:3px}
+.tool-desc{font-size:12px;color:var(--slate);line-height:1.45}
+footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:24px;font-size:12px;margin-top:0}
 </style>
 </head>
 <body>
-
 <nav class="nav">
-  <span class="logo">Checkr Sales Playbooks 2026</span>
-    <a href="index.html">Onboarding</a>
-    <a href="playbook.html">New Hire Playbook</a>
-  <div class="dropdown active">
-    <span class="dropdown-trigger">Role Based Playbooks</span>
-    <div class="dropdown-menu">
-    <a href="playbook_commercial.html">Commercial AE Playbook</a>
-    <a href="playbook_enterprise.html">Enterprise AE Playbook</a>
-    <a href="playbook_bdr.html" class="active">BDR Playbook</a>
-    </div>
-  </div>
-    <a href="outbound.html">Outbound</a>
+  <span class="logo">Checkr Sales Onboarding 2026</span>
+  <a href="index.html">Overview</a>
+  <a href="prework.html">Pre-Work</a>
+  <a href="bootcamp.html">Bootcamp</a>
+  <a href="competency.html">Competency Framework</a>
+  <a href="milestones2.html">My Milestones</a>
+  <a href="timeline.html">Journey</a>
+  <a href="playbook.html">New Hire Playbooks</a>
 </nav>
 
 <div class="hero">
-  <a href="playbook.html" class="back-link">← Back to New Hire Playbook</a>
-  <div class="hero-eyebrow">BDR Playbook · 2026</div>
-  <h1>Business Development Representative Playbook</h1>
-  <div class="hero-sub">Your complete guide to generating qualified pipeline as a BDR — activity expectations, account research, the AE/BDR partnership, SQL/SQO criteria, and your operating cadence.</div>
-  <div class="hero-badges">
-    <span class="badge">Pipeline Generation</span>
-    <span class="badge">AE/BDR Partnership</span>
-    <span class="badge">SQL &amp; SQO Criteria</span>
-    <span class="badge">Activity Standards</span>
-  </div>
+  <a href="playbook.html" class="back-link">&larr; Back to New Hire Playbooks</a>
+  <div class="hero-eyebrow">BDR Playbook 2026</div>
+  <h1>BDR Playbook</h1>
+  <p class="hero-sub">Everything you need to know from A to Z to be successful in your role at Checkr. This is a living document and will be subject to change periodically.</p>
 </div>
 
 <div class="page-wrap">
 <aside class="sidebar">
   <div class="sb-section">
-    <div class="sb-label">In This Playbook</div>
-    <a href="#role" class="sb-link active"><span class="sb-dot teal"></span>Your Role</a>
-    <a href="#activity" class="sb-link"><span class="sb-dot orange"></span>Activity Standards</a>
-    <a href="#accounts" class="sb-link"><span class="sb-dot navy"></span>Account Prioritization</a>
-    <a href="#research" class="sb-link"><span class="sb-dot teal"></span>Account Research</a>
-    <a href="#partnership" class="sb-link"><span class="sb-dot navy"></span>AE/BDR Partnership</a>
-    <a href="#oneonone" class="sb-link"><span class="sb-dot teal"></span>Weekly 1:1 Structure</a>
-    <a href="#sql-sqo" class="sb-link"><span class="sb-dot orange"></span>SQL &amp; SQO Criteria</a>
-    <a href="#post-meeting" class="sb-link"><span class="sb-dot green"></span>Post-Meeting Rules</a>
-    <a href="#cadence" class="sb-link"><span class="sb-dot slate"></span>Operating Cadence</a>
-    <a href="#resources" class="sb-link"><span class="sb-dot slate"></span>Key Resources</a>
-  </div>
-  <div class="sb-section">
-    <div class="sb-label">Other Playbooks</div>
-    <a href="playbook.html" class="sb-link"><span class="sb-dot navy"></span>New Hire Playbook</a>
-    <a href="outbound.html" class="sb-link"><span class="sb-dot orange"></span>Outbound Playbook</a>
-    <a href="playbook_commercial.html" class="sb-link"><span class="sb-dot teal"></span>Commercial AE</a>
-    <a href="playbook_enterprise.html" class="sb-link"><span class="sb-dot navy"></span>Enterprise AE</a>
+    <div class="sb-label">Contents</div>
+    <a class="sb-link" href="#s1"><span class="sb-num">1</span>Getting to Know Checkr</a>
+    <a class="sb-link" href="#s2"><span class="sb-num">2</span>What it Means to be a BDR</a>
+    <a class="sb-link" href="#s3"><span class="sb-num">3</span>Day in the Life</a>
+    <a class="sb-link" href="#s4"><span class="sb-num">4</span>Positioning Checkr</a>
+    <a class="sb-link" href="#s5"><span class="sb-num">5</span>Sequences, Emails, Calls &amp; LinkedIn</a>
+    <a class="sb-link" href="#s6"><span class="sb-num">6</span>Working Leads</a>
+    <a class="sb-link" href="#s7"><span class="sb-num">7</span>Handoff &amp; Salesforce Conversion</a>
+    <a class="sb-link" href="#s8"><span class="sb-num">8</span>Prospecting Tools</a>
+    <a class="sb-link" href="#s9"><span class="sb-num">9</span>Appendix: Admin &amp; Setup</a>
   </div>
 </aside>
-
 <main class="content">
 
-  <!-- ROLE -->
-  <div id="role">
-    <div class="sec-hdr">
-      <div class="sec-eyebrow">Your Role</div>
-      <h2>BDR Overview</h2>
-      <p>What a BDR does at Checkr and how you fit into the revenue engine.</p>
+<div class="callout navy">
+  <div class="callout-icon">&#x1F4D6;</div>
+  <div>
+    <div class="callout-label">How to Use this Playbook</div>
+    <div class="callout-title">Welcome to the team!</div>
+    <div class="callout-desc">Use the sidebar to jump to each section. You can also use &ldquo;Control F&rdquo; to find keywords. This is a living document &mdash; content will be updated as the team and processes evolve.</div>
+  </div>
+</div>
+
+<!-- S1 -->
+<div id="s1">
+  <div class="sec-hdr">
+    <div class="sec-eyebrow">01</div>
+    <h2>Getting to Know Checkr</h2>
+    <p>Company overview, mission, core values, and org structure.</p>
+  </div>
+  <h3>Company Overview</h3>
+  <p class="prose">Checkr is reinventing background checks. Using technology and design, we make them more efficient, and the experience friendlier for end users and candidates alike. It&rsquo;s built to be smarter, more user-friendly and to give more people a fair shake.</p>
+  <h3>Checkr&rsquo;s Mission</h3>
+  <div class="callout teal">
+    <div class="callout-icon">&#x1F3AF;</div>
+    <div>
+      <div class="callout-title">Build the data platform to power safe and fair decisions</div>
+      <div class="callout-desc">Checkr is a mission-driven technology and data company that is the leader in the background check industry. We recognize that people with a past criminal record can face barriers to life success. We&rsquo;re committed to leveling the playing field &mdash; we believe that all people, regardless of their past, should have a fair chance at achieving personal and professional goals, providing for their families, and contributing to their communities.</div>
     </div>
+  </div>
+  <h3>Checkr&rsquo;s Core Values</h3>
+  <div class="values-grid">
+    <div class="value-card"><div class="value-name">Humility</div><div class="value-desc">We are respectful and free from arrogance. We put the success of our teams over our own and are excited to learn from each other.</div></div>
+    <div class="value-card"><div class="value-name">Transparency</div><div class="value-desc">We trust each other to communicate the good and the bad as it relates to doing our best work. We aren&rsquo;t afraid to voice our opinions and are receptive to feedback.</div></div>
+    <div class="value-card"><div class="value-name">Grit</div><div class="value-desc">We are passionate and hustle to raise the bar. We persevere through our challenges and grow from our failures.</div></div>
+    <div class="value-card"><div class="value-name">Ownership</div><div class="value-desc">We strive for thoughtful impact, take pride in our work, and hold ourselves accountable. We step up and take on new challenges to help further the success of the company.</div></div>
+    <div class="value-card" style="grid-column:1/-1"><div class="value-name">Connection</div><div class="value-desc">We genuinely care about each other and understand that our people are our power. We celebrate our lived experiences and enjoy helping and supporting each other.</div></div>
+  </div>
+  <h3>Sales Org Structure</h3>
+  <p class="prose">The Sales team at Checkr is responsible for closing business and generating new revenue. Our sales team is broken up into specific segments:</p>
+  <ul class="list">
+    <li><strong>Enterprise AEs</strong> &mdash; work companies with &gt;15k employees</li>
+    <li><strong>Upper Mid Market AEs</strong> &mdash; work companies with &ge;5k and &lt;15k employees</li>
+    <li><strong>Commercial AEs</strong> &mdash; work companies running between 300 checks per year and &lt;1k employees</li>
+    <li><strong>SMB</strong> &mdash; companies running under 300 checks per year, sign up through our Self-Service tool</li>
+  </ul>
+  <h4>Marketing &amp; Lead Routing</h4>
+  <ul class="list">
+    <li><strong>SDRs</strong> &mdash; follow up on anything unowned or anything coming in from a CMRL AE&rsquo;s book of business</li>
+    <li><strong>BDRs</strong> &mdash; follow up on any MQLs that come in on their or their AE&rsquo;s (ENT) book of business</li>
+    <li><strong>AEs</strong> &mdash; do not get routed MQLs</li>
+  </ul>
+</div>
 
-    <p class="prose">As a BDR at Checkr, your job is to generate qualified pipeline for the AE team through strategic outbound prospecting. You are not responsible for closing deals — you are responsible for finding the right people, creating interest, and handing off qualified opportunities so AEs can advance them to close.</p>
+<!-- S2 -->
+<div id="s2">
+  <div class="sec-hdr">
+    <div class="sec-eyebrow">02</div>
+    <h2>What it Means to be a BDR at Checkr</h2>
+    <p>Your role, how you&rsquo;re measured, and what success looks like.</p>
+  </div>
+  <p class="prose">Being a BDR at Checkr means that you are often the first person potential customers will ever speak with at the company. Your primary goal is to drive Sales Qualified Leads (SQLs) and Sales Qualified Opportunities (SQOs) by generating interest in Checkr&rsquo;s offerings and setting meetings with contacts from within your own book of business.</p>
+  <h3>Inbound (SDR)</h3>
+  <ul class="list">
+    <li>Follows up on leads associated with CMRL AE or Unowned Accounts generated by marketing through events, content downloads, etc. (warm engagement leads)</li>
+    <li>Follows up on leads generated when prospects approach Checkr and specifically request to speak with someone on our sales team (inbound leads)</li>
+    <li>If you see a duplicate MQL routing to an SDR, reach out to the SDR with the link to your correct account and they will reassign it to you</li>
+  </ul>
+  <h3>Outbound (BDR &mdash; your role!)</h3>
+  <ul class="list">
+    <li>Performs cold outreach into a set of target accounts</li>
+    <li>Sources contacts to reach out to within a given account through tools such as LinkedIn Sales Navigator and ZoomInfo</li>
+    <li>Works closely with AEs to penetrate target account lists and create new business opportunities</li>
+    <li>Follows up on MQLs associated with your book of business</li>
+  </ul>
+  <h3>How BDRs are Measured</h3>
+  <p class="prose">BDRs are measured on the number of SQOs (Sales Qualified Opportunities) that are created and confirmed by the AE team.</p>
+  <ul class="list">
+    <li><strong>CMRL BDR:</strong> 7 SQOs per month / 21 SQOs per quarter</li>
+    <li><strong>ENT BDR:</strong> 4 SQOs per month / 12 SQOs per quarter</li>
+  </ul>
+  <h3>KPIs for Success</h3>
+  <p class="prose">Results are the outcome of the right behaviors and activity. Below are the key KPIs for a fully ramped BDR &mdash; first two month expectations will be provided separately during onboarding.</p>
+  <table class="kpi-table">
+    <thead><tr><th>KPI</th><th>Daily</th><th>Weekly</th><th>Monthly</th><th>Quarterly</th></tr></thead>
+    <tbody>
+      <tr><td>Calls</td><td>60</td><td>300</td><td>1,200</td><td>3,600</td></tr>
+      <tr><td>Emails</td><td>50</td><td>250</td><td>1,000</td><td>3,000</td></tr>
+      <tr><td>LinkedIn InMail credits used</td><td>&mdash;</td><td>&mdash;</td><td>50</td><td>&mdash;</td></tr>
+      <tr><td>Accounts touched</td><td>&mdash;</td><td>&mdash;</td><td>50</td><td>150</td></tr>
+      <tr><td>Contacts sequenced</td><td>8&ndash;10</td><td>40&ndash;50</td><td>160&ndash;200</td><td>480&ndash;600</td></tr>
+      <tr><td>Meetings booked (SQLs)</td><td>&mdash;</td><td>2</td><td>8</td><td>24</td></tr>
+      <tr><td>Opportunities created (SQOs)</td><td>&mdash;</td><td>1&ndash;2</td><td>6</td><td>18</td></tr>
+    </tbody>
+  </table>
+  <h3>Performance Evaluation Framework</h3>
+  <ul class="list">
+    <li>We have a quarterly as well as annual process for goal setting and performance evaluations</li>
+    <li>Each quarter you will self-reflect on how you stacked up to your previous goals, and set new goals for the new quarter</li>
+    <li>At the end of the year, all quarters are combined for an annual performance review</li>
+    <li>Your rating can impact things like sabbatical approval and promotion eligibility</li>
+  </ul>
+  <h3>Performance Management</h3>
+  <ul class="list">
+    <li>As an Outbound BDR you are expected to maintain consistent performance against SQO and pipeline targets</li>
+    <li>If consistent performance is not achieved, you may be placed on a coaching memo or subsequently moved to a performance improvement plan (PIP)</li>
+    <li>The goal of these plans is to find the right structure and process for success so that it can be replicated each month</li>
+  </ul>
+</div>
 
-    <p class="prose">You sit at the very top of the funnel. The quality of your outreach — how well you research accounts, how targeted your messaging is, and how accurately you qualify — directly determines the quality of pipeline the team has to work with. <strong>Precision matters more than volume alone.</strong></p>
+<!-- S3 -->
+<div id="s3">
+  <div class="sec-hdr">
+    <div class="sec-eyebrow">03</div>
+    <h2>A Day in the Life</h2>
+    <p>How to structure your day, operating cadence, and job expectations.</p>
+  </div>
+  <h3>How to Start Your Day</h3>
+  <ul class="list">
+    <li>Open both email and Slack &mdash; check for any MQLs that came in overnight or responses requiring immediate attention</li>
+    <li>Open Demandbase and check for any new MQA or trending accounts that should be prioritized &mdash; MQAs are top priority</li>
+    <li>Check your calendar for any meetings that day</li>
+    <li>Open your BDR Dashboard within Salesforce and action any outstanding items</li>
+    <li>Log into Outreach &mdash; click &ldquo;Start Tasks&rdquo; and work through your tasks. You should end each day with zero tasks due for that day</li>
+  </ul>
+  <h3>Daily Schedule</h3>
+  <div class="schedule-block">
+    <div class="schedule-hdr">Recommended Daily Calendar</div>
+    <div class="schedule-row"><div class="schedule-time">8:00&ndash;9:00</div><div class="schedule-task"><strong>Admin, Immediate, Prep (1 hr)</strong><span>Check calendar &middot; Respond to anything important &middot; Check Demandbase for new MQAs &middot; Check BDR dashboard</span></div></div>
+    <div class="schedule-row"><div class="schedule-time">9:00&ndash;11:00</div><div class="schedule-task"><strong>Cold-Calling (2 hrs)</strong><span>Start East coast and work back to Pacific &middot; Smile while talking &middot; Use pattern disruptors, traps, triggers &middot; Leave voicemails</span></div></div>
+    <div class="schedule-row"><div class="schedule-time">11:00&ndash;12:00</div><div class="schedule-task"><strong>Personalized Emails &amp; LinkedIn Messages (1 hr)</strong><span>Use yesterday&rsquo;s research for personalization &middot; Leverage AI to streamline message crafting (Credal.ai, ChatGPT, etc.)</span></div></div>
+    <div class="schedule-row"><div class="schedule-time">12:00&ndash;1:00</div><div class="schedule-task"><strong>Lunch (1 hr)</strong><span>Relax and reset for the back half of the day.</span></div></div>
+    <div class="schedule-row"><div class="schedule-time">1:00&ndash;2:30</div><div class="schedule-task"><strong>Strategic Prospecting + More Messaging (1.5 hrs)</strong><span>Send more emails and LinkedIn messages using highly personalized messaging</span></div></div>
+    <div class="schedule-row"><div class="schedule-time">2:30&ndash;4:00</div><div class="schedule-task"><strong>Cold-Calling (1.5 hrs)</strong><span>Often the best time to reach people &middot; 2:30 MT = 4:30 ET &mdash; start East coast and work back to Mountain</span></div></div>
+    <div class="schedule-row"><div class="schedule-time">4:00&ndash;5:00</div><div class="schedule-task"><strong>Admin, Plan for Tomorrow (1 hr)</strong><span>Identify new accounts to target &middot; Load contacts into appropriate sequences &middot; Research accounts with AI &middot; Check dashboard vs. team</span></div></div>
+    <div class="schedule-row"><div class="schedule-time">5:00&ndash;5:30</div><div class="schedule-task"><strong>End-of-Day Blitz (30 min)</strong><span>Circle back to top prospects in Mountain or Pacific for a mini blitz</span></div></div>
+  </div>
+  <h3>BDR Operating Cadence</h3>
+  <ul class="list">
+    <li><strong>Monday Kickoff Call</strong> &mdash; full team covers previous week&rsquo;s numbers, sets new commitments around SQL/SQO creation and activity output, updates monthly forecast</li>
+    <li><strong>Weekly 1x1s</strong> &mdash; with your manager to review KPIs, attainment, unblock obstacles, development and coaching. Leverage Fellow App with pre-built template &mdash; have the first 5 bullet points filled out prior to the 1x1</li>
+    <li><strong>Weekly Team Meetings</strong> &mdash; Every Wednesday in person: updates, peer best practices, celebrating wins, quick training sessions, book club, guest stars from other departments</li>
+    <li><strong>Call Blocks</strong> &mdash; Th/F for 1 hr with your manager, cameras off and screen share, real-time feedback on process and all aspects of your calls</li>
+  </ul>
+  <h3>Job Expectations</h3>
+  <h4>Working Hours</h4>
+  <p class="prose">We expect you to be generally available between 8am&ndash;5pm local time with proactive communication if you are going to be away for an extended period of time.</p>
+  <ul class="list">
+    <li>Hybrid environment with a 2-day-a-week in-office minimum &mdash; BDR team goes in on Tuesday/Wednesday. Any days in office missed are required to be made up</li>
+    <li>You are required to log your hours in ADP</li>
+  </ul>
+  <h4>PTO / Sick Days</h4>
+  <ul class="list">
+    <li>Request PTO in 1:1s with your manager two weeks in advance &mdash; once approved, submit in Workday</li>
+    <li>PTO will be approved or denied based on individual performance</li>
+    <li>Ad hoc/late notice PTO requests will be approved at the manager&rsquo;s discretion</li>
+    <li>Update your Google Calendar and Slack status when offline</li>
+    <li>Sick Time: Notify your manager ASAP and input sick time via Workday. If working from home while unwell, you still must meet full activity requirements</li>
+  </ul>
+  <h4>Communication</h4>
+  <p class="prose">Respond to emails and Slack messages within a timely manner. React to Slack messages with the green check emoji to signal you&rsquo;ve noted the message. Proactive communication is always best &mdash; keep your manager in the loop on anything adverse or negative before being asked.</p>
+  <h4>Team Meetings</h4>
+  <p class="prose">You are expected to be on ALL team meetings and other required meetings on your calendar. Be prompt. If joining remotely, please have your camera on. Listen and ask questions.</p>
+</div>
 
-    <div class="stat-strip">
-      <div class="stat-block"><div class="stat-num">50</div><div class="stat-label">Outbound calls<br>per day</div></div>
-      <div class="stat-block"><div class="stat-num">50</div><div class="stat-label">Emails / LinkedIn<br>messages per day</div></div>
-      <div class="stat-block"><div class="stat-num">18</div><div class="stat-label">Unique accounts<br>touched per day</div></div>
-      <div class="stat-block"><div class="stat-num">4–7</div><div class="stat-label">Monthly outbound<br>SQOs (ENT 4 / Comm 7)</div></div>
+<!-- S4 -->
+<div id="s4">
+  <div class="sec-hdr">
+    <div class="sec-eyebrow">04</div>
+    <h2>Positioning Checkr</h2>
+    <p>Value propositions, Command of the Message, ICP, competitors, and account prioritization.</p>
+  </div>
+  <h3>Checkr&rsquo;s Value Propositions</h3>
+  <p class="prose">A value proposition is a statement made by a company that summarizes why a customer should use their product or service. When you are asked what Checkr does, a good way to answer this question is to use a value proposition.</p>
+  <ul class="list">
+    <li>Value propositions should not be about Checkr&rsquo;s solutions or features &mdash; they are about our prospects, the pains we solve, and the types of customers we help</li>
+    <li>Value propositions will change depending on what type of prospect you are speaking to</li>
+  </ul>
+  <h3>Command of the Message (CoM)</h3>
+  <p class="prose">CoM is the framework we use for the full sales cycle at Checkr, composed of 6 main components:</p>
+  <ol class="numbered">
+    <li>The <strong>Before Scenario</strong>, and the Negative Consequences of it (Prime for BDRs to uncover!)</li>
+    <li>The <strong>After Scenario</strong>, and the Positive Business Outcomes from it</li>
+    <li>The <strong>Required Capabilities</strong>, and the Metrics to prove success</li>
+    <li><strong>How Checkr Does It</strong>, and how we do it Better (Our differentiators)</li>
+    <li><strong>Proof Points</strong>, such as customer references and case studies</li>
+    <li><strong>Discovery / Trapping Questions</strong> to determine what&rsquo;s driving decision-making</li>
+  </ol>
+  <div class="callout teal">
+    <div class="callout-icon">&#x1F4CB;</div>
+    <div>
+      <div class="callout-label">Required Reading</div>
+      <div class="callout-title">CoM Value Framework</div>
+      <div class="callout-desc">The full CoM Value Framework encompasses a deep dive for each value proposition, what our differentiators are in the space, and discovery/trapping questions to set the stage for a Checkr win. This is crucial to your success as a BDR &mdash; save this framework and refer to it as you build your talk track.</div>
     </div>
+  </div>
+  <h3>Ideal Customer Profiles (ICP)</h3>
+  <ul class="list">
+    <li><strong>Our ICPs:</strong> Retail, Hospitality, Manufacturing, Transportation, Simple Staffing, and Gig/On Demand</li>
+    <li><strong>Titles:</strong> HR Leader, Operations, Talent Acquisition/Recruiting, Compliance</li>
+    <li><strong>Company Size:</strong> 300+ background checks performed per year (number of checks is more important than employee headcount)</li>
+  </ul>
+  <h4>Pain Points</h4>
+  <ul class="list">
+    <li>Challenges mitigating risk and remaining compliant in the hiring process &mdash; opens the company up to potential litigation</li>
+    <li>Slow and inefficient internal admin/user experience with background checks &mdash; teams spending hours on processes that could be automated</li>
+    <li>Low conversion rates for hiring due to poor candidate experience &mdash; candidate drop-off resulting in lost work / lost revenue</li>
+  </ul>
+  <h3>Competitor Analysis</h3>
+  <p class="prose">All competitor content can be found on Confluence at go/battlecards. Key competitors: HireRight &middot; First Advantage &middot; Sterling.</p>
+  <h3>Account Prioritization</h3>
+  <p class="prose">Identify with your AEs the top priority accounts within your book to target each month &mdash; through a combination of product fit (ICP), intent data (Demandbase), and focus areas from your AE.</p>
+  <div class="tier-grid">
+    <div class="tier-card"><div class="tier-label must-win">Must Win</div><div class="tier-title">BDR to get very clear guidance from AE</div><ul class="list"><li>Hyper personalization across all touch points to all contacts</li><li>Amount of contacts pursued determined by AE</li></ul></div>
+    <div class="tier-card"><div class="tier-label t1">Tier 1</div><div class="tier-title">BDR to work BTL contact with clear guidance from AE</div><ul class="list"><li>Hyper personalization across all touch points to all contacts</li><li>Amount of contacts pursued determined by AE</li></ul></div>
+    <div class="tier-card"><div class="tier-label t2">Tier 2</div><div class="tier-title">BDR and AE to tag team</div><ul class="list"><li>Hyper personalization across all touch points to ATL and priority contacts</li><li>BTL contacts can be placed in ATS/Competitor/persona sequences with pre-personalized content</li><li>Past connects and additional BTL contacts can be placed in passive nurture drips</li><li>Recommended: at least 7 BTL and 5 ATL contacts per account</li></ul></div>
+    <div class="tier-card"><div class="tier-label t3">Tier 3</div><div class="tier-title">BDR to primarily own</div><ul class="list"><li>Primary contact personalized in first email</li><li>Other contacts put in ATS/Competitor/persona sequences with pre-personalized content</li><li>Nurture drip on a few contacts per account</li><li>Recommended: at least 7 BTL and 5 ATL contacts per account</li></ul></div>
+  </div>
+  <h3>Account Hygiene</h3>
+  <ul class="list">
+    <li>If you learn a company&rsquo;s competitor, contract renewal date, ATS, or annual volume of checks &mdash; update this in the appropriate SFDC fields</li>
+    <li>If an account is out of business, use the tier field to mark them as &ldquo;defunct/out of business&rdquo;</li>
+    <li>If unsure if an account is viable, use the Tier field to mark them as &ldquo;flag for review&rdquo; and RevOps will take a look</li>
+  </ul>
+  <h3>BDR / AE Operating Cadence</h3>
+  <h4>ENT BDR/AE 1:1</h4>
+  <p class="prose"><strong>Ideal Outcome:</strong> Both BDR and AE leave with a clear picture of priorities for the week &mdash; new accounts to target with specifics on personas and messaging, as well as previous outreach follow-up and where deals are standing.</p>
+  <h4>Agenda</h4>
+  <ol class="numbered">
+    <li>Review this week&rsquo;s plan including focus areas, marketing campaigns, and target accounts
+      <ul class="list">
+        <li>BDR brings list of new high intent accounts, reviews with AE and tags 10&ndash;15 from list</li>
+        <li>AE brings any accounts for their BDR to pursue outside of sprint (tier 1s with intent, C/L opps, identified triggers)</li>
+        <li>AE should give guidance on messaging and be organized in joint outreach efforts to not overlap prospect</li>
+      </ul>
+    </li>
+    <li>Review opps in interest/pending handoff calls
+      <ul class="list">
+        <li>BDR to prep AE for upcoming handoffs (qual notes)</li>
+        <li>All opps should have next steps completed prior to 1:1</li>
+      </ul>
+    </li>
+  </ol>
+  <h4>Staying Organized with Outreach Tags</h4>
+  <p class="prose"><strong>Tag naming convention:</strong> &ldquo;AE initials / BDR initials / Area of Focus / Month &amp; year&rdquo; &mdash; Example: &ldquo;JS / TH / Staffing / July &lsquo;23&rdquo;</p>
+</div>
 
-    <div class="callout navy">
-      <div class="callout-icon">🎯</div>
-      <div>
-        <div class="callout-label">Your North Star</div>
-        <div class="callout-title">You create the opportunity — the AE closes it</div>
-        <div class="callout-desc">BDRs must CREATE the opportunity in Salesforce to receive credit. Do not create an opportunity on an account you have been tag-teaming with your AE — that rule exists to protect everyone's commission and keeps the data clean for forecasting.</div>
+<!-- S5 -->
+<div id="s5">
+  <div class="sec-hdr">
+    <div class="sec-eyebrow">05</div>
+    <h2>Sequences: Emails, Calls &amp; LinkedIn</h2>
+    <p>Outreach sequences, email templates, call scripts, objection handling, and LinkedIn strategy.</p>
+  </div>
+  <h3>What is a Sequence?</h3>
+  <p class="prose">A prospecting sequence is a detailed step-by-step plan of activities designed to maximize the likelihood of making contact with a prospect in order to convert them into an SQL.</p>
+  <ul class="list">
+    <li><strong>Length</strong> &mdash; total number of days from initial outreach to the last step. If no contact is made throughout the entire sequence, move the contact to a passive nurture sequence</li>
+    <li><strong>Steps</strong> &mdash; individual actions taken, corresponding to a channel (email, phone call, LinkedIn message)</li>
+  </ul>
+  <h3>Checkr Sequences</h3>
+  <p class="prose">BDRs at Checkr work out of a collection of sequences titled <strong>&ldquo;BDR Outbound&rdquo;</strong>. This collection follows a categorization strategy of &ldquo;Above The Line&rdquo; vs &ldquo;Below The Line&rdquo; sequences for our ICPs, as well as sequences specific to ATS integrations, personas, events and more.</p>
+  <ul class="list">
+    <li><strong>Below The Line (BTL)</strong> &mdash; For Individual Contributors and Front-line managers. Less personalization, more automation, fewer total steps</li>
+    <li><strong>Above The Line (ATL)</strong> &mdash; For Directors, VPs, and above (c-suite). Higher level of manual personalization, more steps, greater attention toward key stakeholders</li>
+  </ul>
+  <h3>Emails</h3>
+  <ul class="list">
+    <li><strong>Templates</strong> &mdash; pre-built messaging from marketing and enablement. It is an expectation and requirement that you do proper research and add personalization to emails prior to sending. Automated and un-personalized emails should only be used for low tier prospects, later stage emails in the sequence, or if you are truly unable to find a compelling trigger</li>
+    <li><strong>Snippets</strong> &mdash; act like an email template shortcut, allowing you to drop smaller bits of text, links, or paragraphs into emails at the click of a button</li>
+  </ul>
+  <h3>Calls &mdash; Best Practices</h3>
+  <ul class="list">
+    <li>Take a no stone left unturned approach when identifying the right numbers to call</li>
+    <li>Don&rsquo;t be afraid to select options like &ldquo;sales&rdquo; or &ldquo;customer support&rdquo; to connect with a live person who can direct you</li>
+    <li>If a call goes directly to voicemail always call right back &mdash; a double dial can circumvent spam blockers</li>
+    <li>Mark phone numbers accordingly in Outreach (valid, questionable, invalid)</li>
+    <li>Keep detailed notes in your call notes for each call on anything relevant for the future</li>
+  </ul>
+  <h4>Qualification Questions</h4>
+  <ul class="list">
+    <li>What is your role at (company name) and in what ways are you involved with your company&rsquo;s background checks process?</li>
+    <li>How many background checks does your company perform annually? Do you anticipate this number growing over the next year?</li>
+    <li>Who are you currently using? Do you have an exclusive contract with them &mdash; if so when does it end?</li>
+    <li>What types of screening does your company require for background checks?</li>
+    <li>Does your company use an ATS (applicant tracking system) today? If yes, which system?</li>
+    <li><em>Optional:</em> Do you have a timeline in which you hope to make a decision on your next background check provider?</li>
+  </ul>
+  <h4>Probing Questions</h4>
+  <ul class="list">
+    <li>What does your current background check process look like?</li>
+    <li>What&rsquo;s one thing your company does really well with hiring? What&rsquo;s one thing you&rsquo;re trying to improve?</li>
+    <li>When was the last time (company name) reevaluated their background check process?</li>
+    <li>Do you have a sense of (company name)&rsquo;s typical turnaround time for background checks?</li>
+    <li>Are you aware of any initiatives at (company name) around fair hiring practices?</li>
+  </ul>
+  <h4>Objection Handling</h4>
+  <ul class="list">
+    <li><strong>AAA Method: Acknowledge, Address, Ask</strong> &mdash; acknowledge their objection with a neutral statement, address it by pulling in Checkr value, then re-engage with an open-ended question</li>
+    <li><strong>The &ldquo;Exactly&rdquo; Method</strong> &mdash; &ldquo;That&rsquo;s exactly why I called you!&rdquo; Take the wind out of their objection by flipping it around and connecting it to the reason you were reaching out</li>
+  </ul>
+  <h3>LinkedIn</h3>
+  <ul class="list">
+    <li>Always attempt to connect first &mdash; keep your connect message vague if you send one at all</li>
+    <li>If the person connects with you, message them as soon as possible, especially if you can see they are online</li>
+    <li>If after a few days the prospect has not connected, use an InMail credit (you get 50 a month &mdash; max these out)</li>
+    <li>LinkedIn messaging is typically less pushy on the CTA and more informative, looking for validation on the right person</li>
+    <li>Leverage content from our ICP playbooks to send via LinkedIn</li>
+    <li>AEs should own ATL for Tier 1 &mdash; BDRs divide and conquer on BTL</li>
+    <li>KPI: 1 LinkedIn video message a day / 5 per week</li>
+  </ul>
+</div>
+
+<!-- S6 -->
+<div id="s6">
+  <div class="sec-hdr">
+    <div class="sec-eyebrow">06</div>
+    <h2>Working Leads</h2>
+    <p>High-level process, MQL workflow, disqualifying, recycling, and lead hygiene.</p>
+  </div>
+  <h3>High-Level Process Overview</h3>
+  <h4>Start with Research &amp; Call Quickly</h4>
+  <ol class="numbered">
+    <li>Open the lead in SFDC</li>
+    <li>Research for 3 minutes &mdash; review campaign history, lead&rsquo;s title and company info, identify triggers and elements for personalization</li>
+    <li>Call/email the prospect using Outreach &mdash; 1-hour maximum SLA on actioning leads, so ensure your email notifications are on</li>
+    <li>Log and complete the call</li>
+  </ol>
+  <h4>The Lead Answers &mdash; What Happens Next?</h4>
+  <ol class="numbered">
+    <li>Qualify the Lead based on our SQL Criteria &mdash; schedule the next call at the earliest availability on the aligned AE&rsquo;s calendar</li>
+    <li>The Lead does not qualify:
+      <ul class="list">
+        <li>Not a good fit right now or is unresponsive &rarr; <strong>Recycle</strong></li>
+        <li>Will never be a good fit for Checkr &rarr; <strong>Disqualify</strong></li>
+      </ul>
+    </li>
+  </ol>
+  <h3>Disqualifying</h3>
+  <p class="prose">We only want to DQ leads that aren&rsquo;t going to use Checkr now or ever. BDRs will manually update this in SFDC.</p>
+  <ul class="list">
+    <li>Candidate &mdash; mark as &ldquo;candidate&rdquo;</li>
+    <li>Spam &mdash; mark as &ldquo;Bad Data&rdquo;</li>
+    <li>No longer at company</li>
+    <li>Competitor &mdash; they are a competitor of ours</li>
+    <li>No Permissible Purpose</li>
+  </ul>
+  <h3>Recycling</h3>
+  <p class="prose">Sometimes the lead or contact company is a good target, but they are not ready to buy just yet. BDRs should mark these as Recycled. When leads go all the way through a prospecting sequence without responding, move them into Recycle to end our outreach and allow marketing to re-target the prospect.</p>
+  <h3>Lead Hygiene</h3>
+  <p class="prose">Lead hygiene refers to our ability to follow processes and keep up with all of our scheduled outreach activities &mdash; keeping up with daily metrics and updating any necessary fields.</p>
+  <h3>BDR Dashboard</h3>
+  <p class="prose">The BDR Dashboard is your starting point when opening Salesforce. Within it you can see any MQLs needing attention from not being worked, not being called when part of an automated sequence, or that have gone stale. The BDR dashboard is also home to key KPIs including booked meetings, pipeline, and activities.</p>
+  <h3>Managing Duplicates</h3>
+  <ul class="list">
+    <li>If you see a Lead and Contact dupe: From the lead &rarr; Convert &rarr; &ldquo;Choose Existing&rdquo; &rarr; uncheck &ldquo;Don&rsquo;t create an opportunity upon conversion&rdquo;</li>
+    <li>Send Merge Request</li>
+    <li>If you don&rsquo;t own the account or get an error: Slack Andi directly with a link to the record and a request to merge</li>
+  </ul>
+  <h3>Warm Engagements</h3>
+  <p class="prose">Warm Engagements are people that have interacted with Checkr in some way &mdash; webinar attendees, content downloads, event registrants, or associates with a campaign. Unlike an MQL, a warm engagement is not a hand raise. They have not explicitly asked to be contacted, but given their engagement with us they are certainly warm enough to have a conversation.</p>
+  <h4>Marketo Sales Insights (MSI)</h4>
+  <p class="prose">MSI is a web-based app that connects Marketo information directly onto Leads or Contacts in SFDC. With MSI you&rsquo;ll have a holistic view into the actions your prospects are taking &mdash; pages they&rsquo;re visiting, emails they&rsquo;re reading, and campaigns they&rsquo;re engaging with.</p>
+  <ul class="list">
+    <li><strong>Insights tab</strong> &mdash; aggregate timeline of activity by interesting moment and email outreach</li>
+    <li><strong>Interesting Moments</strong> &mdash; historical list of actions defined by Marketo, categorized as Email, Web, and Milestones</li>
+    <li><strong>Stars</strong> &mdash; &ldquo;Relative Score&rdquo; compared to the entire database (1 Star = average, 3 Stars = high)</li>
+    <li><strong>Flames</strong> &mdash; &ldquo;Relative Urgency,&rdquo; meaning how frequently and by how much the score has changed recently</li>
+  </ul>
+</div>
+
+<!-- S7 -->
+<div id="s7">
+  <div class="sec-hdr">
+    <div class="sec-eyebrow">07</div>
+    <h2>Handoff &amp; Salesforce Conversion</h2>
+    <p>How to qualify, coordinate, and complete the opportunity handoff to AEs.</p>
+  </div>
+  <h3>Opportunity Handoff</h3>
+  <p class="prose">After creating an opportunity there are two key actions a BDR needs to take:</p>
+  <ol class="numbered">
+    <li>Coordinate the handoff of the opportunity with the appropriate Account Executive (your aligned AE for ENT or leveraging the CMRL AE Round Robin for CMRL)</li>
+    <li>Properly convert any lead that was directly related to the opp creation in Salesforce, or work off of the contact that the meeting was booked with</li>
+    <li>Create a new opportunity and add all notes &mdash; hold off on assigning ownership to the AE until after we know it is moving to qualified</li>
+  </ol>
+  <h3>Scheduled Meetings</h3>
+  <ul class="list">
+    <li>Prioritize the prospect&rsquo;s earliest available time that is also available for their aligned AE</li>
+    <li>Only schedule calls between 8am&ndash;5pm local time on the AE&rsquo;s calendar unless explicitly stated otherwise</li>
+    <li>Book the meeting directly on the AE&rsquo;s calendar</li>
+  </ul>
+  <h3>Adding Qualification Notes</h3>
+  <p class="prose">The BDR will add qualifying notes to the opportunity notes field in the Stage 0 opportunity and associate one primary contact on the opp record. Fill in all fields of relevant information &mdash; ATS, volume of checks, why change why now, types of checks, prospect&rsquo;s role in eval, etc. Notes should be in the corresponding fields, not all in one paragraph.</p>
+  <h3>Facilitating the Handoff / Discovery Call</h3>
+  <ol class="numbered">
+    <li>BDR sends an email intro to AE and Customer</li>
+    <li>BDR attends the intro meeting with the AE in order to:
+      <ul class="list">
+        <li>Briefly recap the previous call</li>
+        <li>Reiterate any goals for the second call</li>
+        <li>Introduce the AE as the next point of contact and hand off the call</li>
+        <li><strong>Important:</strong> This intro and handoff from the BDR should take under one minute</li>
+        <li>BDR and AE should be on time, if not a few minutes early</li>
+        <li>BDR is expected to remain on the call for the duration to help take notes and shadow the AE</li>
+      </ul>
+    </li>
+  </ol>
+  <h3>Post Call-Actions</h3>
+  <ul class="list">
+    <li><strong>If Qualified:</strong> AE updates sales stage as appropriate. Congrats &mdash; you&rsquo;ve just earned yourself an SQO!</li>
+    <li><strong>If NOT Qualified:</strong>
+      <ul class="list">
+        <li>If waiting on a few pieces for qualification: opp stays in BDR&rsquo;s name and BDR works with AE until criteria is met</li>
+        <li>If not going to be qualified: BDR updates the sales stage to &ldquo;Closed-Lost&rdquo; with the appropriate reason</li>
+      </ul>
+    </li>
+    <li><strong>If NO SHOW:</strong> Opp stays in BDR&rsquo;s name &mdash; BDR is responsible for follow-up/rescheduling. Update next step fields on the opportunity and make every effort to reschedule within 1 month. If unsuccessful, BDR close-loses the Stage 0 opp</li>
+  </ul>
+  <h3>Creating an Opportunity in Salesforce from a Contact</h3>
+  <p class="prose">Navigate to the contact record of the prospect you booked your meeting with, find the &ldquo;Create Opportunity&rdquo; button on the top right corner. Select &ldquo;Sales Opportunity&rdquo; for BDR generated opps (new business). Ensure the opportunity is linked to the correct account, is in the correct forecast category (&ldquo;interested&rdquo;), and has a close date set for 4 months out.</p>
+  <h3>Salesforce Conversion (from a Lead)</h3>
+  <h4>If the account already exists:</h4>
+  <ol class="numbered">
+    <li>Click &ldquo;Convert&rdquo; from within the lead</li>
+    <li>Select &ldquo;Existing Account&rdquo; and select the appropriate account</li>
+    <li>Uncheck &ldquo;Don&rsquo;t create an opportunity upon conversion&rdquo;</li>
+    <li>Follow the same process as converting from contacts when filling out opportunity details</li>
+  </ol>
+  <h4>If there is no existing account:</h4>
+  <ol class="numbered">
+    <li>Click &ldquo;Convert&rdquo; from within the lead</li>
+    <li>Select &ldquo;New Account&rdquo; and input the appropriate account name</li>
+    <li>Select &ldquo;New Contact&rdquo; to convert your lead into a contact</li>
+    <li>Uncheck &ldquo;Don&rsquo;t create an opportunity upon conversion&rdquo;</li>
+    <li>Convert the lead into a contact</li>
+  </ol>
+</div>
+
+<!-- S8 -->
+<div id="s8">
+  <div class="sec-hdr">
+    <div class="sec-eyebrow">08</div>
+    <h2>Prospecting Tools</h2>
+    <p>Overview of the tools you&rsquo;ll use every day and how to use them effectively.</p>
+  </div>
+  <p class="prose">Becoming an expert user of these technologies will help you become more efficient at the job and allow you to find more success in the role.</p>
+  <div class="tools-grid">
+    <div class="tool-card"><div class="tool-icon">&#x1F4AC;</div><div><div class="tool-name">Slack</div><div class="tool-desc">Main mode of internal communication. Use for direct messaging, group messaging, and team-wide updates.</div></div></div>
+    <div class="tool-card"><div class="tool-icon">&#x1F4E7;</div><div><div class="tool-name">Gmail</div><div class="tool-desc">Primary external communication. Stay on top of your inbox &mdash; lots of important updates come via email.</div></div></div>
+    <div class="tool-card"><div class="tool-icon">&#x1F4C5;</div><div><div class="tool-name">Google Calendar</div><div class="tool-desc">How we stay organized. Connected to email via Gsuite and connected to Outreach for scheduling meetings.</div></div></div>
+    <div class="tool-card"><div class="tool-icon">&#x1F4F9;</div><div><div class="tool-name">Zoom</div><div class="tool-desc">The tool we use to run meetings with prospects as well as for internal meetings.</div></div></div>
+    <div class="tool-card"><div class="tool-icon">&#x2601;&#xFE0F;</div><div><div class="tool-name">Salesforce</div><div class="tool-desc">CRM &mdash; customer relationship management, opportunity tracking, lead management, and pipeline reporting.</div></div></div>
+    <div class="tool-card"><div class="tool-icon">&#x1F4E4;</div><div><div class="tool-name">Outreach</div><div class="tool-desc">Sales Engagement Platform &mdash; engage prospects to drive pipeline. Also our dialer for all outbound phone calls.</div></div></div>
+    <div class="tool-card"><div class="tool-icon">&#x1F517;</div><div><div class="tool-name">LinkedIn Sales Navigator</div><div class="tool-desc">Makes social selling easy &mdash; helps you find the right prospects and build trusted relationships.</div></div></div>
+    <div class="tool-card"><div class="tool-icon">&#x1F3A4;</div><div><div class="tool-name">Gong</div><div class="tool-desc">Call recording and analytics &mdash; records customer-facing meetings, annotates conversations, and powers our coaching program.</div></div></div>
+    <div class="tool-card"><div class="tool-icon">&#x1F4DA;</div><div><div class="tool-name">Checkpoint</div><div class="tool-desc">LMS and Content Management System &mdash; all trainings, learning paths, and content.</div></div></div>
+    <div class="tool-card"><div class="tool-icon">&#x1F4C4;</div><div><div class="tool-name">Confluence</div><div class="tool-desc">Content Management Solution &mdash; source of truth for all content.</div></div></div>
+    <div class="tool-card"><div class="tool-icon">&#x1F4BC;</div><div><div class="tool-name">Workday</div><div class="tool-desc">Internal HRIS system for all benefits, PTO, and timesheets.</div></div></div>
+  </div>
+  <h3>Demandbase</h3>
+  <p class="prose">Demandbase is an intent tool that signals to you when companies in your book of business are showing buying intent. Open Demandbase every morning and check for any new MQA or trending accounts that should be prioritized that day. MQAs are top priority &mdash; prioritize them in a timely manner.</p>
+  <h3>ZoomInfo</h3>
+  <p class="prose">ZoomInfo is used to identify prospects to reach out to within our target accounts and to enrich the data within our Salesforce environment. Use ZoomInfo when you want to:</p>
+  <ul class="list">
+    <li>Identify prospects to reach out to within your target book of business and import them into Salesforce as contacts</li>
+    <li>Find an alternate email address when the email on record in Salesforce fails in a sequence</li>
+    <li>Find a prospect&rsquo;s cell phone number or direct line</li>
+    <li>Find alternate contacts to reach out to within an account based on job title</li>
+  </ul>
+  <h3>LinkedIn Sales Navigator</h3>
+  <ul class="list">
+    <li><strong>InMail</strong> &mdash; another channel in addition to email and phone calls. Use your allotted InMail credits each month as part of your sequence steps</li>
+    <li><strong>Saving Leads</strong> &mdash; see updates on your prospects on your SalesNav homepage; craft hyper-relevant messaging around what&rsquo;s top of mind for them</li>
+    <li><strong>Saving Accounts</strong> &mdash; stay aware of recent news stories or updates concerning accounts</li>
+  </ul>
+  <p class="prose"><strong>ENT:</strong> use &ldquo;June2025 - Green Accounts - 1000 - Green&rdquo; &nbsp;&bull;&nbsp; <strong>CMRL:</strong> use &ldquo;2025 CMRL Green &amp; Referenceable Account List&rdquo;</p>
+  <h3>Your LinkedIn Profile</h3>
+  <p class="prose">Keep your profile up-to-date, engaging, and professional. Include a warm and professional photo and include your Checkr email in your contact information. We have Checkr-branded Zoom backgrounds, LinkedIn Banners, and email signature graphics available.</p>
+  <h3>Outreach Best Practices</h3>
+  <ul class="list">
+    <li>Tag numbers as valid, questionable, or invalid</li>
+    <li>Log all details in &ldquo;call notes&rdquo; &mdash; even VMs, vacations, or repeated failed dials should be noted</li>
+    <li>When logging multiple calls under one task, select &ldquo;log call only&rdquo; instead of &ldquo;log and complete&rdquo; so the task stays open while you dial additional numbers</li>
+    <li>Check the paused folder every day &mdash; this is where replies and bounced emails go and everything needs to be actioned</li>
+    <li>Filter your daily tasks by sequence and step to stay in a flow for each ICP and persona track</li>
+  </ul>
+  <h3>Sendoso</h3>
+  <ul class="list">
+    <li>Use all of your budget every single month</li>
+    <li>Leverage $10 coffee cards for meeting reminders</li>
+    <li>Leverage the Amazon plugin to send more personalized gifts &mdash; find the corporate office address and identify prospects local to that office, then ship addressed to them at the corporate office</li>
+  </ul>
+</div>
+
+<!-- S9 -->
+<div id="s9">
+  <div class="sec-hdr">
+    <div class="sec-eyebrow">09</div>
+    <h2>Appendix: Admin &amp; Setup</h2>
+    <p>Tools setup, email signatures, bookmarks, extensions, timesheets, and Slack channels.</p>
+  </div>
+  <h3>Tools Setup</h3>
+  <p class="prose">Check the <strong>Sales Tools Set Up Checklist</strong> for instructions on logging into and configuring the settings in your tool stack. Work with your manager to ensure you have access to all required tools.</p>
+  <h3>Email Signatures</h3>
+  <p class="prose">Set up your Gmail email signature by going to the signature creator in Okta and filling out the required fields.</p>
+  <ul class="list">
+    <li>First go into Outreach and purchase a phone number (preferably one local to Denver) and copy/paste that into the phone field &mdash; do not use your personal number</li>
+    <li>Once created, copy/paste the entire signature into both Gmail and Outreach under signature settings</li>
+    <li>Add and hyperlink your LinkedIn profile alongside your email and phone number</li>
+  </ul>
+  <h3>Bookmarks &amp; Extensions</h3>
+  <p class="prose">Ensure you have your bookmarks bar set up to quickly access your most-used apps: Gmail &middot; Google Calendar &middot; Salesforce &middot; Outreach &middot; Partner Integration Matrix &middot; Jira Service Desk &middot; Confluence &middot; ADP</p>
+  <p class="prose"><strong>BDR Folder bookmarks:</strong> Playbook (this doc!) &middot; Onboarding Guide &middot; Bootcamp Guide &middot; Saleshood</p>
+  <h4>Helpful Extensions</h4>
+  <ul class="list">
+    <li><strong>Grammarly</strong> &mdash; grammar, spelling, and tone</li>
+    <li><strong>Lightshot</strong> &mdash; simple screenshots and editing</li>
+    <li><strong>Hunter.io</strong> &mdash; helps identify email formats for companies</li>
+    <li><strong>Outreach Everywhere</strong> &mdash; allows Outreach to follow you to other sites</li>
+    <li><strong>Sendoso</strong> &mdash; plugin populates prospects based on the page you are on</li>
+    <li><strong>ZoomInfo plugin</strong></li>
+  </ul>
+  <p class="prose"><em>Pro Tip: Edit your bookmarks to only display the icon by right-clicking to edit, then deleting all text in the Name field.</em></p>
+  <h3>Timesheets</h3>
+  <p class="prose">You can find more information on Timesheets and ADP here: <strong>Payroll - ADP</strong>.</p>
+  <h3>BDR Slack Channels</h3>
+  <table class="slack-table">
+    <tr><td>#phone-thugs-n-harmon-y</td><td>Just the BDRs + Andi &mdash; general / updates / fun</td></tr>
+    <tr><td>#bdr</td><td>BDR team announcements, shout outs, or questions</td></tr>
+    <tr><td>#revenue_team</td><td>Revenue team updates and shout outs</td></tr>
+    <tr><td>#outbound</td><td>Run by Nik (VP) &mdash; updates, celebrations, and spiffs</td></tr>
+    <tr><td>#revenueteam_gong</td><td>Deal win info pulled from SFDC</td></tr>
+    <tr><td>#IT-help</td><td>Ticket creation channel when experiencing issues</td></tr>
+    <tr><td>#enablement-tools-support</td><td>Live help for any questions about tools</td></tr>
+    <tr><td>#team-denver</td><td>Updates for all things in the Denver office</td></tr>
+  </table>
+  <div class="callout navy" style="margin-top:32px">
+    <div class="callout-icon">&#x1F517;</div>
+    <div>
+      <div class="callout-label">Part of a Larger System</div>
+      <div class="callout-title">This playbook connects to the full New Hire Sales Playbook system</div>
+      <div class="callout-desc">The New Hire Playbook covers your onboarding structure, certifications, milestones, and tool reference. The Outbound Playbook has the complete sequencing, messaging, and cold call detail for your outbound motion.</div>
+      <div style="display:flex;gap:16px;margin-top:10px">
+        <a href="playbook.html" style="color:var(--navy);font-weight:600;font-size:13px;text-decoration:none">&larr; New Hire Playbook</a>
+        <a href="outbound.html" style="color:var(--navy);font-weight:600;font-size:13px;text-decoration:none">Outbound Playbook &rarr;</a>
       </div>
     </div>
   </div>
-
-  <!-- ACTIVITY STANDARDS -->
-  <div id="activity">
-    <div class="sec-hdr">
-      <div class="sec-eyebrow">Activity Standards</div>
-      <h2>Daily Activity Minimums</h2>
-      <p>These are floors, not targets. The best BDRs exceed them consistently — but start here and build the habit first.</p>
-    </div>
-
-    <div class="tbl-wrap">
-      <table class="tbl">
-        <tr><th>Activity</th><th>BDR Daily</th><th>Comm AE Daily (ref)</th><th>Ent AE Daily (ref)</th></tr>
-        <tr><td><strong>Unique Accounts Touched</strong></td><td><strong>18</strong></td><td>4</td><td>1</td></tr>
-        <tr><td><strong>Outbound Calls</strong></td><td><strong>50</strong></td><td>10</td><td>10</td></tr>
-        <tr><td><strong>Personalized Emails / LinkedIn Messages</strong></td><td><strong>50</strong></td><td>10</td><td>—</td></tr>
-        <tr><td><strong>Prospects Sequenced</strong></td><td><strong>10</strong></td><td>11</td><td>N/A</td></tr>
-        <tr><td><strong>Monthly Outbound SQOs</strong></td><td><strong>4 (ENT) / 7 (Comm)</strong></td><td>2</td><td>1</td></tr>
-      </table>
-    </div>
-
-    <div class="callout teal">
-      <div class="callout-icon">💡</div>
-      <div>
-        <div class="callout-label">Reverse-Engineer Your Goals</div>
-        <div class="callout-title">Don't just hit the minimums — understand why they are what they are</div>
-        <div class="callout-desc">Use the <a href="https://docs.google.com/spreadsheets/d/1_u7YqTUXFbTE_W7KyNioX4nQYXoK5VAAPlBKCTyvYis/edit?usp=sharing" target="_blank" style="color:var(--green);font-weight:600">AE quota calculator</a> and <a href="https://docs.google.com/spreadsheets/d/1qes4UopOzZQgy--EufgaG1GsB6-6vGkYnXVjOyuZldQ/edit?usp=sharing" target="_blank" style="color:var(--green);font-weight:600">meeting calculator</a> to see how daily activity connects to monthly SQO targets. You can plug in your own conversion rates once you have data.</div>
-      </div>
-    </div>
-
-    <div class="callout orange">
-      <div class="callout-icon">⚠️</div>
-      <div>
-        <div class="callout-label">The Inbound Trap</div>
-        <div class="callout-title">Inbound is not where you will hit your number</div>
-        <div class="callout-desc">Inbound feels productive because the prospect already has interest — but it is the result of previous outbound work or luck. Work inbounds appropriately, but deliberately block dedicated time every day for outbound. That is where your quota lives.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ACCOUNT PRIORITIZATION -->
-  <div id="accounts">
-    <div class="sec-hdr">
-      <div class="sec-eyebrow">Where to Focus</div>
-      <h2>Account Prioritization</h2>
-      <p>It is your responsibility to identify the top priority accounts within your book each month. Pick a theme and go deep.</p>
-    </div>
-
-    <p class="prose">Each week or month, pick a theme — a particular industry or ICP segment — so you can use the same value prop, pain points, and mindset across your outreach. For example, spend a month focused on restaurants, get deep into that perspective, then switch to retail clothing stores. Become a mini-SME on each segment before moving on.</p>
-
-    <div class="tbl-wrap">
-      <table class="tbl">
-        <tr><th>Priority</th><th>Signal</th><th>Where to Find It</th><th>Why It Matters</th></tr>
-        <tr>
-          <td><strong>Tier 1 — Hottest</strong></td>
-          <td>Demandbase MQA / high intent score</td>
-          <td>Demandbase — manager shares weekly list</td>
-          <td>They're actively researching screening solutions. First to call wins.</td>
-        </tr>
-        <tr>
-          <td><strong>Tier 2 — High</strong></td>
-          <td>UserGems job-change alert — former Checkr champion at a new company</td>
-          <td>UserGems alerts in Salesforce or Slack</td>
-          <td>Warm intro potential. They know Checkr. New company is likely a prospect.</td>
-        </tr>
-        <tr>
-          <td><strong>Tier 3 — Events</strong></td>
-          <td>Attendees from recent events or webinars</td>
-          <td>Event lists from Jaime Keene (Events)</td>
-          <td>Warm touchpoint already created — sequence within 24 hours of event.</td>
-        </tr>
-        <tr>
-          <td><strong>Tier 4 — ICP Blitz</strong></td>
-          <td>ICP-fit companies with no prior Checkr history in your territory</td>
-          <td>SFDC account views, Demandbase browse, LinkedIn Sales Nav</td>
-          <td>Your long-term pipeline. Build this consistently each month.</td>
-        </tr>
-        <tr>
-          <td><strong>AE-Assigned Accounts</strong></td>
-          <td>Accounts your AE flags as highest intent based on DemandBase or focus areas</td>
-          <td>Weekly 1:1 with your AE</td>
-          <td>These are your highest-priority target for the week. Work these first.</td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="info-row">
-      <div class="info-card">
-        <div class="info-card-label">Enterprise-Specific Outbound</div>
-        <ul>
-          <li>All ENT SQLs must be on assigned accounts — no unassigned targets</li>
-          <li>Focus list aligns with DemandBase meeting agenda (Monday AM for ENT)</li>
-          <li><a href="https://docs.google.com/document/d/1Tit8Tiqjg3MRMEQ653typqPaPEyfPBKRc2_0HoaVEUQ/edit?usp=sharing" target="_blank" style="color:var(--navy);font-weight:500">Enterprise-Specific Outbound Notes</a> — from Steve Sanders</li>
-          <li><a href="https://docs.google.com/presentation/d/1JBg2SWyhhhfWvswVKPLesTJ27htyDO9NJZmc4VsAbC4/edit?usp=sharing" target="_blank" style="color:var(--navy);font-weight:500">Enterprise Outbound Deck</a></li>
-        </ul>
-      </div>
-      <div class="info-card">
-        <div class="info-card-label">Commercial-Specific Outbound</div>
-        <ul>
-          <li>Wider account universe — 200+ ICP-fit accounts in SFDC under your manager</li>
-          <li>Target 3–5 contacts per account across HR, TA, and Ops</li>
-          <li>25% of Commercial pipeline should come from BDR outbound</li>
-          <li><a href="https://docs.google.com/document/d/12qpiby0dZ1l2S-aJiW7JUq9KE3l9VAsQcCpW38zuYek/edit?usp=sharing" target="_blank" style="color:var(--navy);font-weight:500">Commercial-Specific Outbound Notes</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- ACCOUNT RESEARCH -->
-  <div id="research">
-    <div class="sec-hdr">
-      <div class="sec-eyebrow">Account Research</div>
-      <h2>Research Before You Dial</h2>
-      <p>Checkr pays for world-class research tools. Use them in the right order.</p>
-    </div>
-
-    <p class="prose">Many tools overlap — Demandbase, LinkedIn, and ZoomInfo all have account research, intent data, and AI summaries. Use them in the priority order below. For news, Google's News tab and Gemini are also fast and effective.</p>
-
-    <div class="tbl-wrap">
-      <table class="tbl">
-        <tr><th style="width:15%">Step</th><th style="width:20%">Tool</th><th>What You're Looking For</th></tr>
-        <tr><td><strong>1st</strong></td><td><strong>Demandbase</strong></td><td>Intent score, MQA status, which Checkr pages they've visited — highest signal for prioritization</td></tr>
-        <tr><td><strong>2nd</strong></td><td><strong>LinkedIn Sales Nav</strong></td><td>Org chart, persona titles, growth signals, recent job postings, company news</td></tr>
-        <tr><td><strong>3rd</strong></td><td><strong>SCOUT (Credal)</strong></td><td>AI-generated company summary, pain points relevant to BGC, Checkr talking points — type the company name in #talking-points in Slack</td></tr>
-        <tr><td><strong>4th</strong></td><td><strong>ZoomInfo</strong></td><td>Direct dials, contact emails, full org chart with titles — use last to find contacts after you've targeted the right account</td></tr>
-        <tr><td><strong>5th</strong></td><td><strong>Salesforce</strong></td><td>Any prior Checkr activity, existing relationships, open or past opportunities — always check before reaching out</td></tr>
-      </table>
-    </div>
-
-    <div class="callout teal">
-      <div class="callout-icon">🤖</div>
-      <div>
-        <div class="callout-label">Use SCOUT</div>
-        <div class="callout-title">Credal's SCOUT agent does the research heavy lifting for you</div>
-        <div class="callout-desc">Type a company name into the <strong>#talking-points</strong> Slack channel. SCOUT returns industry context, likely BGC pain points, relevant Checkr proof points, and a suggested outreach frame. Use it on every new account before you write your first email.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- AE/BDR PARTNERSHIP -->
-  <div id="partnership">
-    <div class="sec-hdr">
-      <div class="sec-eyebrow">Working with Your AE</div>
-      <h2>AE / BDR Partnership</h2>
-      <p>The partnership is built on tight alignment and consistent communication. You function as a single pipeline-generation team.</p>
-    </div>
-
-    <p class="prose">Each Enterprise AE is partnered with a BDR (2 AEs to 1 BDR). Commercial BDRs support a broader book. Regardless of segment, the most effective partnerships share strategy, align on messaging, and review progress together every week.</p>
-
-    <div class="partnership-grid">
-      <div class="p-card">
-        <div class="p-card-hdr bdr">What the BDR brings to the 1:1</div>
-        <div class="p-card-body">
-          <ul>
-            <li class="bdr-li">Current pipeline — including accounts you're working outside of AE-provided lists (UserGems, events, ICP blitz)</li>
-            <li class="bdr-li">Update on progress and current state of last week's AE-assigned accounts</li>
-            <li class="bdr-li">Meetings happening this week — talk through handoffs so AEs are prepared for the call</li>
-            <li class="bdr-li">Feedback loop: what SQLs happened, were they qualified? What should we start / stop / continue?</li>
-          </ul>
-        </div>
-      </div>
-      <div class="p-card">
-        <div class="p-card-hdr ae">What the AE brings to the 1:1</div>
-        <div class="p-card-body">
-          <ul>
-            <li class="ae-li">Accounts with highest intent for BDR to focus on this week — based on DemandBase signals and any other focus areas for the month</li>
-            <li class="ae-li">Outreach plan for each assigned account — clear assignment of activity and messaging</li>
-            <li class="ae-li">Feedback on recent meetings: were the SQLs qualified? What additional context would help future outreach?</li>
-            <li class="ae-li">Strategic guidance on which verticals, personas, or signals to prioritize</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="callout navy">
-      <div class="callout-icon">📅</div>
-      <div>
-        <div class="callout-label">1:1 Scheduling</div>
-        <div class="callout-title">Meet weekly — consistently. Monday afternoon or Tuesday morning.</div>
-        <div class="callout-desc">Monday afternoon or Tuesday morning is the ideal timing — it aligns with the DemandBase meeting for the ENT team and lets you set the plan for the week early. If there is nothing to talk about, that itself is something to talk about. No pipeline, no meetings, no strategy = a problem worth diagnosing together.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- WEEKLY 1:1 STRUCTURE -->
-  <div id="oneonone">
-    <div class="sec-hdr">
-      <div class="sec-eyebrow">Weekly Rhythm</div>
-      <h2>Weekly 1:1 Structure</h2>
-      <p>Come prepared. The 1:1 only works if both sides show up ready.</p>
-    </div>
-
-    <div class="tbl-wrap">
-      <table class="tbl">
-        <tr><th>Agenda Item</th><th>BDR Owns</th><th>AE Owns</th></tr>
-        <tr>
-          <td><strong>Pipeline Review</strong></td>
-          <td>Current pipeline status, accounts in progress, sequences active</td>
-          <td>Confirm awareness of active opps, flag any deal context BDR should know</td>
-        </tr>
-        <tr>
-          <td><strong>This Week's Account Assignments</strong></td>
-          <td>Ask for clarification on messaging, personas, or context for each account</td>
-          <td>Provide accounts with highest intent + outreach plan per account</td>
-        </tr>
-        <tr>
-          <td><strong>Meeting Handoffs</strong></td>
-          <td>Brief AE on each meeting booked this week — prospect context, pain surfaced, how the call went</td>
-          <td>Confirm readiness, ask clarifying questions before the meeting</td>
-        </tr>
-        <tr>
-          <td><strong>SQL Quality Feedback</strong></td>
-          <td>Ask: which SQLs from last week were qualified? Why or why not?</td>
-          <td>Give honest, specific feedback — this makes future BDR outreach better</td>
-        </tr>
-        <tr>
-          <td><strong>Start / Stop / Continue</strong></td>
-          <td>Flag what is and isn't working in current outreach</td>
-          <td>Share deal insights that can improve top-of-funnel messaging</td>
-        </tr>
-      </table>
-    </div>
-  </div>
-
-  <!-- SQL / SQO CRITERIA -->
-  <div id="sql-sqo">
-    <div class="sec-hdr">
-      <div class="sec-eyebrow">Qualification Standards</div>
-      <h2>SQL &amp; SQO Criteria</h2>
-      <p>Know the difference cold. These criteria determine whether you get credit — and whether the opp has real legs.</p>
-    </div>
-
-    <div class="callout orange">
-      <div class="callout-icon">⚠️</div>
-      <div>
-        <div class="callout-label">Critical Rule</div>
-        <div class="callout-title">BDRs must CREATE the opportunity to receive credit</div>
-        <div class="callout-desc">Do not create an opportunity on an account you have been tag-teaming with your AE. If the AE gets them on the hook first and you want credit: you need 5 touch points with at least 2–3 different contacts in the last 30 days before you can be added to the opp.</div>
-      </div>
-    </div>
-
-    <div class="criteria-grid">
-      <div class="crit-card">
-        <div class="crit-hdr sql">SQL — Sales Qualified Lead</div>
-        <div class="crit-body">
-          <p style="font-size:12px;color:var(--slate);margin-bottom:10px;line-height:1.5">The minimum bar to move a lead into a qualified opportunity. You must gather all of these before creating the opp.</p>
-          <ul>
-            <li>How many background checks do they run per year?</li>
-            <li>Who is their current BGC provider?</li>
-            <li>How long are they in their current contract? <strong>(1 year max to be able to book)</strong></li>
-            <li>What time of year do they evaluate HR Tech and how often?</li>
-            <li>Do they use an ATS, and if so which one?</li>
-            <li>Confirmed persona / ICP fit</li>
-            <li>All ENT SQLs must be assigned accounts</li>
-            <li>Understanding of pain — why are they willing to take a call? What do they want to learn?</li>
-          </ul>
-          <p style="font-size:12px;color:var(--slate);margin-top:10px;font-style:italic">SQL notes must live on the Account Level AND in the Qualification Notes section on the opportunity.</p>
-        </div>
-      </div>
-      <div class="crit-card">
-        <div class="crit-hdr sqo">SQO — Sales Qualified Opportunity (PINT)</div>
-        <div class="crit-body">
-          <p style="font-size:12px;color:var(--slate);margin-bottom:10px;line-height:1.5">The PINT framework — all four elements should be confirmed before moving to SQO.</p>
-          <ul>
-            <li><strong>P — Pain:</strong> Confidence that we can solve their specific issue</li>
-            <li><strong>I — Influence:</strong> Person has influence over the decision</li>
-            <li><strong>N — Next Steps:</strong> Solidified next steps with a purpose — a technical call or demo, not a "touch base"</li>
-            <li><strong>T — Timeline:</strong> Realistic timeline for evaluation and decision</li>
-          </ul>
-          <p style="font-size:12px;color:var(--slate);margin-top:10px;line-height:1.5;font-style:italic">If next steps are scheduled without solidified pain, the opp will still progress to SQO — but pain must be confirmed before advancing further.</p>
-          <p style="font-size:12px;color:var(--slate);margin-top:8px;line-height:1.5;font-style:italic">For RFP processes: wait until you have the RFP in hand and have confirmed you are participating before moving to qualified.</p>
-          <p style="font-size:12px;font-weight:600;color:var(--orange);margin-top:8px">Once the meeting takes place: progression to qualified, closed lost, or a nurture plan must be identified and executed within 24 hours.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- POST-MEETING -->
-  <div id="post-meeting">
-    <div class="sec-hdr">
-      <div class="sec-eyebrow">After the Meeting</div>
-      <h2>Post-Meeting Expectations</h2>
-      <p>What happens after a BDR-sourced meeting — and who is responsible for what.</p>
-    </div>
-
-    <div class="tbl-wrap">
-      <table class="tbl">
-        <tr><th>Scenario</th><th>Who Owns It</th><th>What Happens</th></tr>
-        <tr>
-          <td><strong>Meeting goes well → opp advances</strong></td>
-          <td>AE owns the opp from this point</td>
-          <td>BDR is not responsible for follow-up post-SQO. The AE drives it to close.</td>
-        </tr>
-        <tr>
-          <td><strong>Opp goes Closed Lost</strong></td>
-          <td>Account returns to BDR for nurture</td>
-          <td>BDR can add to a nurture sequence or trade for a new account during quarterly refreshes.</td>
-        </tr>
-        <tr>
-          <td><strong>New opp opened within 60 days of Closed Lost</strong></td>
-          <td>BDR who sourced the original opp</td>
-          <td>The BDR that sourced the original opp gets credit for the new opportunity. 60-day window.</td>
-        </tr>
-        <tr>
-          <td><strong>Quarterly account refreshes</strong></td>
-          <td>BDR + Manager</td>
-          <td>Accounts that went CL and have been nurtured can be traded for new assigned accounts at the quarterly refresh.</td>
-        </tr>
-      </table>
-    </div>
-  </div>
-
-  <!-- OPERATING CADENCE -->
-  <div id="cadence">
-    <div class="sec-hdr">
-      <div class="sec-eyebrow">How We Operate</div>
-      <h2>Operating Cadence</h2>
-      <p>The recurring rhythms of the BDR team. Show up to these consistently.</p>
-    </div>
-    <div class="cadence-list">
-      <div class="cadence-item">
-        <div class="cadence-icon">👤</div>
-        <div>
-          <div class="cadence-freq">Weekly · Mon PM or Tue AM</div>
-          <div class="cadence-name">1:1 with Your AE Partner</div>
-          <div class="cadence-desc">Review pipeline, assign accounts for the week, talk through handoffs, and give/receive feedback on SQL quality. Come prepared — see the 1:1 Structure section above.</div>
-        </div>
-      </div>
-      <div class="cadence-item">
-        <div class="cadence-icon">📞</div>
-        <div>
-          <div class="cadence-freq">Weekly · Tuesday &amp; Wednesday</div>
-          <div class="cadence-name">Outbound Call Blitz</div>
-          <div class="cadence-desc">Dedicated 1-hour team blitz. Make 20+ dials during each session. This is protected prospecting time — block it and protect it.</div>
-        </div>
-      </div>
-      <div class="cadence-item">
-        <div class="cadence-icon">📊</div>
-        <div>
-          <div class="cadence-freq">Weekly</div>
-          <div class="cadence-name">1:1 with Your Manager</div>
-          <div class="cadence-desc">Review KPIs, pipeline progress, activity numbers, blockers, and coaching. Come with your Athean dashboard open and your top accounts ready to discuss.</div>
-        </div>
-      </div>
-      <div class="cadence-item">
-        <div class="cadence-icon">👥</div>
-        <div>
-          <div class="cadence-freq">Weekly</div>
-          <div class="cadence-name">Team Meeting</div>
-          <div class="cadence-desc">Recognize wins, review pacing, peer best practices, quick trainings. Required attendance.</div>
-        </div>
-      </div>
-      <div class="cadence-item">
-        <div class="cadence-icon">📰</div>
-        <div>
-          <div class="cadence-freq">Weekly</div>
-          <div class="cadence-name">Sales Homeroom</div>
-          <div class="cadence-desc">Video, blog, and quiz covering product, messaging, and process updates. Required — complete on time and retain the information.</div>
-        </div>
-      </div>
-      <div class="cadence-item">
-        <div class="cadence-icon">🏢</div>
-        <div>
-          <div class="cadence-freq">Monthly</div>
-          <div class="cadence-name">Checkr All Hands</div>
-          <div class="cadence-desc">Company-wide goal review, wins, rotating speakers. Required attendance.</div>
-        </div>
-      </div>
-      <div class="cadence-item">
-        <div class="cadence-icon">🔄</div>
-        <div>
-          <div class="cadence-freq">Quarterly</div>
-          <div class="cadence-name">Account Refresh</div>
-          <div class="cadence-desc">Review and refresh your assigned account list with your manager and AE partner. Swap out closed-lost accounts that have been nurtured for fresh ICP-fit targets.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- RESOURCES -->
-  <div id="resources">
-    <div class="sec-hdr">
-      <div class="sec-eyebrow">Quick Reference</div>
-      <h2>Key Resources</h2>
-      <p>Bookmark these.</p>
-    </div>
-    <div class="info-row">
-      <div class="info-card">
-        <div class="info-card-label">Outbound &amp; Research</div>
-        <ul>
-          <li><a href="outbound.html">Outbound Playbook</a> — sequencing, messaging, cold call framework</li>
-          <li><a href="https://docs.google.com/document/d/1CdGIC36P4Coir_nyGXlMDDo38YCdsznW1zErGEzQ1ZY/edit" target="_blank">Outbound Call Framework</a></li>
-          <li><a href="https://docs.google.com/spreadsheets/d/1_u7YqTUXFbTE_W7KyNioX4nQYXoK5VAAPlBKCTyvYis/edit?usp=sharing" target="_blank">AE Quota Calculator</a></li>
-          <li><a href="https://docs.google.com/spreadsheets/d/1qes4UopOzZQgy--EufgaG1GsB6-6vGkYnXVjOyuZldQ/edit?usp=sharing" target="_blank">Meeting Calculator</a></li>
-          <li><a href="https://docs.google.com/document/d/1Tit8Tiqjg3MRMEQ653typqPaPEyfPBKRc2_0HoaVEUQ/edit?usp=sharing" target="_blank">Enterprise Outbound Notes</a> — Steve Sanders</li>
-          <li><a href="https://docs.google.com/presentation/d/1JBg2SWyhhhfWvswVKPLesTJ27htyDO9NJZmc4VsAbC4/edit?usp=sharing" target="_blank">Enterprise Outbound Deck</a></li>
-          <li><a href="https://docs.google.com/document/d/12qpiby0dZ1l2S-aJiW7JUq9KE3l9VAsQcCpW38zuYek/edit?usp=sharing" target="_blank">Commercial Outbound Notes</a></li>
-        </ul>
-      </div>
-      <div class="info-card">
-        <div class="info-card-label">In Checkpoint (go/checkpoint)</div>
-        <ul>
-          <li><a href="https://checkpoint.checkr.com/new/ui/learner/assets/hub/581684531224904820" target="_blank">Retail ICP Hub</a></li>
-          <li><a href="https://checkpoint.checkr.com/new/ui/learner/assets/hub/581683380022688326" target="_blank">Hospitality ICP Hub</a></li>
-          <li><a href="https://checkpoint.checkr.com/new/ui/learner/assets/hub/581683891778094196" target="_blank">Manufacturing ICP Hub</a></li>
-          <li><a href="https://checkpoint.checkr.com/new/ui/learner/assets/hub/578776316711582791" target="_blank">Transportation ICP Hub</a></li>
-          <li><a href="https://checkpoint.checkr.com/new/ui/learner/assets/hub/581685027595617396" target="_blank">Staffing ICP Hub</a></li>
-          <li><a href="https://checkpoint.checkr.com/new/ui/learner/assets/hub/581681519496542790" target="_blank">Competitive Intel Hub</a></li>
-          <li><a href="https://checkpoint.checkr.com/new/ui/learner/assets/asset/588773291750121758" target="_blank">Proof Points Library</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="info-row">
-      <div class="info-card">
-        <div class="info-card-label">Partnership &amp; Process</div>
-        <ul>
-          <li><strong>BDR Lead:</strong> Andi Harmon</li>
-          <li><strong>Sales Manager (ENT):</strong> Steve Sanders</li>
-          <li>1:1 Discussion Topics &amp; Action Items tracker — ask your manager for the link</li>
-          <li><a href="https://checkr.atlassian.net/wiki/spaces/SAL/pages/1765081957/Sales+Segmentation+%282021%29%3A+ROE" target="_blank">Sales Segmentation: ROE</a></li>
-          <li><a href="https://checkr.atlassian.net/wiki/spaces/SAL/pages/1765081696/How+to+Get+Help" target="_blank">How to Get Help</a> (Confluence)</li>
-          <li><strong>Tools support:</strong> #enablement-tools-support in Slack</li>
-        </ul>
-      </div>
-      <div class="info-card">
-        <div class="info-card-label">Selling Checkr</div>
-        <ul>
-          <li><a href="https://checkr.atlassian.net/wiki/spaces/SAL/pages/2996666391/DIRECT+SALES+-+go+sales" target="_blank">All Sales Confluence</a> — go/sales</li>
-          <li><a href="https://docs.google.com/presentation/d/15YbL9-lKGCoTHOjfHnYTx-ZWHDlMlEnP98-QR6xyvzw/edit?usp=sharing" target="_blank">Checkr Full Deck / Sales Narrative</a></li>
-          <li><a href="https://checkr.atlassian.net/wiki/spaces/MAR/pages/1765082548/Product+hubs+go+producthubs" target="_blank">Product Hub</a></li>
-          <li>CoM: <a href="https://drive.google.com/file/d/1_ag9xq6pP1q6B-cB1UwWDTT4bAuCdUHh/view" target="_blank">Summary</a> / <a href="https://drive.google.com/file/d/133Za0jWdBoEtfMVeE0ZATzgSutSVEVuM/view?usp=sharing" target="_blank">Full Framework</a></li>
-          <li><a href="https://checkr.atlassian.net/wiki/spaces/PEOPLE/pages/466387860/Checkr+Employee+Handbook" target="_blank">Checkr Employee Handbook</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="callout teal">
-      <div class="callout-icon">🔗</div>
-      <div>
-        <div class="callout-label">Part of a Larger System</div>
-        <div class="callout-title">This playbook connects to the full New Hire Sales Playbook system</div>
-        <div class="callout-desc">The New Hire Playbook covers your onboarding structure, certifications, milestones, and tool reference. The Outbound Playbook has the complete sequencing, messaging, and cold call detail for your outbound motion.</div>
-        <div style="display:flex;gap:16px;margin-top:10px">
-          <a href="playbook.html" style="color:var(--teal);font-weight:600;font-size:13px;text-decoration:none">← New Hire Playbook</a>
-          <a href="outbound.html" style="color:var(--teal);font-weight:600;font-size:13px;text-decoration:none">Outbound Playbook →</a>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>
 
 </main>
 </div>
-
-<footer>Checkr Sales Enablement · BDR Playbook 2026 · For internal use only</footer>
-
+<footer>Checkr Sales Enablement &middot; BDR Playbook 2026 &middot; For internal use only</footer>
 <script>
-const sections = document.querySelectorAll('[id]');
-const links = document.querySelectorAll('.sb-link');
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) current = s.id; });
-  links.forEach(l => {
-    l.classList.remove('active');
-    if (l.getAttribute('href') === '#' + current) l.classList.add('active');
-  });
+const sections=document.querySelectorAll("[id]");
+const links=document.querySelectorAll(".sb-link");
+window.addEventListener("scroll",()=>{
+  let current="";
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-80)current=s.id;});
+  links.forEach(l=>{l.classList.remove("active");if(l.getAttribute("href")==="#"+current)l.classList.add("active");});
 });
 </script>
 </body>
