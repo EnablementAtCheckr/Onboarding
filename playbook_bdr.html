@@ -92,6 +92,14 @@ ol.numbered li{font-size:14px;color:var(--dark);padding:4px 0 4px 8px;line-heigh
 .tool-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;background:var(--navy-lt)}
 .tool-name{font-size:13px;font-weight:600;color:var(--dark);margin-bottom:3px}
 .tool-desc{font-size:12px;color:var(--slate);line-height:1.45}
+
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+.compare-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px 18px}
+.compare-card.before{border-top:3px solid #D4DAE1}
+.compare-card.after{border-top:3px solid var(--teal)}
+.compare-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;color:var(--slate)}
+.compare-card.after .compare-label{color:var(--green)}
+.img-block{margin:16px 0 24px}
 footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:24px;font-size:12px;margin-top:0}
 </style>
 </head>
@@ -122,7 +130,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;paddi
     <a class="sb-link" href="#s2"><span class="sb-num">2</span>What it Means to be a BDR</a>
     <a class="sb-link" href="#s3"><span class="sb-num">3</span>Day in the Life</a>
     <a class="sb-link" href="#s4"><span class="sb-num">4</span>Positioning Checkr</a>
-    <a class="sb-link" href="#s5"><span class="sb-num">5</span>Sequences, Emails, Calls &amp; LinkedIn</a>
+    <a class="sb-link" href="#s5"><span class="sb-num">5</span>Athean: Sequencing &amp; Outreach</a>
     <a class="sb-link" href="#s6"><span class="sb-num">6</span>Working Leads</a>
     <a class="sb-link" href="#s7"><span class="sb-num">7</span>Handoff &amp; Salesforce Conversion</a>
     <a class="sb-link" href="#s8"><span class="sb-num">8</span>Prospecting Tools</a>
@@ -166,6 +174,9 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;paddi
     <div class="value-card" style="grid-column:1/-1"><div class="value-name">Connection</div><div class="value-desc">We genuinely care about each other and understand that our people are our power. We celebrate our lived experiences and enjoy helping and supporting each other.</div></div>
   </div>
   <h3>Sales Org Structure</h3>
+  <div class="img-block">
+    <img src="img_org_structure.png" alt="Checkr Sales Org Structure" style="width:100%;border-radius:8px;border:1px solid var(--border);margin-bottom:8px">
+  </div>
   <p class="prose">The Sales team at Checkr is responsible for closing business and generating new revenue. Our sales team is broken up into specific segments:</p>
   <ul class="list">
     <li><strong>Enterprise AEs</strong> &mdash; work companies with &gt;15k employees</li>
@@ -250,7 +261,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;paddi
     <li>Open Demandbase and check for any new MQA or trending accounts that should be prioritized &mdash; MQAs are top priority</li>
     <li>Check your calendar for any meetings that day</li>
     <li>Open your BDR Dashboard within Salesforce and action any outstanding items</li>
-    <li>Log into Outreach &mdash; click &ldquo;Start Tasks&rdquo; and work through your tasks. You should end each day with zero tasks due for that day</li>
+    <li>Log into Athean &mdash; review your Signal Feed for new overnight signals, then work your sequence task queue. Keep your task count low (~20&ndash;30 tasks)</li>
   </ul>
   <h3>Daily Schedule</h3>
   <div class="schedule-block">
@@ -261,7 +272,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;paddi
     <div class="schedule-row"><div class="schedule-time">12:00&ndash;1:00</div><div class="schedule-task"><strong>Lunch (1 hr)</strong><span>Relax and reset for the back half of the day.</span></div></div>
     <div class="schedule-row"><div class="schedule-time">1:00&ndash;2:30</div><div class="schedule-task"><strong>Strategic Prospecting + More Messaging (1.5 hrs)</strong><span>Send more emails and LinkedIn messages using highly personalized messaging</span></div></div>
     <div class="schedule-row"><div class="schedule-time">2:30&ndash;4:00</div><div class="schedule-task"><strong>Cold-Calling (1.5 hrs)</strong><span>Often the best time to reach people &middot; 2:30 MT = 4:30 ET &mdash; start East coast and work back to Mountain</span></div></div>
-    <div class="schedule-row"><div class="schedule-time">4:00&ndash;5:00</div><div class="schedule-task"><strong>Admin, Plan for Tomorrow (1 hr)</strong><span>Identify new accounts to target &middot; Load contacts into appropriate sequences &middot; Research accounts with AI &middot; Check dashboard vs. team</span></div></div>
+    <div class="schedule-row"><div class="schedule-time">4:00&ndash;5:00</div><div class="schedule-task"><strong>Admin, Plan for Tomorrow (1 hr)</strong><span>Identify new accounts to target &middot; Assign contacts to Athean Operator sequences &middot; Research accounts with AI &middot; Check dashboard vs. team</span></div></div>
     <div class="schedule-row"><div class="schedule-time">5:00&ndash;5:30</div><div class="schedule-task"><strong>End-of-Day Blitz (30 min)</strong><span>Circle back to top prospects in Mountain or Pacific for a mini blitz</span></div></div>
   </div>
   <h3>BDR Operating Cadence</h3>
@@ -370,42 +381,118 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;paddi
       </ul>
     </li>
   </ol>
-  <h4>Staying Organized with Outreach Tags</h4>
-  <p class="prose"><strong>Tag naming convention:</strong> &ldquo;AE initials / BDR initials / Area of Focus / Month &amp; year&rdquo; &mdash; Example: &ldquo;JS / TH / Staffing / July &lsquo;23&rdquo;</p>
+  <h4>Staying Organized with Athean Lists &amp; Tags</h4>
+  <p class="prose">In Athean, use the <strong>Lists</strong> tile to organize target accounts by focus area, campaign, or tier. You can also use <strong>Outreach Tags</strong> for tagging within Outreach when needed. Tag naming convention: &ldquo;AE initials / BDR initials / Area of Focus / Month &amp; year&rdquo; &mdash; Example: &ldquo;JS / TH / Staffing / July &lsquo;23&rdquo;</p>
 </div>
 
 <!-- S5 -->
 <div id="s5">
   <div class="sec-hdr">
     <div class="sec-eyebrow">05</div>
-    <h2>Sequences: Emails, Calls &amp; LinkedIn</h2>
-    <p>Outreach sequences, email templates, call scripts, objection handling, and LinkedIn strategy.</p>
+    <h2>Athean: Sequencing &amp; Outreach</h2>
+    <p>Athean is your AI-powered Sales Command Center &mdash; it replaces Outreach as the primary sequencing and engagement platform. All emails, LinkedIn connections, messages, and calls are structured here and every touch syncs back to Salesforce automatically.</p>
   </div>
-  <h3>What is a Sequence?</h3>
-  <p class="prose">A prospecting sequence is a detailed step-by-step plan of activities designed to maximize the likelihood of making contact with a prospect in order to convert them into an SQL.</p>
+
+  <div class="callout teal">
+    <div class="callout-icon">&#x26A1;</div>
+    <div>
+      <div class="callout-label">Full Reference</div>
+      <div class="callout-title">Athean Seller Guide</div>
+      <div class="callout-desc">For the complete step-by-step guide to every Athean workflow, refer to the <a href="https://docs.google.com/document/d/19r49LH6gGIQ5duiE9hEKx4mUag1G2siW/edit?usp=sharing" target="_blank" style="color:var(--green);font-weight:600">Athean Seller Guide &rarr;</a> in Google Drive. The sections below summarize the key workflows every BDR needs to know.</div>
+    </div>
+  </div>
+
+  <h3>Why Athean Changes Everything</h3>
+  <p class="prose">Today, building a pipeline means bouncing between Salesforce, ZoomInfo, Gong, Demandbase, LinkedIn, and more. Athean brings all of it into one place &mdash; so you know exactly who to call/email, what to say, and how to follow through, without the chaos.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card before">
+      <div class="compare-label">Before Athean</div>
+      <ul class="list">
+        <li>5+ tools open to figure out who to work</li>
+        <li>Manual research to find the right contacts</li>
+        <li>Guessing which accounts have intent</li>
+        <li>Sequences built and managed in a separate tool</li>
+        <li>Hours of admin before you make a single call</li>
+      </ul>
+    </div>
+    <div class="compare-card after">
+      <div class="compare-label">With Athean</div>
+      <ul class="list">
+        <li>Signal-prioritized account feed on one screen</li>
+        <li>AI-surfaced contacts with context &amp; research pre-loaded</li>
+        <li>Individually personalized sequences, emails, and calls in one place</li>
+        <li>Automated LinkedIn connects/messages</li>
+        <li>Up to 2 hours saved per day</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Workflow 1: Signals &mdash; Your Daily Starting Point</h3>
+  <p class="prose">When you open Athean, your home screen shows: Signals, Tasks, Find Accounts, Find Contacts, and Lists. The <strong>Signals tile</strong> is your unified feed of account activities &mdash; it aggregates data from Demandbase, ZoomInfo, UserGems, SFDC, LinkedIn, and the open web.</p>
+
+  <div class="callout orange">
+    <div class="callout-icon">&#x26A0;&#xFE0F;</div>
+    <div>
+      <div class="callout-label">Daily Expectation</div>
+      <div class="callout-title">Zero out your Signal Feed every day</div>
+      <div class="callout-desc">We anticipate 5&ndash;15 new signals daily. Unactioned and stale signals are high-value and should be worked immediately. Treat this like your highest-priority inbox.</div>
+    </div>
+  </div>
+
+  <div class="img-block">
+    <img src="img_athean_360.png" alt="Athean 360 View — Signal Feed and Task Queue" style="width:100%;border-radius:8px;border:1px solid var(--border)">
+    <p style="font-size:12px;color:var(--slate);margin-top:8px;text-align:center">Athean 360 View &mdash; Signal Feed, Task Queue, and daily activity tracking</p>
+  </div>
+
+  <h4>Signal Statuses</h4>
   <ul class="list">
-    <li><strong>Length</strong> &mdash; total number of days from initial outreach to the last step. If no contact is made throughout the entire sequence, move the contact to a passive nurture sequence</li>
-    <li><strong>Steps</strong> &mdash; individual actions taken, corresponding to a channel (email, phone call, LinkedIn message)</li>
+    <li><strong>Unactioned</strong> &mdash; A brand new signal has come in and you have not yet performed any prospecting activity on it</li>
+    <li><strong>Stale</strong> &mdash; You have previously prospected this account based on the signal, but there has been no activity in the last 24 hours</li>
+    <li><strong>Active</strong> &mdash; You are currently working this signal with prospecting activity within the last 24 hours</li>
+    <li><strong>Ignored</strong> &mdash; You have manually vetted the signal and determined it is not relevant (e.g., bad lead, already engaging)</li>
+    <li><strong>Qualified</strong> &mdash; You have successfully worked the signal and converted it into a real opportunity or meeting</li>
   </ul>
-  <h3>Checkr Sequences</h3>
-  <p class="prose">BDRs at Checkr work out of a collection of sequences titled <strong>&ldquo;BDR Outbound&rdquo;</strong>. This collection follows a categorization strategy of &ldquo;Above The Line&rdquo; vs &ldquo;Below The Line&rdquo; sequences for our ICPs, as well as sequences specific to ATS integrations, personas, events and more.</p>
+
+  <h4>How to Process Signals &mdash; Step by Step</h4>
+  <ol class="numbered">
+    <li>Go one-by-one or click <strong>Start with [X] signals</strong> in the top right for bulk processing</li>
+    <li>Read the research &mdash; you&rsquo;ll see signals (why Athean surfaced it), SFDC history, Gong call summaries, and relevant contacts in one view</li>
+    <li>Identify and add the right contacts &mdash; prioritize Head of HR, VP People, VP Talent Acquisition, or Director of Operations for Commercial accounts</li>
+    <li>Click <strong>Assign Sequence</strong> and use the <strong>&ldquo;Generalist v2&rdquo;</strong> Operator. Enable Auto-enrich to pull phone, email, and sync to Salesforce automatically</li>
+    <li>Review and approve AI-generated sequences in the <strong>Approvals</strong> tab &mdash; read the emails, adjust as needed, add proof points, then approve</li>
+  </ol>
+
+  <h3>Workflow 2: Operators &mdash; Your AI SDR</h3>
+  <p class="prose">Athean uses <strong>Operators</strong> instead of traditional sequences. An Operator acts as an AI-powered SDR &mdash; when assigned a contact, the AI agent spends about 5 minutes researching the account online and reviewing historical activity, then writes a fully personalized sequence tailored specifically to that individual.</p>
   <ul class="list">
-    <li><strong>Below The Line (BTL)</strong> &mdash; For Individual Contributors and Front-line managers. Less personalization, more automation, fewer total steps</li>
-    <li><strong>Above The Line (ATL)</strong> &mdash; For Directors, VPs, and above (c-suite). Higher level of manual personalization, more steps, greater attention toward key stakeholders</li>
+    <li><strong>Sequence Templates</strong> (traditional approach) &mdash; predefined steps with pre-written copy. Currently not the primary approach as Operators provide much more personalized outreach</li>
+    <li><strong>Operators (AI SDR)</strong> &mdash; AI researches the account and writes a unique, personalized sequence for each contact. Best for high-value contacts where deep personalization is critical</li>
   </ul>
-  <h3>Emails</h3>
+
+  <h4>Approving Operator Sequences</h4>
+  <ol class="numbered">
+    <li>Go to your main Sequences dashboard and click the <strong>Approvals</strong> tab</li>
+    <li><strong>Generating tab</strong> &mdash; sequences currently being researched and written (takes ~5 minutes per contact)</li>
+    <li><strong>Awaiting Approval tab</strong> &mdash; once generated, review the AI-generated email copy and scheduled steps</li>
+    <li>Click the green <strong>Approve</strong> button, or use checkboxes to bulk-approve multiple contacts at once</li>
+    <li>Once approved, contacts move to Active sequences where you can monitor their exact status and next steps</li>
+  </ol>
+
+  <h3>Cold Calling</h3>
+  <p class="prose">Athean&rsquo;s Operator and sequences automate all the messaging, but you still have to do the calling. Use the research Athean surfaces as your call prep &mdash; signals, reference customers, contact context, and Gong summaries.</p>
+
+  <h4>Cold Call Best Practices</h4>
   <ul class="list">
-    <li><strong>Templates</strong> &mdash; pre-built messaging from marketing and enablement. It is an expectation and requirement that you do proper research and add personalization to emails prior to sending. Automated and un-personalized emails should only be used for low tier prospects, later stage emails in the sequence, or if you are truly unable to find a compelling trigger</li>
-    <li><strong>Snippets</strong> &mdash; act like an email template shortcut, allowing you to drop smaller bits of text, links, or paragraphs into emails at the click of a button</li>
-  </ul>
-  <h3>Calls &mdash; Best Practices</h3>
-  <ul class="list">
-    <li>Take a no stone left unturned approach when identifying the right numbers to call</li>
+    <li>Reference the signal/research Athean gives you before every call &mdash; always have something relevant to call about</li>
+    <li><strong>Option A:</strong> Cite the personalized pain they are facing and the solution we have provided for a competitor with specific stats</li>
+    <li><strong>Option B:</strong> Target their current BGC provider with specific stats on how we are better and customers who switched with specific stats</li>
+    <li>End with an <strong>&ldquo;if statement&rdquo;</strong> &mdash; &ldquo;If we could [do X] for you, would it be worth a chat?&rdquo;</li>
     <li>Don&rsquo;t be afraid to select options like &ldquo;sales&rdquo; or &ldquo;customer support&rdquo; to connect with a live person who can direct you</li>
-    <li>If a call goes directly to voicemail always call right back &mdash; a double dial can circumvent spam blockers</li>
-    <li>Mark phone numbers accordingly in Outreach (valid, questionable, invalid)</li>
-    <li>Keep detailed notes in your call notes for each call on anything relevant for the future</li>
+    <li>If a call goes directly to voicemail, always call right back &mdash; a double dial can circumvent spam blockers</li>
+    <li>Log all call notes directly in Athean after every call &mdash; these sync to SFDC automatically</li>
   </ul>
+
   <h4>Qualification Questions</h4>
   <ul class="list">
     <li>What is your role at (company name) and in what ways are you involved with your company&rsquo;s background checks process?</li>
@@ -415,6 +502,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;paddi
     <li>Does your company use an ATS (applicant tracking system) today? If yes, which system?</li>
     <li><em>Optional:</em> Do you have a timeline in which you hope to make a decision on your next background check provider?</li>
   </ul>
+
   <h4>Probing Questions</h4>
   <ul class="list">
     <li>What does your current background check process look like?</li>
@@ -423,13 +511,17 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;paddi
     <li>Do you have a sense of (company name)&rsquo;s typical turnaround time for background checks?</li>
     <li>Are you aware of any initiatives at (company name) around fair hiring practices?</li>
   </ul>
+
   <h4>Objection Handling</h4>
   <ul class="list">
     <li><strong>AAA Method: Acknowledge, Address, Ask</strong> &mdash; acknowledge their objection with a neutral statement, address it by pulling in Checkr value, then re-engage with an open-ended question</li>
     <li><strong>The &ldquo;Exactly&rdquo; Method</strong> &mdash; &ldquo;That&rsquo;s exactly why I called you!&rdquo; Take the wind out of their objection by flipping it around and connecting it to the reason you were reaching out</li>
   </ul>
+
   <h3>LinkedIn</h3>
+  <p class="prose">LinkedIn outreach is built directly into Athean Operator sequences &mdash; connection requests and InMail messages are automated and tracked alongside your email and call touches.</p>
   <ul class="list">
+    <li>Athean automatically sends LinkedIn connection requests and messages as part of Operator sequences &mdash; review and approve these in the Approvals tab like all other touches</li>
     <li>Always attempt to connect first &mdash; keep your connect message vague if you send one at all</li>
     <li>If the person connects with you, message them as soon as possible, especially if you can see they are online</li>
     <li>If after a few days the prospect has not connected, use an InMail credit (you get 50 a month &mdash; max these out)</li>
@@ -438,8 +530,15 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;paddi
     <li>AEs should own ATL for Tier 1 &mdash; BDRs divide and conquer on BTL</li>
     <li>KPI: 1 LinkedIn video message a day / 5 per week</li>
   </ul>
+
+  <div class="img-block" style="margin-top:20px">
+    <img src="img_linkedin_formula.png" alt="10-30-10 LinkedIn Video/Audio Formula" style="width:100%;border-radius:8px;border:1px solid var(--border)">
+    <p style="font-size:12px;color:var(--slate);margin-top:8px;text-align:center">10-30-10 LinkedIn Video/Audio Formula &mdash; use this structure for LinkedIn video messages</p>
+  </div>
+
 </div>
 
+<!-- S6 -->
 <!-- S6 -->
 <div id="s6">
   <div class="sec-hdr">
@@ -452,7 +551,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;paddi
   <ol class="numbered">
     <li>Open the lead in SFDC</li>
     <li>Research for 3 minutes &mdash; review campaign history, lead&rsquo;s title and company info, identify triggers and elements for personalization</li>
-    <li>Call/email the prospect using Outreach &mdash; 1-hour maximum SLA on actioning leads, so ensure your email notifications are on</li>
+    <li>Call/email the prospect using Athean &mdash; 1-hour maximum SLA on actioning leads, so ensure your email notifications are on</li>
     <li>Log and complete the call</li>
   </ol>
   <h4>The Lead Answers &mdash; What Happens Next?</h4>
@@ -475,11 +574,15 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;paddi
     <li>No Permissible Purpose</li>
   </ul>
   <h3>Recycling</h3>
-  <p class="prose">Sometimes the lead or contact company is a good target, but they are not ready to buy just yet. BDRs should mark these as Recycled. When leads go all the way through a prospecting sequence without responding, move them into Recycle to end our outreach and allow marketing to re-target the prospect.</p>
+  <p class="prose">Sometimes the lead or contact company is a good target, but they are not ready to buy just yet. BDRs should mark these as Recycled. When leads go all the way through an Athean Operator sequence without responding, move them into Recycle to end our outreach and allow marketing to re-target the prospect.</p>
   <h3>Lead Hygiene</h3>
-  <p class="prose">Lead hygiene refers to our ability to follow processes and keep up with all of our scheduled outreach activities &mdash; keeping up with daily metrics and updating any necessary fields.</p>
+  <p class="prose">Lead hygiene refers to our ability to follow processes and keep up with all of our scheduled outreach activities in Athean &mdash; keeping up with daily metrics and updating any necessary fields in SFDC.</p>
   <h3>BDR Dashboard</h3>
   <p class="prose">The BDR Dashboard is your starting point when opening Salesforce. Within it you can see any MQLs needing attention from not being worked, not being called when part of an automated sequence, or that have gone stale. The BDR dashboard is also home to key KPIs including booked meetings, pipeline, and activities.</p>
+  <div class="img-block">
+    <img src="img_bdr_dashboard.png" alt="BDR Dashboard in Salesforce" style="width:100%;border-radius:8px;border:1px solid var(--border)">
+    <p style="font-size:12px;color:var(--slate);margin-top:8px;text-align:center">BDR Dashboard in Salesforce &mdash; SQO Leaderboard, BDR SQOs MTD, BDR Activities Today, MQL Stagnancy Report</p>
+  </div>
   <h3>Managing Duplicates</h3>
   <ul class="list">
     <li>If you see a Lead and Contact dupe: From the lead &rarr; Convert &rarr; &ldquo;Choose Existing&rdquo; &rarr; uncheck &ldquo;Don&rsquo;t create an opportunity upon conversion&rdquo;</li>
@@ -576,10 +679,10 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;paddi
   <div class="tools-grid">
     <div class="tool-card"><div class="tool-icon">&#x1F4AC;</div><div><div class="tool-name">Slack</div><div class="tool-desc">Main mode of internal communication. Use for direct messaging, group messaging, and team-wide updates.</div></div></div>
     <div class="tool-card"><div class="tool-icon">&#x1F4E7;</div><div><div class="tool-name">Gmail</div><div class="tool-desc">Primary external communication. Stay on top of your inbox &mdash; lots of important updates come via email.</div></div></div>
-    <div class="tool-card"><div class="tool-icon">&#x1F4C5;</div><div><div class="tool-name">Google Calendar</div><div class="tool-desc">How we stay organized. Connected to email via Gsuite and connected to Outreach for scheduling meetings.</div></div></div>
+    <div class="tool-card"><div class="tool-icon">&#x1F4C5;</div><div><div class="tool-name">Google Calendar</div><div class="tool-desc">How we stay organized. Connected to email via Gsuite and connected to Athean for scheduling meetings.</div></div></div>
     <div class="tool-card"><div class="tool-icon">&#x1F4F9;</div><div><div class="tool-name">Zoom</div><div class="tool-desc">The tool we use to run meetings with prospects as well as for internal meetings.</div></div></div>
     <div class="tool-card"><div class="tool-icon">&#x2601;&#xFE0F;</div><div><div class="tool-name">Salesforce</div><div class="tool-desc">CRM &mdash; customer relationship management, opportunity tracking, lead management, and pipeline reporting.</div></div></div>
-    <div class="tool-card"><div class="tool-icon">&#x1F4E4;</div><div><div class="tool-name">Outreach</div><div class="tool-desc">Sales Engagement Platform &mdash; engage prospects to drive pipeline. Also our dialer for all outbound phone calls.</div></div></div>
+    <div class="tool-card"><div class="tool-icon">&#x26A1;</div><div><div class="tool-name">Athean</div><div class="tool-desc">AI-powered Sales Command Center &mdash; signals, sequencing, research, and calling in one place. Replaces Outreach as the primary engagement platform. <a href="https://docs.google.com/document/d/19r49LH6gGIQ5duiE9hEKx4mUag1G2siW/edit?usp=sharing" target="_blank" style="color:var(--navy)">Athean Seller Guide &rarr;</a></div></div></div>
     <div class="tool-card"><div class="tool-icon">&#x1F517;</div><div><div class="tool-name">LinkedIn Sales Navigator</div><div class="tool-desc">Makes social selling easy &mdash; helps you find the right prospects and build trusted relationships.</div></div></div>
     <div class="tool-card"><div class="tool-icon">&#x1F3A4;</div><div><div class="tool-name">Gong</div><div class="tool-desc">Call recording and analytics &mdash; records customer-facing meetings, annotates conversations, and powers our coaching program.</div></div></div>
     <div class="tool-card"><div class="tool-icon">&#x1F4DA;</div><div><div class="tool-name">Checkpoint</div><div class="tool-desc">LMS and Content Management System &mdash; all trainings, learning paths, and content.</div></div></div>
@@ -605,13 +708,14 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;paddi
   <p class="prose"><strong>ENT:</strong> use &ldquo;June2025 - Green Accounts - 1000 - Green&rdquo; &nbsp;&bull;&nbsp; <strong>CMRL:</strong> use &ldquo;2025 CMRL Green &amp; Referenceable Account List&rdquo;</p>
   <h3>Your LinkedIn Profile</h3>
   <p class="prose">Keep your profile up-to-date, engaging, and professional. Include a warm and professional photo and include your Checkr email in your contact information. We have Checkr-branded Zoom backgrounds, LinkedIn Banners, and email signature graphics available.</p>
-  <h3>Outreach Best Practices</h3>
+  <h3>Athean Best Practices</h3>
   <ul class="list">
-    <li>Tag numbers as valid, questionable, or invalid</li>
-    <li>Log all details in &ldquo;call notes&rdquo; &mdash; even VMs, vacations, or repeated failed dials should be noted</li>
-    <li>When logging multiple calls under one task, select &ldquo;log call only&rdquo; instead of &ldquo;log and complete&rdquo; so the task stays open while you dial additional numbers</li>
-    <li>Check the paused folder every day &mdash; this is where replies and bounced emails go and everything needs to be actioned</li>
-    <li>Filter your daily tasks by sequence and step to stay in a flow for each ICP and persona track</li>
+    <li>Zero out your Signal Feed every day &mdash; unactioned and stale signals are high-value and should be worked immediately</li>
+    <li>Keep your task count low (~20&ndash;30) &mdash; your active sequence tasks will show due touches for the day</li>
+    <li>After assigning contacts to an Operator, review and approve AI-generated sequences in the Approvals tab before they send</li>
+    <li>Add call notes directly in Athean after any live conversation &mdash; these sync to SFDC automatically</li>
+    <li>Use the Bulk Processing (Start button) in your Signal Feed to queue up all signals and prospect through them efficiently</li>
+    <li>Tag numbers as valid, questionable, or invalid in call notes so future outreach is more targeted</li>
   </ul>
   <h3>Sendoso</h3>
   <ul class="list">
@@ -633,19 +737,19 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;paddi
   <h3>Email Signatures</h3>
   <p class="prose">Set up your Gmail email signature by going to the signature creator in Okta and filling out the required fields.</p>
   <ul class="list">
-    <li>First go into Outreach and purchase a phone number (preferably one local to Denver) and copy/paste that into the phone field &mdash; do not use your personal number</li>
-    <li>Once created, copy/paste the entire signature into both Gmail and Outreach under signature settings</li>
+    <li>First go into Athean and set up your calling number (preferably one local to Denver) and copy/paste that into the phone field &mdash; do not use your personal number</li>
+    <li>Once created, copy/paste the entire signature into both Gmail and Athean under signature settings</li>
     <li>Add and hyperlink your LinkedIn profile alongside your email and phone number</li>
   </ul>
   <h3>Bookmarks &amp; Extensions</h3>
-  <p class="prose">Ensure you have your bookmarks bar set up to quickly access your most-used apps: Gmail &middot; Google Calendar &middot; Salesforce &middot; Outreach &middot; Partner Integration Matrix &middot; Jira Service Desk &middot; Confluence &middot; ADP</p>
+  <p class="prose">Ensure you have your bookmarks bar set up to quickly access your most-used apps: Gmail &middot; Google Calendar &middot; Salesforce &middot; <a href="https://app.athean.com" target="_blank" style="color:var(--navy)">Athean</a> &middot; Partner Integration Matrix &middot; Jira Service Desk &middot; Confluence &middot; ADP</p>
   <p class="prose"><strong>BDR Folder bookmarks:</strong> Playbook (this doc!) &middot; Onboarding Guide &middot; Bootcamp Guide &middot; Saleshood</p>
   <h4>Helpful Extensions</h4>
   <ul class="list">
     <li><strong>Grammarly</strong> &mdash; grammar, spelling, and tone</li>
     <li><strong>Lightshot</strong> &mdash; simple screenshots and editing</li>
     <li><strong>Hunter.io</strong> &mdash; helps identify email formats for companies</li>
-    <li><strong>Outreach Everywhere</strong> &mdash; allows Outreach to follow you to other sites</li>
+    <li><strong>Athean Chrome Extension</strong> &mdash; access Athean signals and research while browsing LinkedIn or other sites</li>
     <li><strong>Sendoso</strong> &mdash; plugin populates prospects based on the page you are on</li>
     <li><strong>ZoomInfo plugin</strong></li>
   </ul>
