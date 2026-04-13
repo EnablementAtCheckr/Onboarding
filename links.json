@@ -1,25 +1,25 @@
 {
   "day1__introductions": {
     "slides": "",
-    "slides_label": "Bootcamp | Introductions — Slides",
+    "slides_label": "Bootcamp | Schedule — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Introductions — Recording"
   },
   "day1__pains_and_personas_review": {
     "slides": "",
-    "slides_label": "Bootcamp | Pains and Personas Review — Slides",
+    "slides_label": "Bootcamp | Pains And Personas Review — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Pains and Personas Review — Recording"
   },
   "day1__overcoming_inertia": {
-    "slides": "https://docs.google.com/presentation/d/12SaU_LM6e5WfoAuLuFuOk6XIuFFHeknU1p900gMm3DY/edit?usp=sharing",
-    "slides_label": "Overcoming Inertia — Slides",
+    "slides": "",
+    "slides_label": "Bootcamp | Overcoming Inertia — Slides",
     "recording": "https://drive.google.com/file/d/1oO0dtsuk5jYVKNWSfk3ZXQ2D-Hb75qMS/view?usp=sharing",
     "recording_label": "Overcoming Inertia — Recording"
   },
   "day1__competition_review": {
     "slides": "",
-    "slides_label": "Bootcamp | Competition Review — Slides",
+    "slides_label": "Bootcamp | Competition Review and Quiz — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Competition Review — Recording"
   },
@@ -31,7 +31,7 @@
   },
   "day1__fireside_chat": {
     "slides": "",
-    "slides_label": "Bootcamp: Fireside Chat — Slides",
+    "slides_label": "Checkr Feud — Slides",
     "recording": "",
     "recording_label": "Bootcamp: Fireside Chat — Recording"
   },
@@ -43,31 +43,31 @@
   },
   "day1__master_sales_deck_review": {
     "slides": "",
-    "slides_label": "Bootcamp | Master Sales Deck Review — Slides",
+    "slides_label": "Checkr Intro: Achieve Breakthroughs In Your Hiring Process — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Master Sales Deck Review — Recording"
   },
   "day1__pitching_your_deck": {
     "slides": "",
-    "slides_label": "Bootcamp | Pitching your Deck — Slides",
+    "slides_label": "Bootcamp | Pitching Your Deck — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Pitching your Deck — Recording"
   },
   "day2__recap_day_2": {
     "slides": "",
-    "slides_label": "Bootcamp | Recap and Day 2 Schedule — Slides",
+    "slides_label": "Monday Recap and Today's Schedule — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Recap and Day 2 Schedule — Recording"
   },
   "day2__asking_good_questions": {
-    "slides": "https://docs.google.com/presentation/d/1fZhdoIwgNd1p48pc5WzoDO3digFVDKcDjTycAtIC-N0/edit?usp=sharing",
-    "slides_label": "Asking Good Questions — Slides",
+    "slides": "",
+    "slides_label": "Bootcamp | Good Questions — Slides",
     "recording": "https://drive.google.com/file/d/1KLiz3RK2PuvDM381Xeiz5uq_KKV5iNxl/view?usp=sharing",
     "recording_label": "Asking Good Questions — Recording"
   },
   "day2__prep_cold_call": {
-    "slides": "https://docs.google.com/presentation/d/1Dr-YD9iO3VNddol-CRQbpYUrEKR-IWO8/edit?usp=sharing&ouid=102335832396083438742&rtpof=true&sd=true",
-    "slides_label": "Bootcamp | Prep for Cold Call — Slides",
+    "slides": "",
+    "slides_label": "Bootcamp | Cold Call Overview 2026 — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Prep for Cold Call Exercise — Recording"
   },
@@ -85,19 +85,19 @@
   },
   "day2__prep_discovery_call": {
     "slides": "",
-    "slides_label": "Bootcamp | Prep for Discovery Call Exercise — Slides",
+    "slides_label": "Discovery as a Skill - Enabling the Buyer — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Prep for Discovery Call Exercise — Recording"
   },
   "day2__discovery_call_role_play": {
     "slides": "",
-    "slides_label": "Bootcamp | Discovery Call Role-Play — Slides",
+    "slides_label": "Bootcamp | Discovery Role-Play — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Discovery Call Role-Play — Recording"
   },
   "day2__discovery_call_calibration": {
     "slides": "",
-    "slides_label": "Bootcamp | Discovery Call Calibration — Slides",
+    "slides_label": "Bootcamp | Disco Call Calibration — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Discovery Call Calibration — Recording"
   },
@@ -109,37 +109,37 @@
   },
   "day2__cold_call_calibration_cont": {
     "slides": "",
-    "slides_label": "Bootcamp | Cold Call Calibration (continued) — Slides",
+    "slides_label": "Bootcamp | Cold Call Calibration — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Cold Call Calibration (continued) — Recording"
   },
   "day3__recap_day_3": {
     "slides": "",
-    "slides_label": "Bootcamp | Recap and Day 3 Schedule — Slides",
+    "slides_label": "Tuesday Recap and Today's Schedule — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Recap and Day 3 Schedule — Recording"
   },
   "day3__demo_call_prep": {
     "slides": "",
-    "slides_label": "Bootcamp | Demo Call Prep — Slides",
+    "slides_label": "Bootcamp | Demo Call — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Demo Call Prep — Recording"
   },
   "day3__se_partnership": {
-    "slides": "https://docs.google.com/presentation/d/1Wc1vtfvuE6_KBaOZVQKtzKryHiLj5_YixhOjSAeKQN4/edit?usp=sharing",
-    "slides_label": "SE Partnership & Rules of Engagement — Slides",
+    "slides": "",
+    "slides_label": "Bootcamp | Solutions Engineering — Slides",
     "recording": "https://drive.google.com/file/d/1VlUuYu_0MEvKY_rdFV0XywgUffrtkxnh/view?usp=sharing",
     "recording_label": "SE Partnership & Rules of Engagement — Recording"
   },
   "day3__tools_ai_credal": {
     "slides": "",
-    "slides_label": "Tools: Using AI & Credal on Live Calls — Slides",
+    "slides_label": "Bootcamp | Using AI — Slides",
     "recording": "",
     "recording_label": "Tools: Using AI & Credal on Live Calls — Recording"
   },
   "day3__demo_call_role_play": {
     "slides": "",
-    "slides_label": "Bootcamp | Demo Call Role-Play — Slides",
+    "slides_label": "Bootcamp | Demo Role-Play — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Demo Call Role-Play — Recording"
   },
@@ -151,7 +151,7 @@
   },
   "day3__pricing_call_prep": {
     "slides": "",
-    "slides_label": "Bootcamp | Pricing Call Prep — Slides",
+    "slides_label": "Bootcamp | Pricing Overview — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Pricing Call Prep — Recording"
   },
@@ -169,7 +169,7 @@
   },
   "day3__pricing_call_calibration": {
     "slides": "",
-    "slides_label": "Bootcamp | Pricing Call Calibration — Slides",
+    "slides_label": "Bootcamp | Pricing Calibration — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Pricing Call Calibration — Recording"
   },
@@ -181,19 +181,19 @@
   },
   "day4__recap_day_4": {
     "slides": "",
-    "slides_label": "Bootcamp | Recap and Day 4 Schedule — Slides",
+    "slides_label": "Wednesday Recap and Today's Schedule — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Recap and Day 4 Schedule — Recording"
   },
   "day4__account_prioritization": {
     "slides": "",
-    "slides_label": "Bootcamp | Account Prioritization — Slides",
+    "slides_label": "Outbound Playbook — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Account Prioritization — Recording"
   },
   "day4__using_gong": {
     "slides": "",
-    "slides_label": "Bootcamp | Using Gong — Slides",
+    "slides_label": "Bootcamp | Gong — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Using Gong — Recording"
   },
@@ -205,31 +205,31 @@
   },
   "day4__events": {
     "slides": "",
-    "slides_label": "Bootcamp | Events — Slides",
+    "slides_label": "Bootcamp | Events 2026 — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Events — Recording"
   },
   "day4__other_outbound_channels": {
     "slides": "",
-    "slides_label": "Bootcamp | Other Outbound Channels — Slides",
+    "slides_label": "Outbound Playbook — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Other Outbound Channels — Recording"
   },
   "day4__campaigns": {
     "slides": "",
-    "slides_label": "Bootcamp | Campaigns — Slides",
+    "slides_label": "Bootcamp | ABM Campaigns Overview | FY26 — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Campaigns — Recording"
   },
   "day4__messaging_emails_linkedin": {
     "slides": "",
-    "slides_label": "Bootcamp | Messaging — Emails & LinkedIn — Slides",
+    "slides_label": "Bootcamp | Messaging — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Messaging — Emails & LinkedIn — Recording"
   },
   "day4__tools_looker_homerooms": {
     "slides": "",
-    "slides_label": "Bootcamp | Tools: Looker and Homerooms — Slides",
+    "slides_label": "Bootcamp | Homeroom — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Tools: Looker and Homerooms — Recording"
   },
@@ -247,19 +247,19 @@
   },
   "day5__recap_day_5": {
     "slides": "",
-    "slides_label": "Bootcamp | Recap and Day 5 Schedule — Slides",
+    "slides_label": "Thursday Recap and Today's Schedule — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Recap and Day 5 Schedule — Recording"
   },
   "day5__how_to_be_productive": {
     "slides": "",
-    "slides_label": "Bootcamp | How to Be Productive — Slides",
+    "slides_label": "Bootcamp | Productivity — Slides",
     "recording": "",
     "recording_label": "Bootcamp | How to Be Productive — Recording"
   },
   "day5__best_practices_productivity": {
     "slides": "",
-    "slides_label": "Bootcamp | Best Practices for Productivity at Checkr — Slides",
+    "slides_label": "Bootcamp | Managing Outbound Partners — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Best Practices for Productivity at Checkr — Recording"
   },
@@ -277,7 +277,7 @@
   },
   "day5__tips_and_tricks": {
     "slides": "",
-    "slides_label": "Bootcamp | Tips and Tricks — Slides",
+    "slides_label": "Bootcamp | Tips & Tricks — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Tips and Tricks — Recording"
   },
