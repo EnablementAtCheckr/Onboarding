@@ -115,7 +115,7 @@
   },
   "day2__opp_walkthrough": {
     "slides": "",
-    "slides_label": "Bootcamp | Opp Walkthrough — no slides",
+    "slides_label": "Bootcamp | Opp Walkthrough — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Opp Walkthrough — Recording"
   },
@@ -169,7 +169,7 @@
   },
   "day3__tools_athean_sequences": {
     "slides": "",
-    "slides_label": "Bootcamp | Tools: Athean & Sequences — Live Demo",
+    "slides_label": "Bootcamp | Tools: Athean & Sequences Deep Dive — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Tools: Athean & Sequences Deep Dive — Recording"
   },
@@ -259,13 +259,13 @@
   },
   "day5__how_to_be_productive": {
     "slides": "https://docs.google.com/document/d/14hhcNaFUC8lJ1VlxImWtEHvkBmarBpHL6DPl4jWIMIY/edit?usp=sharing",
-    "slides_label": "Bootcamp | Productivity — Doc",
+    "slides_label": "Bootcamp | Productivity — Slides",
     "recording": "",
     "recording_label": "Bootcamp | How to Be Productive — Recording"
   },
   "day5__best_practices_productivity": {
     "slides": "https://docs.google.com/document/d/1bSA3K6GzDdhtuYQaQLN3ljE2SIArELNMR9uzz3nWsGk/edit?usp=sharing",
-    "slides_label": "Bootcamp | Managing Outbound Partners — Doc",
+    "slides_label": "Bootcamp | Managing Outbound Partners — Slides",
     "recording": "",
     "recording_label": "Bootcamp | Best Practices for Productivity at Checkr — Recording"
   },
