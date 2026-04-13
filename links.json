@@ -1,302 +1,296 @@
 {
   "day1__introductions": {
     "slides": "",
-    "slides_label": "Bootcamp | Introductions \u2014 Slides",
+    "slides_label": "Bootcamp | Introductions — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Introductions \u2014 Recording"
+    "recording_label": "Bootcamp | Introductions — Recording"
   },
   "day1__pains_and_personas_review": {
     "slides": "",
-    "slides_label": "Bootcamp | Pains and Personas Review \u2014 Slides",
+    "slides_label": "Bootcamp | Pains and Personas Review — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Pains and Personas Review \u2014 Recording"
+    "recording_label": "Bootcamp | Pains and Personas Review — Recording"
   },
   "day1__overcoming_inertia": {
     "slides": "https://docs.google.com/presentation/d/12SaU_LM6e5WfoAuLuFuOk6XIuFFHeknU1p900gMm3DY/edit?usp=sharing",
-    "slides_label": "Overcoming Inertia \u2014 Slides",
+    "slides_label": "Overcoming Inertia — Slides",
     "recording": "https://drive.google.com/file/d/1oO0dtsuk5jYVKNWSfk3ZXQ2D-Hb75qMS/view?usp=sharing",
-    "recording_label": "Overcoming Inertia \u2014 Recording"
+    "recording_label": "Overcoming Inertia — Recording"
   },
   "day1__competition_review": {
     "slides": "",
-    "slides_label": "Bootcamp | Competition Review \u2014 Slides",
+    "slides_label": "Bootcamp | Competition Review — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Competition Review \u2014 Recording"
+    "recording_label": "Bootcamp | Competition Review — Recording"
   },
   "day1__sales_all_hands": {
     "slides": "",
-    "slides_label": "Sales All Hands \u2014 Slides",
+    "slides_label": "Sales All Hands — Slides",
     "recording": "",
-    "recording_label": "Sales All Hands \u2014 Recording"
-  },
-  "day1__pains_personas_competition_activity": {
-    "slides": "",
-    "slides_label": "Bootcamp | Pains, Personas and Competition Activity \u2014 Slides",
-    "recording": "",
-    "recording_label": "Bootcamp | Pains, Personas and Competition Activity \u2014 Recording"
+    "recording_label": "Sales All Hands — Recording"
   },
   "day1__fireside_chat": {
     "slides": "",
-    "slides_label": "Bootcamp: Fireside Chat \u2014 Slides",
+    "slides_label": "Bootcamp: Fireside Chat — Slides",
     "recording": "",
-    "recording_label": "Bootcamp: Fireside Chat \u2014 Recording"
+    "recording_label": "Bootcamp: Fireside Chat — Recording"
   },
   "day1__day_1_debrief_feedback": {
     "slides": "",
-    "slides_label": "Bootcamp | Day 1 Debrief/Feedback \u2014 Slides",
+    "slides_label": "Bootcamp | Day 1 Debrief/Feedback — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Day 1 Debrief/Feedback \u2014 Recording"
+    "recording_label": "Bootcamp | Day 1 Debrief/Feedback — Recording"
+  },
+  "day1__master_sales_deck_review": {
+    "slides": "",
+    "slides_label": "Bootcamp | Master Sales Deck Review — Slides",
+    "recording": "",
+    "recording_label": "Bootcamp | Master Sales Deck Review — Recording"
+  },
+  "day1__pitching_your_deck": {
+    "slides": "",
+    "slides_label": "Bootcamp | Pitching your Deck — Slides",
+    "recording": "",
+    "recording_label": "Bootcamp | Pitching your Deck — Recording"
   },
   "day2__recap_day_2": {
     "slides": "",
-    "slides_label": "Bootcamp | Recap and Day 2 Schedule \u2014 Slides",
+    "slides_label": "Bootcamp | Recap and Day 2 Schedule — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Recap and Day 2 Schedule \u2014 Recording"
+    "recording_label": "Bootcamp | Recap and Day 2 Schedule — Recording"
   },
   "day2__asking_good_questions": {
     "slides": "https://docs.google.com/presentation/d/1fZhdoIwgNd1p48pc5WzoDO3digFVDKcDjTycAtIC-N0/edit?usp=sharing",
-    "slides_label": "Asking Good Questions \u2014 Slides",
+    "slides_label": "Asking Good Questions — Slides",
     "recording": "https://drive.google.com/file/d/1KLiz3RK2PuvDM381Xeiz5uq_KKV5iNxl/view?usp=sharing",
-    "recording_label": "Asking Good Questions \u2014 Recording"
-  },
-  "day2__com_deep_dive": {
-    "slides": "",
-    "slides_label": "Bootcamp | Command of the Message Deep Dive \u2014 Slides",
-    "recording": "",
-    "recording_label": "Bootcamp | Command of the Message Deep Dive \u2014 Recording"
+    "recording_label": "Asking Good Questions — Recording"
   },
   "day2__prep_cold_call": {
     "slides": "https://docs.google.com/presentation/d/1Dr-YD9iO3VNddol-CRQbpYUrEKR-IWO8/edit?usp=sharing&ouid=102335832396083438742&rtpof=true&sd=true",
-    "slides_label": "Bootcamp | Prep for Cold Call \u2014 Slides",
+    "slides_label": "Bootcamp | Prep for Cold Call — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Prep for Cold Call Exercise \u2014 Recording"
+    "recording_label": "Bootcamp | Prep for Cold Call Exercise — Recording"
   },
   "day2__cold_call_role_play": {
     "slides": "",
-    "slides_label": "Bootcamp | Cold Call Role-Play \u2014 Slides",
+    "slides_label": "Bootcamp | Cold Call Role-Play — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Cold Call Role-Play \u2014 Recording"
+    "recording_label": "Bootcamp | Cold Call Role-Play — Recording"
   },
   "day2__cold_call_calibration": {
     "slides": "",
-    "slides_label": "Bootcamp | Cold Call Calibration \u2014 Slides",
+    "slides_label": "Bootcamp | Cold Call Calibration — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Cold Call Calibration \u2014 Recording"
+    "recording_label": "Bootcamp | Cold Call Calibration — Recording"
   },
   "day2__prep_discovery_call": {
     "slides": "",
-    "slides_label": "Bootcamp | Prep for Discovery Call Exercise \u2014 Slides",
+    "slides_label": "Bootcamp | Prep for Discovery Call Exercise — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Prep for Discovery Call Exercise \u2014 Recording"
+    "recording_label": "Bootcamp | Prep for Discovery Call Exercise — Recording"
   },
   "day2__discovery_call_role_play": {
     "slides": "",
-    "slides_label": "Bootcamp | Discovery Call Role-Play \u2014 Slides",
+    "slides_label": "Bootcamp | Discovery Call Role-Play — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Discovery Call Role-Play \u2014 Recording"
-  },
-  "day2__buffer_time": {
-    "slides": "",
-    "slides_label": "Buffer Time \u2014 Slides",
-    "recording": "",
-    "recording_label": "Buffer Time \u2014 Recording"
+    "recording_label": "Bootcamp | Discovery Call Role-Play — Recording"
   },
   "day2__discovery_call_calibration": {
     "slides": "",
-    "slides_label": "Bootcamp | Discovery Call Calibration \u2014 Slides",
+    "slides_label": "Bootcamp | Discovery Call Calibration — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Discovery Call Calibration \u2014 Recording"
+    "recording_label": "Bootcamp | Discovery Call Calibration — Recording"
   },
   "day2__day_2_debrief_feedback": {
     "slides": "",
-    "slides_label": "Bootcamp | Day 2 Debrief/Feedback \u2014 Slides",
+    "slides_label": "Bootcamp | Day 2 Debrief/Feedback — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Day 2 Debrief/Feedback \u2014 Recording"
+    "recording_label": "Bootcamp | Day 2 Debrief/Feedback — Recording"
+  },
+  "day2__cold_call_calibration_cont": {
+    "slides": "",
+    "slides_label": "Bootcamp | Cold Call Calibration (continued) — Slides",
+    "recording": "",
+    "recording_label": "Bootcamp | Cold Call Calibration (continued) — Recording"
   },
   "day3__recap_day_3": {
     "slides": "",
-    "slides_label": "Bootcamp | Recap and Day 3 Schedule \u2014 Slides",
+    "slides_label": "Bootcamp | Recap and Day 3 Schedule — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Recap and Day 3 Schedule \u2014 Recording"
+    "recording_label": "Bootcamp | Recap and Day 3 Schedule — Recording"
   },
   "day3__demo_call_prep": {
     "slides": "",
-    "slides_label": "Bootcamp | Demo Call Prep \u2014 Slides",
+    "slides_label": "Bootcamp | Demo Call Prep — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Demo Call Prep \u2014 Recording"
+    "recording_label": "Bootcamp | Demo Call Prep — Recording"
   },
   "day3__se_partnership": {
     "slides": "https://docs.google.com/presentation/d/1Wc1vtfvuE6_KBaOZVQKtzKryHiLj5_YixhOjSAeKQN4/edit?usp=sharing",
-    "slides_label": "SE Partnership & Rules of Engagement \u2014 Slides",
+    "slides_label": "SE Partnership & Rules of Engagement — Slides",
     "recording": "https://drive.google.com/file/d/1VlUuYu_0MEvKY_rdFV0XywgUffrtkxnh/view?usp=sharing",
-    "recording_label": "SE Partnership & Rules of Engagement \u2014 Recording"
+    "recording_label": "SE Partnership & Rules of Engagement — Recording"
   },
   "day3__tools_ai_credal": {
     "slides": "",
-    "slides_label": "Tools: Using AI & Credal on Live Calls \u2014 Slides",
+    "slides_label": "Tools: Using AI & Credal on Live Calls — Slides",
     "recording": "",
-    "recording_label": "Tools: Using AI & Credal on Live Calls \u2014 Recording"
+    "recording_label": "Tools: Using AI & Credal on Live Calls — Recording"
   },
   "day3__demo_call_role_play": {
     "slides": "",
-    "slides_label": "Bootcamp | Demo Call Role-Play \u2014 Slides",
+    "slides_label": "Bootcamp | Demo Call Role-Play — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Demo Call Role-Play \u2014 Recording"
+    "recording_label": "Bootcamp | Demo Call Role-Play — Recording"
   },
   "day3__demo_call_calibration": {
     "slides": "",
-    "slides_label": "Bootcamp | Demo Call Calibration \u2014 Slides",
+    "slides_label": "Bootcamp | Demo Call Calibration — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Demo Call Calibration \u2014 Recording"
+    "recording_label": "Bootcamp | Demo Call Calibration — Recording"
   },
   "day3__pricing_call_prep": {
     "slides": "",
-    "slides_label": "Bootcamp | Pricing Call Prep \u2014 Slides",
+    "slides_label": "Bootcamp | Pricing Call Prep — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Pricing Call Prep \u2014 Recording"
+    "recording_label": "Bootcamp | Pricing Call Prep — Recording"
   },
   "day3__pricing_call_role_play": {
     "slides": "",
-    "slides_label": "Bootcamp | Pricing Call Role-Play \u2014 Slides",
+    "slides_label": "Bootcamp | Pricing Call Role-Play — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Pricing Call Role-Play \u2014 Recording"
+    "recording_label": "Bootcamp | Pricing Call Role-Play — Recording"
   },
   "day3__tools_athean_sequences": {
     "slides": "",
-    "slides_label": "Bootcamp | Tools: Athean & Sequences Deep Dive \u2014 Slides",
+    "slides_label": "Bootcamp | Tools: Athean & Sequences Deep Dive — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Tools: Athean & Sequences Deep Dive \u2014 Recording"
+    "recording_label": "Bootcamp | Tools: Athean & Sequences Deep Dive — Recording"
   },
   "day3__pricing_call_calibration": {
     "slides": "",
-    "slides_label": "Bootcamp | Pricing Call Calibration \u2014 Slides",
+    "slides_label": "Bootcamp | Pricing Call Calibration — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Pricing Call Calibration \u2014 Recording"
+    "recording_label": "Bootcamp | Pricing Call Calibration — Recording"
   },
   "day3__day_3_debrief_feedback": {
     "slides": "",
-    "slides_label": "Bootcamp | Day 3 Debrief/Feedback \u2014 Slides",
+    "slides_label": "Bootcamp | Day 3 Debrief/Feedback — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Day 3 Debrief/Feedback \u2014 Recording"
+    "recording_label": "Bootcamp | Day 3 Debrief/Feedback — Recording"
   },
   "day4__recap_day_4": {
     "slides": "",
-    "slides_label": "Bootcamp | Recap and Day 4 Schedule \u2014 Slides",
+    "slides_label": "Bootcamp | Recap and Day 4 Schedule — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Recap and Day 4 Schedule \u2014 Recording"
+    "recording_label": "Bootcamp | Recap and Day 4 Schedule — Recording"
   },
   "day4__account_prioritization": {
     "slides": "",
-    "slides_label": "Bootcamp | Account Prioritization \u2014 Slides",
+    "slides_label": "Bootcamp | Account Prioritization — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Account Prioritization \u2014 Recording"
+    "recording_label": "Bootcamp | Account Prioritization — Recording"
   },
   "day4__using_gong": {
     "slides": "",
-    "slides_label": "Bootcamp | Using Gong \u2014 Slides",
+    "slides_label": "Bootcamp | Using Gong — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Using Gong \u2014 Recording"
+    "recording_label": "Bootcamp | Using Gong — Recording"
   },
   "day4__partners": {
     "slides": "",
-    "slides_label": "Bootcamp | Partners \u2014 Slides",
+    "slides_label": "Bootcamp | Partners — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Partners \u2014 Recording"
+    "recording_label": "Bootcamp | Partners — Recording"
   },
   "day4__events": {
     "slides": "",
-    "slides_label": "Bootcamp | Events \u2014 Slides",
+    "slides_label": "Bootcamp | Events — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Events \u2014 Recording"
+    "recording_label": "Bootcamp | Events — Recording"
   },
   "day4__other_outbound_channels": {
     "slides": "",
-    "slides_label": "Bootcamp | Other Outbound Channels \u2014 Slides",
+    "slides_label": "Bootcamp | Other Outbound Channels — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Other Outbound Channels \u2014 Recording"
+    "recording_label": "Bootcamp | Other Outbound Channels — Recording"
   },
   "day4__campaigns": {
     "slides": "",
-    "slides_label": "Bootcamp | Campaigns \u2014 Slides",
+    "slides_label": "Bootcamp | Campaigns — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Campaigns \u2014 Recording"
+    "recording_label": "Bootcamp | Campaigns — Recording"
   },
   "day4__messaging_emails_linkedin": {
     "slides": "",
-    "slides_label": "Bootcamp | Messaging \u2014 Emails & LinkedIn \u2014 Slides",
+    "slides_label": "Bootcamp | Messaging — Emails & LinkedIn — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Messaging \u2014 Emails & LinkedIn \u2014 Recording"
+    "recording_label": "Bootcamp | Messaging — Emails & LinkedIn — Recording"
   },
   "day4__tools_looker_homerooms": {
     "slides": "",
-    "slides_label": "Bootcamp | Tools: Looker and Homerooms \u2014 Slides",
+    "slides_label": "Bootcamp | Tools: Looker and Homerooms — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Tools: Looker and Homerooms \u2014 Recording"
-  },
-  "day4__opp_walkthrough": {
-    "slides": "",
-    "slides_label": "Bootcamp | Opp Walkthrough \u2014 Slides",
-    "recording": "",
-    "recording_label": "Bootcamp | Opp Walkthrough \u2014 Recording"
+    "recording_label": "Bootcamp | Tools: Looker and Homerooms — Recording"
   },
   "day4__jeopardy": {
     "slides": "",
-    "slides_label": "Jeopardy \u2014 Slides",
+    "slides_label": "Jeopardy — Slides",
     "recording": "",
-    "recording_label": "Jeopardy \u2014 Recording"
+    "recording_label": "Jeopardy — Recording"
   },
   "day4__day_4_debrief_feedback": {
     "slides": "",
-    "slides_label": "Bootcamp | Day 4 Debrief/Feedback \u2014 Slides",
+    "slides_label": "Bootcamp | Day 4 Debrief/Feedback — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Day 4 Debrief/Feedback \u2014 Recording"
+    "recording_label": "Bootcamp | Day 4 Debrief/Feedback — Recording"
   },
   "day5__recap_day_5": {
     "slides": "",
-    "slides_label": "Bootcamp | Recap and Day 5 Schedule \u2014 Slides",
+    "slides_label": "Bootcamp | Recap and Day 5 Schedule — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Recap and Day 5 Schedule \u2014 Recording"
+    "recording_label": "Bootcamp | Recap and Day 5 Schedule — Recording"
   },
   "day5__how_to_be_productive": {
     "slides": "",
-    "slides_label": "Bootcamp | How to Be Productive \u2014 Slides",
+    "slides_label": "Bootcamp | How to Be Productive — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | How to Be Productive \u2014 Recording"
+    "recording_label": "Bootcamp | How to Be Productive — Recording"
   },
   "day5__best_practices_productivity": {
     "slides": "",
-    "slides_label": "Bootcamp | Best Practices for Productivity at Checkr \u2014 Slides",
+    "slides_label": "Bootcamp | Best Practices for Productivity at Checkr — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Best Practices for Productivity at Checkr \u2014 Recording"
+    "recording_label": "Bootcamp | Best Practices for Productivity at Checkr — Recording"
   },
   "day5__week_in_life_of_ae": {
     "slides": "",
-    "slides_label": "Bootcamp | Week in the Life of an AE \u2014 Slides",
+    "slides_label": "Bootcamp | Week in the Life of an AE — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Week in the Life of an AE \u2014 Recording"
+    "recording_label": "Bootcamp | Week in the Life of an AE — Recording"
   },
   "day5__sfdc_quoting_order_forms": {
     "slides": "",
-    "slides_label": "Bootcamp | Salesforce Quoting & Order Forms Preview \u2014 Slides",
+    "slides_label": "Bootcamp | Salesforce Quoting & Order Forms Preview — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Salesforce Quoting & Order Forms Preview \u2014 Recording"
+    "recording_label": "Bootcamp | Salesforce Quoting & Order Forms Preview — Recording"
   },
   "day5__tips_and_tricks": {
     "slides": "",
-    "slides_label": "Bootcamp | Tips and Tricks \u2014 Slides",
+    "slides_label": "Bootcamp | Tips and Tricks — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Tips and Tricks \u2014 Recording"
+    "recording_label": "Bootcamp | Tips and Tricks — Recording"
   },
   "day5__ask_nik_anything": {
     "slides": "",
-    "slides_label": "Bootcamp | Ask Nik Anything \u2014 Slides",
+    "slides_label": "Bootcamp | Ask Nik Anything — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Ask Nik Anything \u2014 Recording"
+    "recording_label": "Bootcamp | Ask Nik Anything — Recording"
   },
   "day5__wrap_up_feedback_survey": {
     "slides": "",
-    "slides_label": "Bootcamp | Wrap-Up & Feedback Survey \u2014 Slides",
+    "slides_label": "Bootcamp | Wrap-Up & Feedback Survey — Slides",
     "recording": "",
-    "recording_label": "Bootcamp | Wrap-Up & Feedback Survey \u2014 Recording"
+    "recording_label": "Bootcamp | Wrap-Up & Feedback Survey — Recording"
   }
 }
