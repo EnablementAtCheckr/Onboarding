@@ -410,14 +410,13 @@
 <script>
 // ─────────────────────────────────────────────────────────────────────────────
 // CONFIG
-const SAVED_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQnW__6b2Zrpc7YShobqLKKm1Zt_R7kEAGRXt9sub0iHKzwNVgLXM7Fo3Q_rEdDAxfz6UAbOa-Et0DJ/pub?gid=408121925&single=true&output=csv';
+// Google Sheet ID and tab name
+const SHEET_ID  = '1uYY0eQ-ySgun6MC7LvVc32wZHfMgchsSKtAvsUtu834';
+const TAB_NAME  = 'Bootcamp Schedule';
 
-// CORS proxies — tried in order until one works
-const CORS_PROXIES = [
-  url => `https://corsproxy.io/?${encodeURIComponent(url)}`,
-  url => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
-  url => url  // last resort: try direct (works when hosted on GitHub Pages)
-];
+// Google Visualization Query API — no CORS issues, no proxy needed, no auth needed
+// Works as long as the sheet is published or set to "Anyone with the link can view"
+const GVZ_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(TAB_NAME)}`;
 
 const DAYS = ['Day 1','Day 2','Day 3','Day 4','Day 5'];
 const DAY_LABELS = {
@@ -438,9 +437,8 @@ let isDemo    = false;
 // INIT
 window.addEventListener('DOMContentLoaded', () => {
   buildTabs();
-  // URL is hardcoded — hide setup banner and load immediately
   document.getElementById('setupBanner').style.display = 'none';
-  loadSheet(SAVED_URL);
+  loadSheet();
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -467,12 +465,10 @@ function switchDay(day) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// CONNECT SHEET (manual input)
+// CONNECT SHEET
 function connectSheet() {
-  const url = document.getElementById('urlInput').value.trim();
-  if (!url) { alert('Please paste your published CSV URL.'); return; }
   document.getElementById('setupBanner').style.display = 'none';
-  loadSheet(url);
+  loadSheet();
 }
 
 function showSetup() {
@@ -483,71 +479,72 @@ function showSetup() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// LOAD LIVE SHEET — tries CORS proxies in sequence
-async function loadSheet(url) {
+// LOAD SHEET via Google Visualization Query API
+// Uses the /gviz/tq endpoint which has permissive CORS headers by design.
+// Only requires the sheet to be "Anyone with the link can view" — no publish needed.
+async function loadSheet() {
   isDemo = false;
   setStatus('loading', 'Fetching your Bootcamp Schedule…');
   showLoading();
 
-  let csv = null;
-  let lastErr = null;
-
-  for (const proxyFn of CORS_PROXIES) {
-    try {
-      const proxyUrl = proxyFn(url);
-      const res = await fetch(proxyUrl, { cache: 'no-store' });
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      const text = await res.text();
-      // Sanity check — allorigins wraps in JSON sometimes
-      if (text.trim().startsWith('{') && text.includes('contents')) {
-        csv = JSON.parse(text).contents;
-      } else {
-        csv = text;
-      }
-      if (csv && csv.trim().length > 10) break; // success
-    } catch (e) {
-      lastErr = e;
-      csv = null;
-    }
-  }
-
-  if (!csv || csv.trim().length < 10) {
-    setStatus('error', 'Could not load sheet — ' + (lastErr?.message || 'fetch failed'));
-    renderError('Could not load the Google Sheet',
-      'All fetch attempts failed. This is usually a CORS issue when opening the file locally.<br><br>' +
-      '<strong>Quick fix:</strong> Upload this file to your GitHub Pages repo — once hosted there, it will fetch live with no issues.');
-    return;
-  }
-
   try {
-    allRows = parseCSV(csv);
-    if (allRows.length === 0) throw new Error('No rows parsed — check the sheet has data.');
+    const res = await fetch(GVZ_URL, { cache: 'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
 
-    // Check for Day column — warn but don't block
-    const hasDay = allRows.some(r => 'Day' in r || 'day' in r);
+    const raw = await res.text();
 
+    // Google wraps JSON in: /*O_o*/\ngoogle.visualization.Query.setResponse({…});
+    const jsonStr = raw.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\)/)?.[1];
+    if (!jsonStr) throw new Error('Unexpected response format — check the sheet is shared');
+
+    const data = JSON.parse(jsonStr);
+    if (data.status === 'error') {
+      throw new Error(data.errors?.[0]?.detailed_message || data.errors?.[0]?.message || 'Google Sheets returned an error');
+    }
+
+    const table = data.table;
+    if (!table?.cols?.length) throw new Error('No columns found — is the sheet empty?');
+
+    // Build headers from GVZ column labels
+    const headers = table.cols.map(c => (c.label || c.id || '').trim());
+
+    // Build row objects — GVZ gives typed values in .v and formatted in .f
+    allRows = (table.rows || []).map(row => {
+      const obj = {};
+      headers.forEach((h, i) => {
+        const cell = row.c?.[i];
+        // Use formatted value (.f) first for dates/times, fall back to raw (.v)
+        const val = cell?.f ?? (cell?.v != null ? String(cell.v) : '');
+        obj[h] = val.trim();
+      });
+      return obj;
+    }).filter(r => Object.values(r).some(v => v)); // drop blank rows
+
+    if (allRows.length === 0) throw new Error('Sheet appears to be empty.');
+
+    const hasDay = headers.includes('Day');
     const loaded = new Date().toLocaleTimeString();
+    document.getElementById('statusBar').style.display = 'flex';
 
     if (!hasDay) {
-      // Show all rows on every tab until Day column is added
-      setStatus('live', `✓ Sheet connected · ${allRows.length} rows loaded · No "Day" column yet — showing all rows · ${loaded}`);
-      document.getElementById('heroSub').textContent = 'Live from Google Sheets — add a "Day" column to filter by day.';
-      document.getElementById('statusBar').style.display = 'flex';
+      setStatus('live', `✓ Sheet connected · ${allRows.length} rows · No "Day" column yet — showing all rows · ${loaded}`);
+      document.getElementById('heroSub').textContent = 'Live from Google Sheets — add a "Day" column to your sheet to enable day-by-day tab filtering.';
       document.getElementById('dayMeta').style.display = 'none';
-      // Show all rows regardless of active day
       renderTableAllRows(allRows);
     } else {
-      setStatus('live', `✓ Live from Google Sheets · ${allRows.length} sessions loaded · Last synced ${loaded}`);
+      setStatus('live', `✓ Live from Google Sheets · ${allRows.length} sessions · Last synced ${loaded}`);
       document.getElementById('heroSub').textContent = 'Schedule pulls live from your Google Sheet — edit the sheet and refresh.';
-      document.getElementById('statusBar').style.display = 'flex';
       document.getElementById('dayMeta').style.display = 'flex';
       switchDay(activeDay);
     }
 
   } catch (err) {
     console.error(err);
-    setStatus('error', 'Loaded but could not parse — ' + err.message);
-    renderError('Could not parse the sheet data', err.message);
+    setStatus('error', 'Could not load sheet — ' + err.message);
+    renderError('Could not load the Google Sheet',
+      `${err.message}<br><br>
+      Make sure the sheet sharing is set to <strong>"Anyone with the link can view"</strong>
+      (Share button → Change → Anyone with the link → Viewer).`);
   }
 }
 
